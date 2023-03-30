@@ -22,7 +22,7 @@ char *copyString(char *stringToCopy);
  * @param prefix
  * @return
  */
-bool stringStartsWith(char* string, char* prefix);
+bool stringStartsWith(char *string, char *prefix);
 
 /**
  * Checks if a given <i>string</i> is empty or filled with spaces.

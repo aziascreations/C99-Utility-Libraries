@@ -11,16 +11,16 @@ typedef struct arguments_option {
 	char token;
 	
 	/** Name string used when searching for the <code>Option</code> or rendering the help text. */
-	char* name;
+	char *name;
 	
 	/** Description that is shown in the help text. */
-	char* description;
+	char *description;
 	
 	/** Binary flags used to toggle some special behaviour for the <code>Option</code> during the parsing process. */
 	OptionFlags flags;
 	
 	/** List of values given to the <code>Option</code> if it is allowed to have any. */
-	DoubleLinkedList* arguments;
+	DoubleLinkedList *arguments;
 	
 	/** Counter used to indicate how many times the <code>Option</code> was used during the parsing process. */
 	size_t occurrences;
@@ -35,20 +35,20 @@ typedef struct arguments_option {
 
 typedef struct arguments_verb {
 	/** Name used when searching for sub-verbs or rendering the help text. */
-	char* name;
+	char *name;
 	
 	/** Description that is shown in the help text. */
-	char* description;
+	char *description;
 	
 	/** List of registered <code>Option</code> via the 'RegisterOption' function. */
-	DoubleLinkedList* options;
+	DoubleLinkedList *options;
 	
 	/** List of registered sub-<code>Verb</code> via the 'RegisterVerb' function. */
-	DoubleLinkedList* verbs;
+	DoubleLinkedList *verbs;
 	
 	/** Flag used to indicate if the verb was used at any point during the parsing process. */
 	bool wasUsed;
 	
 	/** Reference to a potential <code>Verb</code> into which this one was registered. */
-	struct arguments_verb* parentVerb;
+	struct arguments_verb *parentVerb;
 } Verb;

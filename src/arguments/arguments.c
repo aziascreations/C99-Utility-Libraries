@@ -234,7 +234,8 @@ Option *args_getOptionByName(Verb *verb, char *desiredName) {
 		Option *currentOption = (Option *) dllist_selectFirstData(verb->options);
 		
 		while(currentOption != NULL) {
-			trace_println("Checking the '%i':'%s' registered option @0x%p ...", currentOption->token, currentOption->name, currentOption);
+			trace_println("Checking the '%i':'%s' registered option @0x%p ...", currentOption->token,
+						  currentOption->name, currentOption);
 			
 			if(strcmp(currentOption->name, desiredName) == 0) {
 				return currentOption;
@@ -287,13 +288,14 @@ Option *args_getRelevantDefaultOption(Verb *parentVerb) {
 
 // Misc
 
-bool args_addValueToOption(Option *option, char* addedValue) {
+bool args_addValueToOption(Option *option, char *addedValue) {
 	if(option == NULL || addedValue == NULL) {
-		error_println("Unable to add value to option, one of them is NULL !  (option: @0x%p, str: @0x%p)", option, addedValue);
+		error_println("Unable to add value to option, one of them is NULL !  (option: @0x%p, str: @0x%p)", option,
+					  addedValue);
 		return false;
 	}
 	
-	char* addedValueCopy = copyString(addedValue);
+	char *addedValueCopy = copyString(addedValue);
 	if(addedValue == NULL) {
 		error_println("Unable to copy the current argument !");
 		return false;
@@ -319,7 +321,8 @@ bool args_isVerbAlreadyRegistered(Verb *subVerb, Verb *parentVerb) {
 			}
 			
 			// Checking the name itself if not empty in either.
-			if(!isStringEmpty(subVerb->name) && !isStringEmpty(currentRegisteredSubVerb->name) && areStringsEqual(subVerb->name, currentRegisteredSubVerb->name)) {
+			if(!isStringEmpty(subVerb->name) && !isStringEmpty(currentRegisteredSubVerb->name) &&
+			   areStringsEqual(subVerb->name, currentRegisteredSubVerb->name)) {
 				return true;
 			}
 			
@@ -341,12 +344,14 @@ bool args_isOptionAlreadyRegistered(Option *option, Verb *parentVerb) {
 			}
 			
 			// Checking the token if defined in both.
-			if(option->token != '\0' && currentRegisteredOption->token != '\0' && option->token == currentRegisteredOption->token) {
+			if(option->token != '\0' && currentRegisteredOption->token != '\0' &&
+			   option->token == currentRegisteredOption->token) {
 				return true;
 			}
 			
 			// Checking the name itself if not empty in either.
-			if(!isStringEmpty(option->name) && !isStringEmpty(currentRegisteredOption->name) && areStringsEqual(option->name, currentRegisteredOption->name)) {
+			if(!isStringEmpty(option->name) && !isStringEmpty(currentRegisteredOption->name) &&
+			   areStringsEqual(option->name, currentRegisteredOption->name)) {
 				return true;
 			}
 			
@@ -360,11 +365,11 @@ bool args_isOptionAlreadyRegistered(Option *option, Verb *parentVerb) {
 
 // Parser
 
-enum EArgumentParserErrors args_parseArguments(Verb* rootVerb, char *arguments[], int startIndex, int endIndex) {
-	Verb* currentVerb = rootVerb;
+enum EArgumentParserErrors args_parseArguments(Verb *rootVerb, char *arguments[], int startIndex, int endIndex) {
+	Verb *currentVerb = rootVerb;
 	
 	// Maybe assigned in multiple places to keep track of the option to which values belong.
-	Option* relevantOption = NULL;
+	Option *relevantOption = NULL;
 	
 	// TODO: Check if the flag exists and/or should exist !
 	// Set to true once the "--" token is encountered, or when an option with the ??? flag is encountered.
@@ -411,7 +416,7 @@ enum EArgumentParserErrors args_parseArguments(Verb* rootVerb, char *arguments[]
 				}
 				
 				hasReachedEndOfOptions = true;
-			} else if(hasReachedEndOfOptions)  {
+			} else if(hasReachedEndOfOptions) {
 				trace_println(" > Default option's value that starts with '--'");
 				
 				relevantOption = args_getRelevantDefaultOption(currentVerb);
@@ -432,16 +437,16 @@ enum EArgumentParserErrors args_parseArguments(Verb* rootVerb, char *arguments[]
 				
 				trace_println("1");
 				
-				relevantOption = args_getOptionByName(currentVerb, arguments[iArg]+2);
+				relevantOption = args_getOptionByName(currentVerb, arguments[iArg] + 2);
 				if(relevantOption == NULL) {
-					error_println("Unable to find the '%s' option !", arguments[iArg]+2);
+					error_println("Unable to find the '%s' option !", arguments[iArg] + 2);
 					return ERROR_ARGUMENTS_UNKNOWN_OPTION;
 				}
 				
 				trace_println("2");
 				
 				if(relevantOption->occurrences > 0 && !(relevantOption->flags & FLAG_OPTION_REPEATABLE)) {
-					error_println("The option '%s' was used more than once !", arguments[iArg]+2);
+					error_println("The option '%s' was used more than once !", arguments[iArg] + 2);
 					return ERROR_ARGUMENTS_SINGLE_OPTION_REUSED;
 				}
 				relevantOption->occurrences++;
@@ -453,14 +458,14 @@ enum EArgumentParserErrors args_parseArguments(Verb* rootVerb, char *arguments[]
 					
 					if(!args_canOptionHaveMultipleValue(relevantOption) && relevantOption->occurrences > 1) {
 						// Most likely is redundant as both of these checks are done earlier in some way.
-						error_println("The option '%s' can only have 1 argument !", arguments[iArg]+2);
+						error_println("The option '%s' can only have 1 argument !", arguments[iArg] + 2);
 						return ERROR_ARGUMENTS_THIS_SHOULD_NOT_TRIGGER;
 					}
 					
 					trace_println("5");
 					
 					if(endIndex <= iArg + 1) {
-						error_println("Unable to get a value for '%s', no arguments left !", arguments[iArg]+2);
+						error_println("Unable to get a value for '%s', no arguments left !", arguments[iArg] + 2);
 						return ERROR_ARGUMENTS_NO_ARGUMENTS_LEFT;
 					}
 					
@@ -503,7 +508,9 @@ enum EArgumentParserErrors args_parseArguments(Verb* rootVerb, char *arguments[]
 				}
 				
 				if(iChar + 1 < strlen(arguments[iArg])) {
-					error_println("\"The short option '%c' was given before the end of the argument while requiring a value !", arguments[iArg][iChar]);
+					error_println(
+							"\"The short option '%c' was given before the end of the argument while requiring a value !",
+							arguments[iArg][iChar]);
 					return ERROR_ARGUMENTS_OPTION_HAS_VALUE_AND_MORE_SHORTS;
 				}
 				
@@ -527,7 +534,7 @@ enum EArgumentParserErrors args_parseArguments(Verb* rootVerb, char *arguments[]
 			// Please refer to the code at the following URL for the original and more readable version:
 			// * https://github.com/aziascreations/DotNet-Arguments/blob/master/NibblePoker.Library.Arguments/ArgumentsParser.cs#L137
 			
-			Verb* desiredVerb = NULL;
+			Verb *desiredVerb = NULL;
 			
 			if(!hasFinishedParsingVerbs) {
 				desiredVerb = args_getSubVerbByName(currentVerb, arguments[iArg]);

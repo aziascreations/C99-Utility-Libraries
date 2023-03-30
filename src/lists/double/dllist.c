@@ -1,7 +1,7 @@
 #include "dllist.h"
 
-DoubleLinkedList* dllist_create(void (*free)(void* data)) {
-	DoubleLinkedList* newList = malloc(sizeof(DoubleLinkedList));
+DoubleLinkedList *dllist_create(void (*free)(void *data)) {
+	DoubleLinkedList *newList = malloc(sizeof(DoubleLinkedList));
 	
 	// Only setting up the fields if memory was allocated.
 	if(newList != NULL) {
@@ -15,17 +15,17 @@ DoubleLinkedList* dllist_create(void (*free)(void* data)) {
 	return newList;
 }
 
-void dllist_free(DoubleLinkedList* list) {
+void dllist_free(DoubleLinkedList *list) {
 	if(list == NULL) {
 		return;
 	}
 	
-	DoubleLinkedListNode * currentNode = list->first;
+	DoubleLinkedListNode *currentNode = list->first;
 	while(currentNode != NULL) {
 		if(list->free != NULL) {
 			list->free(currentNode->data);
 		}
-		DoubleLinkedListNode* nextNode = currentNode->next;
+		DoubleLinkedListNode *nextNode = currentNode->next;
 		free(currentNode);
 		currentNode = nextNode;
 	}
@@ -33,7 +33,7 @@ void dllist_free(DoubleLinkedList* list) {
 	free(list);
 }
 
-DoubleLinkedListNode* dllist_selectFirst(DoubleLinkedList* list) {
+DoubleLinkedListNode *dllist_selectFirst(DoubleLinkedList *list) {
 	if(list != NULL) {
 		list->current = list->first;
 		return list->first;
@@ -41,7 +41,7 @@ DoubleLinkedListNode* dllist_selectFirst(DoubleLinkedList* list) {
 	return NULL;
 }
 
-DoubleLinkedListNode* dllist_selectNext(DoubleLinkedList* list) {
+DoubleLinkedListNode *dllist_selectNext(DoubleLinkedList *list) {
 	if(list != NULL) {
 		if(list->current != NULL) {
 			list->current = list->current->next;
@@ -51,7 +51,7 @@ DoubleLinkedListNode* dllist_selectNext(DoubleLinkedList* list) {
 	return NULL;
 }
 
-DoubleLinkedListNode* dllist_selectPrevious(DoubleLinkedList* list) {
+DoubleLinkedListNode *dllist_selectPrevious(DoubleLinkedList *list) {
 	if(list != NULL) {
 		if(list->current != NULL) {
 			list->current = list->current->previous;
@@ -61,7 +61,7 @@ DoubleLinkedListNode* dllist_selectPrevious(DoubleLinkedList* list) {
 	return NULL;
 }
 
-DoubleLinkedListNode* dllist_selectLast(DoubleLinkedList* list) {
+DoubleLinkedListNode *dllist_selectLast(DoubleLinkedList *list) {
 	if(list != NULL) {
 		list->current = list->last;
 		return list->last;
@@ -69,14 +69,14 @@ DoubleLinkedListNode* dllist_selectLast(DoubleLinkedList* list) {
 	return NULL;
 }
 
-void* dllist_selectFirstData(DoubleLinkedList* list) {
+void *dllist_selectFirstData(DoubleLinkedList *list) {
 	if(dllist_selectFirst(list) != NULL) {
 		return list->current->data;
 	}
 	return NULL;
 }
 
-void* dllist_selectNextData(DoubleLinkedList* list) {
+void *dllist_selectNextData(DoubleLinkedList *list) {
 	if(dllist_selectNext(list) != NULL) {
 		return list->current->data;
 	}
@@ -84,9 +84,9 @@ void* dllist_selectNextData(DoubleLinkedList* list) {
 }
 
 
-DoubleLinkedListNode* dllist_getByIndex(DoubleLinkedList* list, size_t index) {
+DoubleLinkedListNode *dllist_getByIndex(DoubleLinkedList *list, size_t index) {
 	if(list != NULL) {
-		DoubleLinkedListNode* currentNode = list->first;
+		DoubleLinkedListNode *currentNode = list->first;
 		size_t currentIndex = 0;
 		
 		while(currentNode != NULL && currentIndex != index) {
@@ -100,7 +100,7 @@ DoubleLinkedListNode* dllist_getByIndex(DoubleLinkedList* list, size_t index) {
 	return NULL;
 }
 
-DoubleLinkedListNode* dllist_selectByIndex(DoubleLinkedList* list, size_t index) {
+DoubleLinkedListNode *dllist_selectByIndex(DoubleLinkedList *list, size_t index) {
 	if(list != NULL) {
 		list->current = dllist_getByIndex(list, index);
 		return list->current;
@@ -109,9 +109,9 @@ DoubleLinkedListNode* dllist_selectByIndex(DoubleLinkedList* list, size_t index)
 	return NULL;
 }
 
-bool dllist_append(DoubleLinkedList* list, void* data) {
+bool dllist_append(DoubleLinkedList *list, void *data) {
 	if(list != NULL) {
-		DoubleLinkedListNode* newNode = malloc(sizeof(DoubleLinkedListNode));
+		DoubleLinkedListNode *newNode = malloc(sizeof(DoubleLinkedListNode));
 		
 		if(newNode != NULL) {
 			newNode->next = NULL;

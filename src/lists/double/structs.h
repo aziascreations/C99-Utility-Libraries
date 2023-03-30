@@ -33,20 +33,27 @@ typedef struct double_linked_list {
 	struct double_linked_list_node *last;
 	
 	// Function used to free the data pointer present in the "SingleLinkedListNode" structure.
-	void (*free)(void* data);
+	void (*free)(void *data);
 } DoubleLinkedList;
 
 /**
  * Private interface structure that defines the functions provided by this module.
  */
 typedef struct {
-	DoubleLinkedList* (*create)(void (*free)(void* data));  // See: dllist_create
-	void (*free)(DoubleLinkedList* list);
-	DoubleLinkedListNode* (*selectFirst)(DoubleLinkedList* list);
-	DoubleLinkedListNode* (*selectNext)(DoubleLinkedList* list);
-	DoubleLinkedListNode* (*selectPrevious)(DoubleLinkedList* list);
-	DoubleLinkedListNode* (*selectLast)(DoubleLinkedList* list);
-	DoubleLinkedListNode* (*getByIndex)(DoubleLinkedList* list, size_t index);
-	DoubleLinkedListNode* (*selectByIndex)(DoubleLinkedList* list, size_t index);
-	bool (*append)(DoubleLinkedList* list, void* data);
+	DoubleLinkedList *(*create)(void (*free)(void *data));  // See: dllist_create
+	void (*free)(DoubleLinkedList *list);
+	
+	DoubleLinkedListNode *(*selectFirst)(DoubleLinkedList *list);
+	
+	DoubleLinkedListNode *(*selectNext)(DoubleLinkedList *list);
+	
+	DoubleLinkedListNode *(*selectPrevious)(DoubleLinkedList *list);
+	
+	DoubleLinkedListNode *(*selectLast)(DoubleLinkedList *list);
+	
+	DoubleLinkedListNode *(*getByIndex)(DoubleLinkedList *list, size_t index);
+	
+	DoubleLinkedListNode *(*selectByIndex)(DoubleLinkedList *list, size_t index);
+	
+	bool (*append)(DoubleLinkedList *list, void *data);
 } DoubleLinkedListModuleInterface;
