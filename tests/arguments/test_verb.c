@@ -79,8 +79,9 @@ int main(void) {
 	assert(args_registerOption(shortOption, validSubVerb2), "Short option in 'delete'");
 	assert(args_registerOption(longOption, validSubVerb1), "Long option in 'create'");
 	
+	// From now on, results will be observed in the fact the tests don't cause segfaults, and via the debugging logs.
+	
 	printf("> Freeing verbs not referenced anywhere else...\n");
-	// Results will be observed in the fact the test doesn't segfault later on and the debugging logs.
 	args_freeVerb(invalidSubVerb1);
 	args_freeVerb(invalidSubVerb2);
 	
