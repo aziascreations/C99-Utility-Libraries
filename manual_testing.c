@@ -6,16 +6,15 @@
 #include "./src/arguments/arguments.h"
 #include "./src/arguments/flags.h"
 
-void myFree(void* data) {
+void myFree(void *data) {
 	//printf("> Reee !\n");
 	free(data);
 }
 
-int main(void) {
-	
-	Verb* rootVerb = args_createVerb("", "");
-	Verb* subVerb = args_createVerb("123", "");
-	Option* helpOption = args_createOption('h', "help", "", FLAG_OPTION_NONE);
+int main(int argc, char **argv) {
+	Verb *rootVerb = args_createVerb("root", "");
+	Verb *subVerb = args_createVerb("123", "");
+	Option *helpOption = args_createOption('h', "help", "", FLAG_OPTION_NONE);
 	
 	if(!args_registerVerb(subVerb, rootVerb)) {
 		printf("NOK 1\n");
@@ -39,10 +38,17 @@ int main(void) {
 		return 3;
 	}
 	
-	char* arguments[] = {"--help"};
+	char *arguments[] = {"123", "--help"};
 	
-	if(args_parseArguments(rootVerb, arguments, 0, 1) != ERROR_ARGUMENTS_NONE) {
+	Verb *lastUsedVerb = NULL;
+	if(args_parseArguments(rootVerb, arguments, 0, 1, &lastUsedVerb) != ERROR_ARGUMENTS_NONE) {
 		printf("Failed to parse !\n");
+	}
+	
+	if(lastUsedVerb != NULL) {
+		printf("The last used verb is '%s' !\n", lastUsedVerb->name);
+	} else {
+		printf("The last used verb is NULL !\n");
 	}
 	
 	printf("Done testing !\n");

@@ -116,4 +116,4 @@ DLL_EXPORT bool args_isOptionAlreadyRegistered(Option *option, Verb *parentVerb)
 // Parser
 
 DLL_EXPORT enum EArgumentParserErrors
-args_parseArguments(Verb *rootVerb, char *arguments[], int startIndex, int endIndex);
+args_parseArguments(Verb *rootVerb, char *arguments[], int startIndex, int endIndex, Verb **pRelevantVerb);

@@ -365,7 +365,8 @@ bool args_isOptionAlreadyRegistered(Option *option, Verb *parentVerb) {
 
 // Parser
 
-enum EArgumentParserErrors args_parseArguments(Verb *rootVerb, char *arguments[], int startIndex, int endIndex) {
+enum EArgumentParserErrors args_parseArguments(Verb *rootVerb, char *arguments[], int startIndex, int endIndex,
+											   Verb **pRelevantVerb) {
 	Verb *currentVerb = rootVerb;
 	
 	// Maybe assigned in multiple places to keep track of the option to which values belong.
@@ -577,6 +578,11 @@ enum EArgumentParserErrors args_parseArguments(Verb *rootVerb, char *arguments[]
 	// Checking the "Required" flag.
 	// TODO
 	//foreach(Option option in currentVerb.Options) {
+	
+	// Returning the last used verb if possible.
+	if(pRelevantVerb != NULL) {
+		*pRelevantVerb = currentVerb;
+	}
 	
 	return ERROR_ARGUMENTS_NONE;
 }
