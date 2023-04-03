@@ -17,6 +17,7 @@
 
 #define args_canOptionHaveMultipleValue(option) ((option)->flags & FLAG_OPTION_HAS_VALUE && (option)->flags & FLAG_OPTION_REPEATABLE)
 
+#define args_wasOptionUsed(option) (option->occurrences > 0)
 
 // Creators
 

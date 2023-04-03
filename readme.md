@@ -9,8 +9,8 @@ It is mainly intended to provide me with a set of utilities and libraries I ofte
 While it is this way, it should still be usable in many projects that can benefit from it, and its functions' names,
 signatures and behaviour should stay relatively similar as the project advances.
 
-## ???
-???
+## Documentation
+TODO: https://devblogs.microsoft.com/cppblog/clear-functional-c-documentation-with-sphinx-breathe-doxygen-cmake/
 
 ## License
-[Not yet defined](LICENSE)
+[MIT License](LICENSE).

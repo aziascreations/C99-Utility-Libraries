@@ -575,7 +575,7 @@ enum EArgumentParserErrors args_parseArguments(Verb *rootVerb, char *arguments[]
 		iArg += processedArgumentsCount;
 	}
 	
-	// Checking the "Required" flag.
+	// Checking the "Required" flag recursively from the final to the root verb.
 	// TODO
 	//foreach(Option option in currentVerb.Options) {
 	
