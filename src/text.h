@@ -30,3 +30,11 @@ bool stringStartsWith(char *string, char *prefix);
  * @return
  */
 bool isStringEmpty(char *str);
+
+/**
+ * Converts a given `char` string into a `wchar_t` one.
+ * You will need to free the returned pointer once appropriate.
+ * @param originalString The original string to be copied
+ * @return The converted string's pointer, or `NULL` if an error occurred.
+ */
+wchar_t *charStringToWChar(char *originalString);
