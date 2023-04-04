@@ -406,7 +406,7 @@ enum EArgumentParserErrors args_parseArguments(Verb *rootVerb, char *arguments[]
 		if(stringStartsWith(arguments[iArg], "--")) {
 			trace_println(" > Long option or end of parameters");
 			
-			hasFinishedParsingVerbs = true;
+			bool skipAllowVerbAfterOptionCheck = false;
 			
 			if(strlen(arguments[iArg]) == 2) {
 				trace_println(" > End of options symbol.");
@@ -417,6 +417,7 @@ enum EArgumentParserErrors args_parseArguments(Verb *rootVerb, char *arguments[]
 				}
 				
 				hasReachedEndOfOptions = true;
+				skipAllowVerbAfterOptionCheck = true;
 			} else if(hasReachedEndOfOptions) {
 				trace_println(" > Default option's value that starts with '--'");
 				
@@ -436,15 +437,11 @@ enum EArgumentParserErrors args_parseArguments(Verb *rootVerb, char *arguments[]
 				
 				// Use arguments[iArg]+2 instead of arguments[iArg][2..]
 				
-				trace_println("1");
-				
 				relevantOption = args_getOptionByName(currentVerb, arguments[iArg] + 2);
 				if(relevantOption == NULL) {
 					error_println("Unable to find the '%s' option !", arguments[iArg] + 2);
 					return ERROR_ARGUMENTS_UNKNOWN_OPTION;
 				}
-				
-				trace_println("2");
 				
 				if(relevantOption->occurrences > 0 && !(relevantOption->flags & FLAG_OPTION_REPEATABLE)) {
 					error_println("The option '%s' was used more than once !", arguments[iArg] + 2);
@@ -452,41 +449,32 @@ enum EArgumentParserErrors args_parseArguments(Verb *rootVerb, char *arguments[]
 				}
 				relevantOption->occurrences++;
 				
-				trace_println("3");
-				
 				if(relevantOption->flags & FLAG_OPTION_HAS_VALUE) {
-					trace_println("4");
-					
 					if(!args_canOptionHaveMultipleValue(relevantOption) && relevantOption->occurrences > 1) {
 						// Most likely is redundant as both of these checks are done earlier in some way.
 						error_println("The option '%s' can only have 1 argument !", arguments[iArg] + 2);
 						return ERROR_ARGUMENTS_THIS_SHOULD_NOT_TRIGGER;
 					}
 					
-					trace_println("5");
-					
 					if(endIndex <= iArg + 1) {
 						error_println("Unable to get a value for '%s', no arguments left !", arguments[iArg] + 2);
 						return ERROR_ARGUMENTS_NO_ARGUMENTS_LEFT;
 					}
 					
-					trace_println("6");
-					
 					if(!args_addValueToOption(relevantOption, arguments[iArg + 1])) {
 						return ERROR_ARGUMENTS_INSERTION_FAILURE;
 					}
 					
-					trace_println("7");
-					
 					processedArgumentsCount++;
 				}
-				
-				trace_println("8");
+			}
+			
+			if(skipAllowVerbAfterOptionCheck || !(relevantOption->flags & FLAG_OPTION_ALLOW_VERBS_AFTER)) {
+				trace_println("Setting internal 'hasFinishedParsingVerbs' flag.");
+				hasFinishedParsingVerbs = true;
 			}
 		} else if(stringStartsWith(arguments[iArg], "-")) {
 			trace_println(" > Short option(s)");
-			
-			hasFinishedParsingVerbs = true;
 			
 			for(int iChar = 1; iChar < strlen(arguments[iArg]); iChar++) {
 				trace_println(" > Doing '%c'", arguments[iArg][iChar]);
@@ -503,6 +491,11 @@ enum EArgumentParserErrors args_parseArguments(Verb *rootVerb, char *arguments[]
 					return ERROR_ARGUMENTS_SINGLE_OPTION_REUSED;
 				}
 				relevantOption->occurrences++;
+				
+				if(!(relevantOption->flags & FLAG_OPTION_ALLOW_VERBS_AFTER)) {
+					trace_println("Setting internal 'hasFinishedParsingVerbs' flag.");
+					hasFinishedParsingVerbs = true;
+				}
 				
 				if(!(relevantOption->flags & FLAG_OPTION_HAS_VALUE)) {
 					continue;
@@ -559,8 +552,6 @@ enum EArgumentParserErrors args_parseArguments(Verb *rootVerb, char *arguments[]
 			
 			// Can be set to NULL in the condition above or at the start of the loop.
 			if(relevantOption != NULL) {
-				hasFinishedParsingVerbs = true;
-				
 				// Not checking for flags and max value count since "args_getRelevantDefaultOption" takes care of it !
 				// Remark: We simply won't receive it and will just have NULL as if we had none !
 				
@@ -568,6 +559,11 @@ enum EArgumentParserErrors args_parseArguments(Verb *rootVerb, char *arguments[]
 				
 				if(!args_addValueToOption(relevantOption, arguments[iArg])) {
 					return ERROR_ARGUMENTS_INSERTION_FAILURE;
+				}
+				
+				if(!(relevantOption->flags & FLAG_OPTION_ALLOW_VERBS_AFTER)) {
+					trace_println("Setting internal 'hasFinishedParsingVerbs' flag.");
+					hasFinishedParsingVerbs = true;
 				}
 			}
 		}

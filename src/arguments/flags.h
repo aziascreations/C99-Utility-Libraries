@@ -29,4 +29,13 @@ enum EOptionFlags /*: OptionFlags*/ {
 	
 	/** Used to indicate that an <code>Option</code> must stop the parsing process as soon as it has been handled. */
 	FLAG_OPTION_STOPS_PARSING = 0b00100000,
+	
+	/**
+	 * Used to indicate that an <code>Option</code> will not prevent further verbs from being parsed when encountered.
+	 * Usage of this flag required some forethought as if the option uses the <code>FLAG_OPTION_DEFAULT</code> flag,
+	 * 	its values may be interpreted as a verb and cause all kinds of errors
+	 * A "better" alternative would be to only use the <code>FLAG_OPTION_REQUIRED</code> flag if the value is needed,
+	 *  which wil force the user to explicitly use the option's name or token.
+	 */
+	FLAG_OPTION_ALLOW_VERBS_AFTER = 0b01000000,
 };
