@@ -27,9 +27,9 @@
  * @param description Description that is shown in the help text.
  * @return The new <code>Verb</code>, or <code>NULL</code> if an error occurred.
  */
-DLL_EXPORT Verb *args_createVerb(char *verb, char *description);
+DLL_EXPORT Verb *args_createVerb(np_args_char *verb, np_args_char *description);
 
-DLL_EXPORT Option *args_createOption(char token, char *name, char *description, OptionFlags flags);
+DLL_EXPORT Option *args_createOption(np_args_char token, np_args_char *name, np_args_char *description, OptionFlags flags);
 
 
 // Cleaners
@@ -78,7 +78,7 @@ DLL_EXPORT Option *args_getDefaultOption(Verb *verb);
  * @param desiredToken The desired <code>Option</code>'s <i>token</i>.
  * @return The relevant <code>Option</code> if found, <code>NULL</code> otherwise.
  */
-DLL_EXPORT Option *args_getOptionByToken(Verb *verb, char desiredToken);
+DLL_EXPORT Option *args_getOptionByToken(Verb *verb, np_args_char desiredToken);
 
 /**
  * Get an <code>Option</code> from a given <code>Verb</code> by searching for it with its <i>name</i>.
@@ -86,7 +86,7 @@ DLL_EXPORT Option *args_getOptionByToken(Verb *verb, char desiredToken);
  * @param desiredName The desired <code>Option</code>'s <i>name</i>.
  * @return The relevant <code>Option</code> if found, <code>NULL</code> otherwise.
  */
-DLL_EXPORT Option *args_getOptionByName(Verb *verb, char *desiredName);
+DLL_EXPORT Option *args_getOptionByName(Verb *verb, np_args_char *desiredName);
 
 /**
  * Get a sub-<code>Verb</code> from a given <code>Verb</code> by searching for it with its <i>name</i>.
@@ -94,7 +94,7 @@ DLL_EXPORT Option *args_getOptionByName(Verb *verb, char *desiredName);
  * @param desiredName The desired sub-<code>Verb</code>'s <i>name</i>.
  * @return relevant <code>Verb</code> if found, <code>NULL</code> otherwise.
  */
-DLL_EXPORT Verb *args_getSubVerbByName(Verb *parentVerb, char *desiredName);
+DLL_EXPORT Verb *args_getSubVerbByName(Verb *parentVerb, np_args_char *desiredName);
 
 /**
  * Attempts to grab the default <code>Option</code> that should be used as one during the parsing process based on
@@ -107,7 +107,7 @@ DLL_EXPORT Option *args_getRelevantDefaultOption(Verb *parentVerb);
 
 // Misc
 
-DLL_EXPORT bool args_addValueToOption(Option *option, char *addedValue);
+DLL_EXPORT bool args_addValueToOption(Option *option, np_args_char *addedValue);
 
 DLL_EXPORT bool args_isVerbAlreadyRegistered(Verb *subVerb, Verb *parentVerb);
 
@@ -117,4 +117,4 @@ DLL_EXPORT bool args_isOptionAlreadyRegistered(Option *option, Verb *parentVerb)
 // Parser
 
 DLL_EXPORT enum EArgumentParserErrors
-args_parseArguments(Verb *rootVerb, char *arguments[], int startIndex, int endIndex, Verb **pRelevantVerb);
+args_parseArguments(Verb *rootVerb, np_args_char *arguments[], int startIndex, int endIndex, Verb **pRelevantVerb);

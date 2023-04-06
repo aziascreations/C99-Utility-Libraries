@@ -4,17 +4,18 @@
 #include <stdbool.h>
 
 #include "../lists/double/dllist.h"
+#include "./macros.h"
 #include "./types.h"
 
 typedef struct arguments_option {
 	/** Token character used when searching for the <code>Option</code> or rendering the help text. */
-	char token;
+	np_args_char token;
 	
 	/** Name string used when searching for the <code>Option</code> or rendering the help text. */
-	char *name;
+	np_args_char *name;
 	
 	/** Description that is shown in the help text. */
-	char *description;
+	np_args_char *description;
 	
 	/** Binary flags used to toggle some special behaviour for the <code>Option</code> during the parsing process. */
 	OptionFlags flags;
@@ -35,10 +36,10 @@ typedef struct arguments_option {
 
 typedef struct arguments_verb {
 	/** Name used when searching for sub-verbs or rendering the help text. */
-	char *name;
+	np_args_char *name;
 	
 	/** Description that is shown in the help text. */
-	char *description;
+	np_args_char *description;
 	
 	/** List of registered <code>Option</code> via the 'RegisterOption' function. */
 	DoubleLinkedList *options;
