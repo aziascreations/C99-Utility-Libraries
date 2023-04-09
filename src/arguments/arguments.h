@@ -55,6 +55,8 @@ DLL_EXPORT bool args_registerVerb(Verb *registeredVerb, Verb *parentVerb);
 
 DLL_EXPORT bool args_registerOption(Option *registeredOption, Verb *parentVerb);
 
+DLL_EXPORT bool args_registerOptionRecursively(Option *registeredOption, Verb *rootVerb);
+
 
 // Getters
 

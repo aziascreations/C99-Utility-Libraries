@@ -40,6 +40,13 @@ bool isStringEmpty(char *string) {
 	return true;
 }
 
+int nextCharSpaceIndex(const char *string, int startIndex) {
+	while(string[startIndex] != '\0' && string[startIndex] != ' ') {
+		startIndex++;
+	}
+	return startIndex;
+}
+
 #ifdef NP_WIN32
 
 wchar_t *copyWCharString(wchar_t *stringToCopy) {
@@ -96,4 +103,12 @@ wchar_t *charStringToWChar(char *originalString) {
 	
 	return returnedString;
 }
+
+int nextWCharSpaceIndex(const wchar_t *string, int startIndex) {
+	while(string[startIndex] != L'\0' && string[startIndex] != L' ') {
+		startIndex++;
+	}
+	return startIndex;
+}
+
 #endif

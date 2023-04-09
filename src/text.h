@@ -32,6 +32,14 @@ bool stringStartsWith(char *string, char *prefix);
  */
 bool isStringEmpty(char *string);
 
+/**
+ * Finds the next space in a given string and returns its index.
+ * @param string
+ * @param startIndex
+ * @return
+ */
+int nextCharSpaceIndex(const char *string, int startIndex);
+
 #ifdef NP_WIN32
 /**
  * Copies the given string into a new buffer and returns it as-is.
@@ -63,4 +71,13 @@ bool isWCharStringEmpty(wchar_t *string);
  * @return The converted string's pointer, or `NULL` if an error occurred.
  */
 wchar_t *charStringToWChar(char *originalString);
+
+/**
+ * Finds the next space in a given string and returns its index.
+ * @param string
+ * @param startIndex
+ * @return
+ */
+int nextWCharSpaceIndex(const wchar_t *string, int startIndex);
+
 #endif

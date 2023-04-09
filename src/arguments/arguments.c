@@ -95,7 +95,7 @@ Option *args_createOption(np_args_char token, np_args_char *name, np_args_char *
 
 void args_freeVerb(Verb *verb) {
 	if(verb != NULL) {
-		np_args_trace_println("Starting to free verb '%s' @0x%p", verb->name, verb);
+		//np_args_trace_println("Starting to free verb '%s' @0x%p", verb->name, verb);
 		
 		// Safely freeing lists.
 		// The subsequent required "args_freeVerb" and "args_freeOption" calls will be made automatically.
@@ -121,7 +121,7 @@ void args_freeVerb(Verb *verb) {
 
 void args_freeOption(Option *option) {
 	if(option != NULL) {
-		np_args_trace_println("Starting to free option '0d%i':'%s' @0x%p", option->token, option->name, option);
+		//np_args_trace_println("Starting to free option '0d%i':'%s' @0x%p", option->token, option->name, option);
 		
 		// We first decrement the `registrationCount` variable and check if it is at `0`.
 		// This done in order to allow the same option to be used in multiple verbs easily and transparently.
@@ -130,7 +130,7 @@ void args_freeOption(Option *option) {
 		// Checking if it is still registered in a verb that wasn't freed.
 		// Can be a negative number if the option was never registered !
 		if(option->registrationCount > 0) {
-			np_args_trace_println("Skipped the freeing process, still registered in another verb !");
+			//np_args_trace_println("Skipped the freeing process, still registered in another verb !");
 			return;
 		}
 		
@@ -205,6 +205,21 @@ bool args_registerOption(Option *registeredOption, Verb *parentVerb) {
 	return true;
 }
 
+bool args_registerOptionRecursively(Option *registeredOption, Verb *rootVerb) {
+	if(registeredOption == NULL && rootVerb == NULL) {
+		return false;
+	}
+	
+	args_registerOption(registeredOption, rootVerb);
+	
+	Verb *currentSubVerb = dllist_selectFirstData(rootVerb->verbs);
+	while(currentSubVerb != NULL) {
+		args_registerOptionRecursively(registeredOption, currentSubVerb);
+		currentSubVerb = dllist_selectNextData(rootVerb->verbs);
+	}
+	
+	return true;
+}
 
 // Getters
 
