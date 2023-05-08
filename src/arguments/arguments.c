@@ -4,6 +4,28 @@
 
 #include "../debug.h"
 
+/** @defgroup arguments Arguments parser
+ *
+ * TODO: Simple module description
+ *
+ * <b>Warning:</b><br>
+ * Any reference to a *sub-verb* actually refers to a regular \ref arguments_verb "Verb" which can be considered as the
+ *  another verb's children.
+ *
+ * Any reference to `np_args_char` can be the equivalent of `char` or `wchar_t` depending on 2 compiler constants.<br>
+ * These constants, `NP_WIN32` and `NP_ARGS_WCHAR`, if both used, will make all functions and structures in this module
+ *  use `wchar_t` strings instead of `char` ones.<br>
+ * This features allows you to easily handle unicode characters and emojis in launch arguments on Windows platforms.
+ *
+ * These macro-ed types and functions are defined in \ref arguments/macros.h.<br>
+ * This header also defines a bunch of macros for string-related operations done in this module.<br>
+ * They shouldn't be used outside of it !
+ *
+ * If you want an example of this feature on a Windows app, you should check
+ *  [aziascreations/C99-Win32-Wifi-Utility](https://github.com/aziascreations/C99-Win32-Wifi-Utility) on GitHub.
+ *
+ * @{
+ */
 
 // Creators
 
@@ -618,3 +640,5 @@ enum EArgumentParserErrors args_parseArguments(Verb *rootVerb, np_args_char *arg
 	
 	return ERROR_ARGUMENTS_NONE;
 }
+
+/** @} */ // end of arguments

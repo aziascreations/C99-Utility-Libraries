@@ -72,7 +72,7 @@ INLINE_INHERITED_MEMB  = NO
 # shortest path that makes the file name unique will be used
 # The default value is: YES.
 
-FULL_PATH_NAMES        = YES
+FULL_PATH_NAMES        = NO
 
 # The STRIP_FROM_PATH tag can be used to strip a user-defined part of the path.
 # Stripping is only done if one of the specified strings matches the left-hand
@@ -118,16 +118,9 @@ INHERIT_DOCS           = YES
 
 SEPARATE_MEMBER_PAGES  = NO
 
-# The TAB_SIZE tag can be used to set the number of spaces in a tab. Doxygen
-# uses this value to replace tabs by spaces in code fragments.
-# Minimum value: 1, maximum value: 16, default value: 4.
-
 TAB_SIZE               = 4
-
 ALIASES                =
-
 OPTIMIZE_OUTPUT_FOR_C  = YES
-
 OPTIMIZE_OUTPUT_JAVA   = NO
 OPTIMIZE_FOR_FORTRAN   = NO
 OPTIMIZE_OUTPUT_VHDL   = NO
@@ -207,7 +200,7 @@ SHOW_INCLUDE_FILES     = NO
 SHOW_GROUPED_MEMB_INC  = NO
 FORCE_LOCAL_INCLUDES   = NO
 INLINE_INFO            = YES
-SORT_MEMBER_DOCS       = YES
+SORT_MEMBER_DOCS       = NO
 SORT_BRIEF_DOCS        = NO
 SORT_MEMBERS_CTORS_1ST = NO
 SORT_GROUP_NAMES       = NO
@@ -352,7 +345,7 @@ GENERATE_TREEVIEW      = YES
 # Cannot be used with "Doxygen Awesome" theme !
 FULL_SIDEBAR           = NO
 
-ENUM_VALUES_PER_LINE   = 4
+ENUM_VALUES_PER_LINE   = 1
 TREEVIEW_WIDTH         = 250
 EXT_LINKS_IN_WINDOW    = NO
 OBFUSCATE_EMAILS       = YES
@@ -464,7 +457,7 @@ INCLUDE_FILE_PATTERNS  =
 PREDEFINED = NP_WIN32
 
 EXPAND_AS_DEFINED      =
-SKIP_FUNCTION_MACROS   = YES
+SKIP_FUNCTION_MACROS   = NO
 
 #---------------------------------------------------------------------------
 # Configuration options related to external references

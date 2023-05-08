@@ -1,5 +1,16 @@
 /// @file text.c
 
+/** @defgroup group_nptext String utilities
+ *
+ *  Collection of various utility functions for `char` and `wchar_t` based strings.
+ *
+ *  <b>Warning:</b><br>
+ *  Unless `NP_WIN32` is defined, all functions that uses or return a `wchar_t` typed variable won't be accessible.<br>
+ *  This is due to the fact that `wchar_t` is only accessible easily on Windows platforms.
+ *
+ *  @{
+ */
+ 
 #include "text.h"
 
 char *copyString(char *stringToCopy) {
@@ -114,3 +125,5 @@ int nextWCharSpaceIndex(const wchar_t *string, int startIndex) {
 }
 
 #endif
+
+/** @} */ // end of group_nptext
