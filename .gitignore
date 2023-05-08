@@ -1,5 +1,13 @@
+# IDEs
 .idea/
+.vs/
 
+# Cmake builds
 cmake*/
 
+# Documentation builds
+docs/html
+docs/latex
+
+# Unfinished stuff
 CONTRIBUTING.md

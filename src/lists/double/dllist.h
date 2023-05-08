@@ -90,26 +90,3 @@ DLL_EXPORT DoubleLinkedListNode *dllist_selectByIndex(DoubleLinkedList *list, si
  * @return <code>true</code> if it was appended properly, <code>false</code> otherwise.
  */
 DLL_EXPORT bool dllist_append(DoubleLinkedList *list, void *data);
-
-// Checking if the static module is explicitly disabled.
-#ifndef NP_DLLIST_NO_MODULE
-/**
- * Public static module's interface.
- */
-static DoubleLinkedListModuleInterface dllist = {
-		.create = dllist_create,
-		.free = dllist_free,
-		.selectFirst = dllist_selectFirst,
-		.selectNext = dllist_selectNext,
-		.selectPrevious = dllist_selectPrevious,
-		.selectLast = dllist_selectLast,
-		.getByIndex = dllist_getByIndex,
-		.selectByIndex = dllist_selectByIndex,
-		.append = dllist_append,
-};
-
-/**
- * Macro that resolves to the normal <code>dllist</code> static module interface.
- */
-#define DoubleLinkedLists dllist
-#endif

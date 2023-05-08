@@ -1,3 +1,5 @@
+/// @file text.c
+
 #include "text.h"
 
 char *copyString(char *stringToCopy) {

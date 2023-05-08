@@ -1,3 +1,5 @@
+/// @file help.c
+
 #include "help.h"
 
 // Private constants

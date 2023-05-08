@@ -50,3 +50,6 @@ target_compile_definitions(test_args_options PUBLIC NP_DEBUG_LOGGING)
 add_executable(test_args_verbs tests/arguments/test_verb.c ${src_args} tests/assert.h)
 add_test(NAME test_args_verbs COMMAND test_args_verbs)
 target_compile_definitions(test_args_verbs PUBLIC NP_DEBUG_LOGGING)
+
+# Documentation
+# TODO: Add custom target for it.
