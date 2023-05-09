@@ -20,7 +20,9 @@ In the event I introduce breaking changes, you should be able to notice them sin
 ## Documentation
 
 ### Viewing
-*TODO: Put URL here once it has a proper link & branch.*
+You can consult the documentation at the following URL: https://aziascreations.github.io/C99-Utility-Libraries/
+
+It is automatically updated when a commit is pushed onto the `master` branch.
 
 ### Building
 If you want to build the documentation, you need to do the following things:
@@ -29,8 +31,6 @@ If you want to build the documentation, you need to do the following things:
 * Run the [make-doc.bat](make-doc.bat) script.
 * Go into `docs/html` and open the `index.html` file.
 
-### Automation
-*TODO: Automate with GitHub Actions.*
 
 ## Licenses
 [MIT License](./LICENSE)

@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - master
-      - dev-actions-doc
   pull_request:
 
 jobs:
