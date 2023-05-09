@@ -1,0 +1,21 @@
+var searchData=
+[
+  ['data_0',['data',['../structdouble__linked__list__node.html#ab537ab9d3972610f77e994d57ce40003',1,'double_linked_list_node']]],
+  ['debug_2eh_1',['debug.h',['../debug_8h.html',1,'']]],
+  ['description_2',['description',['../structarguments__option.html#ae3093af93613f78d13d1a166b9ef657a',1,'arguments_option::description()'],['../structarguments__verb.html#aff579bdaa8a8c117ac8ef0d3aa3c0bf2',1,'arguments_verb::description()']]],
+  ['dllist_2ec_3',['dllist.c',['../dllist_8c.html',1,'']]],
+  ['dllist_5fappend_4',['dllist_append',['../group__group__dllist.html#ga1bd903704428d4e22d1021f63dd055c5',1,'dllist_append(DoubleLinkedList *list, void *data):&#160;dllist.c'],['../group__group__dllist.html#ga1bd903704428d4e22d1021f63dd055c5',1,'dllist_append(DoubleLinkedList *list, void *data):&#160;dllist.c']]],
+  ['dllist_5fcreate_5',['dllist_create',['../group__group__dllist.html#gab17a388e3fc4a400d055fd770a2c4aa4',1,'dllist_create(void(*free)(void *data)):&#160;dllist.c'],['../group__group__dllist.html#gab17a388e3fc4a400d055fd770a2c4aa4',1,'dllist_create(void(*free)(void *data)):&#160;dllist.c']]],
+  ['dllist_5ffree_6',['dllist_free',['../group__group__dllist.html#ga1fff3cf486503ec4ddbb9237ef3995a9',1,'dllist_free(DoubleLinkedList *list):&#160;dllist.c'],['../group__group__dllist.html#ga1fff3cf486503ec4ddbb9237ef3995a9',1,'dllist_free(DoubleLinkedList *list):&#160;dllist.c']]],
+  ['dllist_5fgetbyindex_7',['dllist_getByIndex',['../group__group__dllist.html#gae25b8bdd0cff5f2eba6a1eeffe554bab',1,'dllist_getByIndex(DoubleLinkedList *list, size_t index):&#160;dllist.c'],['../group__group__dllist.html#gae25b8bdd0cff5f2eba6a1eeffe554bab',1,'dllist_getByIndex(DoubleLinkedList *list, size_t index):&#160;dllist.c']]],
+  ['dllist_5fselectbyindex_8',['dllist_selectByIndex',['../group__group__dllist.html#ga0a4a48e9143b3c6784d7727c3157d555',1,'dllist_selectByIndex(DoubleLinkedList *list, size_t index):&#160;dllist.c'],['../group__group__dllist.html#ga0a4a48e9143b3c6784d7727c3157d555',1,'dllist_selectByIndex(DoubleLinkedList *list, size_t index):&#160;dllist.c']]],
+  ['dllist_5fselectfirst_9',['dllist_selectFirst',['../group__group__dllist.html#ga0789668fbd409b12beb93fa098afe934',1,'dllist_selectFirst(DoubleLinkedList *list):&#160;dllist.c'],['../group__group__dllist.html#ga0789668fbd409b12beb93fa098afe934',1,'dllist_selectFirst(DoubleLinkedList *list):&#160;dllist.c']]],
+  ['dllist_5fselectfirstdata_10',['dllist_selectFirstData',['../group__group__dllist.html#ga73b7a470634e5b21171aea8e2d0f10ec',1,'dllist_selectFirstData(DoubleLinkedList *list):&#160;dllist.c'],['../group__group__dllist.html#ga73b7a470634e5b21171aea8e2d0f10ec',1,'dllist_selectFirstData(DoubleLinkedList *list):&#160;dllist.c']]],
+  ['dllist_5fselectlast_11',['dllist_selectLast',['../group__group__dllist.html#gae5ca9327498dacbd45c5223aae3eb39a',1,'dllist_selectLast(DoubleLinkedList *list):&#160;dllist.c'],['../group__group__dllist.html#gae5ca9327498dacbd45c5223aae3eb39a',1,'dllist_selectLast(DoubleLinkedList *list):&#160;dllist.c']]],
+  ['dllist_5fselectnext_12',['dllist_selectNext',['../group__group__dllist.html#ga8cab37d202e2ba500ff4bd547df4f7f7',1,'dllist_selectNext(DoubleLinkedList *list):&#160;dllist.c'],['../group__group__dllist.html#ga8cab37d202e2ba500ff4bd547df4f7f7',1,'dllist_selectNext(DoubleLinkedList *list):&#160;dllist.c']]],
+  ['dllist_5fselectnextdata_13',['dllist_selectNextData',['../group__group__dllist.html#ga5aa6ccce6f62e8153dcedb769df58f1b',1,'dllist_selectNextData(DoubleLinkedList *list):&#160;dllist.c'],['../group__group__dllist.html#ga5aa6ccce6f62e8153dcedb769df58f1b',1,'dllist_selectNextData(DoubleLinkedList *list):&#160;dllist.c']]],
+  ['dllist_5fselectprevious_14',['dllist_selectPrevious',['../group__group__dllist.html#ga0e6518bd15509e83d22f3097e4d2aca4',1,'dllist_selectPrevious(DoubleLinkedList *list):&#160;dllist.c'],['../group__group__dllist.html#ga0e6518bd15509e83d22f3097e4d2aca4',1,'dllist_selectPrevious(DoubleLinkedList *list):&#160;dllist.c']]],
+  ['double_20linked_20lists_15',['Double linked lists',['../group__group__dllist.html',1,'']]],
+  ['double_5flinked_5flist_16',['double_linked_list',['../structdouble__linked__list.html',1,'']]],
+  ['double_5flinked_5flist_5fnode_17',['double_linked_list_node',['../structdouble__linked__list__node.html',1,'']]]
+];
