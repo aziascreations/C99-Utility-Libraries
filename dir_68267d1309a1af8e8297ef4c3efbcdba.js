@@ -5,5 +5,5 @@ var dir_68267d1309a1af8e8297ef4c3efbcdba =
     [ "uuid", "dir_7b7cd5aab2b2f3062d7eb7d46dfadcfe.html", "dir_7b7cd5aab2b2f3062d7eb7d46dfadcfe" ],
     [ "debug.h", "debug_8h.html", "debug_8h" ],
     [ "text.c", "text_8c.html", "text_8c" ],
-    [ "text.h", "text_8h_source.html", null ]
+    [ "text.h", "text_8h.html", "text_8h" ]
 ];

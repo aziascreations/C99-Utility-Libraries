@@ -1,10 +1,14 @@
 var searchData=
 [
-  ['uuid_0',['UUID',['../group__group__uuid.html',1,'']]],
-  ['uuid_1',['uuid',['../structuuid.html',1,'']]],
-  ['uuid_2ec_2',['uuid.c',['../uuid_8c.html',1,'']]],
-  ['uuid4_2ec_3',['uuid4.c',['../uuid4_8c.html',1,'']]],
-  ['uuid4_5fgenerate_4',['uuid4_generate',['../group__group__uuid.html#ga12b8132477b8b5bec9314a29660af069',1,'uuid4_generate():&#160;uuid4.c'],['../group__group__uuid.html#ga12b8132477b8b5bec9314a29660af069',1,'uuid4_generate():&#160;uuid4.c']]],
-  ['uuid_5ftostring_5',['uuid_toString',['../group__group__uuid.html#ga859f8385aebbeb391232e67aa09deb67',1,'uuid_toString(UUID4 *uuid):&#160;uuid.c'],['../group__group__uuid.html#ga859f8385aebbeb391232e67aa09deb67',1,'uuid_toString(struct uuid *uuid):&#160;uuid.c']]],
-  ['uuid_5ftowcharstring_6',['uuid_toWcharString',['../group__group__uuid.html#gaad92c0620670c9ce5872f2dd430ca1a2',1,'uuid_toWcharString(struct uuid *uuid):&#160;uuid.c'],['../group__group__uuid.html#gaad92c0620670c9ce5872f2dd430ca1a2',1,'uuid_toWcharString(struct uuid *uuid):&#160;uuid.c']]]
+  ['text_2ec_0',['text.c',['../text_8c.html',1,'']]],
+  ['text_2eh_1',['text.h',['../text_8h.html',1,'']]],
+  ['time_5fhi_5fand_5fversion_2',['time_hi_and_version',['../structuuid.html#ac89486073118cbca117c9204aeecb9d4',1,'uuid']]],
+  ['time_5flow_3',['time_low',['../structuuid.html#aeabb39e916355b8a0cdd8912e8c27317',1,'uuid']]],
+  ['time_5fmid_4',['time_mid',['../structuuid.html#a0b92f5d247288e1db17317232ae29694',1,'uuid']]],
+  ['token_5',['token',['../structarguments__option.html#aff8fd35d59d85ee4b34203114869deec',1,'arguments_option']]],
+  ['trace_5fprint_6',['trace_print',['../group__group__np__debug.html#ga254c6f187e0baab6826269de3e8bd67b',1,'debug.h']]],
+  ['trace_5fprintln_7',['trace_println',['../group__group__np__debug.html#ga4ff61f331adb16d92909b963e719757e',1,'debug.h']]],
+  ['trace_5fwprint_8',['trace_wprint',['../group__group__np__debug.html#ga65340467a6cbd21924f708beb230cf6b',1,'debug.h']]],
+  ['trace_5fwprintln_9',['trace_wprintln',['../group__group__np__debug.html#gade9e1a809a2cc70fbdd94508895dd902',1,'debug.h']]],
+  ['types_2eh_10',['types.h',['../types_8h.html',1,'']]]
 ];

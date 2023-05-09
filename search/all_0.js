@@ -23,6 +23,8 @@ var searchData=
   ['arguments_20',['arguments',['../structarguments__option.html#a17bd32851b090590eaaa01d07cdc3f41',1,'arguments_option']]],
   ['arguments_20parser_21',['Arguments parser',['../group__arguments.html',1,'']]],
   ['arguments_2ec_22',['arguments.c',['../arguments_8c.html',1,'']]],
-  ['arguments_5foption_23',['arguments_option',['../structarguments__option.html',1,'']]],
-  ['arguments_5fverb_24',['arguments_verb',['../structarguments__verb.html',1,'']]]
+  ['arguments_2eh_23',['arguments.h',['../arguments_8h.html',1,'']]],
+  ['arguments_5foption_24',['arguments_option',['../structarguments__option.html',1,'']]],
+  ['arguments_5fverb_25',['arguments_verb',['../structarguments__verb.html',1,'']]],
+  ['structs_2eh_26',['structs.h',['../arguments_2structs_8h.html',1,'']]]
 ];
