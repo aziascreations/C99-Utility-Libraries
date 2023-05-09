@@ -110,8 +110,8 @@ Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p ><b>Warning:</b><br  />
  The <a class="el" href="group__group__uuid.html#ga12b8132477b8b5bec9314a29660af069">uuid4_generate</a> function uses the rand function internally in order to remain compatible with C99.<br  />
- If a more secure random number generator is required, you should seek out other implementations of UUID4 generators since C99 and C11 only support <code>rand</code> and <code>srand</code> as far as I could tell.<br  />
- It should also be noted that calls to srand <b>WILL</b> influence the randomness of the generated UUIDs.</p>
+ You <b>MUST</b> call srand before generating any UUID if you want random UUIDs and not the same sequence than ones generated in previous executions.<br  />
+ If a more secure random number generator is required, you should seek out other implementations of UUID4 generators since C99 and C11 only support <code>rand</code> and <code>srand</code> as far as I could tell.</p>
 <p >The <a class="el" href="structuuid.html">uuid</a> structure isn't explicitly packed since MSVC seems to struggle with the <code>__attribute__((packed))</code> directive.<br  />
  However, the size of said structure is checked at compile time and raises an error if it ain't right.<br  />
  This check can be disabled by defining the <code>NP_UUID_DISABLE_STRUCT_SIZE_CHECK</code> constant during compilation in order to leave the <a class="el" href="structuuid.html">uuid</a> structure with an invalid size.<br  />
@@ -206,7 +206,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Tue May 9 2023 21:05:32 for NibblePoker&#39;s Clang Goodies by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Tue May 9 2023 23:43:21 for NibblePoker&#39;s Clang Goodies by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>
