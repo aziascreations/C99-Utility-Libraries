@@ -116,6 +116,8 @@ Enumerations</h2></td></tr>
 , <br />
 &#160;&#160;<a class="el" href="group__arguments.html#gga8db04c5bff185ed40154146a665b8cdfa47a06b9dbc5bb8a4f6bb88b51b0f0710">ERROR_ARGUMENTS_NO_ARGUMENTS_LEFT</a> = 20
 , <br />
+&#160;&#160;<a class="el" href="group__arguments.html#gga8db04c5bff185ed40154146a665b8cdfaac4bec5fd4014f09a327277bccb8ce7f">ERROR_ARGUMENTS_REQUIRED_OPTION_UNUSED</a> = 31
+, <br />
 &#160;&#160;<a class="el" href="group__arguments.html#gga8db04c5bff185ed40154146a665b8cdfa80b456be38d6b7e38dce54f904770642">ERROR_ARGUMENTS_OPTION_HAS_VALUE_AND_MORE_SHORTS</a> = 41
 , <br />
 &#160;&#160;<a class="el" href="group__arguments.html#gga8db04c5bff185ed40154146a665b8cdfaebba5ef2e99f82bccb03bf88adb40e5d">ERROR_ARGUMENTS_THIS_SHOULD_NOT_TRIGGER</a> = 50
@@ -226,9 +228,11 @@ Functions</h2></td></tr>
 </td></tr>
 <tr><td class="fieldname"><a id="gga8db04c5bff185ed40154146a665b8cdfa4c77c783f52981989c2532c19cdc9054" name="gga8db04c5bff185ed40154146a665b8cdfa4c77c783f52981989c2532c19cdc9054"></a>ERROR_ARGUMENTS_SINGLE_OPTION_REUSED&#160;</td><td class="fielddoc"><p >Indicates that an <a class="el" href="structarguments__option.html">Option</a> without the <code>OPTION_FLAG_REPEATABLE</code> flag was found more than once in the launch arguments. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="gga8db04c5bff185ed40154146a665b8cdfa47a06b9dbc5bb8a4f6bb88b51b0f0710" name="gga8db04c5bff185ed40154146a665b8cdfa47a06b9dbc5bb8a4f6bb88b51b0f0710"></a>ERROR_ARGUMENTS_NO_ARGUMENTS_LEFT&#160;</td><td class="fielddoc"><p >??? </p>
+<tr><td class="fieldname"><a id="gga8db04c5bff185ed40154146a665b8cdfa47a06b9dbc5bb8a4f6bb88b51b0f0710" name="gga8db04c5bff185ed40154146a665b8cdfa47a06b9dbc5bb8a4f6bb88b51b0f0710"></a>ERROR_ARGUMENTS_NO_ARGUMENTS_LEFT&#160;</td><td class="fielddoc"><p >Indicates that an <a class="el" href="structarguments__option.html">Option</a> that required a value couldn't be parsed since the parser reached the end of the parsable launch arguments. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="gga8db04c5bff185ed40154146a665b8cdfa80b456be38d6b7e38dce54f904770642" name="gga8db04c5bff185ed40154146a665b8cdfa80b456be38d6b7e38dce54f904770642"></a>ERROR_ARGUMENTS_OPTION_HAS_VALUE_AND_MORE_SHORTS&#160;</td><td class="fielddoc"><p >??? </p>
+<tr><td class="fieldname"><a id="gga8db04c5bff185ed40154146a665b8cdfaac4bec5fd4014f09a327277bccb8ce7f" name="gga8db04c5bff185ed40154146a665b8cdfaac4bec5fd4014f09a327277bccb8ce7f"></a>ERROR_ARGUMENTS_REQUIRED_OPTION_UNUSED&#160;</td><td class="fielddoc"><p >Indicates that an option with the <a class="el" href="group__arguments.html#ggaa649471cd3d4c37f9074a59733d42da0a12a748c6cbe37e57d562caad475958c4">FLAG_OPTION_REQUIRED</a> flag wasn't given when ont of its parent <a class="el" href="structarguments__verb.html">Verb</a> was used. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga8db04c5bff185ed40154146a665b8cdfa80b456be38d6b7e38dce54f904770642" name="gga8db04c5bff185ed40154146a665b8cdfa80b456be38d6b7e38dce54f904770642"></a>ERROR_ARGUMENTS_OPTION_HAS_VALUE_AND_MORE_SHORTS&#160;</td><td class="fielddoc"><p >Indicates that an <a class="el" href="structarguments__option.html">Option</a> that requires a value was given as its token in a multi-token group but wasn't located at the end of said group. </p>
 </td></tr>
 <tr><td class="fieldname"><a id="gga8db04c5bff185ed40154146a665b8cdfaebba5ef2e99f82bccb03bf88adb40e5d" name="gga8db04c5bff185ed40154146a665b8cdfaebba5ef2e99f82bccb03bf88adb40e5d"></a>ERROR_ARGUMENTS_THIS_SHOULD_NOT_TRIGGER&#160;</td><td class="fielddoc"><p >Special error that should never be returned.<br  />
  It is used in duplicated checks which should never fail if the one in which this is present is reached. </p>
@@ -741,8 +745,8 @@ Functions</h2></td></tr>
 <p >Adds a value to an <a class="el" href="structarguments__option.html">Option</a>.<br  />
  This function is and should only be used by <a class="el" href="group__arguments.html#gaaee14d4d9c4ee0230701e2e8bdc17b80">args_parseArguments</a>. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">option</td><td></td></tr>
-    <tr><td class="paramname">addedValue</td><td></td></tr>
+    <tr><td class="paramname">option</td><td>The relevant <a class="el" href="structarguments__option.html">Option</a> </td></tr>
+    <tr><td class="paramname">addedValue</td><td>The value to be appended to the given <a class="el" href="structarguments__option.html">Option</a>'s values. </td></tr>
   </table>
   </dd>
 </dl>
@@ -777,8 +781,8 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p >Checks if a <a class="el" href="structarguments__verb.html">Verb</a> is registered as a sub-<a class="el" href="structarguments__verb.html">Verb</a> in another <a class="el" href="structarguments__verb.html">Verb</a>. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">subVerb</td><td></td></tr>
-    <tr><td class="paramname">parentVerb</td><td></td></tr>
+    <tr><td class="paramname">subVerb</td><td>The <a class="el" href="structarguments__verb.html">Verb</a> whose presence in <code>parentVerb</code> will be checked. </td></tr>
+    <tr><td class="paramname">parentVerb</td><td>The <a class="el" href="structarguments__verb.html">Verb</a> that may contain <code>subVerb</code>. </td></tr>
   </table>
   </dd>
 </dl>
@@ -813,8 +817,8 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p >Checks if an <a class="el" href="structarguments__option.html">Option</a> is registered in the given <a class="el" href="structarguments__verb.html">Verb</a>. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">option</td><td></td></tr>
-    <tr><td class="paramname">parentVerb</td><td></td></tr>
+    <tr><td class="paramname">option</td><td>The <a class="el" href="structarguments__option.html">Option</a> whose presence in <code>parentVerb</code> will be checked. </td></tr>
+    <tr><td class="paramname">parentVerb</td><td>The <a class="el" href="structarguments__verb.html">Verb</a> that may contain <code>option</code>. </td></tr>
   </table>
   </dd>
 </dl>
@@ -868,11 +872,11 @@ Functions</h2></td></tr>
 <p >Parses launch arguments following a given <a class="el" href="structarguments__verb.html">Verb</a> and all its members until the end is reached or an error occurs.<br  />
  In the event of a failure, the entire <code>rootVerb</code> should be considered as tainted and not used in any subsequent task that doesn't involve it being freed from memory. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">rootVerb</td><td></td></tr>
-    <tr><td class="paramname">arguments</td><td></td></tr>
-    <tr><td class="paramname">startIndex</td><td></td></tr>
-    <tr><td class="paramname">endIndex</td><td></td></tr>
-    <tr><td class="paramname">pRelevantVerb</td><td></td></tr>
+    <tr><td class="paramname">rootVerb</td><td>The root verb from which the parsing process will start. </td></tr>
+    <tr><td class="paramname">arguments</td><td>Array of strings to be parsed as the launch arguments. </td></tr>
+    <tr><td class="paramname">startIndex</td><td>The index from which parsing will take place in the given <code>arguments</code> array. </td></tr>
+    <tr><td class="paramname">endIndex</td><td>The index at which parsing will stop in the given <code>arguments</code> array. </td></tr>
+    <tr><td class="paramname">pRelevantVerb</td><td>A nullable pointer to a <a class="el" href="structarguments__verb.html">Verb</a> pointer used as the return value which will point to the last used verb. </td></tr>
   </table>
   </dd>
 </dl>
@@ -886,7 +890,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Tue May 9 2023 01:59:30 for NibblePoker&#39;s Clang Goodies by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Tue May 9 2023 05:02:34 for NibblePoker&#39;s Clang Goodies by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>

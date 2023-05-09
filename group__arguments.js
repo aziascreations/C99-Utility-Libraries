@@ -8,6 +8,7 @@ var group__arguments =
       [ "ERROR_ARGUMENTS_DUAL_END_OF_OPTIONS", "group__arguments.html#gga8db04c5bff185ed40154146a665b8cdfae3ced8cd0805aa77843944aad6d55bc1", null ],
       [ "ERROR_ARGUMENTS_SINGLE_OPTION_REUSED", "group__arguments.html#gga8db04c5bff185ed40154146a665b8cdfa4c77c783f52981989c2532c19cdc9054", null ],
       [ "ERROR_ARGUMENTS_NO_ARGUMENTS_LEFT", "group__arguments.html#gga8db04c5bff185ed40154146a665b8cdfa47a06b9dbc5bb8a4f6bb88b51b0f0710", null ],
+      [ "ERROR_ARGUMENTS_REQUIRED_OPTION_UNUSED", "group__arguments.html#gga8db04c5bff185ed40154146a665b8cdfaac4bec5fd4014f09a327277bccb8ce7f", null ],
       [ "ERROR_ARGUMENTS_OPTION_HAS_VALUE_AND_MORE_SHORTS", "group__arguments.html#gga8db04c5bff185ed40154146a665b8cdfa80b456be38d6b7e38dce54f904770642", null ],
       [ "ERROR_ARGUMENTS_THIS_SHOULD_NOT_TRIGGER", "group__arguments.html#gga8db04c5bff185ed40154146a665b8cdfaebba5ef2e99f82bccb03bf88adb40e5d", null ]
     ] ],

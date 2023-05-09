@@ -43,6 +43,7 @@ var menudata={children:[
 {text:"i",url:"globals.html#index_i"},
 {text:"n",url:"globals.html#index_n"},
 {text:"s",url:"globals.html#index_s"},
+{text:"t",url:"globals.html#index_t"},
 {text:"w",url:"globals.html#index_w"}]},
 {text:"Functions",url:"globals_func.html",children:[
 {text:"a",url:"globals_func.html#index_a"},
