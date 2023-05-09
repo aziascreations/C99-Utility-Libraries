@@ -17,10 +17,42 @@ advances.<br>
 In the event I introduce breaking changes, you should be able to notice them since I'll be using
 [Semantic Versioning](https://semver.org/).
 
+## Usage
+In order to use this library in your projects you need to do the following things:
+
+Firstly, add this repository as a submodule in your project:
+```bash
+git submodule add https://github.com/aziascreations/C99-Utility-Libraries.git libs/nibblepoker-c-goodies
+```
+
+Afterward, if you wish to, checkout the submodule to a specific tag or commit:
+```bash
+git -C libs/nibblepoker-c-goodies checkout <hash|tag>
+```
+
+Finally, add the following lines in your *CMakeLists.txt*:
+```cmake
+file(
+    GLOB_RECURSE src_nibblepoker_c_goodies
+    CONFIGURE_DEPENDS "libs/nibblepoker-c-goodies/src/*.h" "libs/nibblepoker-c-goodies/src/*.c"
+)
+```
+And modify you targets to add `${src_nibblepoker_c_goodies}` like so:
+```cmake
+add_executable(my_app src/main.c ${src_nibblepoker_c_goodies} ...)
+```
+
+## Examples
+**TODO:** *Add simple usage examples.*
+
+Alternatively, you can also check the [aziascreations/C99-Win32-Wifi-Utility](https://github.com/aziascreations/C99-Win32-Wifi-Utility)
+repository for an example with a "fully-fledged" Windows application.
+
 ## Documentation
 
 ### Viewing
-You can consult the documentation at the following URL: https://aziascreations.github.io/C99-Utility-Libraries/
+You can consult the documentation at the following URL:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;https://aziascreations.github.io/C99-Utility-Libraries/
 
 It is automatically updated when a commit is pushed onto the `master` branch.
 
@@ -28,12 +60,12 @@ It is automatically updated when a commit is pushed onto the `master` branch.
 If you want to build the documentation, you need to do the following things:
 * Install [Doxygen](https://www.doxygen.nl/) on your system.
 * Clone the git submodules with `git submodule update --init --recursive`
-* Run the [make-doc.bat](make-doc.bat) script.
+* Run the [make-doc.bat](https://github.com/aziascreations/C99-Utility-Libraries/blob/master/make-doc.bat) script.
 * Go into `docs/html` and open the `index.html` file.
 
 
 ## Licenses
-[MIT License](./LICENSE)
+[MIT License](https://github.com/aziascreations/C99-Utility-Libraries/blob/master/LICENSE)
 
 The [doxygen-awesome-css](https://github.com/jothepro/doxygen-awesome-css) repository uses the same
 [license](https://github.com/jothepro/doxygen-awesome-css/blob/main/LICENSE).

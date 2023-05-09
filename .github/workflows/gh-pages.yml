@@ -26,6 +26,17 @@ jobs:
           working-directory: 'docs/'
           doxyfile-path: 'Doxyfile'
 
+      - name: Copy extra files
+        run: |
+          mkdir -p docs/html/docs/images
+          cp docs/images/bug.png docs/html/docs/images/
+          cp docs/images/chain.png docs/html/docs/images/
+          cp docs/images/console.png docs/html/docs/images/
+          cp docs/images/module.png docs/html/docs/images/
+          cp docs/images/text.png docs/html/docs/images/
+          cp docs/images/favicon.ico docs/html/
+          cp docs/images/favicon.svg docs/html/
+
       - name: Deploy documentation to gh-pages
         uses: peaceiris/actions-gh-pages@v3
         if: ${{ github.ref == 'refs/heads/master' }}
