@@ -150,8 +150,8 @@ DLL_EXPORT Option *args_getRelevantDefaultOption(Verb *parentVerb);
 /**
  * Adds a value to an \ref arguments_option "Option".<br>
  * This function is and should only be used by \ref args_parseArguments.
- * @param option
- * @param addedValue
+ * @param option The relevant \ref arguments_option "Option"
+ * @param addedValue The value to be appended to the given \ref arguments_option "Option"'s values.
  * @return `true` if the value was added, `false` otherwise.
  */
 DLL_EXPORT bool args_addValueToOption(Option *option, np_args_char *addedValue);
@@ -159,16 +159,16 @@ DLL_EXPORT bool args_addValueToOption(Option *option, np_args_char *addedValue);
 /**
  * Checks if a \ref arguments_verb "Verb" is registered as a sub-\ref arguments_verb "Verb" in another
  *  \ref arguments_verb "Verb".
- * @param subVerb
- * @param parentVerb
+ * @param subVerb The \ref arguments_verb "Verb" whose presence in \p parentVerb will be checked.
+ * @param parentVerb The \ref arguments_verb "Verb" that may contain \p subVerb.
  * @return `true` if it is registered into it, `false` otherwise.
  */
 DLL_EXPORT bool args_isVerbAlreadyRegistered(Verb *subVerb, Verb *parentVerb);
 
 /**
  * Checks if an \ref arguments_option "Option" is registered in the given \ref arguments_verb "Verb".
- * @param option
- * @param parentVerb
+ * @param option The \ref arguments_option "Option" whose presence in \p parentVerb will be checked.
+ * @param parentVerb The \ref arguments_verb "Verb" that may contain \p option.
  * @return `true` if it is registered into it, `false` otherwise.
  */
 DLL_EXPORT bool args_isOptionAlreadyRegistered(Option *option, Verb *parentVerb);
@@ -181,11 +181,12 @@ DLL_EXPORT bool args_isOptionAlreadyRegistered(Option *option, Verb *parentVerb)
  *  or an error occurs.<br>
  * In the event of a failure, the entire \p rootVerb should be considered as tainted and not used in any subsequent
  *  task that doesn't involve it being freed from memory.
- * @param rootVerb
- * @param arguments
- * @param startIndex
- * @param endIndex
- * @param pRelevantVerb
+ * @param rootVerb The root verb from which the parsing process will start.
+ * @param arguments Array of strings to be parsed as the launch arguments.
+ * @param startIndex The index from which parsing will take place in the given \p arguments array.
+ * @param endIndex The index at which parsing will stop in the given \p arguments array.
+ * @param pRelevantVerb A nullable pointer to a \ref arguments_verb "Verb" pointer used as the return value which will
+ *  point to the last used verb.
  * @return An \ref EArgumentParserErrors "error code" indicating how the parsing process went and which error may
  *  have occurred.
  *

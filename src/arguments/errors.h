@@ -52,19 +52,28 @@ enum EArgumentParserErrors {
 	 */
 	ERROR_ARGUMENTS_SINGLE_OPTION_REUSED = 13,
 	
-	/** ??? */
+	/**
+	 * Indicates that an \ref arguments_option "Option" that required a value couldn't be parsed since the parser
+	 *  reached the end of the parsable launch arguments.
+	 */
 	ERROR_ARGUMENTS_NO_ARGUMENTS_LEFT = 20,
 
-/** ??? */
-#define ERROR_ARGUMENTS_EXPECTED_ARGUMENT 21
+//#define ERROR_ARGUMENTS_EXPECTED_ARGUMENT 21
 
-/** ??? */
-#define ERROR_ARGUMENTS_NO_VERB_OR_DEFAULT_FOUND 30
+//#define ERROR_ARGUMENTS_NO_VERB_OR_DEFAULT_FOUND 30
 
-/** ??? */
-#define ERROR_ARGUMENTS_OPTION_DOES_NOT_HAVE_ARGUMENTS 40
+	/**
+	 * Indicates that an option with the \ref FLAG_OPTION_REQUIRED flag wasn't given when ont of its parent
+	 *  \ref arguments_verb "Verb" was used.
+	 */
+	ERROR_ARGUMENTS_REQUIRED_OPTION_UNUSED = 31,
+
+//#define ERROR_ARGUMENTS_OPTION_DOES_NOT_HAVE_ARGUMENTS 40
 	
-	/** ??? */
+	/**
+	 * Indicates that an \ref arguments_option "Option" that requires a value was given as its token in a multi-token
+	 *  group but wasn't located at the end of said group.
+	 */
 	ERROR_ARGUMENTS_OPTION_HAS_VALUE_AND_MORE_SHORTS = 41,
 	
 	/**

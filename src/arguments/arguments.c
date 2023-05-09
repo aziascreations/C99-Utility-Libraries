@@ -629,9 +629,22 @@ enum EArgumentParserErrors args_parseArguments(Verb *rootVerb, np_args_char *arg
 		iArg += processedArgumentsCount;
 	}
 	
-	// Checking the "Required" flag recursively from the final to the root verb.
-	// TODO
-	//foreach(Option option in currentVerb.Options) {
+	// Checking the "Required" flag recursively from the final verb back to the root verb.
+	Verb* tempReqVerb = currentVerb;
+	while(tempReqVerb != NULL) {
+		Option* tempReqOption = dllist_selectFirstData(tempReqVerb->options);
+		
+		while(tempReqOption != NULL) {
+			if(tempReqOption->flags & FLAG_OPTION_REQUIRED && tempReqOption->occurrences < 1) {
+				np_args_error_println("The '%c':'%s' option was required but not given !",
+									  tempReqOption->token, tempReqOption->name);
+				return ERROR_ARGUMENTS_REQUIRED_OPTION_UNUSED;
+			}
+			tempReqOption = (Option *) dllist_selectNextData(tempReqVerb->options);
+		}
+		
+		tempReqVerb = currentVerb->parentVerb;
+	}
 	
 	// Returning the last used verb if possible.
 	if(pRelevantVerb != NULL) {
