@@ -17,4 +17,4 @@
  * Generate a new \ref uuid "UUID4" and returns its pointer.
  * @return The \ref uuid "UUID4"'s pointer, or `NULL` if an error occurred.
  */
-UUID4 *uuid4_generate();
+DLL_EXPORT UUID4 *uuid4_generate();

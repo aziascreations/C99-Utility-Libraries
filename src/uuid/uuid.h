@@ -7,6 +7,12 @@
 
 #include "./structs.h"
 
+#ifdef NP_UUID4_EXPORT
+#define DLL_EXPORT __declspec(dllexport)
+#else
+#define DLL_EXPORT
+#endif
+
 #define UUID_BYTE_LENGTH 16
 
 #define UUID_CHAR_COUNT (32 + 4)
@@ -19,7 +25,7 @@
  * @param uuid The UUID to represent as a string.
  * @return A `char *` string containing the representation of the given UUID.
  */
-char *uuid_toString(struct uuid *uuid);
+DLL_EXPORT char *uuid_toString(struct uuid *uuid);
 
 #ifdef NP_WIN32
 
@@ -33,6 +39,6 @@ char *uuid_toString(struct uuid *uuid);
  * @param uuid The UUID to represent as a string.
  * @return A `wchar_t *` string containing the representation of the given UUID.
  */
-wchar_t *uuid_toWcharString(struct uuid *uuid);
+DLL_EXPORT wchar_t *uuid_toWcharString(struct uuid *uuid);
 
 #endif

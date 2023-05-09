@@ -29,13 +29,16 @@ jobs:
       - name: Copy extra files
         run: |
           sudo mkdir -p docs/html/docs/images
+          sudo mkdir -p docs/html/examples
           sudo cp docs/images/bug.png docs/html/docs/images/
           sudo cp docs/images/chain.png docs/html/docs/images/
           sudo cp docs/images/console.png docs/html/docs/images/
           sudo cp docs/images/module.png docs/html/docs/images/
           sudo cp docs/images/text.png docs/html/docs/images/
+          sudo cp docs/images/view_more.png docs/html/docs/images/
           sudo cp docs/images/favicon.ico docs/html/
           sudo cp docs/images/favicon.svg docs/html/
+          sudo cp examples/*.c docs/html/examples/
 
       - name: Deploy documentation to gh-pages
         uses: peaceiris/actions-gh-pages@v3

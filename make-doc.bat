@@ -14,7 +14,9 @@ doxygen
 :: The have different paths and this was the easiest way to go about it.
 mkdir "html/docs"
 mkdir "html/docs/images"
+mkdir "html/examples"
 xcopy "images" "html/docs/images" /E /H
+xcopy "../examples" "html/examples" /E /H
 
 :: ???
 ::copy "..\make-doc.bat" "html\make-doc.bat"

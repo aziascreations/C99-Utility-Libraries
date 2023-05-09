@@ -1,0 +1,72 @@
+// Links:
+// https://docs.microsoft.com/en-us/windows/win32/api/verrsrc/ns-verrsrc-vs_fixedfileinfo
+
+// File Flags
+#define VS_FF_DEBUG        0x00000001L
+#define VS_FF_PRERELEASE   0x00000002L
+#define VS_FF_PATCHED      0x00000004L
+#define VS_FF_PRIVATEBUILD 0x00000008L
+#define VS_FF_INFOINFERRED 0x00000010L
+#define VS_FF_SPECIALBUILD 0x00000020L
+
+// File OS
+#define VOS_UNKNOWN 0x00000000L
+#define VOS_DOS     0x00010000L
+#define VOS_OS216   0x00020000L
+#define VOS_OS232   0x00030000L
+#define VOS_NT      0x00040000L
+#define VOS_WINCE   0x00050000L
+
+#define VOS__BASE      0x00000000L
+#define VOS__WINDOWS16 0x00000001L
+#define VOS__PM16      0x00000002L
+#define VOS__PM32      0x00000003L
+#define VOS__WINDOWS32 0x00000004L
+
+#define VOS_DOS_WINDOWS16 0x00010001L
+#define VOS_DOS_WINDOWS32 0x00010004L
+#define VOS_OS216_PM16    0x00020002L
+#define VOS_OS232_PM32    0x00030003L
+#define VOS_NT_WINDOWS32  0x00040004L
+
+// File type
+#define VFT_UNKNOWN    0x00000000L
+#define VFT_APP        0x00000001L
+#define VFT_DLL        0x00000002L
+#define VFT_DRV        0x00000003L
+#define VFT_FONT       0x00000004L
+#define VFT_VXD        0x00000005L
+#define VFT_STATIC_LIB 0x00000007L
+
+// Actual definition
+1 VERSIONINFO
+		FILEVERSION 0, 0, 1, 0
+		PRODUCTVERSION 0, 0, 1, 0
+		FILEOS VOS_NT_WINDOWS32
+FILETYPE VFT_DLL
+{
+BLOCK "StringFileInfo"
+{
+BLOCK "000004b0"
+{
+VALUE "Comments", "\0"
+VALUE "CompanyName", "NibblePoker\0"
+VALUE "FileDescription", "Small collection of utilities and libraries for C in order to simplify some development tasks.\0"
+VALUE "FileVersion",  "0,0,1,0\0"
+VALUE "InternalName", "np_clang_goodies\0"
+VALUE "LegalCopyright", "Copyright 2023 BOZET Herwin\0"
+VALUE "LegalTrademarks", "\0"
+VALUE "LegalTrademarks1", "\0"
+VALUE "LegalTrademarks2", "\0"
+VALUE "OriginalFilename", "np_clang_goodies.dll\0"
+//VALUE "PrivateBuild", "1\0"
+VALUE "ProductName", "NibblePoker's Clang Goodies\0"
+VALUE "ProductVersion", "0.0.1\0"
+//VALUE "SpecialBuild", "\0"
+}
+}
+BLOCK "VarFileInfo"
+{
+VALUE "Translation", 0x0000, 0x4b0
+}
+}

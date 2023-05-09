@@ -1,0 +1,13 @@
+/** @file */
+
+#pragma once
+
+#define NP_CLANG_GOODIES_VERSION "0.0.1"
+
+#ifdef NP_WIN32
+#define NP_CLANG_GOODIES_VERSION_W L"0.0.1"
+#endif
+
+#define NP_CLANG_GOODIES_VERSION_MAJOR 0
+#define NP_CLANG_GOODIES_VERSION_MINOR 0
+#define NP_CLANG_GOODIES_VERSION_PATCH 1

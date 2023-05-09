@@ -21,33 +21,42 @@ In the event I introduce breaking changes, you should be able to notice them sin
 ## Usage
 In order to use this library in your projects you need to do the following things:
 
-Firstly, add this repository as a submodule in your project:
+Firstly, add this repository as a submodule in your project and checkout to a specific tag or commit:
 ```bash
 git submodule add https://github.com/aziascreations/C99-Utility-Libraries.git libs/nibblepoker-c-goodies
-```
-
-Afterward, if you wish to, checkout the submodule to a specific tag or commit:
-```bash
 git -C libs/nibblepoker-c-goodies checkout <hash|tag>
 ```
 
-Finally, add the following lines in your *CMakeLists.txt*:
+Afterward, add the following lines in your *CMakeLists.txt*:
 ```cmake
 file(
     GLOB_RECURSE src_nibblepoker_c_goodies
     CONFIGURE_DEPENDS "libs/nibblepoker-c-goodies/src/*.h" "libs/nibblepoker-c-goodies/src/*.c"
 )
 ```
-And modify you targets to add `${src_nibblepoker_c_goodies}` like so:
+
+Finally, modify you targets to add `${src_nibblepoker_c_goodies}` like so:
 ```cmake
 add_executable(my_app src/main.c ${src_nibblepoker_c_goodies} ...)
 ```
 
 ## Examples
-**TODO:** *Add simple usage examples.*
+**TODO:** *Add intro text.*
 
 Alternatively, you can also check the [aziascreations/C99-Win32-Wifi-Utility](https://github.com/aziascreations/C99-Win32-Wifi-Utility)
-repository for an example with a "fully-fledged" Windows application.
+repository for a complete example in a "fully-fledged" Windows application.
+
+### Launch arguments
+**TODO**
+
+### Double Linked Lists
+* [Basic operations](examples/dllist_basic.c)
+    * Creating a list, adding, accessing & iteration over values and basic freeing call.
+* [Custom freeing operation](examples/dllist_custom_free.c)
+    * Same as above while using structured data that needs to be freed in a specific way.
+
+### UUID
+**TODO**
 
 ## Documentation
 
@@ -63,7 +72,6 @@ If you want to build the documentation, you need to do the following things:
 * Clone the git submodules with `git submodule update --init --recursive`
 * Run the [make-doc.bat](https://github.com/aziascreations/C99-Utility-Libraries/blob/master/make-doc.bat) script.
 * Go into `docs/html` and open the `index.html` file.
-
 
 ## Licenses
 [MIT License](https://github.com/aziascreations/C99-Utility-Libraries/blob/master/LICENSE)
