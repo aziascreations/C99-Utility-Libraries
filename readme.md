@@ -2,7 +2,7 @@
 Small collection of utilities and libraries for C in order to simplify some development tasks.
 
 ## Features
-* ![](docs/images/console.png) Launch arguments & verbs handling
+* ![](docs/images/console.png) Robust launch arguments parsing & handling with verb support
 * ![](docs/images/chain.png) Double linked lists with custom freeing callbacks
 * ![](docs/images/text.png) Various string utilities
 * ![](docs/images/bug.png) Toggleable debugging output functions
