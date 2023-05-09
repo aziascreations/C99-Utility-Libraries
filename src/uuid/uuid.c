@@ -5,18 +5,18 @@
 /** @defgroup group_uuid UUID
  *
  *  <b>Warning:</b><br>
- *  The \ref aaa function uses the \ref https://cplusplus.com/reference/cstdlib/rand/ "rand" function internally in
+ *  The \ref uuid4_generate function uses the \ref https://cplusplus.com/reference/cstdlib/rand/ "rand" function internally in
  *   order to remain compatible with C99.<br>
  *  If a more secure random number generator is required, you should seek out other implementations of UUID4 generators
- *   as C99 as C11 only support `rand` and `srand` as far as I could tell.<br>
+ *   since C99 and C11 only support `rand` and `srand` as far as I could tell.<br>
  *  It should also be noted that calls to \ref https://cplusplus.com/reference/cstdlib/srand/ "srand" **WILL** influence
- *   the randomness of the generated UUID4.
+ *   the randomness of the generated UUIDs.
  *
  *  The \ref uuid structure isn't explicitly packed since MSVC seems to struggle with the `__attribute__((packed))` directive.<br>
- *  However, the size of said structure is checked at compile time and raises an error is it ain't right.<br>
+ *  However, the size of said structure is checked at compile time and raises an error if it ain't right.<br>
  *  This check can be disabled by defining the `NP_UUID_DISABLE_STRUCT_SIZE_CHECK` constant during compilation in order
  *   to leave the \ref uuid structure with an invalid size.<br>
- *  None of the module's function use `sizeof(uuid)` of explicitly use on of the structure's fields so its safe to use
+ *  None of the module's function use `sizeof(uuid)` or explicitly use on of the structure's fields so its safe to use
  *   as long as **you** don't use them either.
  *
  *  Unless `NP_WIN32` is defined, all functions that uses or return a `wchar_t` typed variable won't be accessible.<br>
