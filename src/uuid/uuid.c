@@ -7,10 +7,10 @@
  *  <b>Warning:</b><br>
  *  The \ref uuid4_generate function uses the \ref https://cplusplus.com/reference/cstdlib/rand/ "rand" function internally in
  *   order to remain compatible with C99.<br>
+ *  You **MUST** call \ref https://cplusplus.com/reference/cstdlib/srand/ "srand" before generating any UUID if you
+ *   want random UUIDs and not the same sequence than ones generated in previous executions.<br>
  *  If a more secure random number generator is required, you should seek out other implementations of UUID4 generators
- *   since C99 and C11 only support `rand` and `srand` as far as I could tell.<br>
- *  It should also be noted that calls to \ref https://cplusplus.com/reference/cstdlib/srand/ "srand" **WILL** influence
- *   the randomness of the generated UUIDs.
+ *   since C99 and C11 only support `rand` and `srand` as far as I could tell.
  *
  *  The \ref uuid structure isn't explicitly packed since MSVC seems to struggle with the `__attribute__((packed))` directive.<br>
  *  However, the size of said structure is checked at compile time and raises an error if it ain't right.<br>

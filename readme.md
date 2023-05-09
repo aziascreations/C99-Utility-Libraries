@@ -56,7 +56,8 @@ repository for a complete example in a "fully-fledged" Windows application.
     * Same as above while using structured data that needs to be freed in a specific way.
 
 ### UUID
-**TODO**
+* [UUID4 generation](examples/uuid_all.c)
+  * Rudimentary RNG setup & UUID4 generation.
 
 ## Documentation
 

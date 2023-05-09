@@ -98,6 +98,7 @@ target_compile_definitions(manual_testing PUBLIC NP_DEBUG_LOGGING)
 # Preparing targets > Examples
 add_executable(example_dllist_basic examples/dllist_basic.c ${src_dllist} ${src_text})
 add_executable(example_dllist_custom_free examples/dllist_custom_free.c ${src_dllist} ${src_text})
+add_executable(example_uuid_all examples/uuid_all.c ${src_uuid})
 
 # Preparing targets > Tests
 add_executable(test_args_options tests/arguments/test_options.c ${src_args} tests/assert.h)
