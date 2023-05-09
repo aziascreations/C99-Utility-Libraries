@@ -18,7 +18,7 @@
  *
  * \see args_parseArguments
  */
-enum EArgumentParserErrors /*: ArgumentParserError*/ {
+enum EArgumentParserErrors {
 	/**
 	 * Indicates that the parser encountered no error.
 	 */
