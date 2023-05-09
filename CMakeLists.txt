@@ -36,6 +36,7 @@ endif()
 # Preparing targets
 file(GLOB src_dllist CONFIGURE_DEPENDS "src/lists/double/*.h" "src/lists/double/*.c" "src/debug.h")
 file(GLOB src_args CONFIGURE_DEPENDS "src/lists/double/*.h" "src/lists/double/*.c" "src/text.c" "src/text.h" "src/arguments/*.h" "src/arguments/*.c" "src/debug.h")
+file(GLOB src_uuid CONFIGURE_DEPENDS "src/uuid/*.h" "src/uuid/*.c" )
 file(GLOB_RECURSE src_all CONFIGURE_DEPENDS "src/*.h" "src/*.c")
 
 # Preparing targets > Others

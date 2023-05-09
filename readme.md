@@ -7,6 +7,7 @@ Small collection of utilities and libraries for C in order to simplify some deve
 * ![](docs/images/text.png) Various string utilities
 * ![](docs/images/bug.png) Toggleable debugging output functions
 * ![](docs/images/module.png) Complete, toggleable & macro-able `WCHAR` support
+* ![](docs/images/view_more.png) Other features such as UUID4, and more to come
 
 ## Remarks
 This project is by no mean complete or exhaustive in the features it provides.<br>

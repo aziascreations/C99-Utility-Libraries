@@ -5,6 +5,7 @@
 #include "./src/text.h"
 #include "./src/arguments/arguments.h"
 #include "./src/arguments/flags.h"
+#include "./src/uuid/uuid4.h"
 
 void myFree(void *data) {
 	//printf("> Reee !\n");
@@ -12,7 +13,21 @@ void myFree(void *data) {
 }
 
 int main(int argc, char **argv) {
-	Verb *rootVerb = args_createVerb("root", "");
+	printf("%d\n", INT_MAX);
+	printf("%llu\n", sizeof(UUID4));
+	
+	for(int i = 0; i < 10; i++) {
+		UUID4 *uuid4 = uuid4_generate();
+		char* uuidStr = uuid_toString(uuid4);
+		wchar_t * uuidWStr = uuid_toWcharString(uuid4);
+		printf("> %s\n", uuidStr);
+		wprintf(L"> %s\n\n", uuidWStr);
+		free(uuidWStr);
+		free(uuidStr);
+		free(uuid4);
+	}
+	
+	/*Verb *rootVerb = args_createVerb("root", "");
 	Verb *subVerb = args_createVerb("123", "");
 	Option *helpOption = args_createOption('h', "help", "", FLAG_OPTION_NONE);
 	
@@ -52,7 +67,7 @@ int main(int argc, char **argv) {
 	}
 	
 	printf("Done testing !\n");
-	args_freeVerb(rootVerb);
+	args_freeVerb(rootVerb);*/
 	
 	/*char* str1 = "123abc";
 	

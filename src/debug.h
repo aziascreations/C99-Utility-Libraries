@@ -86,7 +86,7 @@
 #ifdef NP_WIN32
 
 /*!
- * Only available if `NP_DEBUG_LOGGING` and `NP_WIN32` is defined during compilation.
+ * Only available if `NP_DEBUG_LOGGING` and `NP_WIN32` are defined during compilation.
  * \param fmt A `char` string using standard `printf` formatting.
  * \param ... The additional argument(s).
  */
@@ -95,7 +95,7 @@
             wprintf(L##fmt, __VA_ARGS__)
 
 /*!
- * Only available if `NP_DEBUG_LOGGING` and `NP_WIN32` is defined during compilation.
+ * Only available if `NP_DEBUG_LOGGING` and `NP_WIN32` are defined during compilation.
  * \param fmt A `char` string using standard `printf` formatting.
  * \param ... The additional argument(s).
  */
@@ -105,7 +105,7 @@
             printf("\n")
 
 /*!
- * Only available if `NP_DEBUG_LOGGING` and `NP_WIN32` is defined during compilation.
+ * Only available if `NP_DEBUG_LOGGING` and `NP_WIN32` are defined during compilation.
  * \param fmt A `char` string using standard `printf` formatting.
  * \param ... The additional argument(s).
  */
@@ -114,7 +114,7 @@
             wprintf(L##fmt, __VA_ARGS__)
 
 /*!
- * Only available if `NP_DEBUG_LOGGING` and `NP_WIN32` is defined during compilation.
+ * Only available if `NP_DEBUG_LOGGING` and `NP_WIN32` are defined during compilation.
  * \param fmt A `char` string using standard `printf` formatting.
  * \param ... The additional argument(s).
  */
@@ -124,7 +124,7 @@
             printf("\n")
 
 /*!
- * Only available if `NP_DEBUG_LOGGING` and `NP_WIN32` is defined during compilation.
+ * Only available if `NP_DEBUG_LOGGING` and `NP_WIN32` are defined during compilation.
  * \param fmt A `char` string using standard `printf` formatting.
  * \param ... The additional argument(s).
  */
@@ -133,7 +133,7 @@
             wprintf(L##fmt, __VA_ARGS__)
 
 /*!
- * Only available if `NP_DEBUG_LOGGING` and `NP_WIN32` is defined during compilation.
+ * Only available if `NP_DEBUG_LOGGING` and `NP_WIN32` are defined during compilation.
  * \param fmt A `char` string using standard `printf` formatting.
  * \param ... The additional argument(s).
  */
