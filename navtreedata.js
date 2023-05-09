@@ -28,12 +28,16 @@ var NAVTREE =
     [ "Features", "index.html#autotoc_md1", null ],
     [ "Remarks", "index.html#autotoc_md2", null ],
     [ "Usage", "index.html#autotoc_md3", null ],
-    [ "Examples", "index.html#autotoc_md4", null ],
-    [ "Documentation", "index.html#autotoc_md5", [
-      [ "Viewing", "index.html#autotoc_md6", null ],
-      [ "Building", "index.html#autotoc_md7", null ]
+    [ "Examples", "index.html#autotoc_md4", [
+      [ "Launch arguments", "index.html#autotoc_md5", null ],
+      [ "Double Linked Lists", "index.html#autotoc_md6", null ],
+      [ "UUID", "index.html#autotoc_md7", null ]
     ] ],
-    [ "Licenses", "index.html#autotoc_md8", null ],
+    [ "Documentation", "index.html#autotoc_md8", [
+      [ "Viewing", "index.html#autotoc_md9", null ],
+      [ "Building", "index.html#autotoc_md10", null ]
+    ] ],
+    [ "Licenses", "index.html#autotoc_md11", null ],
     [ "Modules", "modules.html", "modules" ],
     [ "Data Structures", "annotated.html", [
       [ "Data Structures", "annotated.html", "annotated_dup" ],

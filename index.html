@@ -115,25 +115,43 @@ Remarks</h1>
 <h1><a class="anchor" id="autotoc_md3"></a>
 Usage</h1>
 <p >In order to use this library in your projects you need to do the following things:</p>
-<p >Firstly, add this repository as a submodule in your project: </p><div class="fragment"><div class="line">git submodule add https://github.com/aziascreations/C99-Utility-Libraries.git libs/nibblepoker-c-goodies</div>
-</div><!-- fragment --><p >Afterward, if you wish to, checkout the submodule to a specific tag or commit: </p><div class="fragment"><div class="line">git -C libs/nibblepoker-c-goodies checkout &lt;hash|tag&gt;</div>
-</div><!-- fragment --><p >Finally, add the following lines in your <em>CMakeLists.txt</em>: </p><div class="fragment"><div class="line">file(</div>
+<p >Firstly, add this repository as a submodule in your project and checkout to a specific tag or commit: </p><div class="fragment"><div class="line">git submodule add https://github.com/aziascreations/C99-Utility-Libraries.git libs/nibblepoker-c-goodies</div>
+<div class="line">git -C libs/nibblepoker-c-goodies checkout &lt;hash|tag&gt;</div>
+</div><!-- fragment --><p >Afterward, add the following lines in your <em>CMakeLists.txt</em>: </p><div class="fragment"><div class="line">file(</div>
 <div class="line">    GLOB_RECURSE src_nibblepoker_c_goodies</div>
 <div class="line">    CONFIGURE_DEPENDS &quot;libs/nibblepoker-c-goodies/src/*.h&quot; &quot;libs/nibblepoker-c-goodies/src/*.c&quot;</div>
 <div class="line">)</div>
-</div><!-- fragment --><p> And modify you targets to add <code>${src_nibblepoker_c_goodies}</code> like so: </p><div class="fragment"><div class="line">add_executable(my_app src/main.c ${src_nibblepoker_c_goodies} ...)</div>
+</div><!-- fragment --><p >Finally, modify you targets to add <code>${src_nibblepoker_c_goodies}</code> like so: </p><div class="fragment"><div class="line">add_executable(my_app src/main.c ${src_nibblepoker_c_goodies} ...)</div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md4"></a>
 Examples</h1>
-<p ><b>TODO:</b> <em>Add simple usage examples.</em></p>
-<p >Alternatively, you can also check the <a href="https://github.com/aziascreations/C99-Win32-Wifi-Utility">aziascreations/C99-Win32-Wifi-Utility</a> repository for an example with a "fully-fledged" Windows application.</p>
-<h1><a class="anchor" id="autotoc_md5"></a>
-Documentation</h1>
+<p ><b>TODO:</b> <em>Add intro text.</em></p>
+<p >Alternatively, you can also check the <a href="https://github.com/aziascreations/C99-Win32-Wifi-Utility">aziascreations/C99-Win32-Wifi-Utility</a> repository for a complete example in a "fully-fledged" Windows application.</p>
+<h2><a class="anchor" id="autotoc_md5"></a>
+Launch arguments</h2>
+<p ><b>TODO</b></p>
 <h2><a class="anchor" id="autotoc_md6"></a>
+Double Linked Lists</h2>
+<ul>
+<li><a href="examples/dllist_basic.c">Basic operations</a><ul>
+<li>Creating a list, adding, accessing &amp; iteration over values and basic freeing call.</li>
+</ul>
+</li>
+<li><a href="examples/dllist_custom_free.c">Custom freeing operation</a><ul>
+<li>Same as above while using structured data that needs to be freed in a specific way.</li>
+</ul>
+</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md7"></a>
+UUID</h2>
+<p ><b>TODO</b></p>
+<h1><a class="anchor" id="autotoc_md8"></a>
+Documentation</h1>
+<h2><a class="anchor" id="autotoc_md9"></a>
 Viewing</h2>
 <p >You can consult the documentation at the following URL:<br  />
  &#160;&#160;&#160;&#160;<a href="https://aziascreations.github.io/C99-Utility-Libraries/">https://aziascreations.github.io/C99-Utility-Libraries/</a></p>
 <p >It is automatically updated when a commit is pushed onto the <code>master</code> branch.</p>
-<h2><a class="anchor" id="autotoc_md7"></a>
+<h2><a class="anchor" id="autotoc_md10"></a>
 Building</h2>
 <p >If you want to build the documentation, you need to do the following things:</p><ul>
 <li>Install <a href="https://www.doxygen.nl/">Doxygen</a> on your system.</li>
@@ -141,7 +159,7 @@ Building</h2>
 <li>Run the <a href="https://github.com/aziascreations/C99-Utility-Libraries/blob/master/make-doc.bat">make-doc.bat</a> script.</li>
 <li>Go into <code>docs/html</code> and open the <code>index.html</code> file.</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md8"></a>
+<h1><a class="anchor" id="autotoc_md11"></a>
 Licenses</h1>
 <p ><a href="https://github.com/aziascreations/C99-Utility-Libraries/blob/master/LICENSE">MIT License</a></p>
 <p >The <a href="https://github.com/jothepro/doxygen-awesome-css">doxygen-awesome-css</a> repository uses the same <a href="https://github.com/jothepro/doxygen-awesome-css/blob/main/LICENSE">license</a>. </p>
@@ -151,7 +169,7 @@ Licenses</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Tue May 9 2023 16:46:03 for NibblePoker&#39;s Clang Goodies by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Tue May 9 2023 21:05:32 for NibblePoker&#39;s Clang Goodies by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>

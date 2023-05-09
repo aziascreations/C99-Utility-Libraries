@@ -103,19 +103,25 @@ $(document).ready(function(){initNavTree('uuid_8h_source.html',''); initResizabl
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;<a class="code" href="uuid_2structs_8h.html">./structs.h</a>&quot;</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#define UUID_BYTE_LENGTH 16</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#define UUID_CHAR_COUNT (32 + 4)</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="keywordtype">char</span> *<a class="code hl_function" href="group__group__uuid.html#ga859f8385aebbeb391232e67aa09deb67">uuid_toString</a>(<span class="keyword">struct</span> <a class="code hl_struct" href="structuuid.html">uuid</a> *<a class="code hl_struct" href="structuuid.html">uuid</a>);</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#ifdef NP_WIN32</span></div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="keywordtype">wchar_t</span> *<a class="code hl_function" href="group__group__uuid.html#gaad92c0620670c9ce5872f2dd430ca1a2">uuid_toWcharString</a>(<span class="keyword">struct</span> <a class="code hl_struct" href="structuuid.html">uuid</a> *<a class="code hl_struct" href="structuuid.html">uuid</a>);</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="agroup__group__uuid_html_ga859f8385aebbeb391232e67aa09deb67"><div class="ttname"><a href="group__group__uuid.html#ga859f8385aebbeb391232e67aa09deb67">uuid_toString</a></div><div class="ttdeci">char * uuid_toString(struct uuid *uuid)</div><div class="ttdef"><b>Definition:</b> uuid.c:32</div></div>
-<div class="ttc" id="agroup__group__uuid_html_gaad92c0620670c9ce5872f2dd430ca1a2"><div class="ttname"><a href="group__group__uuid.html#gaad92c0620670c9ce5872f2dd430ca1a2">uuid_toWcharString</a></div><div class="ttdeci">wchar_t * uuid_toWcharString(struct uuid *uuid)</div><div class="ttdef"><b>Definition:</b> uuid.c:56</div></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#ifdef NP_UUID4_EXPORT</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#define DLL_EXPORT __declspec(dllexport)</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#else</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#define DLL_EXPORT</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#define UUID_BYTE_LENGTH 16</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#define UUID_CHAR_COUNT (32 + 4)</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>DLL_EXPORT <span class="keywordtype">char</span> *<a class="code hl_function" href="group__group__uuid.html#ga859f8385aebbeb391232e67aa09deb67">uuid_toString</a>(<span class="keyword">struct</span> <a class="code hl_struct" href="structuuid.html">uuid</a> *<a class="code hl_struct" href="structuuid.html">uuid</a>);</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="preprocessor">#ifdef NP_WIN32</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>DLL_EXPORT <span class="keywordtype">wchar_t</span> *<a class="code hl_function" href="group__group__uuid.html#gaad92c0620670c9ce5872f2dd430ca1a2">uuid_toWcharString</a>(<span class="keyword">struct</span> <a class="code hl_struct" href="structuuid.html">uuid</a> *<a class="code hl_struct" href="structuuid.html">uuid</a>);</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="agroup__group__uuid_html_ga859f8385aebbeb391232e67aa09deb67"><div class="ttname"><a href="group__group__uuid.html#ga859f8385aebbeb391232e67aa09deb67">uuid_toString</a></div><div class="ttdeci">DLL_EXPORT char * uuid_toString(struct uuid *uuid)</div><div class="ttdef"><b>Definition:</b> uuid.c:32</div></div>
+<div class="ttc" id="agroup__group__uuid_html_gaad92c0620670c9ce5872f2dd430ca1a2"><div class="ttname"><a href="group__group__uuid.html#gaad92c0620670c9ce5872f2dd430ca1a2">uuid_toWcharString</a></div><div class="ttdeci">DLL_EXPORT wchar_t * uuid_toWcharString(struct uuid *uuid)</div><div class="ttdef"><b>Definition:</b> uuid.c:56</div></div>
 <div class="ttc" id="astructuuid_html"><div class="ttname"><a href="structuuid.html">uuid</a></div><div class="ttdef"><b>Definition:</b> uuid/structs.h:21</div></div>
 <div class="ttc" id="auuid_2structs_8h_html"><div class="ttname"><a href="uuid_2structs_8h.html">structs.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
@@ -124,7 +130,7 @@ $(document).ready(function(){initNavTree('uuid_8h_source.html',''); initResizabl
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_7b7cd5aab2b2f3062d7eb7d46dfadcfe.html">uuid</a></li><li class="navelem"><a class="el" href="uuid_8h.html">uuid.h</a></li>
-    <li class="footer">Generated on Tue May 9 2023 16:46:03 for NibblePoker&#39;s Clang Goodies by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Tue May 9 2023 21:05:32 for NibblePoker&#39;s Clang Goodies by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>
