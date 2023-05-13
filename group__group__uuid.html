@@ -116,6 +116,8 @@ Functions</h2></td></tr>
  However, the size of said structure is checked at compile time and raises an error if it ain't right.<br  />
  This check can be disabled by defining the <code>NP_UUID_DISABLE_STRUCT_SIZE_CHECK</code> constant during compilation in order to leave the <a class="el" href="structuuid.html">uuid</a> structure with an invalid size.<br  />
  None of the module's function use <code>sizeof(uuid)</code> or explicitly use on of the structure's fields so its safe to use as long as <b>you</b> don't use them either.</p>
+<p >It should be noted that while using MSVC, the structure should always be aligned properly since the maximum it can do by default is every 16 bytes.<br  />
+ See MS C compiler /Zp flag documentation for more info.</p>
 <p >Unless <code>NP_WIN32</code> is defined, all functions that uses or return a <code>wchar_t</code> typed variable won't be accessible.<br  />
  This is due to the fact that <code>wchar_t</code> is only accessible easily on Windows platforms.</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="structuuid.html">uuid</a> </dd>
@@ -124,7 +126,9 @@ Functions</h2></td></tr>
 <dd>
 <a href="https://www.rfc-editor.org/rfc/rfc4122">https://www.rfc-editor.org/rfc/rfc4122</a> </dd>
 <dd>
-<a href="https://cplusplus.com/reference/cstdlib/rand/">https://cplusplus.com/reference/cstdlib/rand/</a> </dd></dl>
+<a href="https://cplusplus.com/reference/cstdlib/rand/">https://cplusplus.com/reference/cstdlib/rand/</a> </dd>
+<dd>
+<a href="https://learn.microsoft.com/en-us/cpp/build/reference/zp-struct-member-alignment">https://learn.microsoft.com/en-us/cpp/build/reference/zp-struct-member-alignment</a> </dd></dl>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="ga859f8385aebbeb391232e67aa09deb67" name="ga859f8385aebbeb391232e67aa09deb67"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga859f8385aebbeb391232e67aa09deb67">&#9670;&#160;</a></span>uuid_toString()</h2>
@@ -206,7 +210,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Tue May 9 2023 23:43:21 for NibblePoker&#39;s Clang Goodies by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Sat May 13 2023 21:58:39 for NibblePoker&#39;s Clang Goodies by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>
