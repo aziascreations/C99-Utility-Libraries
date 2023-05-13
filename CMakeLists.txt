@@ -39,6 +39,11 @@ if(MSVC)
     message("---> Detected MSVC compiler, adding custom flags to compiler and linker...")
 
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} /Gy /Oy")
+
+    # Adds around 1kb to the final DLL, it is worth it ?
+    # Source: https://learn.microsoft.com/en-us/cpp/build/reference/sdl-enable-additional-security-checks
+    #set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} /sdl")
+
     # /Zl seems to affect the implicitly included .lib
     set(CMAKE_C_FLAGS_RELEASE "/Ot ${CMAKE_C_FLAGS_RELEASE}")
     set(CMAKE_C_FLAGS_MINSIZEREL "/Os ${CMAKE_C_FLAGS_MINSIZEREL}")
@@ -103,11 +108,23 @@ add_executable(example_uuid_all examples/uuid_all.c ${src_uuid})
 # Preparing targets > Tests
 add_executable(test_args_options tests/arguments/test_options.c ${src_args} tests/assert.h)
 add_test(NAME test_args_options COMMAND test_args_options)
-target_compile_definitions(test_args_options PUBLIC NP_DEBUG_LOGGING)
+#target_compile_definitions(test_args_options PUBLIC NP_DEBUG_LOGGING)
 
-add_executable(test_args_verbs tests/arguments/test_verb.c ${src_args} tests/assert.h)
-add_test(NAME test_args_verbs COMMAND test_args_verbs)
-target_compile_definitions(test_args_verbs PUBLIC NP_DEBUG_LOGGING)
+add_executable(test_verb_registration tests/arguments/test_verb_registration.c ${src_args} tests/assert.h)
+add_test(NAME test_verb_registration COMMAND test_verb_registration)
+#target_compile_definitions(test_verb_registration PUBLIC NP_DEBUG_LOGGING)
+
+add_executable(test_args_parsing_basic tests/arguments/test_args_parsing_basic.c ${src_args} tests/assert.h)
+add_test(NAME test_args_parsing_basic COMMAND test_args_parsing_basic)
+#target_compile_definitions(test_args_parsing_basic PUBLIC NP_DEBUG_LOGGING)
+
+add_executable(test_args_required_option tests/arguments/test_args_required_option.c ${src_args} tests/assert.h)
+add_test(NAME test_args_required_option COMMAND test_args_required_option)
+#target_compile_definitions(test_args_required_option PUBLIC NP_DEBUG_LOGGING)
+
+add_executable(test_args_default_option tests/arguments/test_args_default_option.c ${src_args} tests/assert.h)
+add_test(NAME test_args_default_option COMMAND test_args_default_option)
+#target_compile_definitions(test_args_default_option PUBLIC NP_DEBUG_LOGGING)
 
 # Documentation
 # TODO: Add custom target for it.

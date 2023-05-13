@@ -461,7 +461,7 @@ enum EArgumentParserErrors args_parseArguments(Verb *rootVerb, np_args_char *arg
 		
 		np_args_trace_println("Parsing: '%s'", arguments[iArg]);
 		
-		if(np_args_stringStartsWith(arguments[iArg], np_args_L("--"))) {
+		if(!hasReachedEndOfOptions && np_args_stringStartsWith(arguments[iArg], np_args_L("--"))) {
 			np_args_trace_println(" > Long option or end of parameters");
 			
 			bool skipAllowVerbAfterOptionCheck = false;
@@ -531,7 +531,7 @@ enum EArgumentParserErrors args_parseArguments(Verb *rootVerb, np_args_char *arg
 				np_args_trace_println("Setting internal 'hasFinishedParsingVerbs' flag.");
 				hasFinishedParsingVerbs = true;
 			}
-		} else if(np_args_stringStartsWith(arguments[iArg], np_args_L("-"))) {
+		} else if(!hasReachedEndOfOptions && np_args_stringStartsWith(arguments[iArg], np_args_L("-"))) {
 			np_args_trace_println(" > Short option(s)");
 			
 			for(int iChar = 1; iChar < np_args_strlen(arguments[iArg]); iChar++) {

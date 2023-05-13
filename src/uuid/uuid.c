@@ -19,6 +19,11 @@
  *  None of the module's function use `sizeof(uuid)` or explicitly use on of the structure's fields so its safe to use
  *   as long as **you** don't use them either.
  *
+ *  It should be noted that while using MSVC, the structure should always be aligned properly since the maximum it can
+ *   do by default is every 16 bytes.<br>
+ *  See \ref https://learn.microsoft.com/en-us/cpp/build/reference/zp-struct-member-alignment "MS C compiler /Zp flag documentation"
+ *   for more info.
+ *
  *  Unless `NP_WIN32` is defined, all functions that uses or return a `wchar_t` typed variable won't be accessible.<br>
  *  This is due to the fact that `wchar_t` is only accessible easily on Windows platforms.
  *
@@ -26,6 +31,7 @@
  *  \see https://en.wikipedia.org/wiki/Universally_unique_identifier
  *  \see https://www.rfc-editor.org/rfc/rfc4122
  *  \see https://cplusplus.com/reference/cstdlib/rand/
+ *  \see https://learn.microsoft.com/en-us/cpp/build/reference/zp-struct-member-alignment
  *  @{
  */
 

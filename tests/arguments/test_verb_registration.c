@@ -5,7 +5,7 @@
 #include "../../src/arguments/arguments.h"
 
 int main(void) {
-	printf("Testing 'verbs behaviour'...\n");
+	printf("Testing 'verbs registration behaviour'...\n");
 	
 	printf("> Preparing verbs and options for later tests...\n");
 	Verb* rootVerb = args_createVerb(NULL, NULL);
@@ -19,6 +19,8 @@ int main(void) {
 	Option* shortOption = args_createOption('a', NULL, NULL, FLAG_OPTION_NONE);
 	Option* longOption = args_createOption('\0', np_args_L("bravo"), NULL, FLAG_OPTION_NONE);
 	Option* mixedOption = args_createOption('c', np_args_L("charlie"), NULL, FLAG_OPTION_NONE);
+	
+	Option* recursiveOption = args_createOption('r', np_args_L("recursive"), NULL, FLAG_OPTION_NONE);
 	
 	/* Verb & registration */
 	printf("> Testing registration failure of invalid verbs...\n");
@@ -79,6 +81,15 @@ int main(void) {
 	assert(args_registerOption(shortOption, validSubVerb2), "Short option in 'delete'");
 	assert(args_registerOption(longOption, validSubVerb1), "Long option in 'create'");
 	
+	printf("> Testing recursive option registration...\n");
+	assert(args_registerOptionRecursively(recursiveOption, rootVerb), "Recursive option registration");
+	assert(args_getOptionByToken(rootVerb, 'r') == recursiveOption, "Recursive option by token in root verb");
+	assert(args_getOptionByToken(validSubVerb1, 'r') == recursiveOption, "Recursive option by token in sub-verb 1");
+	assert(args_getOptionByToken(validSubVerb2, 'r') == recursiveOption, "Recursive option by token in sub-verb 2");
+	assert(args_getOptionByName(rootVerb, np_args_L("recursive")) == recursiveOption, "Recursive option by name in root verb");
+	assert(args_getOptionByName(validSubVerb1, np_args_L("recursive")) == recursiveOption, "Recursive option by name in sub-verb 1");
+	assert(args_getOptionByName(validSubVerb2, np_args_L("recursive")) == recursiveOption, "Recursive option by name in sub-verb 2");
+	
 	// From now on, results will be observed in the fact the tests don't cause segfaults, and via the debugging logs.
 	
 	printf("> Freeing verbs not referenced anywhere else...\n");
@@ -88,6 +99,6 @@ int main(void) {
 	printf("> Freeing root verb, its sub-verbs and all related options...  (Check out logs and for segfault)\n");
 	args_freeVerb(rootVerb);
 	
-	printf("All 'verbs behaviour' tests passed !\n");
+	printf("All 'verbs registration behaviour' tests passed !\n");
 	return 0;
 }
