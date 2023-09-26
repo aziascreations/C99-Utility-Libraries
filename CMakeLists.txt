@@ -64,67 +64,79 @@ if(MSVC)
     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /RELEASE")
 endif()
 
-# Preparing targets
-file(GLOB src_dllist CONFIGURE_DEPENDS "src/lists/double/*.h" "src/lists/double/*.c" "src/debug.h")
-file(GLOB src_args CONFIGURE_DEPENDS "src/lists/double/*.h" "src/lists/double/*.c" "src/text.c" "src/text.h" "src/arguments/*.h" "src/arguments/*.c" "src/debug.h")
-file(GLOB src_uuid CONFIGURE_DEPENDS "src/uuid/*.h" "src/uuid/*.c")
-file(GLOB src_text CONFIGURE_DEPENDS "src/text.h" "src/text.c")
-file(GLOB_RECURSE src_all CONFIGURE_DEPENDS "src/*.h" "src/*.c")
+file(GLOB_RECURSE src_np_clang_goodies CONFIGURE_DEPENDS "src/*.h" "src/*.c" rsc/np_clang_goodies.rc)
 
-# Preparing targets > Dynamic DLL
-add_library(np_clang_goodies_dll_dynamic SHARED ${src_all} rsc/np_clang_goodies.rc)
-target_compile_definitions(np_clang_goodies_dll_dynamic PUBLIC NP_ARGUMENTS_EXPORT)
-target_compile_definitions(np_clang_goodies_dll_dynamic PUBLIC NP_DLLIST_EXPORT)
-target_compile_definitions(np_clang_goodies_dll_dynamic PUBLIC NP_UUID4_EXPORT)
-target_compile_definitions(np_clang_goodies_dll_dynamic PUBLIC NP_TEXT_EXPORT)
-set_target_properties(np_clang_goodies_dll_dynamic PROPERTIES OUTPUT_NAME NibblePoker.Library.ClangGoodies)
-set_target_properties(np_clang_goodies_dll_dynamic PROPERTIES MSVC_RUNTIME_LIBRARY MultiThreadedDLL)
-set_target_properties(np_clang_goodies_dll_dynamic PROPERTIES ARCHIVE_OUTPUT_DIRECTORY "dll_dynamic/")
-set_target_properties(np_clang_goodies_dll_dynamic PROPERTIES LIBRARY_OUTPUT_DIRECTORY "dll_dynamic/")
-set_target_properties(np_clang_goodies_dll_dynamic PROPERTIES RUNTIME_OUTPUT_DIRECTORY "dll_dynamic/")
+if (NOT NP_CLANG_GOODIES_STATIC)
+    message(STATUS "Building static library")
+    add_library(np_clang_goodies STATIC ${src_np_clang_goodies})
+else()
+    message(STATUS "Building shared library")
+    add_library(np_clang_goodies SHARED ${src_np_clang_goodies})
+endif()
 
-# Preparing targets > Static DLL
-add_library(np_clang_goodies_dll_static SHARED ${src_all} rsc/np_clang_goodies.rc)
-target_compile_definitions(np_clang_goodies_dll_static PUBLIC NP_ARGUMENTS_EXPORT)
-target_compile_definitions(np_clang_goodies_dll_static PUBLIC NP_DLLIST_EXPORT)
-target_compile_definitions(np_clang_goodies_dll_static PUBLIC NP_UUID4_EXPORT)
-target_compile_definitions(np_clang_goodies_dll_static PUBLIC NP_TEXT_EXPORT)
-set_target_properties(np_clang_goodies_dll_static PROPERTIES OUTPUT_NAME NibblePoker.Library.ClangGoodies)
-set_target_properties(np_clang_goodies_dll_static PROPERTIES MSVC_RUNTIME_LIBRARY MultiThreaded)
-set_target_properties(np_clang_goodies_dll_static PROPERTIES ARCHIVE_OUTPUT_DIRECTORY "dll_static/")
-set_target_properties(np_clang_goodies_dll_static PROPERTIES LIBRARY_OUTPUT_DIRECTORY "dll_static/")
-set_target_properties(np_clang_goodies_dll_static PROPERTIES RUNTIME_OUTPUT_DIRECTORY "dll_static/")
+#add_subdirectory(src np_clang_goodies)
 
-# Preparing targets > Dev tester
-add_executable(manual_testing manual_testing.c ${src_all})
-set_target_properties(manual_testing PROPERTIES C_STANDARD 99)
-target_compile_definitions(manual_testing PUBLIC NP_DEBUG_LOGGING)
-
-# Preparing targets > Examples
-add_executable(example_dllist_basic examples/dllist_basic.c ${src_dllist} ${src_text})
-add_executable(example_dllist_custom_free examples/dllist_custom_free.c ${src_dllist} ${src_text})
-add_executable(example_uuid_all examples/uuid_all.c ${src_uuid})
-
-# Preparing targets > Tests
-add_executable(test_args_options tests/arguments/test_options.c ${src_args} tests/assert.h)
-add_test(NAME test_args_options COMMAND test_args_options)
-#target_compile_definitions(test_args_options PUBLIC NP_DEBUG_LOGGING)
-
-add_executable(test_verb_registration tests/arguments/test_verb_registration.c ${src_args} tests/assert.h)
-add_test(NAME test_verb_registration COMMAND test_verb_registration)
-#target_compile_definitions(test_verb_registration PUBLIC NP_DEBUG_LOGGING)
-
-add_executable(test_args_parsing_basic tests/arguments/test_args_parsing_basic.c ${src_args} tests/assert.h)
-add_test(NAME test_args_parsing_basic COMMAND test_args_parsing_basic)
-#target_compile_definitions(test_args_parsing_basic PUBLIC NP_DEBUG_LOGGING)
-
-add_executable(test_args_required_option tests/arguments/test_args_required_option.c ${src_args} tests/assert.h)
-add_test(NAME test_args_required_option COMMAND test_args_required_option)
-#target_compile_definitions(test_args_required_option PUBLIC NP_DEBUG_LOGGING)
-
-add_executable(test_args_default_option tests/arguments/test_args_default_option.c ${src_args} tests/assert.h)
-add_test(NAME test_args_default_option COMMAND test_args_default_option)
-#target_compile_definitions(test_args_default_option PUBLIC NP_DEBUG_LOGGING)
+## Preparing targets
+#file(GLOB src_dllist CONFIGURE_DEPENDS "src/lists/double/*.h" "src/lists/double/*.c" "src/debug.h")
+#file(GLOB src_args CONFIGURE_DEPENDS "src/lists/double/*.h" "src/lists/double/*.c" "src/text.c" "src/text.h" "src/arguments/*.h" "src/arguments/*.c" "src/debug.h")
+#file(GLOB src_uuid CONFIGURE_DEPENDS "src/uuid/*.h" "src/uuid/*.c")
+#file(GLOB src_text CONFIGURE_DEPENDS "src/text.h" "src/text.c")
+#file(GLOB_RECURSE src_all CONFIGURE_DEPENDS "src/*.h" "src/*.c")
+#
+## Preparing targets > Dynamic DLL
+#add_library(np_clang_goodies_dll_dynamic SHARED ${src_all} rsc/np_clang_goodies.rc)
+#target_compile_definitions(np_clang_goodies_dll_dynamic PUBLIC NP_ARGUMENTS_EXPORT)
+#target_compile_definitions(np_clang_goodies_dll_dynamic PUBLIC NP_DLLIST_EXPORT)
+#target_compile_definitions(np_clang_goodies_dll_dynamic PUBLIC NP_UUID4_EXPORT)
+#target_compile_definitions(np_clang_goodies_dll_dynamic PUBLIC NP_TEXT_EXPORT)
+#set_target_properties(np_clang_goodies_dll_dynamic PROPERTIES OUTPUT_NAME NibblePoker.Library.ClangGoodies)
+#set_target_properties(np_clang_goodies_dll_dynamic PROPERTIES MSVC_RUNTIME_LIBRARY MultiThreadedDLL)
+#set_target_properties(np_clang_goodies_dll_dynamic PROPERTIES ARCHIVE_OUTPUT_DIRECTORY "dll_dynamic/")
+#set_target_properties(np_clang_goodies_dll_dynamic PROPERTIES LIBRARY_OUTPUT_DIRECTORY "dll_dynamic/")
+#set_target_properties(np_clang_goodies_dll_dynamic PROPERTIES RUNTIME_OUTPUT_DIRECTORY "dll_dynamic/")
+#
+## Preparing targets > Static DLL
+#add_library(np_clang_goodies_dll_static SHARED ${src_all} rsc/np_clang_goodies.rc)
+#target_compile_definitions(np_clang_goodies_dll_static PUBLIC NP_ARGUMENTS_EXPORT)
+#target_compile_definitions(np_clang_goodies_dll_static PUBLIC NP_DLLIST_EXPORT)
+#target_compile_definitions(np_clang_goodies_dll_static PUBLIC NP_UUID4_EXPORT)
+#target_compile_definitions(np_clang_goodies_dll_static PUBLIC NP_TEXT_EXPORT)
+#set_target_properties(np_clang_goodies_dll_static PROPERTIES OUTPUT_NAME NibblePoker.Library.ClangGoodies)
+#set_target_properties(np_clang_goodies_dll_static PROPERTIES MSVC_RUNTIME_LIBRARY MultiThreaded)
+#set_target_properties(np_clang_goodies_dll_static PROPERTIES ARCHIVE_OUTPUT_DIRECTORY "dll_static/")
+#set_target_properties(np_clang_goodies_dll_static PROPERTIES LIBRARY_OUTPUT_DIRECTORY "dll_static/")
+#set_target_properties(np_clang_goodies_dll_static PROPERTIES RUNTIME_OUTPUT_DIRECTORY "dll_static/")
+#
+## Preparing targets > Dev tester
+#add_executable(manual_testing manual_testing.c ${src_all})
+#set_target_properties(manual_testing PROPERTIES C_STANDARD 99)
+#target_compile_definitions(manual_testing PUBLIC NP_DEBUG_LOGGING)
+#
+## Preparing targets > Examples
+#add_executable(example_dllist_basic examples/dllist_basic.c ${src_dllist} ${src_text})
+#add_executable(example_dllist_custom_free examples/dllist_custom_free.c ${src_dllist} ${src_text})
+#add_executable(example_uuid_all examples/uuid_all.c ${src_uuid})
+#
+## Preparing targets > Tests
+#add_executable(test_args_options tests/arguments/test_options.c ${src_args} tests/assert.h)
+#add_test(NAME test_args_options COMMAND test_args_options)
+##target_compile_definitions(test_args_options PUBLIC NP_DEBUG_LOGGING)
+#
+#add_executable(test_verb_registration tests/arguments/test_verb_registration.c ${src_args} tests/assert.h)
+#add_test(NAME test_verb_registration COMMAND test_verb_registration)
+##target_compile_definitions(test_verb_registration PUBLIC NP_DEBUG_LOGGING)
+#
+#add_executable(test_args_parsing_basic tests/arguments/test_args_parsing_basic.c ${src_args} tests/assert.h)
+#add_test(NAME test_args_parsing_basic COMMAND test_args_parsing_basic)
+##target_compile_definitions(test_args_parsing_basic PUBLIC NP_DEBUG_LOGGING)
+#
+#add_executable(test_args_required_option tests/arguments/test_args_required_option.c ${src_args} tests/assert.h)
+#add_test(NAME test_args_required_option COMMAND test_args_required_option)
+##target_compile_definitions(test_args_required_option PUBLIC NP_DEBUG_LOGGING)
+#
+#add_executable(test_args_default_option tests/arguments/test_args_default_option.c ${src_args} tests/assert.h)
+#add_test(NAME test_args_default_option COMMAND test_args_default_option)
+##target_compile_definitions(test_args_default_option PUBLIC NP_DEBUG_LOGGING)
 
 # Documentation
 # TODO: Add custom target for it.
