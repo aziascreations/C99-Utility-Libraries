@@ -69,6 +69,7 @@ file(GLOB src_dllist CONFIGURE_DEPENDS "src/lists/double/*.h" "src/lists/double/
 file(GLOB src_args CONFIGURE_DEPENDS "src/lists/double/*.h" "src/lists/double/*.c" "src/text.c" "src/text.h" "src/arguments/*.h" "src/arguments/*.c" "src/debug.h")
 file(GLOB src_uuid CONFIGURE_DEPENDS "src/uuid/*.h" "src/uuid/*.c")
 file(GLOB src_text CONFIGURE_DEPENDS "src/text.h" "src/text.c")
+file(GLOB_RECURSE src_hash CONFIGURE_DEPENDS "src/hash/*.h" "src/hash/*.c")
 file(GLOB_RECURSE src_all CONFIGURE_DEPENDS "src/*.h" "src/*.c")
 
 # Preparing targets > Dynamic DLL
@@ -77,6 +78,8 @@ target_compile_definitions(np_clang_goodies_dll_dynamic PUBLIC NP_ARGUMENTS_EXPO
 target_compile_definitions(np_clang_goodies_dll_dynamic PUBLIC NP_DLLIST_EXPORT)
 target_compile_definitions(np_clang_goodies_dll_dynamic PUBLIC NP_UUID4_EXPORT)
 target_compile_definitions(np_clang_goodies_dll_dynamic PUBLIC NP_TEXT_EXPORT)
+target_compile_definitions(np_clang_goodies_dll_dynamic PUBLIC NP_HASHMAP_EXPORT)
+target_compile_definitions(np_clang_goodies_dll_dynamic PUBLIC NP_GOODIES_EXPORT_CRC32)
 set_target_properties(np_clang_goodies_dll_dynamic PROPERTIES OUTPUT_NAME NibblePoker.Library.ClangGoodies)
 set_target_properties(np_clang_goodies_dll_dynamic PROPERTIES MSVC_RUNTIME_LIBRARY MultiThreadedDLL)
 set_target_properties(np_clang_goodies_dll_dynamic PROPERTIES ARCHIVE_OUTPUT_DIRECTORY "dll_dynamic/")
@@ -89,6 +92,8 @@ target_compile_definitions(np_clang_goodies_dll_static PUBLIC NP_ARGUMENTS_EXPOR
 target_compile_definitions(np_clang_goodies_dll_static PUBLIC NP_DLLIST_EXPORT)
 target_compile_definitions(np_clang_goodies_dll_static PUBLIC NP_UUID4_EXPORT)
 target_compile_definitions(np_clang_goodies_dll_static PUBLIC NP_TEXT_EXPORT)
+target_compile_definitions(np_clang_goodies_dll_static PUBLIC NP_HASHMAP_EXPORT)
+target_compile_definitions(np_clang_goodies_dll_static PUBLIC NP_GOODIES_EXPORT_CRC32)
 set_target_properties(np_clang_goodies_dll_static PROPERTIES OUTPUT_NAME NibblePoker.Library.ClangGoodies)
 set_target_properties(np_clang_goodies_dll_static PROPERTIES MSVC_RUNTIME_LIBRARY MultiThreaded)
 set_target_properties(np_clang_goodies_dll_static PROPERTIES ARCHIVE_OUTPUT_DIRECTORY "dll_static/")
@@ -104,6 +109,7 @@ target_compile_definitions(manual_testing PUBLIC NP_DEBUG_LOGGING)
 add_executable(example_dllist_basic examples/dllist_basic.c ${src_dllist} ${src_text})
 add_executable(example_dllist_custom_free examples/dllist_custom_free.c ${src_dllist} ${src_text})
 add_executable(example_uuid_all examples/uuid_all.c ${src_uuid})
+add_executable(example_crc32 examples/crc32.c ${src_hash})
 
 # Preparing targets > Tests
 add_executable(test_args_options tests/arguments/test_options.c ${src_args} tests/assert.h)
@@ -128,3 +134,5 @@ add_test(NAME test_args_default_option COMMAND test_args_default_option)
 
 # Documentation
 # TODO: Add custom target for it.
+
+#message(${CMAKE_SYSTEM_PROCESSOR})

@@ -12,3 +12,6 @@ docs/latex
 
 # Unfinished stuff
 CONTRIBUTING.md
+
+# PureBasic stuff
+*.pb.cfg
