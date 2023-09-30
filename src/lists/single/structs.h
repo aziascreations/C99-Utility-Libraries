@@ -4,38 +4,37 @@
 
 #include <stdint.h>
 
+typedef struct single_linked_list_node SingleLinkedListNode;
+
+typedef struct single_linked_list SingleLinkedList;
+
 /**
- *  Repeatable structure that is pointed to internally by the \ref double_linked_list "DoubleLinkedList" in order
+ *  Repeatable structure that is pointed to internally by the \ref single_linked_list "SingleLinkedList" in order
  *    to represent a list entry.<br>
- *  This structure only contains pointer to the data it holds and the next and previous
- *    \ref double_linked_list_node "DoubleLinkedListNode".
+ *  This structure only contains pointer to the data it holds and the next
+ *   \ref single_linked_list_node "SingleLinkedListNode".
  */
-typedef struct double_linked_list_node {
+struct single_linked_list_node {
 	/**
 	 * Data to be held as the list entry's data.
 	 */
 	void *data;
 	
 	/**
-	 * Pointer to a potentially `NULL` next \ref double_linked_list_node "DoubleLinkedListNode".
+	 * Pointer to a potentially `NULL` next \ref single_linked_list_node "SingleLinkedListNode".
 	 */
-	struct double_linked_list_node *next;
-	
-	/**
-	 * Pointer to a potentially `NULL` previous \ref double_linked_list_node "DoubleLinkedListNode".
-	 */
-	struct double_linked_list_node *previous;
-} DoubleLinkedListNode;
+	SingleLinkedListNode *next;
+};
 
 /**
  *  Main structure that contains pointers to the first, last and current
- *    \ref double_linked_list_node "DoubleLinkedListNode".<br>
+ *    \ref single_linked_list_node "SingleLinkedListNode".<br>
  *  All functions in this module use or return a pointer to this type of structure.
  *
- *  \see dllist_create
- *  \see dllist_free
+ *  \see sllist_create
+ *  \see sllist_free
  */
-typedef struct double_linked_list {
+struct single_linked_list {
 	/**
 	 * Amount of nodes currently present in the list.<br>
 	 * Prevents heavy calculation when the list's size need to be fetched.
@@ -46,7 +45,7 @@ typedef struct double_linked_list {
 	 * Pointer to a potentially `NULL` \ref double_linked_list_node "DoubleLinkedListNode" that is the list's first
 	 *  node.
 	 */
-	struct double_linked_list_node *first;
+	SingleLinkedListNode *first;
 	
 	/**
 	 * Temporary pointer to a potentially `NULL` \ref double_linked_list_node "DoubleLinkedListNode" that is the list's
@@ -54,14 +53,14 @@ typedef struct double_linked_list {
 	 * This pointer was implemented in order to mimic PureBasic's lists and to make some generic ordering tasks less
 	 *  tedious.
 	 */
-	struct double_linked_list_node *current;
+	SingleLinkedListNode *current;
 	
 	/**
 	 * Pointer to a potentially `NULL` \ref double_linked_list_node "DoubleLinkedListNode" that is the list's last
 	 *  node.<br>
 	 * Used to make some operations faster.
 	 */
-	struct double_linked_list_node *last;
+	SingleLinkedListNode *last;
 	
 	/**
 	 * Function used to free the data pointer present in the \ref double_linked_list_node "DoubleLinkedListNode"
@@ -69,5 +68,16 @@ typedef struct double_linked_list {
 	 * @param data The freed \ref double_linked_list_node "DoubleLinkedListNode"'s
 	 *  \ref double_linked_list_node::data "data" field.
 	 */
-	void (*free)(void *data);
-} DoubleLinkedList;
+	void (*cb_freeData)(void *data);
+	
+	/**
+	 * Function used to allocate the memory for a \ref single_linked_list_node "SingleLinkedListNode" when inserting
+	 *  data into the list.
+	 * This function can be replaced by one that allocates a bigger structure that only gets handled in another part
+	 *  of the program to which the "sllist_" functions are entirely obvious.
+	 * @return The pointer to the allocated \ref single_linked_list_node "SingleLinkedListNode" structure.
+	 */
+	SingleLinkedListNode *(*cb_mallocNode)();
+	
+	void (*cb_freeNode)(void *data);
+};
