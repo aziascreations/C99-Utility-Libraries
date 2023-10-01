@@ -40,8 +40,8 @@
 
 // Actual definition
 1 VERSIONINFO
-		FILEVERSION 0, 0, 1, 0
-		PRODUCTVERSION 0, 0, 1, 0
+		FILEVERSION 0, 1, 0, 0
+		PRODUCTVERSION 0, 1, 0, 0
 		FILEOS VOS_NT_WINDOWS32
 FILETYPE VFT_DLL
 {
@@ -52,7 +52,7 @@ BLOCK "000004b0"
 VALUE "Comments", "\0"
 VALUE "CompanyName", "NibblePoker\0"
 VALUE "FileDescription", "Small collection of utilities and libraries for C in order to simplify some development tasks.\0"
-VALUE "FileVersion",  "0,0,1,0\0"
+VALUE "FileVersion",  "0,1,0,0\0"
 VALUE "InternalName", "np_clang_goodies\0"
 VALUE "LegalCopyright", "Copyright 2023 BOZET Herwin\0"
 VALUE "LegalTrademarks", "\0"
@@ -61,7 +61,7 @@ VALUE "LegalTrademarks2", "\0"
 VALUE "OriginalFilename", "np_clang_goodies.dll\0"
 //VALUE "PrivateBuild", "1\0"
 VALUE "ProductName", "NibblePoker's Clang Goodies\0"
-VALUE "ProductVersion", "0.0.1\0"
+VALUE "ProductVersion", "0.1.0\0"
 //VALUE "SpecialBuild", "\0"
 }
 }

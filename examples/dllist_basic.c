@@ -5,20 +5,20 @@
 
 int main() {
 	// Creating a list that will free the data with `free`.
-	DoubleLinkedList *myList = dllist_create(&free);
+	DoubleLinkedList *myList = dllist_create();
 	
 	// Adding some data.
 	// We're also making a copy of these strings so that they can be freed later on.
 	// If we use "static" strings will get some errors when they are passed to the `&free` function.
-	dllist_append(myList, copyString("Hello world !"));
-	dllist_append(myList, copyString("Lorem ipsum donor si amet."));
-	dllist_append(myList, copyString("Test 123"));
-	dllist_append(myList, copyString("I'm at the end :)"));
+	dllist_append(myList, copyString("Hello world !"), NULL);
+	dllist_append(myList, copyString("Lorem ipsum donor si amet."), NULL);
+	dllist_append(myList, copyString("Test 123"), NULL);
+	dllist_append(myList, copyString("I'm at the end :)"), NULL);
 	
 	// Accessing the `DoubleLinkedListNode`, not the data.
 	printf("Indirect data access:\n");
-	printf("> First: %s\n", (char *) dllist_selectFirst(myList)->data);
-	printf("> Nbr2: %s\n", (char *) dllist_selectByIndex(myList, 2)->data);
+	printf("> First: %s\n", (char *) (dllist_selectFirst(myList)->data));
+	printf("> Nbr2: %s\n", (char *) (dllist_selectByIndex(myList, 2)->data));
 	printf("> Nbr3: %s\n", (char *) dllist_selectByIndex(myList, 3)->data);
 	printf("> Last: %s\n", (char *) dllist_selectLast(myList)->data);
 	printf("\n");
@@ -56,7 +56,7 @@ int main() {
 	
 	// Freeing the list and the strings from memory.
 	// This function will call the `&free` function we gave `dllist_create` earlier with each string we added.
-	// /!\ You just have to make sure you don't use static strings
+	// ⚠️ You just have to make sure you don't use static strings
 	printf("Freeing the list...\n");
-	dllist_free(myList);
+	dllist_free(myList, &free, NULL);
 }

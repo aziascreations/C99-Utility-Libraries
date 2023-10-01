@@ -65,7 +65,8 @@ if(MSVC)
 endif()
 
 # Preparing targets
-file(GLOB src_dllist CONFIGURE_DEPENDS "src/lists/double/*.h" "src/lists/double/*.c" "src/debug.h")
+file(GLOB src_dllist CONFIGURE_DEPENDS "src/lists/double/*.h" "src/lists/double/*.c" "src/lists/*.c" "src/lists/*.h" "src/debug.h")
+file(GLOB src_sllist CONFIGURE_DEPENDS "src/lists/simple/*.h" "src/lists/simple/*.c" "src/lists/*.c" "src/lists/*.h" "src/debug.h")
 file(GLOB src_args CONFIGURE_DEPENDS "src/lists/double/*.h" "src/lists/double/*.c" "src/text.c" "src/text.h" "src/arguments/*.h" "src/arguments/*.c" "src/debug.h")
 file(GLOB src_uuid CONFIGURE_DEPENDS "src/uuid/*.h" "src/uuid/*.c")
 file(GLOB src_text CONFIGURE_DEPENDS "src/text.h" "src/text.c")

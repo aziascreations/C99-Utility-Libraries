@@ -5,7 +5,8 @@
 #include <malloc.h>
 #include <stdbool.h>
 
-#include "./structs.h"
+#include "../structs.h"
+#include "../commons.h"
 
 #ifdef NP_DLLIST_EXPORT
 #define DLL_EXPORT __declspec(dllexport)
@@ -20,13 +21,21 @@
  *  The function will receive the node's data pointer as-is.
  * @return A pointer to a newly allocated \ref double_linked_list "DoubleLinkedList" structure.
  */
-DLL_EXPORT DoubleLinkedList *dllist_create(void (*free)(void *data));
+#define dllist_create() ((DoubleLinkedList *) llist_create())
+
+/**
+ * Creates a single linked list node.
+ * @return A pointer to a newly allocated \ref single_linked_list_node "SingleLinkedListNode" structure.
+ */
+DLL_EXPORT DoubleLinkedListNode *dllist_createNode();
 
 /**
  * Frees the given list and all of its nodes' data.
  * @param list The \ref double_linked_list "DoubleLinkedList" to be freed.
+ * @param cb_freeData
+ * @param cb_freeNode
  */
-DLL_EXPORT void dllist_free(DoubleLinkedList *list);
+#define dllist_free(list, cb_freeData, cb_freeNode) (llist_free((LinkedList *) list, cb_freeData, cb_freeNode))
 
 /**
  * Selects the first node in the list as the current one and returns it.
@@ -34,7 +43,7 @@ DLL_EXPORT void dllist_free(DoubleLinkedList *list);
  * @return A pointer to the first \ref double_linked_list_node "DoubleLinkedListNode",
  *  or `NULL` if the list has no elements.
  */
-DLL_EXPORT DoubleLinkedListNode *dllist_selectFirst(DoubleLinkedList *list);
+#define dllist_selectFirst(list) ((DoubleLinkedListNode *) llist_selectFirst((LinkedList *) list))
 
 /**
  * Selects the next node in the list based on the currently selected one.
@@ -42,15 +51,16 @@ DLL_EXPORT DoubleLinkedListNode *dllist_selectFirst(DoubleLinkedList *list);
  * @return A pointer to the next \ref double_linked_list_node "DoubleLinkedListNode",
  *  or `NULL` if the list has no next element.
  */
-DLL_EXPORT DoubleLinkedListNode *dllist_selectNext(DoubleLinkedList *list);
+#define dllist_selectNext(list) ((DoubleLinkedListNode *) llist_selectNext(list))
 
 /**
- * Selects the previous node in the list based on the currently selected one.
- * @param list The \ref double_linked_list "DoubleLinkedList" whose previous element will be selected.
- * @return A pointer to the previous \ref double_linked_list_node "DoubleLinkedListNode",
- *  or `NULL` if the list has no previous element.
  */
-DLL_EXPORT DoubleLinkedListNode *dllist_selectPrevious(DoubleLinkedList *list);
+// * Selects the previous node in the list based on the currently selected one.
+// * @param list The \ref double_linked_list "DoubleLinkedList" whose previous element will be selected.
+// * @return A pointer to the previous \ref double_linked_list_node "DoubleLinkedListNode",
+// *  or `NULL` if the list has no previous element.
+// */
+//DLL_EXPORT DoubleLinkedListNode *dllist_selectPrevious(DoubleLinkedList *list);
 
 /**
  * Selects the last node in the list as the current one and returns it.
@@ -58,7 +68,7 @@ DLL_EXPORT DoubleLinkedListNode *dllist_selectPrevious(DoubleLinkedList *list);
  * @return A pointer to the last \ref double_linked_list_node "DoubleLinkedListNode",
  *  or `NULL` if the list has no elements.
  */
-DLL_EXPORT DoubleLinkedListNode *dllist_selectLast(DoubleLinkedList *list);
+#define dllist_selectLast(list) ((DoubleLinkedListNode *) llist_selectLast((LinkedList *) list))
 
 /**
  * Selects the first node in the list as the current one and returns its data pointer.
@@ -66,7 +76,7 @@ DLL_EXPORT DoubleLinkedListNode *dllist_selectLast(DoubleLinkedList *list);
  * @return A pointer to the first \ref double_linked_list_node "DoubleLinkedListNode"'s data,
  *  or `NULL` if the list has no elements.
  */
-DLL_EXPORT void *dllist_selectFirstData(DoubleLinkedList *list);
+#define dllist_selectFirstData(list) ((DoubleLinkedListNode *) llist_selectFirstData((LinkedList *) list))
 
 /**
  * Selects the next node in the list based on the currently selected one and returns its data pointer.
@@ -74,7 +84,7 @@ DLL_EXPORT void *dllist_selectFirstData(DoubleLinkedList *list);
  * @return A pointer to the next \ref double_linked_list_node "DoubleLinkedListNode"'s data,
  *  or `NULL` if the list has no next element.
  */
-DLL_EXPORT void *dllist_selectNextData(DoubleLinkedList *list);
+#define dllist_selectNextData(list) (llist_selectNextData((LinkedList *) list))
 
 /**
  * Returns a \ref double_linked_list_node "DoubleLinkedListNode" via its given index in the list.
@@ -82,7 +92,7 @@ DLL_EXPORT void *dllist_selectNextData(DoubleLinkedList *list);
  * @param index The \ref double_linked_list_node "DoubleLinkedListNode"'s index.
  * @return The relevant \ref double_linked_list_node "DoubleLinkedListNode", or `NULL` if not found.
  */
-DLL_EXPORT DoubleLinkedListNode *dllist_getByIndex(DoubleLinkedList *list, size_t index);
+#define dllist_getByIndex(list, index) ((DoubleLinkedListNode *) llist_getByIndex((DoubleLinkedList *) list, index))
 
 /**
  * Selects and returns a \ref double_linked_list_node "DoubleLinkedListNode" via its given index in the list.
@@ -90,7 +100,7 @@ DLL_EXPORT DoubleLinkedListNode *dllist_getByIndex(DoubleLinkedList *list, size_
  * @param index The \ref double_linked_list_node "DoubleLinkedListNode"'s index.
  * @return The relevant \ref double_linked_list_node "DoubleLinkedListNode", or `NULL` if not found.
  */
-DLL_EXPORT DoubleLinkedListNode *dllist_selectByIndex(DoubleLinkedList *list, size_t index);
+#define dllist_selectByIndex(list, index) ((DoubleLinkedListNode *) llist_selectByIndex((LinkedList *) list, index))
 
 /**
  * Appends a \ref double_linked_list_node "DoubleLinkedListNode" with the given data at the end of the
@@ -99,4 +109,4 @@ DLL_EXPORT DoubleLinkedListNode *dllist_selectByIndex(DoubleLinkedList *list, si
  * @param data Pointer to the data that will be held in a new \ref double_linked_list_node "DoubleLinkedListNode".
  * @return <code>true</code> if it was appended properly, <code>false</code> otherwise.
  */
-DLL_EXPORT bool dllist_append(DoubleLinkedList *list, void *data);
+DLL_EXPORT bool dllist_append(DoubleLinkedList *list, void *data, DoubleLinkedListNode * (*cb_allocNode)());
