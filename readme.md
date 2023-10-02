@@ -41,7 +41,8 @@ add_executable(my_app src/main.c ${src_nibblepoker_c_goodies} ...)
 ```
 
 ## Examples
-**TODO:** *Add intro text.*
+Some examples that demonstrate how to use most of the functions this library provides can be found 
+in the [examples/](examples/) folder.
 
 Alternatively, you can also check the [aziascreations/C99-Win32-Wifi-Utility](https://github.com/aziascreations/C99-Win32-Wifi-Utility)
 repository for a complete example in a "fully-fledged" Windows application.
@@ -51,9 +52,17 @@ repository for a complete example in a "fully-fledged" Windows application.
 
 ### Double Linked Lists
 * [Basic operations](examples/dllist_basic.c)
-    * Creating a list, adding, accessing & iteration over values and basic freeing call.
+  * Creating a list, adding, accessing & iteration over values and basic freeing call.
 * [Custom freeing operation](examples/dllist_custom_free.c)
-    * Same as above while using structured data that needs to be freed in a specific way.
+  * Same as above while using structured data that needs to be freed in a specific way.
+* [Custom list nodes](examples/dllist_custom_node.c)
+  * Same as above while using a custom superset of the standard list node in order to better suit some edge cases.
+* [Functions specific to double linked lists](examples/dllist_specific.c)
+  * Testing functions that have a `dllist`-specific implementation.
+
+### Hashing
+* [CRC32B hashing](examples/crc32.c)
+  * Basic example of hashing data with CRC32B.
 
 ### UUID
 * [UUID4 generation](examples/uuid_all.c)
@@ -75,7 +84,16 @@ If you want to build the documentation, you need to do the following things:
 * Go into `docs/html` and open the `index.html` file.
 
 ## Licenses
-[MIT License](https://github.com/aziascreations/C99-Utility-Libraries/blob/master/LICENSE)
+This project is dual-licensed under the following open-source licenses.<br>
+You can choose the one that best suits your needs:
+1. [MIT License](LICENSE-MIT)<br>
+   &nbsp;&nbsp;● Just include the `LICENSE-MIT` file and be done with it while using an OSI license.
+2. [CC0 1.0 Universal (CC0 1.0) (Public Domain)](LICENSE-CC0)<br>
+   &nbsp;&nbsp;● Do whatever you want with it.<br>
+   &nbsp;&nbsp;● No credit, mentions or anything else is needed.<br>
+   &nbsp;&nbsp;● Just have fun programming :)
 
-The [doxygen-awesome-css](https://github.com/jothepro/doxygen-awesome-css) repository uses the same
-[license](https://github.com/jothepro/doxygen-awesome-css/blob/main/LICENSE).
+Keep in mind, the [doxygen-awesome-css](https://github.com/jothepro/doxygen-awesome-css) submodule repository uses an
+[MIT license](https://github.com/jothepro/doxygen-awesome-css/blob/main/LICENSE).<br>
+You can either not clone it or fork the project and remove it to be 100% safe if you use the `CC0 1.0` license.<br>
+The documentation will still build without it, but it will have a "worse"-looking UI.

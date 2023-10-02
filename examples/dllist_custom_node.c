@@ -19,8 +19,8 @@ struct my_list_node {
 	int myNodeCustomValue;
 };
 
-// This function is used to allocate the memory for our custom list node ``, and to also populate the custom
-//  members.
+// This function is used to allocate the memory for our custom list node ``,
+//  and to also populate the custom members.
 // A pointer to this function gets passed to `dllist_append`.
 DoubleLinkedListNode *allocateMyNode() {
 	struct my_list_node *myNode = calloc(1, sizeof(struct my_list_node));

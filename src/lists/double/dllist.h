@@ -54,13 +54,12 @@ DLL_EXPORT DoubleLinkedListNode *dllist_createNode();
 #define dllist_selectNext(list) ((DoubleLinkedListNode *) llist_selectNext((LinkedList *) list))
 
 /**
+ * Selects the previous node in the list based on the currently selected one.
+ * @param list The \ref double_linked_list "DoubleLinkedList" whose previous element will be selected.
+ * @return A pointer to the previous \ref double_linked_list_node "DoubleLinkedListNode",
+ *  or `NULL` if the list has no previous element.
  */
-// * Selects the previous node in the list based on the currently selected one.
-// * @param list The \ref double_linked_list "DoubleLinkedList" whose previous element will be selected.
-// * @return A pointer to the previous \ref double_linked_list_node "DoubleLinkedListNode",
-// *  or `NULL` if the list has no previous element.
-// */
-//DLL_EXPORT DoubleLinkedListNode *dllist_selectPrevious(DoubleLinkedList *list);
+DLL_EXPORT DoubleLinkedListNode *dllist_selectPrevious(DoubleLinkedList *list);
 
 /**
  * Selects the last node in the list as the current one and returns it.
@@ -92,7 +91,7 @@ DLL_EXPORT DoubleLinkedListNode *dllist_createNode();
  * @param index The \ref double_linked_list_node "DoubleLinkedListNode"'s index.
  * @return The relevant \ref double_linked_list_node "DoubleLinkedListNode", or `NULL` if not found.
  */
-#define dllist_getByIndex(list, index) ((DoubleLinkedListNode *) llist_getByIndex((DoubleLinkedList *) list, index))
+#define dllist_getByIndex(list, index) ((DoubleLinkedListNode *) llist_getByIndex((LinkedList *) list, index))
 
 /**
  * Selects and returns a \ref double_linked_list_node "DoubleLinkedListNode" via its given index in the list.

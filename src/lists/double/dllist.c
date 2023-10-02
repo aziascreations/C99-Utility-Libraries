@@ -31,15 +31,15 @@ DoubleLinkedListNode *dllist_createNode() {
 	return calloc(1, sizeof(DoubleLinkedListNode));
 }
 
-//DoubleLinkedListNode *dllist_selectPrevious(DoubleLinkedList *list) {
-//	if(list != NULL) {
-//		if(list->current != NULL) {
-//			list->current = list->current->previous;
-//			return list->current;
-//		}
-//	}
-//	return NULL;
-//}
+DoubleLinkedListNode *dllist_selectPrevious(DoubleLinkedList *list) {
+	if(list != NULL) {
+		if(list->current != NULL) {
+			list->current = list->current->previous;
+			return list->current;
+		}
+	}
+	return NULL;
+}
 
 bool dllist_append(DoubleLinkedList *list, void *data, DoubleLinkedListNode * (*cb_allocNode)()) {
 	if(list != NULL) {
@@ -59,7 +59,7 @@ bool dllist_append(DoubleLinkedList *list, void *data, DoubleLinkedListNode * (*
 				list->last = newNode;
 				list->first = newNode;
 			} else {
-				// We just append.
+				// We just append to the end of the list.
 				newNode->previous = list->last;
 				list->last->next = newNode;
 				list->last = newNode;

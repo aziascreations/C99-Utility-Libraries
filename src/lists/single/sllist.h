@@ -2,6 +2,8 @@
 
 #pragma once
 
+#include <stdbool.h>
+
 #include "../structs.h"
 #include "../commons.h"
 
@@ -37,7 +39,7 @@ DLL_EXPORT SingleLinkedListNode *sllist_createNode();
  * @return A pointer to the first \ref single_linked_list_node "SingleLinkedListNode",
  *  or `NULL` if the list has no elements.
  */
-#define sllist_selectFirst(list) ((SingleLinkedListNode *) llist_selectFirst(list))
+#define sllist_selectFirst(list) ((SingleLinkedListNode *) llist_selectFirst((LinkedList *) list))
 
 /**
  * Selects the next node in the list based on the currently selected one.
@@ -45,4 +47,61 @@ DLL_EXPORT SingleLinkedListNode *sllist_createNode();
  * @return A pointer to the next \ref double_linked_list_node "DoubleLinkedListNode",
  *  or `NULL` if the list has no next element.
  */
-#define dllist_selectNext(list) ((SingleLinkedListNode *) llist_selectNext(list))
+#define sllist_selectNext(list) ((SingleLinkedListNode *) llist_selectNext((LinkedList *) list))
+
+///**
+// * Selects the previous node in the list based on the currently selected one.
+// * @param list The \ref double_linked_list "DoubleLinkedList" whose previous element will be selected.
+// * @return A pointer to the previous \ref double_linked_list_node "DoubleLinkedListNode",
+// *  or `NULL` if the list has no previous element.
+// */
+//DLL_EXPORT SingleLinkedListNode *sllist_selectPrevious(SingleLinkedList *list);
+
+/**
+ * Selects the last node in the list as the current one and returns it.
+ * @param list The \ref double_linked_list "DoubleLinkedList" whose last element will be selected.
+ * @return A pointer to the last \ref double_linked_list_node "DoubleLinkedListNode",
+ *  or `NULL` if the list has no elements.
+ */
+#define sllist_selectLast(list) ((SingleLinkedListNode *) llist_selectLast((LinkedList *) list))
+
+/**
+ * Selects the first node in the list as the current one and returns its data pointer.
+ * @param list The \ref double_linked_list "DoubleLinkedList" whose first element will be selected.
+ * @return A pointer to the first \ref double_linked_list_node "DoubleLinkedListNode"'s data,
+ *  or `NULL` if the list has no elements.
+ */
+#define sllist_selectFirstData(list) ((SingleLinkedListNode *) llist_selectFirstData((LinkedList *) list))
+
+/**
+ * Selects the next node in the list based on the currently selected one and returns its data pointer.
+ * @param list The \ref double_linked_list "DoubleLinkedList" whose next element will be selected.
+ * @return A pointer to the next \ref double_linked_list_node "DoubleLinkedListNode"'s data,
+ *  or `NULL` if the list has no next element.
+ */
+#define sllist_selectNextData(list) (llist_selectNextData((LinkedList *) list))
+
+/**
+ * Returns a \ref double_linked_list_node "DoubleLinkedListNode" via its given index in the list.
+ * @param list The \ref double_linked_list "DoubleLinkedList" whose element will be returned.
+ * @param index The \ref double_linked_list_node "DoubleLinkedListNode"'s index.
+ * @return The relevant \ref double_linked_list_node "DoubleLinkedListNode", or `NULL` if not found.
+ */
+#define sllist_getByIndex(list, index) ((SingleLinkedListNode *) llist_getByIndex((LinkedList *) list, index))
+
+/**
+ * Selects and returns a \ref double_linked_list_node "DoubleLinkedListNode" via its given index in the list.
+ * @param list The \ref double_linked_list "DoubleLinkedList" whose element will be selected.
+ * @param index The \ref double_linked_list_node "DoubleLinkedListNode"'s index.
+ * @return The relevant \ref double_linked_list_node "DoubleLinkedListNode", or `NULL` if not found.
+ */
+#define sllist_selectByIndex(list, index) ((SingleLinkedListNode *) llist_selectByIndex((LinkedList *) list, index))
+
+/**
+ * Appends a \ref double_linked_list_node "DoubleLinkedListNode" with the given data at the end of the
+ *  \ref double_linked_list "DoubleLinkedList".
+ * @param list The relevant \ref double_linked_list "DoubleLinkedList".
+ * @param data Pointer to the data that will be held in a new \ref double_linked_list_node "DoubleLinkedListNode".
+ * @return <code>true</code> if it was appended properly, <code>false</code> otherwise.
+ */
+bool sllist_append(SingleLinkedList *list, void *data, SingleLinkedListNode * (*cb_allocNode)());

@@ -15,3 +15,8 @@ CONTRIBUTING.md
 
 # PureBasic stuff
 *.pb.cfg
+*.exe
+*.pdn
+
+# Misc.
+extra/words_dictionary.json

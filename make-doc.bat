@@ -15,11 +15,10 @@ doxygen
 mkdir "html/docs"
 mkdir "html/docs/images"
 mkdir "html/examples"
+mkdir "html/extra"
 xcopy "images" "html/docs/images" /E /H
 xcopy "../examples" "html/examples" /E /H
-
-:: ??? - WTF was this supposed to accomplish ?
-::copy "..\make-doc.bat" "html\make-doc.bat"
+xcopy "../extra" "html/extra" /E /H
 
 :: Going back to the original directory
 popd

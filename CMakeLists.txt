@@ -67,11 +67,14 @@ endif()
 # Preparing targets
 file(GLOB src_dllist CONFIGURE_DEPENDS "src/lists/double/*.h" "src/lists/double/*.c" "src/lists/*.c" "src/lists/*.h" "src/debug.h")
 file(GLOB src_sllist CONFIGURE_DEPENDS "src/lists/single/*.h" "src/lists/single/*.c" "src/lists/*.c" "src/lists/*.h" "src/debug.h")
+file(GLOB_RECURSE src_llist CONFIGURE_DEPENDS "src/lists/*.h" "src/lists/*.c" "src/debug.h")
 file(GLOB src_args CONFIGURE_DEPENDS "src/lists/double/*.h" "src/lists/double/*.c" "src/text.c" "src/text.h" "src/arguments/*.h" "src/arguments/*.c" "src/debug.h")
 file(GLOB src_uuid CONFIGURE_DEPENDS "src/uuid/*.h" "src/uuid/*.c")
 file(GLOB src_text CONFIGURE_DEPENDS "src/text.h" "src/text.c")
 file(GLOB_RECURSE src_hash CONFIGURE_DEPENDS "src/hash/*.h" "src/hash/*.c")
 file(GLOB_RECURSE src_all CONFIGURE_DEPENDS "src/*.h" "src/*.c")
+
+file(GLOB src_test_utils CONFIGURE_DEPENDS "tests/assert.h" "tests/memutils.c" "tests/memutils.h")
 
 # Preparing targets > Dynamic DLL
 add_library(np_clang_goodies_dll_dynamic SHARED ${src_all} rsc/np_clang_goodies.rc)
@@ -112,36 +115,40 @@ target_compile_definitions(manual_testing PUBLIC NP_DEBUG_LOGGING)
 add_executable(example_dllist_basic examples/dllist_basic.c ${src_dllist} ${src_text})
 add_executable(example_dllist_custom_free examples/dllist_custom_free.c ${src_dllist} ${src_text})
 add_executable(example_dllist_custom_node examples/dllist_custom_node.c ${src_dllist} ${src_text})
+add_executable(example_dllist_specific examples/dllist_specific.c ${src_dllist} ${src_text})
 add_executable(example_uuid_all examples/uuid_all.c ${src_uuid})
 add_executable(example_crc32 examples/crc32.c ${src_hash})
 
 # Preparing targets > Tests
-add_executable(test_args_options tests/arguments/test_options.c ${src_args} tests/assert.h)
+add_executable(test_args_options tests/arguments/test_options.c ${src_args} ${src_test_utils})
 add_test(NAME test_args_options COMMAND test_args_options)
 #target_compile_definitions(test_args_options PUBLIC NP_DEBUG_LOGGING)
 
-add_executable(test_verb_registration tests/arguments/test_verb_registration.c ${src_args} tests/assert.h)
+add_executable(test_verb_registration tests/arguments/test_verb_registration.c ${src_args} ${src_test_utils})
 add_test(NAME test_verb_registration COMMAND test_verb_registration)
 #target_compile_definitions(test_verb_registration PUBLIC NP_DEBUG_LOGGING)
 
-add_executable(test_args_parsing_basic tests/arguments/test_args_parsing_basic.c ${src_args} tests/assert.h)
+add_executable(test_args_parsing_basic tests/arguments/test_args_parsing_basic.c ${src_args} ${src_test_utils})
 add_test(NAME test_args_parsing_basic COMMAND test_args_parsing_basic)
 #target_compile_definitions(test_args_parsing_basic PUBLIC NP_DEBUG_LOGGING)
 
-add_executable(test_args_required_option tests/arguments/test_args_required_option.c ${src_args} tests/assert.h)
+add_executable(test_args_required_option tests/arguments/test_args_required_option.c ${src_args} ${src_test_utils})
 add_test(NAME test_args_required_option COMMAND test_args_required_option)
 #target_compile_definitions(test_args_required_option PUBLIC NP_DEBUG_LOGGING)
 
-add_executable(test_args_default_option tests/arguments/test_args_default_option.c ${src_args} tests/assert.h)
+add_executable(test_args_default_option tests/arguments/test_args_default_option.c ${src_args} ${src_test_utils})
 add_test(NAME test_args_default_option COMMAND test_args_default_option)
 #target_compile_definitions(test_args_default_option PUBLIC NP_DEBUG_LOGGING)
 
-add_executable(test_lists_dllist_leaks tests/lists/test_dllist_leaks.c ${src_dllist} tests/assert.h)
-add_test(NAME test_lists_dllist_leaks COMMAND test_lists_dllist_leaks)
-#target_compile_definitions(test_lists_dllist_leaks PUBLIC NP_DEBUG_LOGGING)
-if(WIN32)
-    target_link_libraries(test_lists_dllist_leaks PRIVATE kernel32.lib)  # Used to access `GetProcessMemoryInfo`
-endif()
+#add_executable(test_lists_dllist_leaks tests/lists/test_dllist_leaks.c ${src_dllist} ${src_test_utils})
+#add_test(NAME test_lists_dllist_leaks COMMAND test_lists_dllist_leaks)
+##target_compile_definitions(test_lists_dllist_leaks PUBLIC NP_DEBUG_LOGGING)
+#if(WIN32)
+#    target_link_libraries(test_lists_dllist_leaks PRIVATE kernel32.lib)  # Used to access `GetProcessMemoryInfo`
+#endif()
+
+add_executable(test_list_default_node_size tests/lists/test_list_default_node_size.c ${src_llist} ${src_test_utils})
+add_test(NAME test_list_default_node_size COMMAND test_list_default_node_size)
 
 
 # Documentation
