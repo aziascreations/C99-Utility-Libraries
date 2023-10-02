@@ -1,3 +1,5 @@
+/** @file */
+
 #pragma once
 
 typedef struct single_linked_list_node SingleLinkedListNode;
@@ -109,6 +111,7 @@ struct double_linked_list {
 	 *  node.
 	 */
 	DoubleLinkedListNode *first;
+	
 	/**
 	 * Pointer to a potentially `NULL` \ref double_linked_list_node "DoubleLinkedListNode" that is the list's last
 	 *  node.<br>

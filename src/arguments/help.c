@@ -1,4 +1,4 @@
-/// @file help.c
+/** @file */
 
 #include "help.h"
 

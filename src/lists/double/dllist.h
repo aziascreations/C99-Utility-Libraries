@@ -8,7 +8,7 @@
 #include "../structs.h"
 #include "../commons.h"
 
-#ifdef NP_DLLIST_EXPORT
+#if defined(NP_GOODIES_EXPORT_DLLIST) || defined(NP_GOODIES_EXPORT_LIST_ALL) || defined(NP_GOODIES_EXPORT_ALL)
 #define DLL_EXPORT __declspec(dllexport)
 #else
 #define DLL_EXPORT
@@ -51,7 +51,7 @@ DLL_EXPORT DoubleLinkedListNode *dllist_createNode();
  * @return A pointer to the next \ref double_linked_list_node "DoubleLinkedListNode",
  *  or `NULL` if the list has no next element.
  */
-#define dllist_selectNext(list) ((DoubleLinkedListNode *) llist_selectNext(list))
+#define dllist_selectNext(list) ((DoubleLinkedListNode *) llist_selectNext((LinkedList *) list))
 
 /**
  */

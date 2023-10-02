@@ -1,4 +1,4 @@
-/// @file uuid4.c
+/** @file */
 
 #include "uuid4.h"
 

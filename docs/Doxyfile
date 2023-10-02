@@ -239,7 +239,15 @@ WARN_LOGFILE           =
 # Configuration options related to the input files
 #---------------------------------------------------------------------------
 
-INPUT                  = "../src/" "../src/arguments/" "../src/lists/double/" "../src/uuid/" "../readme.md"
+INPUT                  = "../extra/" \
+                         "../src/" \
+                         "../src/arguments/" \
+                         "../src/hash/crc32/" \
+                         "../src/lists/" \
+                         "../src/lists/double/" \
+                         "../src/lists/single/" \
+                         "../src/uuid/" \
+                         "../readme.md"
 INPUT_ENCODING         = UTF-8
 INPUT_FILE_ENCODING    =
 FILE_PATTERNS          = *.c *.h *.md

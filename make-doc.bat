@@ -18,7 +18,7 @@ mkdir "html/examples"
 xcopy "images" "html/docs/images" /E /H
 xcopy "../examples" "html/examples" /E /H
 
-:: ???
+:: ??? - WTF was this supposed to accomplish ?
 ::copy "..\make-doc.bat" "html\make-doc.bat"
 
 :: Going back to the original directory

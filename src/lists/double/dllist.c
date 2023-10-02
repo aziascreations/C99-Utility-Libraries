@@ -1,4 +1,4 @@
-/// @file dllist.c
+/** @file */
 
 #include "dllist.h"
 

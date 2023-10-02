@@ -20,27 +20,27 @@ void freeMyStruct(void *data) {
 }
 
 int main() {
-	// Creating a list that will free the data with `freeMyStruct`.
-	DoubleLinkedList *myList = dllist_create(&freeMyStruct);
+	// Creating a list.
+	DoubleLinkedList *myList = dllist_create();
 	
 	// Adding some data.
 	struct my_struct *myData;
 	
 	myData = malloc(sizeof(struct my_struct));
 	myData->nestedString = copyString("Hello world !");
-	dllist_append(myList, myData);
+	dllist_append(myList, myData, NULL);
 	
 	myData = malloc(sizeof(struct my_struct));
 	myData->nestedString = copyString("Lorem ipsum donor si amet.");
-	dllist_append(myList, myData);
+	dllist_append(myList, myData, NULL);
 	
 	myData = malloc(sizeof(struct my_struct));
 	myData->nestedString = copyString("Test 123");
-	dllist_append(myList, myData);
+	dllist_append(myList, myData, NULL);
 	
 	myData = malloc(sizeof(struct my_struct));
 	myData->nestedString = copyString("I'm at the end :)");
-	dllist_append(myList, myData);
+	dllist_append(myList, myData, NULL);
 	
 	// Iterating over the list with direct access
 	printf("Iteration with direct data access:\n");
@@ -54,7 +54,9 @@ int main() {
 	printf("\n");
 	
 	// Freeing the list and the strings from memory.
-	// This function will call the `&freeMyStruct` function we gave `dllist_create` earlier with each string we added.
+	// This function will call the given custom `void (*cb_freeData)(void *data)` callback with each string we added.
+	// The second callback can be left as NULL since we use the standard list nodes,
+	//  the standard `free` function will automatically be called for each node in this case.
 	printf("Freeing the list...\n");
-	dllist_free(myList);
+	dllist_free(myList, &freeMyStruct, NULL);
 }

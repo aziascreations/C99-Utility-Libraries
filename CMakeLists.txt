@@ -66,7 +66,7 @@ endif()
 
 # Preparing targets
 file(GLOB src_dllist CONFIGURE_DEPENDS "src/lists/double/*.h" "src/lists/double/*.c" "src/lists/*.c" "src/lists/*.h" "src/debug.h")
-file(GLOB src_sllist CONFIGURE_DEPENDS "src/lists/simple/*.h" "src/lists/simple/*.c" "src/lists/*.c" "src/lists/*.h" "src/debug.h")
+file(GLOB src_sllist CONFIGURE_DEPENDS "src/lists/single/*.h" "src/lists/single/*.c" "src/lists/*.c" "src/lists/*.h" "src/debug.h")
 file(GLOB src_args CONFIGURE_DEPENDS "src/lists/double/*.h" "src/lists/double/*.c" "src/text.c" "src/text.h" "src/arguments/*.h" "src/arguments/*.c" "src/debug.h")
 file(GLOB src_uuid CONFIGURE_DEPENDS "src/uuid/*.h" "src/uuid/*.c")
 file(GLOB src_text CONFIGURE_DEPENDS "src/text.h" "src/text.c")
@@ -111,6 +111,7 @@ target_compile_definitions(manual_testing PUBLIC NP_DEBUG_LOGGING)
 # Preparing targets > Examples
 add_executable(example_dllist_basic examples/dllist_basic.c ${src_dllist} ${src_text})
 add_executable(example_dllist_custom_free examples/dllist_custom_free.c ${src_dllist} ${src_text})
+add_executable(example_dllist_custom_node examples/dllist_custom_node.c ${src_dllist} ${src_text})
 add_executable(example_uuid_all examples/uuid_all.c ${src_uuid})
 add_executable(example_crc32 examples/crc32.c ${src_hash})
 
@@ -134,6 +135,14 @@ add_test(NAME test_args_required_option COMMAND test_args_required_option)
 add_executable(test_args_default_option tests/arguments/test_args_default_option.c ${src_args} tests/assert.h)
 add_test(NAME test_args_default_option COMMAND test_args_default_option)
 #target_compile_definitions(test_args_default_option PUBLIC NP_DEBUG_LOGGING)
+
+add_executable(test_lists_dllist_leaks tests/lists/test_dllist_leaks.c ${src_dllist} tests/assert.h)
+add_test(NAME test_lists_dllist_leaks COMMAND test_lists_dllist_leaks)
+#target_compile_definitions(test_lists_dllist_leaks PUBLIC NP_DEBUG_LOGGING)
+if(WIN32)
+    target_link_libraries(test_lists_dllist_leaks PRIVATE kernel32.lib)  # Used to access `GetProcessMemoryInfo`
+endif()
+
 
 # Documentation
 # TODO: Add custom target for it.

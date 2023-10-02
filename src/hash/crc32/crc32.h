@@ -1,4 +1,4 @@
-/// @file crc32.h
+/** @file */
 
 #pragma once
 
