@@ -9,9 +9,9 @@
 #include "../commons.h"
 
 #if defined(NP_GOODIES_EXPORT_DLLIST) || defined(NP_GOODIES_EXPORT_LIST_ALL) || defined(NP_GOODIES_EXPORT_ALL)
-#define DLL_EXPORT __declspec(dllexport)
+#define DLL_EXP_DLLIST __declspec(dllexport)
 #else
-#define DLL_EXPORT
+#define DLL_EXP_DLLIST
 #endif
 
 /**
@@ -27,7 +27,7 @@
  * Creates a single linked list node.
  * @return A pointer to a newly allocated \ref single_linked_list_node "SingleLinkedListNode" structure.
  */
-DLL_EXPORT DoubleLinkedListNode *dllist_createNode();
+DLL_EXP_DLLIST DoubleLinkedListNode *dllist_createNode();
 
 /**
  * Frees the given list and all of its nodes' data.
@@ -59,7 +59,7 @@ DLL_EXPORT DoubleLinkedListNode *dllist_createNode();
  * @return A pointer to the previous \ref double_linked_list_node "DoubleLinkedListNode",
  *  or `NULL` if the list has no previous element.
  */
-DLL_EXPORT DoubleLinkedListNode *dllist_selectPrevious(DoubleLinkedList *list);
+DLL_EXP_DLLIST DoubleLinkedListNode *dllist_selectPrevious(DoubleLinkedList *list);
 
 /**
  * Selects the last node in the list as the current one and returns it.
@@ -75,7 +75,7 @@ DLL_EXPORT DoubleLinkedListNode *dllist_selectPrevious(DoubleLinkedList *list);
  * @return A pointer to the first \ref double_linked_list_node "DoubleLinkedListNode"'s data,
  *  or `NULL` if the list has no elements.
  */
-#define dllist_selectFirstData(list) ((DoubleLinkedListNode *) llist_selectFirstData((LinkedList *) list))
+#define dllist_selectFirstData(list) (llist_selectFirstData((LinkedList *) list))
 
 /**
  * Selects the next node in the list based on the currently selected one and returns its data pointer.
@@ -108,4 +108,4 @@ DLL_EXPORT DoubleLinkedListNode *dllist_selectPrevious(DoubleLinkedList *list);
  * @param data Pointer to the data that will be held in a new \ref double_linked_list_node "DoubleLinkedListNode".
  * @return <code>true</code> if it was appended properly, <code>false</code> otherwise.
  */
-DLL_EXPORT bool dllist_append(DoubleLinkedList *list, void *data, DoubleLinkedListNode * (*cb_allocNode)());
+DLL_EXP_DLLIST bool dllist_append(DoubleLinkedList *list, void *data, DoubleLinkedListNode * (*cb_allocNode)());

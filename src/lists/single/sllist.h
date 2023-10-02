@@ -8,9 +8,9 @@
 #include "../commons.h"
 
 #if defined(NP_GOODIES_EXPORT_SLLIST) || defined(NP_GOODIES_EXPORT_LIST_ALL) || defined(NP_GOODIES_EXPORT_ALL)
-#define DLL_EXPORT __declspec(dllexport)
+#define DLL_EXP_SLLIST __declspec(dllexport)
 #else
-#define DLL_EXPORT
+#define DLL_EXP_SLLIST
 #endif
 
 /**
@@ -23,7 +23,7 @@
  * Creates a single linked list node.
  * @return A pointer to a newly allocated \ref single_linked_list_node "SingleLinkedListNode" structure.
  */
-DLL_EXPORT SingleLinkedListNode *sllist_createNode();
+DLL_EXP_SLLIST SingleLinkedListNode *sllist_createNode();
 
 /**
  * Frees the given list and all of its nodes' data using the callback for both the data and nodes.
@@ -55,7 +55,7 @@ DLL_EXPORT SingleLinkedListNode *sllist_createNode();
 // * @return A pointer to the previous \ref double_linked_list_node "DoubleLinkedListNode",
 // *  or `NULL` if the list has no previous element.
 // */
-//DLL_EXPORT SingleLinkedListNode *sllist_selectPrevious(SingleLinkedList *list);
+//DLL_EXP_SLLIST SingleLinkedListNode *sllist_selectPrevious(SingleLinkedList *list);
 
 /**
  * Selects the last node in the list as the current one and returns it.
@@ -71,7 +71,7 @@ DLL_EXPORT SingleLinkedListNode *sllist_createNode();
  * @return A pointer to the first \ref double_linked_list_node "DoubleLinkedListNode"'s data,
  *  or `NULL` if the list has no elements.
  */
-#define sllist_selectFirstData(list) ((SingleLinkedListNode *) llist_selectFirstData((LinkedList *) list))
+#define sllist_selectFirstData(list) (llist_selectFirstData((LinkedList *) list))
 
 /**
  * Selects the next node in the list based on the currently selected one and returns its data pointer.
@@ -104,4 +104,4 @@ DLL_EXPORT SingleLinkedListNode *sllist_createNode();
  * @param data Pointer to the data that will be held in a new \ref double_linked_list_node "DoubleLinkedListNode".
  * @return <code>true</code> if it was appended properly, <code>false</code> otherwise.
  */
-bool sllist_append(SingleLinkedList *list, void *data, SingleLinkedListNode * (*cb_allocNode)());
+DLL_EXP_SLLIST bool sllist_append(SingleLinkedList *list, void *data, SingleLinkedListNode * (*cb_allocNode)());

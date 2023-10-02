@@ -1,31 +1,33 @@
 #include <malloc.h>
 #include <stdio.h>
 
-#include "./src/lists/double/dllist.h"
-#include "./src/text.h"
-#include "./src/arguments/arguments.h"
-#include "./src/arguments/flags.h"
-#include "./src/uuid/uuid4.h"
+//#include "./src/lists/double/dllist.h"
+//#include "./src/text.h"
+//#include "./src/arguments/arguments.h"
+//#include "./src/arguments/flags.h"
+//#include "./src/uuid/uuid4.h"
 
-void myFree(void *data) {
-	//printf("> Reee !\n");
-	free(data);
-}
+//void myFree(void *data) {
+//	//printf("> Reee !\n");
+//	free(data);
+//}
 
 int main(int argc, char **argv) {
-	printf("%d\n", INT_MAX);
-	printf("%llu\n", sizeof(UUID4));
+	return 0;
 	
-	for(int i = 0; i < 10; i++) {
-		UUID4 *uuid4 = uuid4_generate();
-		char* uuidStr = uuid_toString(uuid4);
-		wchar_t * uuidWStr = uuid_toWcharString(uuid4);
-		printf("> %s\n", uuidStr);
-		wprintf(L"> %s\n\n", uuidWStr);
-		free(uuidWStr);
-		free(uuidStr);
-		free(uuid4);
-	}
+	//printf("%d\n", INT_MAX);
+	//printf("%llu\n", sizeof(UUID4));
+	//
+	//for(int i = 0; i < 10; i++) {
+	//	UUID4 *uuid4 = uuid4_generate();
+	//	char* uuidStr = uuid_toString(uuid4);
+	//	wchar_t * uuidWStr = uuid_toWcharString(uuid4);
+	//	printf("> %s\n", uuidStr);
+	//	wprintf(L"> %s\n\n", uuidWStr);
+	//	free(uuidWStr);
+	//	free(uuidStr);
+	//	free(uuid4);
+	//}
 	
 	/*Verb *rootVerb = args_createVerb("root", "");
 	Verb *subVerb = args_createVerb("123", "");

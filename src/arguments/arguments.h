@@ -9,10 +9,10 @@
 
 #include "../text.h"
 
-#ifdef NP_ARGUMENTS_EXPORT
-#define DLL_EXPORT __declspec(dllexport)
+#if defined(NP_GOODIES_EXPORT_ARGUMENTS) || defined(NP_GOODIES_EXPORT_ALL)
+#define DLL_EXP_ARGS __declspec(dllexport)
 #else
-#define DLL_EXPORT
+#define DLL_EXP_ARGS
 #endif
 
 // Macros
@@ -29,7 +29,7 @@
  * @param description Description shown in the help text.
  * @return The new \ref arguments_verb "Verb"'s pointer, or <code>NULL</code> if an error occurred.
  */
-DLL_EXPORT Verb *args_createVerb(np_args_char *verb, np_args_char *description);
+DLL_EXP_ARGS Verb *args_createVerb(np_args_char *verb, np_args_char *description);
 
 /**
  * Creates an \ref arguments_option "Option" with the given attributes.
@@ -41,7 +41,7 @@ DLL_EXPORT Verb *args_createVerb(np_args_char *verb, np_args_char *description);
  *
  * \see EOptionFlags
  */
-DLL_EXPORT Option *args_createOption(np_args_char token, np_args_char *name, np_args_char *description, OptionFlags flags);
+DLL_EXP_ARGS Option *args_createOption(np_args_char token, np_args_char *name, np_args_char *description, OptionFlags flags);
 
 
 // Cleaners
@@ -51,7 +51,7 @@ DLL_EXPORT Option *args_createOption(np_args_char token, np_args_char *name, np_
  *  sub-\ref arguments_verb "Verb" and their \ref arguments_option "Option" in a recursive manner.
  * @param verb The \ref arguments_verb "Verb" that needs to be freed.
  */
-DLL_EXPORT void args_freeVerb(Verb *verb);
+DLL_EXP_ARGS void args_freeVerb(Verb *verb);
 
 /**
  * Frees the memory allocated to a given \ref arguments_option "Option" if it isn't still registered in another
@@ -60,7 +60,7 @@ DLL_EXPORT void args_freeVerb(Verb *verb);
  *
  * \see arguments_option::registrationCount
  */
-DLL_EXPORT void args_freeOption(Option *option);
+DLL_EXP_ARGS void args_freeOption(Option *option);
 
 
 // Registers
@@ -71,7 +71,7 @@ DLL_EXPORT void args_freeOption(Option *option);
  * @param parentVerb The parent \ref arguments_verb "Verb" into which the other one is registered.
  * @return <code>true</code> if it was registered, <code>false</code> otherwise.
  */
-DLL_EXPORT bool args_registerVerb(Verb *registeredVerb, Verb *parentVerb);
+DLL_EXP_ARGS bool args_registerVerb(Verb *registeredVerb, Verb *parentVerb);
 
 /**
  * Registers an \ref arguments_option "Option" in a given \ref arguments_verb "Verb".
@@ -79,7 +79,7 @@ DLL_EXPORT bool args_registerVerb(Verb *registeredVerb, Verb *parentVerb);
  * @param parentVerb The \ref arguments_verb "Verb" into which the \ref arguments_option "Option" is being registered.
  * @return <code>true</code> if it was registered and not already registered into it, <code>false</code> otherwise.
  */
-DLL_EXPORT bool args_registerOption(Option *registeredOption, Verb *parentVerb);
+DLL_EXP_ARGS bool args_registerOption(Option *registeredOption, Verb *parentVerb);
 
 /**
  * Registers an \ref arguments_option "Option" in a given \ref arguments_verb "Verb" and all of its
@@ -91,7 +91,7 @@ DLL_EXPORT bool args_registerOption(Option *registeredOption, Verb *parentVerb);
  *
  * \see args_registerOption
  */
-DLL_EXPORT bool args_registerOptionRecursively(Option *registeredOption, Verb *rootVerb);
+DLL_EXP_ARGS bool args_registerOptionRecursively(Option *registeredOption, Verb *rootVerb);
 
 
 // Getters
@@ -101,14 +101,14 @@ DLL_EXPORT bool args_registerOptionRecursively(Option *registeredOption, Verb *r
  * @param verb The \ref arguments_verb "Verb" whose parent need to be retrieved.
  * @return The parent \ref arguments_verb "Verb" if it is present, <code>NULL</code> otherwise.
  */
-DLL_EXPORT Verb *args_getParentVerb(Verb *verb);
+DLL_EXP_ARGS Verb *args_getParentVerb(Verb *verb);
 
 /**
  * Get the \ref arguments_option "Option" with the \ref FLAG_OPTION_DEFAULT flag from a given \ref arguments_verb "Verb".
  * @param verb The \ref arguments_verb "Verb" whose options will be sifted through.
  * @return The default \ref arguments_option "Option" if found, <code>NULL</code> otherwise.
  */
-DLL_EXPORT Option *args_getDefaultOption(Verb *verb);
+DLL_EXP_ARGS Option *args_getDefaultOption(Verb *verb);
 
 /**
  * Get an \ref arguments_option "Option" from a given \ref arguments_verb "Verb" by searching for it with its
@@ -117,7 +117,7 @@ DLL_EXPORT Option *args_getDefaultOption(Verb *verb);
  * @param desiredToken The desired \ref arguments_option "Option"'s <i>token</i>.
  * @return The relevant \ref arguments_option "Option" if found, <code>NULL</code> otherwise.
  */
-DLL_EXPORT Option *args_getOptionByToken(Verb *verb, np_args_char desiredToken);
+DLL_EXP_ARGS Option *args_getOptionByToken(Verb *verb, np_args_char desiredToken);
 
 /**
  * Get an \ref arguments_option "Option" from a given \ref arguments_verb "Verb" by searching for it with its
@@ -126,7 +126,7 @@ DLL_EXPORT Option *args_getOptionByToken(Verb *verb, np_args_char desiredToken);
  * @param desiredName The desired \ref arguments_option "Option"'s <i>name</i>.
  * @return The relevant \ref arguments_option "Option" if found, <code>NULL</code> otherwise.
  */
-DLL_EXPORT Option *args_getOptionByName(Verb *verb, np_args_char *desiredName);
+DLL_EXP_ARGS Option *args_getOptionByName(Verb *verb, np_args_char *desiredName);
 
 /**
  * Get a sub-\ref arguments_verb "Verb" from a given \ref arguments_verb "Verb" by searching for it with its
@@ -135,7 +135,7 @@ DLL_EXPORT Option *args_getOptionByName(Verb *verb, np_args_char *desiredName);
  * @param desiredName The desired sub-\ref arguments_verb "Verb"'s <i>name</i>.
  * @return relevant \ref arguments_verb "Verb" if found, <code>NULL</code> otherwise.
  */
-DLL_EXPORT Verb *args_getSubVerbByName(Verb *parentVerb, np_args_char *desiredName);
+DLL_EXP_ARGS Verb *args_getSubVerbByName(Verb *parentVerb, np_args_char *desiredName);
 
 /**
  * Attempts to grab the default \ref arguments_option "Option" that should be used as one during the parsing process
@@ -144,7 +144,7 @@ DLL_EXPORT Verb *args_getSubVerbByName(Verb *parentVerb, np_args_char *desiredNa
  * @param parentVerb The \ref arguments_verb "Verb" whose options will be sifted through.
  * @return The relevant \ref arguments_option "Option" if found, <code>NULL</code> otherwise.
  */
-DLL_EXPORT Option *args_getRelevantDefaultOption(Verb *parentVerb);
+DLL_EXP_ARGS Option *args_getRelevantDefaultOption(Verb *parentVerb);
 
 
 // Misc
@@ -156,7 +156,7 @@ DLL_EXPORT Option *args_getRelevantDefaultOption(Verb *parentVerb);
  * @param addedValue The value to be appended to the given \ref arguments_option "Option"'s values.
  * @return `true` if the value was added, `false` otherwise.
  */
-DLL_EXPORT bool args_addValueToOption(Option *option, np_args_char *addedValue);
+DLL_EXP_ARGS bool args_addValueToOption(Option *option, np_args_char *addedValue);
 
 /**
  * Checks if a \ref arguments_verb "Verb" is registered as a sub-\ref arguments_verb "Verb" in another
@@ -165,7 +165,7 @@ DLL_EXPORT bool args_addValueToOption(Option *option, np_args_char *addedValue);
  * @param parentVerb The \ref arguments_verb "Verb" that may contain \p subVerb.
  * @return `true` if it is registered into it, `false` otherwise.
  */
-DLL_EXPORT bool args_isVerbAlreadyRegistered(Verb *subVerb, Verb *parentVerb);
+DLL_EXP_ARGS bool args_isVerbAlreadyRegistered(Verb *subVerb, Verb *parentVerb);
 
 /**
  * Checks if an \ref arguments_option "Option" is registered in the given \ref arguments_verb "Verb".
@@ -173,7 +173,7 @@ DLL_EXPORT bool args_isVerbAlreadyRegistered(Verb *subVerb, Verb *parentVerb);
  * @param parentVerb The \ref arguments_verb "Verb" that may contain \p option.
  * @return `true` if it is registered into it, `false` otherwise.
  */
-DLL_EXPORT bool args_isOptionAlreadyRegistered(Option *option, Verb *parentVerb);
+DLL_EXP_ARGS bool args_isOptionAlreadyRegistered(Option *option, Verb *parentVerb);
 
 
 // Parser
@@ -194,5 +194,5 @@ DLL_EXPORT bool args_isOptionAlreadyRegistered(Option *option, Verb *parentVerb)
  *
  * \see EArgumentParserErrors
  */
-DLL_EXPORT enum EArgumentParserErrors
+DLL_EXP_ARGS enum EArgumentParserErrors
 args_parseArguments(Verb *rootVerb, np_args_char *arguments[], int startIndex, int endIndex, Verb **pRelevantVerb);
