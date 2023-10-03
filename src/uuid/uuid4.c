@@ -8,7 +8,7 @@
 
 UUID4 *uuid4_generate() {
 	// C99-compatible compile-time check for the UUID4 structure's size.
-	NP_UUID_CHECK_STRUCT_SIZE(sizeof(UUID4) != UUID_BYTE_LENGTH);
+	NP_GOODIES_UUID_CHECK_STRUCT_SIZE(sizeof(UUID4) != UUID_BYTE_LENGTH);
 	
 	// Allocating memory to the buffer.
 	UUID4 *returnedUUID4 = malloc(UUID_BYTE_LENGTH);

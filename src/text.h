@@ -8,10 +8,10 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-#ifdef NP_TEXT_EXPORT
-#define DLL_EXPORT __declspec(dllexport)
+#if defined(NP_GOODIES_EXPORT_TEXT) || defined(NP_GOODIES_EXPORT_ALL)
+#define DLL_EXP_TEXT __declspec(dllexport)
 #else
-#define DLL_EXPORT
+#define DLL_EXP_TEXT
 #endif
 
 #define areStringsEqual(string1, string2) (strcmp(string1, string2) == 0)
@@ -23,7 +23,7 @@
  * @param stringToCopy The string to be copied.
  * @return The copied string's pointer, or `NULL` if an error occurred.
  */
-DLL_EXPORT char *copyString(char *stringToCopy);
+DLL_EXP_TEXT char *copyString(char *stringToCopy);
 
 /**
  * Checks if a given \a string starts with a given \a prefix.
@@ -31,14 +31,14 @@ DLL_EXPORT char *copyString(char *stringToCopy);
  * @param prefix The prefix to be searched for in \a string.
  * @return `true` if the string starts with the given prefix, `false` otherwise.
  */
-DLL_EXPORT bool stringStartsWith(char *string, char *prefix);
+DLL_EXP_TEXT bool stringStartsWith(char *string, char *prefix);
 
 /**
  * Checks if the given \a string is `NULL`, empty or filled with spaces.
  * @param string The string to be checked.
  * @return `true` if the string is empty, `false` otherwise.
  */
-DLL_EXPORT bool isStringEmpty(char *string);
+DLL_EXP_TEXT bool isStringEmpty(char *string);
 
 /**
  * Finds the next space in a given string and returns its index.
@@ -46,7 +46,7 @@ DLL_EXPORT bool isStringEmpty(char *string);
  * @param startIndex The index at which the search will start in the given \a string.
  * @return The index at which the next space will be located if found, or the string's end index.
  */
-DLL_EXPORT int nextCharSpaceIndex(const char *string, int startIndex);
+DLL_EXP_TEXT int nextCharSpaceIndex(const char *string, int startIndex);
 
 #ifdef NP_WIN32
 /**
@@ -56,7 +56,7 @@ DLL_EXPORT int nextCharSpaceIndex(const char *string, int startIndex);
  * @param stringToCopy The string to be copied.
  * @return The copied string's pointer, or `NULL` if an error occurred.
  */
-DLL_EXPORT wchar_t *copyWCharString(wchar_t *stringToCopy);
+DLL_EXP_TEXT wchar_t *copyWCharString(wchar_t *stringToCopy);
 
 /**
  * Checks if a given \a string starts with a given \a prefix.<br>
@@ -65,7 +65,7 @@ DLL_EXPORT wchar_t *copyWCharString(wchar_t *stringToCopy);
  * @param prefix The prefix to be searched for in \a string.
  * @return `true` if the string starts with the given prefix, `false` otherwise.
  */
-DLL_EXPORT bool wCharStringStartsWith(wchar_t *string, wchar_t *prefix);
+DLL_EXP_TEXT bool wCharStringStartsWith(wchar_t *string, wchar_t *prefix);
 
 /**
  * Checks if the given \a string is `NULL`, empty or filled with spaces.<br>
@@ -73,7 +73,7 @@ DLL_EXPORT bool wCharStringStartsWith(wchar_t *string, wchar_t *prefix);
  * @param string The string to be checked.
  * @return `true` if the string is empty, `false` otherwise.
  */
-DLL_EXPORT bool isWCharStringEmpty(wchar_t *string);
+DLL_EXP_TEXT bool isWCharStringEmpty(wchar_t *string);
 
 /**
  * Converts a given `char` string into a `wchar_t` one and returns its pointer.<br>
@@ -82,7 +82,7 @@ DLL_EXPORT bool isWCharStringEmpty(wchar_t *string);
  * @param originalString The original string to be copied
  * @return The converted string's pointer, or `NULL` if an error occurred.
  */
-DLL_EXPORT wchar_t *charStringToWChar(char *originalString);
+DLL_EXP_TEXT wchar_t *charStringToWChar(char *originalString);
 
 /**
  * Finds the next space in a given string and returns its index.<br>
@@ -91,6 +91,6 @@ DLL_EXPORT wchar_t *charStringToWChar(char *originalString);
  * @param startIndex The index at which the search will start in the given \a string.
  * @return The index at which the next space will be located if found, or the string's end index.
  */
-DLL_EXPORT int nextWCharSpaceIndex(const wchar_t *string, int startIndex);
+DLL_EXP_TEXT int nextWCharSpaceIndex(const wchar_t *string, int startIndex);
 
 #endif
