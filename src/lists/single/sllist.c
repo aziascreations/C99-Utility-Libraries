@@ -8,6 +8,33 @@ SingleLinkedListNode *sllist_createNode() {
 	return calloc(1, sizeof(SingleLinkedListNode));
 }
 
+bool sllist_prepend(SingleLinkedList *list, void *data, SingleLinkedListNode * (*cb_allocNode)()) {
+	if(list != NULL) {
+		if(cb_allocNode == NULL) {
+			cb_allocNode = &sllist_createNode;
+		}
+		
+		SingleLinkedListNode *newNode = cb_allocNode();
+		
+		if(newNode != NULL) {
+			newNode->data = data;
+			
+			newNode->next = list->first;
+			list->first = newNode;
+			
+			if(list->last == NULL) {
+				// This is the first node in the list.
+				list->last = newNode;
+			}
+			
+			list->size++;
+			return true;
+		}
+	}
+	
+	return false;
+}
+
 bool sllist_append(SingleLinkedList *list, void *data, SingleLinkedListNode * (*cb_allocNode)()) {
 	if(list != NULL) {
 		if(cb_allocNode == NULL) {
@@ -32,6 +59,34 @@ bool sllist_append(SingleLinkedList *list, void *data, SingleLinkedListNode * (*
 			
 			list->size++;
 			return true;
+		}
+	}
+	
+	return false;
+}
+
+bool sllist_insertAfterCurrent(SingleLinkedList *list, void *data, SingleLinkedListNode * (*cb_allocNode)()) {
+	if(list != NULL) {
+		if(list->current != NULL) {
+			if(cb_allocNode == NULL) {
+				cb_allocNode = &sllist_createNode;
+			}
+			
+			SingleLinkedListNode *newNode = cb_allocNode();
+			
+			if(newNode != NULL) {
+				newNode->data = data;
+				
+				newNode->next = list->current->next;
+				list->current->next = newNode;
+				
+				if(newNode->next == NULL) {
+					list->last = newNode;
+				}
+				
+				list->size++;
+				return true;
+			}
 		}
 	}
 	

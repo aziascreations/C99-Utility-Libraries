@@ -178,6 +178,7 @@ endif()
 if(NP_GOODIES_BUILD_TESTS)
     message("---> Adding test targets...")
 
+    # Targets > Tests > Arguments
     add_executable(test_args_options tests/arguments/test_options.c ${src_args} ${src_test_utils})
     add_test(NAME test_args_options COMMAND test_args_options)
     #target_compile_definitions(test_args_options PUBLIC NP_DEBUG_LOGGING)
@@ -198,9 +199,14 @@ if(NP_GOODIES_BUILD_TESTS)
     add_test(NAME test_args_default_option COMMAND test_args_default_option)
     #target_compile_definitions(test_args_default_option PUBLIC NP_DEBUG_LOGGING)
 
-    add_executable(test_list_default_node_size tests/lists/test_list_default_node_size.c ${src_llist} ${src_test_utils})
-    add_test(NAME test_list_default_node_size COMMAND test_list_default_node_size)
-    #target_compile_definitions(test_list_default_node_size PUBLIC NP_DEBUG_LOGGING)
+    # Targets > Tests > Lists
+    add_executable(test_llist_default_node_size tests/lists/test_llist_default_node_size.c ${src_llist} ${src_test_utils})
+    add_test(NAME test_llist_default_node_size COMMAND test_llist_default_node_size)
+
+    add_executable(test_sllist_insertion tests/lists/test_sllist_insertion.c ${src_sllist} ${src_test_utils})
+    add_test(NAME test_sllist_insertion COMMAND test_sllist_insertion)
+    add_executable(test_dllist_insertion tests/lists/test_dllist_insertion.c ${src_dllist} ${src_test_utils})
+    add_test(NAME test_dllist_insertion COMMAND test_dllist_insertion)
 else()
     message("---> Skipping test targets...")
 endif()

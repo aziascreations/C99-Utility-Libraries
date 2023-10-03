@@ -136,6 +136,15 @@ DLL_EXP_DLLIST DoubleLinkedListNode *dllist_selectPrevious(DoubleLinkedList *lis
 #define dllist_selectByIndex(list, index) ((DoubleLinkedListNode *) llist_selectByIndex((LinkedList *) list, index))
 
 /**
+ * ???
+ * @param list
+ * @param data
+ * @param cb_allocNode
+ * @return
+ */
+DLL_EXP_DLLIST bool dllist_prepend(DoubleLinkedList *list, void *data, DoubleLinkedListNode * (*cb_allocNode)());
+
+/**
  * Appends a \ref double_linked_list_node "DoubleLinkedListNode" with the given data at the end of the
  *  \ref double_linked_list "DoubleLinkedList".
  * @param list The relevant \ref double_linked_list "DoubleLinkedList".
@@ -143,5 +152,18 @@ DLL_EXP_DLLIST DoubleLinkedListNode *dllist_selectPrevious(DoubleLinkedList *lis
  * @return <code>true</code> if it was appended properly, <code>false</code> otherwise.
  */
 DLL_EXP_DLLIST bool dllist_append(DoubleLinkedList *list, void *data, DoubleLinkedListNode * (*cb_allocNode)());
+
+/**
+ * ???
+ * @param list The relevant \ref double_linked_list "DoubleLinkedList".
+ * @param data
+ * @param cb_allocNode
+ * @return (If not current, false)
+ */
+DLL_EXP_DLLIST bool dllist_insertAfterCurrent(
+		DoubleLinkedList *list,
+		void *data,
+		DoubleLinkedListNode * (*cb_allocNode)()
+);
 
 /** @} */ // end of group_dllist
