@@ -14,6 +14,35 @@
 #define DLL_EXP_DLLIST
 #endif
 
+/** @defgroup group_dllist Double linked lists
+ *
+ *  Every linked list is composed of these 3 distinct parts.
+ *
+ *  <b>\ref double_linked_list "DoubleLinkedList"</b><br>
+ *  Main structure that contains pointers to the first, last and current
+ *    \ref double_linked_list_node "DoubleLinkedListNode".<br>
+ *  All functions in this module use or return a pointer to this type of structure.
+ *
+ *  <b>\ref double_linked_list_node "DoubleLinkedListNode"</b><br>
+ *  Repeatable structure that is pointed to internally by the \ref double_linked_list "DoubleLinkedList" in order
+ *    to represent a list entry.<br>
+ *  This structure only contains pointer to the data it holds and the next and previous
+ *    \ref double_linked_list_node "DoubleLinkedListNode".
+ *
+ *  <b>The data pointer</b><br>
+ *  Also referred to as the *node's data*, this is a pointer to the data you want the list to hold.<br>
+ *  When freeing a list, this is the pointer passed to the freeing function.
+ *
+ *
+ *  \see \ref group_llist "Linked lists commons module"
+ *  \see \ref group_sllist "Single linked lists module"
+ *
+ *  \see double_linked_list
+ *  \see double_linked_list_node
+ *
+ *  @{
+ */
+
 /**
  * Creates a double linked list that uses the given function to free the nodes' data.
  * @param free Pointer to a `void free(void *data)` function that will be called for each list element when freeing the
@@ -86,6 +115,11 @@ DLL_EXP_DLLIST DoubleLinkedListNode *dllist_selectPrevious(DoubleLinkedList *lis
 #define dllist_selectNextData(list) (llist_selectNextData((LinkedList *) list))
 
 /**
+ * TODO
+ */
+#define dllist_selectLastData(list) (llist_selectLastData((LinkedList *) list))
+
+/**
  * Returns a \ref double_linked_list_node "DoubleLinkedListNode" via its given index in the list.
  * @param list The \ref double_linked_list "DoubleLinkedList" whose element will be returned.
  * @param index The \ref double_linked_list_node "DoubleLinkedListNode"'s index.
@@ -109,3 +143,5 @@ DLL_EXP_DLLIST DoubleLinkedListNode *dllist_selectPrevious(DoubleLinkedList *lis
  * @return <code>true</code> if it was appended properly, <code>false</code> otherwise.
  */
 DLL_EXP_DLLIST bool dllist_append(DoubleLinkedList *list, void *data, DoubleLinkedListNode * (*cb_allocNode)());
+
+/** @} */ // end of group_dllist

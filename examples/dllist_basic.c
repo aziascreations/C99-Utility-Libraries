@@ -20,15 +20,18 @@ int main() {
 	// This should only be done when manually browsing the list or when using custom nodes.
 	printf("Explicit selection & data access through the list's node:\n");
 	printf("> First: %s\n", (char *) (dllist_selectFirst(myList)->data));
-	printf("> Nbr2: %s\n", (char *) (dllist_selectByIndex(myList, 2)->data));
-	printf("> Nbr3: %s\n", (char *) dllist_selectByIndex(myList, 3)->data);
-	printf("> Last: %s\n", (char *) dllist_selectLast(myList)->data);
+	printf("> Nbr2:  %s\n", (char *) (dllist_selectByIndex(myList, 2)->data));
+	printf("> Nbr3:  %s\n", (char *) dllist_selectByIndex(myList, 3)->data);
+	printf("> Last:  %s\n", (char *) dllist_selectLast(myList)->data);
 	printf("\n");
 	
 	// Accessing the data directly.
 	// The `dllist_selectFirstData` function will reset the list's internal `*current` pointer to the first element.
 	printf("Explicit selection & direct data access:\n");
 	printf("> First: %s\n", (char *) dllist_selectFirstData(myList));
+	printf("> Nbr2:  %s\n", (char *) dllist_selectNextData(myList));
+	printf("> Nbr3:  %s\n", (char *) dllist_selectNextData(myList));
+	printf("> First: %s\n", (char *) dllist_selectLastData(myList));
 	printf("\n");
 	
 	// Iterating over the list with indirect access

@@ -4,13 +4,6 @@
 
 #include <stdlib.h>
 
-/** @defgroup group_sllist Single linked lists
- *
- *  TODO
- *
- *  @{
- */
-
 SingleLinkedListNode *sllist_createNode() {
 	return calloc(1, sizeof(SingleLinkedListNode));
 }
@@ -44,5 +37,3 @@ bool sllist_append(SingleLinkedList *list, void *data, SingleLinkedListNode * (*
 	
 	return false;
 }
-
-/** @} */ // end of group_sllist

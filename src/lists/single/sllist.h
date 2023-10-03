@@ -13,6 +13,16 @@
 #define DLL_EXP_SLLIST
 #endif
 
+/** @defgroup group_sllist Single linked lists
+ *
+ *  TODO
+ *
+ *  \see \ref group_llist "Linked lists commons module"
+ *  \see \ref group_dllist "Double linked lists module"
+ *
+ *  @{
+ */
+
 /**
  * Creates a single linked list.
  * @return A pointer to a newly allocated \ref single_linked_list "SingleLinkedList" structure.
@@ -49,7 +59,6 @@ DLL_EXP_SLLIST SingleLinkedListNode *sllist_createNode();
  */
 #define sllist_selectNext(list) ((SingleLinkedListNode *) llist_selectNext((LinkedList *) list))
 
-///**
 // * Selects the previous node in the list based on the currently selected one.
 // * @param list The \ref double_linked_list "DoubleLinkedList" whose previous element will be selected.
 // * @return A pointer to the previous \ref double_linked_list_node "DoubleLinkedListNode",
@@ -105,3 +114,5 @@ DLL_EXP_SLLIST SingleLinkedListNode *sllist_createNode();
  * @return <code>true</code> if it was appended properly, <code>false</code> otherwise.
  */
 DLL_EXP_SLLIST bool sllist_append(SingleLinkedList *list, void *data, SingleLinkedListNode * (*cb_allocNode)());
+
+/** @} */ // end of group_sllist
