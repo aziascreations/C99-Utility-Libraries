@@ -83,5 +83,37 @@ int main(void) {
 	
 	dllist_free(dllist, NULL, NULL);
 	
+	
+	// Testing deleteCurrent
+	dllist = getTestList();
+	assert(!dllist_deleteCurrent(NULL, NULL, NULL), "deleteCurrent > Failure when no list is given.")
+	
+	dllist->current = NULL;  // Just to be 101% sure.
+	assert(!dllist_deleteCurrent(dllist, NULL, NULL), "deleteCurrent > Failure when `*current` is NULL.")
+	
+	dllist_selectByIndex(dllist, 1);
+	assert(dllist_deleteCurrent(dllist, NULL, NULL), "deleteCurrent > Success 2nd selected.")
+	assert(dllist->current == NULL, "deleteCurrent > `*current` is back at NULL.")
+	assert(dllist->first->next->data == (void *) 3, "deleteCurrent > `*first` via `*next` points at `3`.")
+	assert(dllist->first->next->previous->data == (void *) 1, "deleteCurrent > `*first` points to node whose `*previous` points at `1`.")
+	
+	dllist_selectFirst(dllist);
+	assert(dllist_deleteCurrent(dllist, NULL, NULL), "deleteCurrent > Success `*first` selected.")
+	assert(dllist->current == NULL, "deleteCurrent > `*current` is back at NULL.")
+	assert(dllist->first->data == (void *) 3, "deleteCurrent > `*first` points at `3`.")
+	assert(dllist->first->previous == NULL, "deleteCurrent > `*first` points to NULL via `*previous`.")
+	assert(dllist->first->next->data == (void *) 4, "deleteCurrent > `*first` via `*next` points at `4`.")
+	assert(dllist->first->next->previous->data == (void *) 3, "deleteCurrent > `*first` points to node whose `*previous` points at `3`.")
+	
+	dllist_selectLast(dllist);
+	assert(dllist_deleteCurrent(dllist, NULL, NULL), "deleteCurrent > Success `*last` selected.")
+	assert(dllist->current == NULL, "deleteCurrent > `*current` is back at NULL.")
+	assert(dllist->first->data == (void *) 3, "deleteCurrent > `*first` points at `3`.")
+	assert(dllist->last->data == (void *) 3, "deleteCurrent > `*last` points at `3`.")
+	assert(dllist->last->previous == NULL, "deleteCurrent > `*last` points at NULL via `*previous`.")
+	assert(dllist->last->next == NULL, "deleteCurrent > `*last` points at NULL via `*next`.")
+	
+	dllist_free(dllist, NULL, NULL);
+	
 	return 0;
 }

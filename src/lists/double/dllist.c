@@ -135,7 +135,6 @@ bool dllist_insertAfterCurrent(DoubleLinkedList *list, void *data, DoubleLinkedL
 	return false;
 }
 
-
 bool dllist_deleteFirst(DoubleLinkedList *list, void (*cb_freeData)(void *data), void (*cb_freeNode)(void *data)) {
 	if(list != NULL) {
 		if(list->first != NULL) {
@@ -169,11 +168,46 @@ bool dllist_deleteFirst(DoubleLinkedList *list, void (*cb_freeData)(void *data),
 	return false;
 }
 
-//removePrevious
-//removeCurrent
-//removeNext
-//removeByIndex
-//removeLast
+//TODO: removePrevious
+
+bool dllist_deleteCurrent(DoubleLinkedList *list, void (*cb_freeData)(void *data), void (*cb_freeNode)(void *data)) {
+	if(list != NULL) {
+		if(list->current != NULL) {
+			DoubleLinkedListNode *oldNode = list->current;
+			
+			if(oldNode->previous != NULL) {
+				oldNode->previous->next = oldNode->next;
+			} else {
+				list->first = oldNode->next;
+			}
+			
+			if(oldNode->next != NULL) {
+				oldNode->next->previous = oldNode->previous;
+			} else {
+				list->last = oldNode->previous;
+			}
+			
+			list->current = NULL;
+			
+			if(cb_freeData != NULL) {
+				cb_freeData(oldNode->data);
+			}
+			
+			if(cb_freeNode == NULL) {
+				cb_freeNode = &free;
+			}
+			cb_freeNode(oldNode);
+			
+			list->size--;
+			return true;
+		}
+	}
+	
+	return false;
+}
+
+//TODO: removeNext
+//TODO: removeByIndex
 
 bool dllist_deleteLast(DoubleLinkedList *list, void (*cb_freeData)(void *data), void (*cb_freeNode)(void *data)) {
 	if(list != NULL) {

@@ -173,6 +173,51 @@ bool sllist_deleteFirst(SingleLinkedList *list, void (*cb_freeData)(void *data),
 	return false;
 }
 
+bool sllist_deleteCurrent(SingleLinkedList *list, void (*cb_freeData)(void *data), void (*cb_freeNode)(void *data)) {
+	if(list != NULL) {
+		if(list->current != NULL) {
+			SingleLinkedListNode *oldNode = list->current;
+			
+			SingleLinkedListNode *previousNode = list->first;
+			if(previousNode == oldNode) {
+				previousNode = NULL;
+			}
+			while(previousNode != NULL) {
+				if(previousNode->next == oldNode) {
+					break;
+				}
+				previousNode = previousNode->next;
+			}
+			
+			if(previousNode != NULL) {
+				previousNode->next = oldNode->next;
+			} else {
+				list->first = oldNode->next;
+			}
+			
+			if(oldNode->next == NULL) {
+				list->last = previousNode;
+			}
+			
+			list->current = NULL;
+			
+			if(cb_freeData != NULL) {
+				cb_freeData(oldNode->data);
+			}
+			
+			if(cb_freeNode == NULL) {
+				cb_freeNode = &free;
+			}
+			cb_freeNode(oldNode);
+			
+			list->size--;
+			return true;
+		}
+	}
+	
+	return false;
+}
+
 bool sllist_deleteLast(SingleLinkedList *list, void (*cb_freeData)(void *data), void (*cb_freeNode)(void *data)) {
 	if(list != NULL) {
 		if(list->last != NULL) {

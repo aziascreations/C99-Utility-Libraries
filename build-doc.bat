@@ -20,5 +20,10 @@ xcopy "images" "html/docs/images" /E /H
 xcopy "../examples" "html/examples" /E /H
 xcopy "../extra" "html/extra" /E /H
 
+:: xcopy is refusing to copy single files, it either does fuck all or whines about cyclic copies.
+:: I'll use a simpler method that WORKS WHEN ASKED TO DO ITS ONLY JOB, unlike xcopy which just whines in the terminal !
+type ..\LICENSE-CC0 > "html\LICENSE-CC0"
+type ..\LICENSE-MIT > "html\LICENSE-MIT"
+
 :: Going back to the original directory
 popd

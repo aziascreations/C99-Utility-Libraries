@@ -203,6 +203,21 @@ DLL_EXP_SLLIST bool sllist_deleteFirst(
  * @warning This function can be quite CPU intensive in single linked lists due to its lack of `*previous` pointer.<br>
  *          In a worst case scenario its performance will be `O(n)`.
  */
+DLL_EXP_SLLIST bool sllist_deleteCurrent(
+		SingleLinkedList *list,
+		void (*cb_freeData)(void *data),
+		void (*cb_freeNode)(void *data)
+);
+
+/**
+ *
+ * @param list
+ * @param cb_freeData
+ * @param cb_freeNode
+ * @return
+ * @warning This function can be quite CPU intensive in single linked lists due to its lack of `*previous` pointer.<br>
+ *          In a worst case scenario its performance will be `O(n)`.
+ */
 DLL_EXP_SLLIST bool sllist_deleteLast(
 		SingleLinkedList *list,
 		void (*cb_freeData)(void *data),
