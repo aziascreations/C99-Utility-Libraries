@@ -8,6 +8,54 @@ SingleLinkedListNode *sllist_createNode() {
 	return calloc(1, sizeof(SingleLinkedListNode));
 }
 
+SingleLinkedListNode *sllist_getPrevious(SingleLinkedList *list) {
+	if(list != NULL) {
+		if(list->current != NULL && list->current != list->first) {
+			SingleLinkedListNode *currentNode = list->first;
+			
+			while(currentNode != NULL) {
+				if(currentNode->next == list->current) {
+					return currentNode;
+				}
+				
+				currentNode = currentNode->next;
+			}
+		}
+	}
+	
+	return NULL;
+}
+
+void *sllist_getPreviousData(SingleLinkedList *list) {
+	SingleLinkedListNode *previousNode = sllist_getPrevious(list);
+	
+	if(previousNode != NULL) {
+		return previousNode->data;
+	}
+	
+	return NULL;
+}
+
+SingleLinkedListNode *sllist_selectPrevious(SingleLinkedList *list) {
+	SingleLinkedListNode *previousNode = sllist_getPrevious(list);
+	
+	if(list != NULL) {
+		list->current = previousNode;
+	}
+	
+	return previousNode;
+}
+
+void *sllist_selectPreviousData(SingleLinkedList *list) {
+	SingleLinkedListNode *previousNode = sllist_selectPrevious(list);
+	
+	if(previousNode != NULL) {
+		return previousNode->data;
+	}
+	
+	return NULL;
+}
+
 bool sllist_prepend(SingleLinkedList *list, void *data, SingleLinkedListNode * (*cb_allocNode)()) {
 	if(list != NULL) {
 		if(cb_allocNode == NULL) {

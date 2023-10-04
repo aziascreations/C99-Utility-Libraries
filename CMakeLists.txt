@@ -47,8 +47,11 @@ endif()
 
 
 # Project > CTest
-message("---> Including CTest...")
-include(CTest)
+if(NP_GOODIES_BUILD_EXAMPLES)
+    message("---> Including CTest...")
+    include(CTest)
+    enable_testing()
+endif()
 
 
 # TODO: Remove
@@ -207,6 +210,8 @@ if(NP_GOODIES_BUILD_TESTS)
     add_executable(test_dllist_insertion tests/lists/test_dllist_insertion.c ${src_dllist} ${src_test_utils})
     add_test(NAME test_dllist_insertion COMMAND test_dllist_insertion)
 
+    add_executable(test_sllist_node_navigation tests/lists/test_sllist_node_navigation.c ${src_sllist} ${src_test_utils})
+    add_test(NAME test_sllist_node_navigation COMMAND test_sllist_node_navigation)
     add_executable(test_dllist_node_navigation tests/lists/test_dllist_node_navigation.c ${src_dllist} ${src_test_utils})
     add_test(NAME test_dllist_node_navigation COMMAND test_dllist_node_navigation)
 else()

@@ -59,6 +59,38 @@ DLL_EXP_SLLIST SingleLinkedListNode *sllist_createNode();
  */
 #define sllist_selectNext(list) ((SingleLinkedListNode *) llist_selectNext((LinkedList *) list))
 
+/**
+ *
+ * @param list
+ * @return
+ * @warning This function can be quite CPU intensive with a `O(n)` worst case scenario.
+ */
+DLL_EXP_SLLIST SingleLinkedListNode *sllist_getPrevious(SingleLinkedList *list);
+
+/**
+ *
+ * @param list
+ * @return
+ * @warning This function can be quite CPU intensive with a `O(n)` worst case scenario.
+ */
+DLL_EXP_SLLIST void *sllist_getPreviousData(SingleLinkedList *list);
+
+/**
+ *
+ * @param list
+ * @return
+ * @warning This function can be quite CPU intensive with a `O(n)` worst case scenario.
+ */
+DLL_EXP_SLLIST SingleLinkedListNode *sllist_selectPrevious(SingleLinkedList *list);
+
+/**
+ *
+ * @param list
+ * @return
+ * @warning This function can be quite CPU intensive with a `O(n)` worst case scenario.
+ */
+DLL_EXP_SLLIST void *sllist_selectPreviousData(SingleLinkedList *list);
+
 // * Selects the previous node in the list based on the currently selected one.
 // * @param list The \ref double_linked_list "DoubleLinkedList" whose previous element will be selected.
 // * @return A pointer to the previous \ref double_linked_list_node "DoubleLinkedListNode",
@@ -89,6 +121,11 @@ DLL_EXP_SLLIST SingleLinkedListNode *sllist_createNode();
  *  or `NULL` if the list has no next element.
  */
 #define sllist_selectNextData(list) (llist_selectNextData((LinkedList *) list))
+
+/**
+ * TODO
+ */
+#define sllist_selectLastData(list) (llist_selectLastData((LinkedList *) list))
 
 /**
  * Returns a \ref double_linked_list_node "DoubleLinkedListNode" via its given index in the list.
