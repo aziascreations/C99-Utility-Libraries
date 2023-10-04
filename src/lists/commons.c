@@ -90,6 +90,24 @@ void *llist_selectLastData(LinkedList *list) {
 	return NULL;
 }
 
+LinkedListNode *llist_getNext(LinkedList *list) {
+	if(list != NULL) {
+		if(list->current != NULL) {
+			return list->current->next;
+		}
+	}
+	
+	return NULL;
+}
+
+void *llist_getNextData(LinkedList *list) {
+	if(llist_getNext(list) != NULL) {
+		return list->current->next->data;
+	}
+	
+	return NULL;
+}
+
 LinkedListNode *llist_getByIndex(LinkedList *list, size_t index) {
 	if(list != NULL) {
 		LinkedListNode *currentNode = list->first;

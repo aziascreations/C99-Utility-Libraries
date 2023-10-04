@@ -83,12 +83,34 @@ DLL_EXP_DLLIST DoubleLinkedListNode *dllist_createNode();
 #define dllist_selectNext(list) ((DoubleLinkedListNode *) llist_selectNext((LinkedList *) list))
 
 /**
+ *
+ * @param list
+ * @return
+ */
+DLL_EXP_DLLIST DoubleLinkedListNode *dllist_getPrevious(DoubleLinkedList *list);
+
+/**
+ *
+ * @param list
+ * @return
+ */
+DLL_EXP_DLLIST void *dllist_getPreviousData(DoubleLinkedList *list);
+
+/**
  * Selects the previous node in the list based on the currently selected one.
+ * [Set the current pointer to new or null !]
  * @param list The \ref double_linked_list "DoubleLinkedList" whose previous element will be selected.
  * @return A pointer to the previous \ref double_linked_list_node "DoubleLinkedListNode",
  *  or `NULL` if the list has no previous element.
  */
 DLL_EXP_DLLIST DoubleLinkedListNode *dllist_selectPrevious(DoubleLinkedList *list);
+
+/**
+ *
+ * @param list
+ * @return
+ */
+DLL_EXP_DLLIST void *dllist_selectPreviousData(DoubleLinkedList *list);
 
 /**
  * Selects the last node in the list as the current one and returns it.
@@ -118,6 +140,16 @@ DLL_EXP_DLLIST DoubleLinkedListNode *dllist_selectPrevious(DoubleLinkedList *lis
  * TODO
  */
 #define dllist_selectLastData(list) (llist_selectLastData((LinkedList *) list))
+
+/**
+ * TODO
+ */
+#define dllist_getNext(list) ((DoubleLinkedListNode *) llist_getNext((LinkedList *) list))
+
+/**
+ * TODO
+ */
+#define dllist_getNextData(list) (llist_getNextData((LinkedList *) list))
 
 /**
  * Returns a \ref double_linked_list_node "DoubleLinkedListNode" via its given index in the list.

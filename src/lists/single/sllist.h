@@ -107,6 +107,16 @@ DLL_EXP_SLLIST SingleLinkedListNode *sllist_createNode();
 #define sllist_selectByIndex(list, index) ((SingleLinkedListNode *) llist_selectByIndex((LinkedList *) list, index))
 
 /**
+ * TODO
+ */
+#define sllist_getNext(list) ((SingleLinkedListNode *) llist_getNext((LinkedList *) list))
+
+/**
+ * TODO
+ */
+#define sllist_getNextData(list) (llist_getNextData((LinkedList *) list))
+
+/**
  * ???
  * @param list
  * @param data

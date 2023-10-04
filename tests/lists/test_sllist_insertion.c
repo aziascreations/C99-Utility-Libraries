@@ -4,6 +4,7 @@
 
 #include "../../src/lists/single/sllist.h"
 
+// TODO: Split this tests into multiple and more refined ones, just to be 101% safe.
 int main(void) {
 	// Preparing the lists and adding an empty node in each.
 	SingleLinkedList *sllist = sllist_create();

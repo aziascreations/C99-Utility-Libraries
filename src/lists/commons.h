@@ -114,6 +114,23 @@ DLL_EXP_LLIST void *llist_selectNextData(LinkedList *list);
 DLL_EXP_LLIST void *llist_selectLastData(LinkedList *list);
 
 /**
+ * Returns a \ref single_linked_list_node "LinkedListNode" based on the currently selected node's `*next` pointer.
+ * @param list The relevant \ref single_linked_list "LinkedList".
+ * @return A pointer to the next \ref single_linked_list_node "LinkedListNode" in line,
+ *  or `NULL` if the list has no elements or no element is currently selected.
+ */
+DLL_EXP_LLIST LinkedListNode *llist_getNext(LinkedList *list);
+
+/**
+ * Returns the data pointer for the next \ref single_linked_list_node "LinkedListNode" in the list based on the
+ *  currently selected node's `*next` pointer.
+ * @param list The relevant \ref single_linked_list "LinkedList".
+ * @return A pointer to the next \ref single_linked_list_node "LinkedListNode"'s data in line,
+ *  or `NULL` if the list has no elements or no element is currently selected.
+ */
+DLL_EXP_LLIST void *llist_getNextData(LinkedList *list);
+
+/**
  * Returns a \ref single_linked_list_node "LinkedListNode" via its given index in the list.
  * @param list The \ref single_linked_list "LinkedList" whose element will be returned.
  * @param index The \ref single_linked_list_node "LinkedListNode"'s index.

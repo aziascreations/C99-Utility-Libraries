@@ -4,6 +4,7 @@
 
 #include "../../src/lists/double/dllist.h"
 
+// TODO: Split this tests into multiple and more refined ones, just to be 101% safe.
 int main(void) {
 	// Preparing the lists and adding an empty node in each.
 	DoubleLinkedList *dllist = dllist_create();

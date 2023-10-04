@@ -6,12 +6,35 @@ DoubleLinkedListNode *dllist_createNode() {
 	return calloc(1, sizeof(DoubleLinkedListNode));
 }
 
+DoubleLinkedListNode *dllist_getPrevious(DoubleLinkedList *list) {
+	if(list != NULL) {
+		if(list->current != NULL) {
+			return list->current->previous;
+		}
+	}
+	return NULL;
+}
+
+void *dllist_getPreviousData(DoubleLinkedList *list) {
+	if(dllist_getPrevious(list) != NULL) {
+		return list->current->previous->data;
+	}
+	return NULL;
+}
+
 DoubleLinkedListNode *dllist_selectPrevious(DoubleLinkedList *list) {
 	if(list != NULL) {
 		if(list->current != NULL) {
 			list->current = list->current->previous;
 			return list->current;
 		}
+	}
+	return NULL;
+}
+
+void *dllist_selectPreviousData(DoubleLinkedList *list) {
+	if(dllist_selectPrevious(list) != NULL) {
+		return list->current->data;
 	}
 	return NULL;
 }
@@ -111,3 +134,31 @@ bool dllist_insertAfterCurrent(DoubleLinkedList *list, void *data, DoubleLinkedL
 	
 	return false;
 }
+
+/*bool dllist_deleteFirst(DoubleLinkedList *list, void (*cb_freeData)(void *data), void (*cb_freeNode)(void *data)) {
+	if(list != NULL) {
+		if(list->first != NULL) {
+			
+			list->size--;
+			return true;
+		}
+	}
+	
+	return false;
+}
+
+bool dllist_deleteLast(DoubleLinkedList *list, void (*cb_freeData)(void *data), void (*cb_freeNode)(void *data)) {
+	if(list != NULL) {
+		if(list->last != NULL) {
+			
+			//if(list->first->next != NULL) {
+			//	list->first->next->previous = NULL;
+			//}
+			
+			list->size--;
+			return true;
+		}
+	}
+	
+	return false;
+}*/

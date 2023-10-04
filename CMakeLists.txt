@@ -149,14 +149,13 @@ set_target_properties(np_clang_goodies_dll_static PROPERTIES LIBRARY_OUTPUT_DIRE
 set_target_properties(np_clang_goodies_dll_static PROPERTIES RUNTIME_OUTPUT_DIRECTORY "dll_static/")
 
 
-# Targets > Dev manual tester
-if(NP_GOODIES_IS_MAIN)
-    message("---> Adding manual tester for non-imported context...")
-
-    add_executable(manual_testing manual_testing.c ${src_all})
-    set_target_properties(manual_testing PROPERTIES C_STANDARD 99)
-    target_compile_definitions(manual_testing PUBLIC NP_DEBUG_LOGGING)
-endif()
+# Targets > Dev manual tester (Deprecated)
+#if(NP_GOODIES_IS_MAIN)
+#    message("---> Adding manual tester for non-imported context...")
+#    add_executable(manual_testing manual_testing.c ${src_all})
+#    set_target_properties(manual_testing PROPERTIES C_STANDARD 99)
+#    target_compile_definitions(manual_testing PUBLIC NP_DEBUG_LOGGING)
+#endif()
 
 
 # Targets > Examples
@@ -207,6 +206,9 @@ if(NP_GOODIES_BUILD_TESTS)
     add_test(NAME test_sllist_insertion COMMAND test_sllist_insertion)
     add_executable(test_dllist_insertion tests/lists/test_dllist_insertion.c ${src_dllist} ${src_test_utils})
     add_test(NAME test_dllist_insertion COMMAND test_dllist_insertion)
+
+    add_executable(test_dllist_node_navigation tests/lists/test_dllist_node_navigation.c ${src_dllist} ${src_test_utils})
+    add_test(NAME test_dllist_node_navigation COMMAND test_dllist_node_navigation)
 else()
     message("---> Skipping test targets...")
 endif()
