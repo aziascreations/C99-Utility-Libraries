@@ -63,7 +63,8 @@ DLL_EXP_SLLIST SingleLinkedListNode *sllist_createNode();
  *
  * @param list
  * @return
- * @warning This function can be quite CPU intensive with a `O(n)` worst case scenario.
+ * @warning This function can be quite CPU intensive in single linked lists due to its lack of `*previous` pointer.<br>
+ *          In a worst case scenario its performance will be `O(n)`.
  */
 DLL_EXP_SLLIST SingleLinkedListNode *sllist_getPrevious(SingleLinkedList *list);
 
@@ -71,7 +72,8 @@ DLL_EXP_SLLIST SingleLinkedListNode *sllist_getPrevious(SingleLinkedList *list);
  *
  * @param list
  * @return
- * @warning This function can be quite CPU intensive with a `O(n)` worst case scenario.
+ * @warning This function can be quite CPU intensive in single linked lists due to its lack of `*previous` pointer.<br>
+ *          In a worst case scenario its performance will be `O(n)`.
  */
 DLL_EXP_SLLIST void *sllist_getPreviousData(SingleLinkedList *list);
 
@@ -79,7 +81,8 @@ DLL_EXP_SLLIST void *sllist_getPreviousData(SingleLinkedList *list);
  *
  * @param list
  * @return
- * @warning This function can be quite CPU intensive with a `O(n)` worst case scenario.
+ * @warning This function can be quite CPU intensive in single linked lists due to its lack of `*previous` pointer.<br>
+ *          In a worst case scenario its performance will be `O(n)`.
  */
 DLL_EXP_SLLIST SingleLinkedListNode *sllist_selectPrevious(SingleLinkedList *list);
 
@@ -87,16 +90,10 @@ DLL_EXP_SLLIST SingleLinkedListNode *sllist_selectPrevious(SingleLinkedList *lis
  *
  * @param list
  * @return
- * @warning This function can be quite CPU intensive with a `O(n)` worst case scenario.
+ * @warning This function can be quite CPU intensive in single linked lists due to its lack of `*previous` pointer.<br>
+ *          In a worst case scenario its performance will be `O(n)`.
  */
 DLL_EXP_SLLIST void *sllist_selectPreviousData(SingleLinkedList *list);
-
-// * Selects the previous node in the list based on the currently selected one.
-// * @param list The \ref double_linked_list "DoubleLinkedList" whose previous element will be selected.
-// * @return A pointer to the previous \ref double_linked_list_node "DoubleLinkedListNode",
-// *  or `NULL` if the list has no previous element.
-// */
-//DLL_EXP_SLLIST SingleLinkedListNode *sllist_selectPrevious(SingleLinkedList *list);
 
 /**
  * Selects the last node in the list as the current one and returns it.
@@ -182,6 +179,34 @@ DLL_EXP_SLLIST bool sllist_insertAfterCurrent(
 		SingleLinkedList *list,
 		void *data,
 		SingleLinkedListNode * (*cb_allocNode)()
+);
+
+/**
+ *
+ * @param list
+ * @param cb_freeData
+ * @param cb_freeNode
+ * @return
+ */
+DLL_EXP_SLLIST bool sllist_deleteFirst(
+		SingleLinkedList *list,
+		void (*cb_freeData)(void *data),
+		void (*cb_freeNode)(void *data)
+);
+
+/**
+ *
+ * @param list
+ * @param cb_freeData
+ * @param cb_freeNode
+ * @return
+ * @warning This function can be quite CPU intensive in single linked lists due to its lack of `*previous` pointer.<br>
+ *          In a worst case scenario its performance will be `O(n)`.
+ */
+DLL_EXP_SLLIST bool sllist_deleteLast(
+		SingleLinkedList *list,
+		void (*cb_freeData)(void *data),
+		void (*cb_freeNode)(void *data)
 );
 
 /** @} */ // end of group_sllist

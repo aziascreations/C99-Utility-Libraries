@@ -140,3 +140,79 @@ bool sllist_insertAfterCurrent(SingleLinkedList *list, void *data, SingleLinkedL
 	
 	return false;
 }
+
+bool sllist_deleteFirst(SingleLinkedList *list, void (*cb_freeData)(void *data), void (*cb_freeNode)(void *data)) {
+	if(list != NULL) {
+		if(list->first != NULL) {
+			SingleLinkedListNode *oldNode = list->first;
+			
+			list->first = oldNode->next;
+			
+			if(list->current == oldNode) {
+				list->current = NULL;
+			}
+			
+			if(list->last == oldNode) {
+				list->last = NULL;
+			}
+			
+			if(cb_freeData != NULL) {
+				cb_freeData(oldNode->data);
+			}
+			
+			if(cb_freeNode == NULL) {
+				cb_freeNode = &free;
+			}
+			cb_freeNode(oldNode);
+			
+			list->size--;
+			return true;
+		}
+	}
+	
+	return false;
+}
+
+bool sllist_deleteLast(SingleLinkedList *list, void (*cb_freeData)(void *data), void (*cb_freeNode)(void *data)) {
+	if(list != NULL) {
+		if(list->last != NULL) {
+			SingleLinkedListNode *oldNode = list->last;
+			
+			SingleLinkedListNode *previousNode = list->first;
+			while(previousNode != NULL) {
+				if(previousNode->next == oldNode) {
+					break;
+				}
+				previousNode = previousNode->next;
+			}
+			list->last = previousNode;
+			
+			if(list->last != NULL) {
+				list->last->next = NULL;
+			} else {
+				list->first = NULL;
+			}
+			
+			if(list->current == oldNode) {
+				list->current = NULL;
+			}
+			
+			if(cb_freeData != NULL) {
+				cb_freeData(oldNode->data);
+			}
+			
+			if(cb_freeNode == NULL) {
+				cb_freeNode = &free;
+			}
+			cb_freeNode(oldNode);
+			
+			list->size--;
+			return true;
+		}
+	}
+	
+	return false;
+}
+
+
+

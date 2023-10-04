@@ -198,4 +198,30 @@ DLL_EXP_DLLIST bool dllist_insertAfterCurrent(
 		DoubleLinkedListNode * (*cb_allocNode)()
 );
 
+/**
+ *
+ * @param list
+ * @param cb_freeData
+ * @param cb_freeNode
+ * @return
+ */
+DLL_EXP_DLLIST bool dllist_deleteFirst(
+		DoubleLinkedList *list,
+		void (*cb_freeData)(void *data),
+		void (*cb_freeNode)(void *data)
+);
+
+/**
+ *
+ * @param list
+ * @param cb_freeData
+ * @param cb_freeNode
+ * @return
+ */
+DLL_EXP_DLLIST bool dllist_deleteLast(
+		DoubleLinkedList *list,
+		void (*cb_freeData)(void *data),
+		void (*cb_freeNode)(void *data)
+);
+
 /** @} */ // end of group_dllist
