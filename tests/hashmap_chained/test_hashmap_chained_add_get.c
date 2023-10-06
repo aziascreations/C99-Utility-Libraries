@@ -4,8 +4,6 @@
 
 #include "../../src/hashmaps/chained/hashmap.h"
 
-#include "../../src/debug.h"
-
 #define makeHash(bucketNumber, sortingSuffix) ((bucketNumber & 0b111) | (sortingSuffix << 3))
 
 // Amounts to not freeing data when overwriting.

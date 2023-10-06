@@ -76,29 +76,9 @@ bool hashmap_chained_overwriteByHash(ChainedHashMap *hashMap, void* data, uint64
 			currentBucket = currentBucket->next;
 		}
 		
-		// TODO: if(currentBucket == NULL || currentBucket->hash != hash)
-		if(currentBucket == NULL) {
+		if(currentBucket == NULL || currentBucket->hash != hash) {
 			// We either reached the end of the list, or no buckets was in the current slot.
-			ChainedHashMapBucket *newBucket = calloc(1, sizeof(ChainedHashMapBucket));
-			
-			if(newBucket != NULL) {
-				//newBucket->next = currentBucket;  // Bruh, that's the only change...
-				newBucket->data = data;
-				newBucket->hash = hash;
-				
-				if(previousBucket != NULL) {
-					// We are just at the end.
-					previousBucket->next = newBucket;
-				} else {
-					// There were no buckets.
-					*hashMap->buckets[hash & getMask(hashMap->sizePower)] = newBucket;
-				}
-				
-				hashMap->entryCount++;
-				return true;
-			}
-		} else if(currentBucket->hash != hash) {
-			// We have an in-between, or we are at the start of the list.
+			// Or, we have an in-between, or we are at the start of the list.
 			ChainedHashMapBucket *newBucket = malloc(sizeof(ChainedHashMapBucket));
 			
 			if(newBucket != NULL) {
