@@ -109,6 +109,45 @@ bool hashmap_chained_overwriteByHash(ChainedHashMap *hashMap, void* data, uint64
 	return false;
 }
 
+bool hashmap_chained_deleteByHash(ChainedHashMap *hashMap, uint64_t hash, void (*cb_freeData)(void *data)) {
+	if(hashMap != NULL) {
+		ChainedHashMapBucket *previousBucket = NULL;
+		ChainedHashMapBucket *deletedBucket = *hashMap->buckets[hash & getMask(hashMap->sizePower)];
+		
+		// We iterate over the bucket chain until we find a collision or an in-between.
+		while(deletedBucket != NULL) {
+			if(deletedBucket->hash >= hash) {
+				break;
+			}
+			previousBucket = deletedBucket;
+			deletedBucket = deletedBucket->next;
+		}
+		
+		if(deletedBucket != NULL) {
+			if(deletedBucket->hash != hash) {
+				return false;
+			}
+			
+			if(previousBucket != NULL) {
+				previousBucket->next = deletedBucket->next;
+			} else {
+				*hashMap->buckets[hash & getMask(hashMap->sizePower)] = deletedBucket->next;
+			}
+			
+			if(cb_freeData != NULL) {
+				cb_freeData(deletedBucket->data);
+			}
+			
+			free(deletedBucket);
+			
+			hashMap->entryCount--;
+			return true;
+		}
+	}
+	
+	return false;
+}
+
 void hashmap_chained_free(ChainedHashMap *hashMap, void (*cb_freeData)(void *data)) {
 	if(hashMap != NULL) {
 		// Freeing the buckets

@@ -38,7 +38,10 @@ DLL_EXP_CHAINED_HASHMAP bool hashmap_chained_overwriteByHash(
 
 #define hashmap_chained_setByHash(hashMap, data, hash) (hashmap_chained_overwriteByHash(hashMap, data, hash, NULL))
 
-////DLL_EXPORT bool hashmap_deleteByHash(HashMap *hashMap, void* key);
+DLL_EXP_CHAINED_HASHMAP bool hashmap_chained_deleteByHash(
+		ChainedHashMap *hashMap,
+		uint64_t hash,
+		void (*cb_freeData)(void *data));
 
 /**
  *
