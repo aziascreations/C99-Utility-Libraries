@@ -38,11 +38,13 @@ message("---> Defining options...")
 include(CMakeDependentOption)
 option(NP_GOODIES_BUILD_EXAMPLES "Build the examples." OFF)
 option(NP_GOODIES_BUILD_TESTS "Build the tests." OFF)
+option(NP_GOODIES_BUILD_BENCHMARKS "Build the benchmarks." OFF)
 
 if(NP_GOODIES_IS_MAIN)
     message("----> Non-imported context autoconfig")
     set(NP_GOODIES_BUILD_EXAMPLES ON CACHE BOOL "" FORCE)
     set(NP_GOODIES_BUILD_TESTS ON CACHE BOOL "" FORCE)
+    set(NP_GOODIES_BUILD_BENCHMARKS ON CACHE BOOL "" FORCE)
 endif()
 
 
@@ -117,6 +119,8 @@ file(GLOB_RECURSE src_llist CONFIGURE_DEPENDS "src/lists/*.h" "src/lists/*.c" ${
 file(GLOB src_text CONFIGURE_DEPENDS "src/text.h" "src/text.c" ${src_np_clang_goodies_commons})
 
 file(GLOB src_args CONFIGURE_DEPENDS ${src_llist} "src/text.c" "src/text.h" "src/arguments/*.h" "src/arguments/*.c" ${src_np_clang_goodies_commons})
+
+file(GLOB_RECURSE src_hashmap CONFIGURE_DEPENDS "src/hashmaps/*.c" "src/hashmaps/*.h" ${src_llist} ${src_np_clang_goodies_commons})
 
 file(GLOB src_uuid CONFIGURE_DEPENDS "src/uuid/*.h" "src/uuid/*.c" ${src_np_clang_goodies_commons})
 file(GLOB_RECURSE src_hash CONFIGURE_DEPENDS "src/hash/*.h" "src/hash/*.c" ${src_np_clang_goodies_commons})
@@ -219,10 +223,26 @@ if(NP_GOODIES_BUILD_TESTS)
     add_test(NAME test_sllist_removal COMMAND test_sllist_removal)
     add_executable(test_dllist_removal tests/lists/test_dllist_removal.c ${src_dllist} ${src_test_utils})
     add_test(NAME test_dllist_removal COMMAND test_dllist_removal)
+
+    # Targets > Tests > Chained HashMaps
+    add_executable(test_hashmap_chained_creation tests/hashmap_chained/test_hashmap_chained_creation.c ${src_hashmap} ${src_test_utils})
+    add_test(NAME test_hashmap_chained_creation COMMAND test_hashmap_chained_creation)
+    target_compile_definitions(test_hashmap_chained_creation PUBLIC NP_DEBUG_LOGGING)
 else()
     message("---> Skipping test targets...")
 endif()
 
+if(NP_GOODIES_BUILD_BENCHMARKS)
+    message("---> Adding benchmark targets...")
+
+    # See: https://blog.habets.se/2010/09/gettimeofday-should-never-be-used-to-measure-time.html
+
+    add_executable(bm_square_of_two_mask benchmarks/bm_square_of_two_mask.c)
+
+    add_executable(bm_powers_of_two benchmarks/bm_powers_of_two.c)
+else()
+    message("---> Skipping benchmark targets...")
+endif()
 
 # End
 message("--> Done :)")

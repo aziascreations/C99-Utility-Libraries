@@ -5,10 +5,10 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-#define HASHMAP_TYPE_CHAINED 0b0000_0000
-
-// See: https://en.wikipedia.org/wiki/Hash_table#Open_addressing
-#define HASHMAP_TYPE_OPEN 0b0000_0001
+//#define HASHMAP_TYPE_CHAINED 0b0000_0000
+//
+//// See: https://en.wikipedia.org/wiki/Hash_table#Open_addressing
+//#define HASHMAP_TYPE_OPEN 0b0000_0001
 
 typedef struct hashmap_vtable HashMapVirtualTable;
 typedef struct hashmap HashMap;
@@ -87,12 +87,13 @@ struct hashmap {
 	
 	// Implementation-specific data
 	
-	/**
-	 * Represents the type of HashMap.
-	 * Used to differentiate between chained and open ones.
-	 * If `#???` is used, it also helps with stricter checks when using the raw methods.
-	 */
-	uint8_t type;
+	// * Represents the type of HashMap.
+	// * Used to differentiate between chained and open ones.
+	// * If `#???` is used, it also helps with stricter checks when using the raw methods.
+	// */
+	//uint8_t type;
+	
+	size_t entryCount;
 	
 	/**
 	 * ???
@@ -102,3 +103,8 @@ struct hashmap {
 
 // nbBuckets, maxBuckets -> Derived from mask size !.
 // Load factor = nbUsedBuckets / maxNbBuckets
+
+// TODO: Make definition to have macros OR functions.
+
+// TODO: Use macros to have something like hashmap_set(hashmap, data) => hashmap->vtable->set(hashmap, data), & key !
+//#define hashmap_set(hashmap, key, value) hashmap->vtable->set();

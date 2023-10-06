@@ -157,7 +157,7 @@ DLL_EXP_SLLIST void *sllist_selectPreviousData(SingleLinkedList *list);
  * @param cb_allocNode
  * @return
  */
-DLL_EXP_SLLIST bool sllist_prepend(SingleLinkedList *list, void *data, SingleLinkedListNode * (*cb_allocNode)());
+DLL_EXP_SLLIST bool sllist_prepend(SingleLinkedList *list, void *data, SingleLinkedListNode *(*cb_allocNode)());
 
 /**
  * Appends a \ref double_linked_list_node "DoubleLinkedListNode" with the given data at the end of the
@@ -166,7 +166,7 @@ DLL_EXP_SLLIST bool sllist_prepend(SingleLinkedList *list, void *data, SingleLin
  * @param data Pointer to the data that will be held in a new \ref double_linked_list_node "DoubleLinkedListNode".
  * @return <code>true</code> if it was appended properly, <code>false</code> otherwise.
  */
-DLL_EXP_SLLIST bool sllist_append(SingleLinkedList *list, void *data, SingleLinkedListNode * (*cb_allocNode)());
+DLL_EXP_SLLIST bool sllist_append(SingleLinkedList *list, void *data, SingleLinkedListNode *(*cb_allocNode)());
 
 /**
  * ???
@@ -178,8 +178,7 @@ DLL_EXP_SLLIST bool sllist_append(SingleLinkedList *list, void *data, SingleLink
 DLL_EXP_SLLIST bool sllist_insertAfterCurrent(
 		SingleLinkedList *list,
 		void *data,
-		SingleLinkedListNode * (*cb_allocNode)()
-);
+		SingleLinkedListNode *(*cb_allocNode)());
 
 /**
  *
@@ -191,8 +190,7 @@ DLL_EXP_SLLIST bool sllist_insertAfterCurrent(
 DLL_EXP_SLLIST bool sllist_deleteFirst(
 		SingleLinkedList *list,
 		void (*cb_freeData)(void *data),
-		void (*cb_freeNode)(void *data)
-);
+		void (*cb_freeNode)(void *data));
 
 /**
  *
@@ -206,8 +204,7 @@ DLL_EXP_SLLIST bool sllist_deleteFirst(
 DLL_EXP_SLLIST bool sllist_deleteCurrent(
 		SingleLinkedList *list,
 		void (*cb_freeData)(void *data),
-		void (*cb_freeNode)(void *data)
-);
+		void (*cb_freeNode)(void *data));
 
 /**
  *
@@ -221,7 +218,6 @@ DLL_EXP_SLLIST bool sllist_deleteCurrent(
 DLL_EXP_SLLIST bool sllist_deleteLast(
 		SingleLinkedList *list,
 		void (*cb_freeData)(void *data),
-		void (*cb_freeNode)(void *data)
-);
+		void (*cb_freeNode)(void *data));
 
 /** @} */ // end of group_sllist

@@ -174,7 +174,7 @@ DLL_EXP_DLLIST void *dllist_selectPreviousData(DoubleLinkedList *list);
  * @param cb_allocNode
  * @return
  */
-DLL_EXP_DLLIST bool dllist_prepend(DoubleLinkedList *list, void *data, DoubleLinkedListNode * (*cb_allocNode)());
+DLL_EXP_DLLIST bool dllist_prepend(DoubleLinkedList *list, void *data, DoubleLinkedListNode *(*cb_allocNode)());
 
 /**
  * Appends a \ref double_linked_list_node "DoubleLinkedListNode" with the given data at the end of the
@@ -183,7 +183,7 @@ DLL_EXP_DLLIST bool dllist_prepend(DoubleLinkedList *list, void *data, DoubleLin
  * @param data Pointer to the data that will be held in a new \ref double_linked_list_node "DoubleLinkedListNode".
  * @return <code>true</code> if it was appended properly, <code>false</code> otherwise.
  */
-DLL_EXP_DLLIST bool dllist_append(DoubleLinkedList *list, void *data, DoubleLinkedListNode * (*cb_allocNode)());
+DLL_EXP_DLLIST bool dllist_append(DoubleLinkedList *list, void *data, DoubleLinkedListNode *(*cb_allocNode)());
 
 /**
  * ???
@@ -195,8 +195,7 @@ DLL_EXP_DLLIST bool dllist_append(DoubleLinkedList *list, void *data, DoubleLink
 DLL_EXP_DLLIST bool dllist_insertAfterCurrent(
 		DoubleLinkedList *list,
 		void *data,
-		DoubleLinkedListNode * (*cb_allocNode)()
-);
+		DoubleLinkedListNode *(*cb_allocNode)());
 
 /**
  *
@@ -208,8 +207,7 @@ DLL_EXP_DLLIST bool dllist_insertAfterCurrent(
 DLL_EXP_DLLIST bool dllist_deleteFirst(
 		DoubleLinkedList *list,
 		void (*cb_freeData)(void *data),
-		void (*cb_freeNode)(void *data)
-);
+		void (*cb_freeNode)(void *data));
 
 /**
  *
@@ -221,8 +219,7 @@ DLL_EXP_DLLIST bool dllist_deleteFirst(
 bool dllist_deleteCurrent(
 		DoubleLinkedList *list,
 		void (*cb_freeData)(void *data),
-		void (*cb_freeNode)(void *data)
-);
+		void (*cb_freeNode)(void *data));
 
 /**
  *
@@ -234,7 +231,6 @@ bool dllist_deleteCurrent(
 DLL_EXP_DLLIST bool dllist_deleteLast(
 		DoubleLinkedList *list,
 		void (*cb_freeData)(void *data),
-		void (*cb_freeNode)(void *data)
-);
+		void (*cb_freeNode)(void *data));
 
 /** @} */ // end of group_dllist

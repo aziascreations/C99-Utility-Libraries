@@ -62,8 +62,7 @@ DLL_EXP_LLIST LinkedList *llist_create();
 DLL_EXP_LLIST void llist_free(
 		LinkedList *list,
 		void (*cb_freeData)(void *data),
-		void (*cb_freeNode)(void *data)
-);
+		void (*cb_freeNode)(void *data));
 
 /**
  * Selects the first node in the list as the current one and returns it.

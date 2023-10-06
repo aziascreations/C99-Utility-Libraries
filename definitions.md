@@ -4,7 +4,9 @@
 * [Features Toggles](#features-toggles)
   * `NP_GOODIES_UUID_DISABLE_STRUCT_SIZE_CHECK` [➜](#uuid-structure-size-check)
   * TODO `llist, use common deleter`
+  * TODO `hashmap, use macro or functions for vtable calls`
 * CMake Stuff
+  * TODO `NP_GOODIES_BUILD_BENCHMARKS`
   * TODO `NP_GOODIES_BUILD_EXAMPLES`
   * TODO `NP_GOODIES_BUILD_TESTS`
 * [Library Exports Toggles](#library-exports-toggles) *(As a [list of dependencies])*
