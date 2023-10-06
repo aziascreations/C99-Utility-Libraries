@@ -10,13 +10,13 @@ cmake*/
 docs/html
 docs/latex
 
-# Unfinished stuff
-CONTRIBUTING.md
-
 # PureBasic stuff
 *.pb.cfg
 *.exe
-*.pdn
 
 # Misc.
+*.pdn
 extra/words_dictionary.json
+
+# Unfinished stuff
+CONTRIBUTING.md

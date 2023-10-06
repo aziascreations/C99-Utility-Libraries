@@ -8,48 +8,42 @@
 #include "structs.h"
 #include "../structs.h"
 
-#if defined(NP_GOODIES_EXPORT_HASHMAP_ALL) || defined(NP_GOODIES_EXPORT_ALL)
-#define DLL_EXPORT __declspec(dllexport)
+#if defined(NP_GOODIES_EXPORT_HASHMAP_CHAINED) || defined(NP_GOODIES_EXPORT_HASHMAP_ALL) || defined(NP_GOODIES_EXPORT_ALL)
+#define DLL_EXP_CHAINED_HASHMAP __declspec(dllexport)
 #else
-#define DLL_EXPORT
+#define DLL_EXP_CHAINED_HASHMAP
 #endif
+
+/** @defgroup group_hashmap_chained Chained HashMap
+ *
+ *  TODO
+ *
+ *  @{
+ */
 
 /**
  *
  * @param sizePower
- * @param cb_hash
- * @param cb_free
  * @return
  */
-DLL_EXPORT HashMap *hashmap_chained_create(
-		uint8_t sizePower,
-		uint64_t (*cb_hash)(const void *item),
-		void (*cb_free)(void *data)
-);
+DLL_EXP_CHAINED_HASHMAP ChainedHashMap *hashmap_chained_create(uint8_t sizePower);
 
-//DLL_EXPORT HashMap *hashmap_create();
-//
-//DLL_EXPORT void hashmap_free(HashMap *hashMap);
-//
-//DLL_EXPORT void *hashmap_get(HashMap *hashMap, void* key);
-//DLL_EXPORT void *hashmap_getByHash(HashMap *hashMap, uint64_t hash);
-//
-//DLL_EXPORT bool hashmap_set(HashMap *hashMap, void* data, void* key);
-//DLL_EXPORT bool hashmap_setByHash(HashMap *hashMap, void* data, uint64_t hash);
-//
-//DLL_EXPORT bool hashmap_delete(HashMap *hashMap, void* key);
-//DLL_EXPORT bool hashmap_deleteByHash(HashMap *hashMap, uint64_t hash);
+DLL_EXP_CHAINED_HASHMAP void *hashmap_chained_getByHash(ChainedHashMap *hashMap, uint64_t hash);
 
-// TODO: Add one to remove and return the pointer without freeing ?
+DLL_EXP_CHAINED_HASHMAP bool hashmap_chained_overwriteByHash(
+		ChainedHashMap *hashMap,
+		void* data,
+		uint64_t hash,
+		void (*cb_freeData)(void *data));
 
-DLL_EXPORT void hashmap_chained_free(HashMap *hashMap);
+#define hashmap_chained_setByHash(hashMap, data, hash) (hashmap_chained_overwriteByHash(hashMap, data, hash, NULL))
+
+////DLL_EXPORT bool hashmap_deleteByHash(HashMap *hashMap, void* key);
 
 /**
- * Vtable thingy.
+ *
+ * @param hashMap
  */
-static const HashMapVirtualTable _hashmap_chained_vtable = {
-		.get = NULL,
-		.set = NULL,
-		.delete = NULL,
-		.free = hashmap_chained_free,
-};
+DLL_EXP_CHAINED_HASHMAP void hashmap_chained_free(ChainedHashMap *hashMap, void (*cb_freeData)(void *data));
+
+/** @} */ // end of group_hashmap_chained

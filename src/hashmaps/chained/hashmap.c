@@ -14,47 +14,30 @@
 
 #define getMask(bitCount) ((0b1 << bitCount) - 1)
 
+#define pow2(exponent) (2 << (exponent - 1))
+
 /*
  * Benchmark-influenced choices:
- *  * Powers of two are calculated using `2 << (exponent - 1)` instead of `pow()`.
+ *  * Powers of two are calculated using `2 << (exponent - 1)` as `pow2(exponent)` instead of `pow(2, exponent)`.
  */
 
-HashMap *hashmap_chained_create(uint8_t sizePower,
-								uint64_t (*cb_hash)(const void *item),
-								void (*cb_free)(void *data)) {
-	// The callbacks cannot be NULL.
-	if(cb_hash == NULL || cb_free == NULL) {
-		error_println("Unable to create a chained hashmap with one their callbacks being NULL !");
-		return NULL;
-	}
-	
+ChainedHashMap *hashmap_chained_create(uint8_t sizePower) {
 	// The upper limit prevents massive allocations of >1GiB.
 	if(sizePower <= SIZE_MIN_CREATE || sizePower > SIZE_MAX_CREATE) {
 		error_println("Unable to create a chained hashmap with 2^x slots where x is <= 3 or >= 25 !");
 		return NULL;
 	}
 	
-	HashMap *newHashMap = malloc(sizeof(HashMap));
+	ChainedHashMap *newHashMap = malloc(sizeof(ChainedHashMap));
 	
 	if(newHashMap != NULL) {
 		// Setting up basic pointers.
-		newHashMap->vtable = &_hashmap_chained_vtable;
-		newHashMap->cb_hash = cb_hash;
-		newHashMap->cb_free = cb_free;
 		newHashMap->entryCount = 0;
 		
-		// Setting up implementation-specific data.
-		newHashMap->iData = malloc(sizeof(ChainedHashMapData));
-		if(newHashMap->iData == NULL) {
-			free(newHashMap);
-			return NULL;
-		}
-		
 		// Setting the implementation-specific data's fields.
-		((ChainedHashMapData *) (newHashMap->iData))->sizePower = sizePower;
-		((ChainedHashMapData *) (newHashMap->iData))->buckets = calloc(2 << (sizePower - 1), sizeof(ChainedHashMapBucket *));
-		if(((ChainedHashMapData *) (newHashMap->iData))->buckets == NULL) {
-			free(newHashMap->iData);
+		newHashMap->sizePower = sizePower;
+		newHashMap->buckets = calloc(pow2(sizePower), sizeof(ChainedHashMapBucket *));
+		if(newHashMap->buckets == NULL) {
 			free(newHashMap);
 			return NULL;
 		}
@@ -63,21 +46,103 @@ HashMap *hashmap_chained_create(uint8_t sizePower,
 	return newHashMap;
 }
 
-void hashmap_chained_free(HashMap *hashMap) {
+void *hashmap_chained_getByHash(ChainedHashMap *hashMap, uint64_t hash) {
+	if(hashMap != NULL) {
+		ChainedHashMapBucket *currentBucket =*hashMap->buckets[hash & getMask(hashMap->sizePower)];
+		
+		while(currentBucket != NULL) {
+			if(currentBucket->hash == hash) {
+				return currentBucket->data;
+			}
+			currentBucket = currentBucket->next;
+		}
+	}
+	
+	return NULL;
+}
+
+bool hashmap_chained_overwriteByHash(ChainedHashMap *hashMap, void* data, uint64_t hash,
+									 void (*cb_freeData)(void *data)) {
+	if(hashMap != NULL) {
+		ChainedHashMapBucket *previousBucket = NULL;
+		ChainedHashMapBucket *currentBucket = *hashMap->buckets[hash & getMask(hashMap->sizePower)];
+		
+		// We iterate over the bucket chain until we find a collision or an in-between.
+		while(currentBucket != NULL) {
+			if(currentBucket->hash >= hash) {
+				break;
+			}
+			previousBucket = currentBucket;
+			currentBucket = currentBucket->next;
+		}
+		
+		// TODO: if(currentBucket == NULL || currentBucket->hash != hash)
+		if(currentBucket == NULL) {
+			// We either reached the end of the list, or no buckets was in the current slot.
+			ChainedHashMapBucket *newBucket = calloc(1, sizeof(ChainedHashMapBucket));
+			
+			if(newBucket != NULL) {
+				//newBucket->next = currentBucket;  // Bruh, that's the only change...
+				newBucket->data = data;
+				newBucket->hash = hash;
+				
+				if(previousBucket != NULL) {
+					// We are just at the end.
+					previousBucket->next = newBucket;
+				} else {
+					// There were no buckets.
+					*hashMap->buckets[hash & getMask(hashMap->sizePower)] = newBucket;
+				}
+				
+				hashMap->entryCount++;
+				return true;
+			}
+		} else if(currentBucket->hash != hash) {
+			// We have an in-between, or we are at the start of the list.
+			ChainedHashMapBucket *newBucket = malloc(sizeof(ChainedHashMapBucket));
+			
+			if(newBucket != NULL) {
+				newBucket->next = currentBucket;
+				newBucket->data = data;
+				newBucket->hash = hash;
+				
+				if(previousBucket != NULL) {
+					// In-between, or we are at the start of the list.
+					previousBucket->next = newBucket;
+				} else {
+					// Start of the list.
+					*hashMap->buckets[hash & getMask(hashMap->sizePower)] = newBucket;
+				}
+				
+				hashMap->entryCount++;
+				return true;
+			}
+		} else if(cb_freeData != NULL) {
+			// Handling collision.
+			cb_freeData(currentBucket->data);
+			currentBucket->data = data;
+			return true;
+		}
+		// Implied else: Handling collision while forbidden to overwrite => doing nothing.
+	}
+	
+	return false;
+}
+
+void hashmap_chained_free(ChainedHashMap *hashMap, void (*cb_freeData)(void *data)) {
 	if(hashMap != NULL) {
 		// Freeing the buckets
-		ChainedHashMapData* iData= hashMap->iData;
-		for(int i = 0; i < (2 << (iData->sizePower - 1)); i++) {
-			if(iData->buckets[i] == NULL) {
+		for(int i = 0; i < pow2(hashMap->sizePower); i++) {
+			if(*hashMap->buckets[i] == NULL) {
 				continue;
 			}
 			
-			ChainedHashMapBucket *currentBucket = *iData->buckets[i];
+			ChainedHashMapBucket *currentBucket = *hashMap->buckets[i];
 			while(currentBucket != NULL) {
 				ChainedHashMapBucket *nextBucket = currentBucket->next;
 				
-				if(currentBucket->data != NULL) {
-					hashMap->cb_free(currentBucket->data);
+				if(currentBucket->data != NULL && cb_freeData != NULL) {
+					cb_freeData(currentBucket->data);
 				}
 				free(currentBucket);
 				
@@ -85,7 +150,7 @@ void hashmap_chained_free(HashMap *hashMap) {
 			}
 		}
 		
-		free(hashMap->iData);
+		free(hashMap->buckets);
 		free(hashMap);
 	}
 }

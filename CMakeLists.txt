@@ -227,7 +227,10 @@ if(NP_GOODIES_BUILD_TESTS)
     # Targets > Tests > Chained HashMaps
     add_executable(test_hashmap_chained_creation tests/hashmap_chained/test_hashmap_chained_creation.c ${src_hashmap} ${src_test_utils})
     add_test(NAME test_hashmap_chained_creation COMMAND test_hashmap_chained_creation)
-    target_compile_definitions(test_hashmap_chained_creation PUBLIC NP_DEBUG_LOGGING)
+
+    add_executable(test_hashmap_chained_add_get tests/hashmap_chained/test_hashmap_chained_add_get.c ${src_hashmap} ${src_test_utils})
+    add_test(NAME test_hashmap_chained_add_get COMMAND test_hashmap_chained_add_get)
+    target_compile_definitions(test_hashmap_chained_add_get PUBLIC NP_DEBUG_LOGGING)
 else()
     message("---> Skipping test targets...")
 endif()

@@ -2,6 +2,10 @@
 
 #pragma once
 
+/** @addtogroup group_llist
+ *  @{
+ */
+
 // There are duplicated structures in order to allow the IDE to raise errors when passing
 //   `SingleLinkedList` instead of `DoubleLinkedList` or inversely.
 // This shouldn't affect the compiled code as far as I know.
@@ -161,3 +165,5 @@ struct double_linked_list {
 	 */
 	DoubleLinkedListNode *current;
 };
+
+/** @} */ // end of group_llist
