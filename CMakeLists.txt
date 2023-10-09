@@ -180,6 +180,7 @@ else()
     add_library(lib_np_clang_goodies SHARED ${src_all} ./rsc/np_clang_goodies.rc)
 
     target_compile_definitions(lib_np_clang_goodies PUBLIC NP_GOODIES_EXPORT_ALL)
+
     set_target_properties(lib_np_clang_goodies PROPERTIES OUTPUT_NAME np_clang_goodies)
 
     if(WIN32)
@@ -188,6 +189,8 @@ else()
 
     target_include_directories(lib_np_clang_goodies PUBLIC ./src)
     # add_subdirectory(src lib_np_clang_goodies)
+
+    install(TARGETS lib_np_clang_goodies)
 
     # TODO: Implement mechanisms to make it static and potentially not a DLL !
 endif()
