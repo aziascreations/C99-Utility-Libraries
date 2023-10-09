@@ -186,7 +186,8 @@ else()
         set_target_properties(lib_np_clang_goodies PROPERTIES MSVC_RUNTIME_LIBRARY MultiThreadedDLL)
     endif()
 
-    add_subdirectory(src lib_np_clang_goodies)
+    target_include_directories(lib_np_clang_goodies PUBLIC ./src)
+    # add_subdirectory(src lib_np_clang_goodies)
 
     # TODO: Implement mechanisms to make it static and potentially not a DLL !
 endif()
