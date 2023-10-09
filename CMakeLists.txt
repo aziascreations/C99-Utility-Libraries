@@ -9,6 +9,12 @@ endif()
 # Setup > Vanity title
 message("-- NibblePoker's Clang Goodies --")
 
+# Setup > Debugging printout
+if(NP_GOODIES_IS_MAIN)
+    message("--> Context: Main project")
+else()
+    message("--> Context: Included in other project")
+endif()
 
 # Configuring CMake
 message("--> Configuring CMake...")
