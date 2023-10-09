@@ -183,9 +183,9 @@ else()
 
     set_target_properties(lib_np_clang_goodies PROPERTIES OUTPUT_NAME np_clang_goodies)
 
-    set_target_properties(lib_np_clang_goodies PROPERTIES ARCHIVE_OUTPUT_DIRECTORY "dll_dynamic/")
-    set_target_properties(lib_np_clang_goodies PROPERTIES LIBRARY_OUTPUT_DIRECTORY "dll_dynamic/")
-    set_target_properties(lib_np_clang_goodies PROPERTIES RUNTIME_OUTPUT_DIRECTORY "dll_dynamic/")
+    #set_target_properties(lib_np_clang_goodies PROPERTIES ARCHIVE_OUTPUT_DIRECTORY "dll_dynamic/")
+    #set_target_properties(lib_np_clang_goodies PROPERTIES LIBRARY_OUTPUT_DIRECTORY "dll_dynamic/")
+    #set_target_properties(lib_np_clang_goodies PROPERTIES RUNTIME_OUTPUT_DIRECTORY "dll_dynamic/")
 
     if(WIN32)
         set_target_properties(lib_np_clang_goodies PROPERTIES MSVC_RUNTIME_LIBRARY MultiThreadedDLL)
@@ -194,7 +194,11 @@ else()
     target_include_directories(lib_np_clang_goodies PUBLIC ./src)
     # add_subdirectory(src lib_np_clang_goodies)
 
-    install(TARGETS lib_np_clang_goodies)
+    install(TARGETS lib_np_clang_goodies
+            ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}"
+            LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}"
+            RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}"
+    )
 
     # TODO: Implement mechanisms to make it static and potentially not a DLL !
 endif()
