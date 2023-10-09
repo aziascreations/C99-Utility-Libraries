@@ -1,79 +1,23 @@
-/// @file dllist.c
+/** @file */
 
 #include "dllist.h"
 
-/** @defgroup group_dllist Double linked lists
- *
- *  Every linked list is composed of these 3 distinct parts.
- *
- *  <b>\ref double_linked_list "DoubleLinkedList"</b><br>
- *  Main structure that contains pointers to the first, last and current
- *    \ref double_linked_list_node "DoubleLinkedListNode".<br>
- *  All functions in this module use or return a pointer to this type of structure.
- *
- *  <b>\ref double_linked_list_node "DoubleLinkedListNode"</b><br>
- *  Repeatable structure that is pointed to internally by the \ref double_linked_list "DoubleLinkedList" in order
- *    to represent a list entry.<br>
- *  This structure only contains pointer to the data it holds and the next and previous
- *    \ref double_linked_list_node "DoubleLinkedListNode".
- *
- *  <b>The data pointer</b><br>
- *  Also referred to as the *node's data*, this is a pointer to the data you want the list to hold.<br>
- *  When freeing a list, this is the pointer passed to the freeing function.
- *
- *  \see double_linked_list
- *  \see double_linked_list_node
- *
- *  @{
- */
- 
-DoubleLinkedList *dllist_create(void (*free)(void *data)) {
-	DoubleLinkedList *newList = malloc(sizeof(DoubleLinkedList));
-	
-	// Only setting up the fields if memory was allocated.
-	if(newList != NULL) {
-		newList->size = 0;
-		newList->first = NULL;
-		newList->current = NULL;
-		newList->last = NULL;
-		newList->free = free;
-	}
-	
-	return newList;
+DoubleLinkedListNode *dllist_createNode() {
+	return calloc(1, sizeof(DoubleLinkedListNode));
 }
 
-void dllist_free(DoubleLinkedList *list) {
-	if(list == NULL) {
-		return;
-	}
-	
-	DoubleLinkedListNode *currentNode = list->first;
-	while(currentNode != NULL) {
-		if(list->free != NULL) {
-			list->free(currentNode->data);
-		}
-		DoubleLinkedListNode *nextNode = currentNode->next;
-		free(currentNode);
-		currentNode = nextNode;
-	}
-	
-	free(list);
-}
-
-DoubleLinkedListNode *dllist_selectFirst(DoubleLinkedList *list) {
+DoubleLinkedListNode *dllist_getPrevious(DoubleLinkedList *list) {
 	if(list != NULL) {
-		list->current = list->first;
-		return list->first;
+		if(list->current != NULL) {
+			return list->current->previous;
+		}
 	}
 	return NULL;
 }
 
-DoubleLinkedListNode *dllist_selectNext(DoubleLinkedList *list) {
-	if(list != NULL) {
-		if(list->current != NULL) {
-			list->current = list->current->next;
-			return list->current;
-		}
+void *dllist_getPreviousData(DoubleLinkedList *list) {
+	if(dllist_getPrevious(list) != NULL) {
+		return list->current->previous->data;
 	}
 	return NULL;
 }
@@ -88,57 +32,52 @@ DoubleLinkedListNode *dllist_selectPrevious(DoubleLinkedList *list) {
 	return NULL;
 }
 
-DoubleLinkedListNode *dllist_selectLast(DoubleLinkedList *list) {
-	if(list != NULL) {
-		list->current = list->last;
-		return list->last;
-	}
-	return NULL;
-}
-
-void *dllist_selectFirstData(DoubleLinkedList *list) {
-	if(dllist_selectFirst(list) != NULL) {
+void *dllist_selectPreviousData(DoubleLinkedList *list) {
+	if(dllist_selectPrevious(list) != NULL) {
 		return list->current->data;
 	}
 	return NULL;
 }
 
-void *dllist_selectNextData(DoubleLinkedList *list) {
-	if(dllist_selectNext(list) != NULL) {
-		return list->current->data;
-	}
-	return NULL;
-}
-
-
-DoubleLinkedListNode *dllist_getByIndex(DoubleLinkedList *list, size_t index) {
+bool dllist_prepend(DoubleLinkedList *list, void *data, DoubleLinkedListNode * (*cb_allocNode)()) {
 	if(list != NULL) {
-		DoubleLinkedListNode *currentNode = list->first;
-		size_t currentIndex = 0;
-		
-		while(currentNode != NULL && currentIndex != index) {
-			currentNode = currentNode->next;
-			currentIndex++;
+		if(cb_allocNode == NULL) {
+			cb_allocNode = &dllist_createNode;
 		}
 		
-		return currentNode;
+		DoubleLinkedListNode *newNode = cb_allocNode();
+		
+		if(newNode != NULL) {
+			newNode->data = data;
+			
+			if(list->first != NULL) {
+				list->first->previous = newNode;
+			}
+			
+			newNode->previous = NULL;
+			newNode->next = list->first;
+			list->first = newNode;
+			
+			if(list->last == NULL) {
+				// This is the first node in the list.
+				list->last = newNode;
+			}
+			
+			list->size++;
+			return true;
+		}
 	}
 	
-	return NULL;
+	return false;
 }
 
-DoubleLinkedListNode *dllist_selectByIndex(DoubleLinkedList *list, size_t index) {
+bool dllist_append(DoubleLinkedList *list, void *data, DoubleLinkedListNode * (*cb_allocNode)()) {
 	if(list != NULL) {
-		list->current = dllist_getByIndex(list, index);
-		return list->current;
-	}
-	
-	return NULL;
-}
-
-bool dllist_append(DoubleLinkedList *list, void *data) {
-	if(list != NULL) {
-		DoubleLinkedListNode *newNode = malloc(sizeof(DoubleLinkedListNode));
+		if(cb_allocNode == NULL) {
+			cb_allocNode = &dllist_createNode;
+		}
+		
+		DoubleLinkedListNode *newNode = cb_allocNode();
 		
 		if(newNode != NULL) {
 			newNode->next = NULL;
@@ -150,7 +89,7 @@ bool dllist_append(DoubleLinkedList *list, void *data) {
 				list->last = newNode;
 				list->first = newNode;
 			} else {
-				// We just append.
+				// We just append to the end of the list.
 				newNode->previous = list->last;
 				list->last->next = newNode;
 				list->last = newNode;
@@ -164,4 +103,142 @@ bool dllist_append(DoubleLinkedList *list, void *data) {
 	return false;
 }
 
-/** @} */ // end of group_dllist
+bool dllist_insertAfterCurrent(DoubleLinkedList *list, void *data, DoubleLinkedListNode * (*cb_allocNode)()) {
+	if(list != NULL) {
+		if(list->current != NULL) {
+			if(cb_allocNode == NULL) {
+				cb_allocNode = &dllist_createNode;
+			}
+			
+			DoubleLinkedListNode *newNode = cb_allocNode();
+			
+			if(newNode != NULL) {
+				newNode->data = data;
+				
+				newNode->next = list->current->next;
+				list->current->next = newNode;
+				
+				newNode->previous = list->current;
+				
+				if(newNode->next == NULL) {
+					list->last = newNode;
+				} else {
+					newNode->next->previous = newNode;
+				}
+				
+				list->size++;
+				return true;
+			}
+		}
+	}
+	
+	return false;
+}
+
+bool dllist_deleteFirst(DoubleLinkedList *list, void (*cb_freeData)(void *data), void (*cb_freeNode)(void *data)) {
+	if(list != NULL) {
+		if(list->first != NULL) {
+			DoubleLinkedListNode *oldNode = list->first;
+			
+			list->first = oldNode->next;
+			if(list->first != NULL) {
+				list->first->previous = NULL;
+			} else {
+				list->last = NULL;
+			}
+			
+			if(list->current == oldNode) {
+				list->current = NULL;
+			}
+			
+			if(cb_freeData != NULL) {
+				cb_freeData(oldNode->data);
+			}
+			
+			if(cb_freeNode == NULL) {
+				cb_freeNode = &free;
+			}
+			cb_freeNode(oldNode);
+			
+			list->size--;
+			return true;
+		}
+	}
+	
+	return false;
+}
+
+//TODO: removePrevious
+
+bool dllist_deleteCurrent(DoubleLinkedList *list, void (*cb_freeData)(void *data), void (*cb_freeNode)(void *data)) {
+	if(list != NULL) {
+		if(list->current != NULL) {
+			DoubleLinkedListNode *oldNode = list->current;
+			
+			if(oldNode->previous != NULL) {
+				oldNode->previous->next = oldNode->next;
+			} else {
+				list->first = oldNode->next;
+			}
+			
+			if(oldNode->next != NULL) {
+				oldNode->next->previous = oldNode->previous;
+			} else {
+				list->last = oldNode->previous;
+			}
+			
+			list->current = NULL;
+			
+			if(cb_freeData != NULL) {
+				cb_freeData(oldNode->data);
+			}
+			
+			if(cb_freeNode == NULL) {
+				cb_freeNode = &free;
+			}
+			cb_freeNode(oldNode);
+			
+			list->size--;
+			return true;
+		}
+	}
+	
+	return false;
+}
+
+//TODO: removeNext
+//TODO: removeByIndex
+
+bool dllist_deleteLast(DoubleLinkedList *list, void (*cb_freeData)(void *data), void (*cb_freeNode)(void *data)) {
+	if(list != NULL) {
+		if(list->last != NULL) {
+			DoubleLinkedListNode *oldNode = list->last;
+			
+			list->last = oldNode->previous;
+			
+			if(list->last != NULL) {
+				list->last->next = NULL;
+			} else {
+				list->first = NULL;
+			}
+			
+			if(list->current == oldNode) {
+				list->current = NULL;
+			}
+			
+			if(cb_freeData != NULL) {
+				cb_freeData(oldNode->data);
+			}
+			
+			if(cb_freeNode == NULL) {
+				cb_freeNode = &free;
+			}
+			cb_freeNode(oldNode);
+			
+			list->size--;
+			return true;
+		}
+	}
+	
+	return false;
+}

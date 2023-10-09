@@ -4,13 +4,14 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 
 #include "./structs.h"
 
-#ifdef NP_UUID4_EXPORT
-#define DLL_EXPORT __declspec(dllexport)
+#if defined(NP_GOODIES_EXPORT_UUID) || defined(NP_GOODIES_EXPORT_UUID_ALL) || defined(NP_GOODIES_EXPORT_ALL)
+#define DLL_EXP_UUID __declspec(dllexport)
 #else
-#define DLL_EXPORT
+#define DLL_EXP_UUID
 #endif
 
 #define UUID_BYTE_LENGTH 16
@@ -25,7 +26,12 @@
  * @param uuid The UUID to represent as a string.
  * @return A `char *` string containing the representation of the given UUID.
  */
-DLL_EXPORT char *uuid_toString(struct uuid *uuid);
+DLL_EXP_UUID char *uuid_toString(struct uuid *uuid);
+
+/**
+ * abc todo
+ */
+#define uuid_compare(uuid_a, uuid_b) (memcmp(uuid_a, uuid_b, sizeof(struct uuid)))
 
 #ifdef NP_WIN32
 
@@ -39,6 +45,6 @@ DLL_EXPORT char *uuid_toString(struct uuid *uuid);
  * @param uuid The UUID to represent as a string.
  * @return A `wchar_t *` string containing the representation of the given UUID.
  */
-DLL_EXPORT wchar_t *uuid_toWcharString(struct uuid *uuid);
+DLL_EXP_UUID wchar_t *uuid_toWcharString(struct uuid *uuid);
 
 #endif

@@ -62,8 +62,8 @@ typedef struct uuid UUID4;
 // This will result in zero code if it compiles.
 // Source: https://scaryreasoner.wordpress.com/2009/02/28/checking-sizeof-at-compile-time/
 
-#ifndef NP_UUID_DISABLE_STRUCT_SIZE_CHECK
-#define NP_UUID_CHECK_STRUCT_SIZE(condition) ((void)sizeof(char[1 - 2*!!(condition)]))
+#ifndef NP_GOODIES_UUID_DISABLE_STRUCT_SIZE_CHECK
+#define NP_GOODIES_UUID_CHECK_STRUCT_SIZE(condition) ((void)sizeof(char[1 - 2*!!(condition)]))
 #else
-#define NP_UUID_CHECK_STRUCT_SIZE(condition)
+#define NP_GOODIES_UUID_CHECK_STRUCT_SIZE(condition)
 #endif

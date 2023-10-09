@@ -1,4 +1,4 @@
-/// @file text.c
+/** @file */
 
 /** @defgroup group_nptext String utilities
  *

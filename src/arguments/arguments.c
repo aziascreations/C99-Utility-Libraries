@@ -1,4 +1,4 @@
-/// @file arguments.c
+/** @file */
 
 #include "arguments.h"
 
@@ -53,8 +53,8 @@ Verb *args_createVerb(np_args_char *verb, np_args_char *description) {
 		// We attempt to prepare all the fields assuming it worked for now.
 		newVerb->name = np_args_copyString(verb);
 		newVerb->description = np_args_copyString(description);
-		newVerb->verbs = dllist_create((void (*)(void *)) &args_freeVerb);
-		newVerb->options = dllist_create((void (*)(void *)) &args_freeOption);
+		newVerb->verbs = dllist_create();
+		newVerb->options = dllist_create();
 		newVerb->parentVerb = NULL;
 		newVerb->wasUsed = false;
 		
@@ -100,7 +100,7 @@ Option *args_createOption(np_args_char token, np_args_char *name, np_args_char *
 		newOption->name = np_args_copyString(name);
 		newOption->description = np_args_copyString(description);
 		newOption->flags = flags;
-		newOption->arguments = dllist_create(&free);
+		newOption->arguments = dllist_create();
 		newOption->occurrences = 0;
 		newOption->registrationCount = 0;
 		
@@ -124,10 +124,10 @@ void args_freeVerb(Verb *verb) {
 		// Safely freeing lists.
 		// The subsequent required "args_freeVerb" and "args_freeOption" calls will be made automatically.
 		if(verb->verbs != NULL) {
-			dllist_free(verb->verbs);
+			dllist_free(verb->verbs, &free, NULL);
 		}
 		if(verb->options != NULL) {
-			dllist_free(verb->options);
+			dllist_free(verb->options, &free, NULL);
 		}
 		
 		// Safely freeing strings.
@@ -161,7 +161,7 @@ void args_freeOption(Option *option) {
 		// Safely freeing lists.
 		// The subsequent required "free" calls will be made automatically.
 		if(option->arguments != NULL) {
-			dllist_free(option->arguments);
+			dllist_free(option->arguments, &free, NULL);
 		}
 		
 		// Safely freeing strings.
@@ -199,7 +199,7 @@ bool args_registerVerb(Verb *registeredVerb, Verb *parentVerb) {
 		return false;
 	}
 	
-	if(!dllist_append(parentVerb->verbs, registeredVerb)) {
+	if(!dllist_append(parentVerb->verbs, registeredVerb, NULL)) {
 		np_args_error_println("Unable to register verb: Internal DLList error");
 		return false;
 	}
@@ -220,7 +220,7 @@ bool args_registerOption(Option *registeredOption, Verb *parentVerb) {
 		return false;
 	}
 	
-	if(!dllist_append(parentVerb->options, registeredOption)) {
+	if(!dllist_append(parentVerb->options, registeredOption, NULL)) {
 		np_args_error_println("Unable to register option: Internal DLList error");
 		return false;
 	}
@@ -359,7 +359,7 @@ bool args_addValueToOption(Option *option, np_args_char *addedValue) {
 		return false;
 	}
 	
-	if(!dllist_append(option->arguments, addedValueCopy)) {
+	if(!dllist_append(option->arguments, addedValueCopy, NULL)) {
 		np_args_error_println("Unable to insert the current argument into the option !");
 		free(addedValueCopy);
 		return false;

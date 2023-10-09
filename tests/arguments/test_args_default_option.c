@@ -45,6 +45,7 @@ int main(void) {
 	assert(defaultOption2->occurrences == 4, "Option '-b' used four times");
 	assert(defaultOption3->occurrences == 0, "Option '-c' not used");
 	
+	// FIXME: The test description is wrong due to copy-pasting !
 	printf("> Checking assigned values and their order...\n");
 	assert(
 			np_args_areStringsEqual(dllist_selectFirstData(defaultOption1->arguments), np_args_L("one")),
