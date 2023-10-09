@@ -58,6 +58,7 @@ DLL_EXP_LLIST LinkedList *llist_create();
  *                    If left as `NULL`, the data won't be freed !
  * @param cb_freeNode A function that will free the node's structure.<br>
  *                    If left as `NULL`, the standard `void free(void *data)` function will be used !
+ * @warning May cause memory leaks if `cb_freeData` is NULL.
  */
 DLL_EXP_LLIST void llist_free(
 		LinkedList *list,

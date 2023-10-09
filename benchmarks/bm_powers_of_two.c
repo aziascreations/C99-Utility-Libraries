@@ -1,7 +1,7 @@
 #include <math.h>
-#include <time.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 // Doing 100M tests
 #define TEST_COUNT 100000000

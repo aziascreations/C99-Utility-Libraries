@@ -49,14 +49,14 @@ endif()
 
 
 # Project > CTest
-if(NP_GOODIES_BUILD_EXAMPLES)
+if(NP_GOODIES_BUILD_TESTS)
     message("---> Including CTest...")
     include(CTest)
     enable_testing()
 endif()
 
 
-# TODO: Remove
+# TODO: Remove for 1.0.0
 # Feature constants
 message("--> Setting up constants")
 if(WIN32)
@@ -102,6 +102,27 @@ if(NP_GOODIES_IS_MAIN)
         set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /RELEASE")
     endif()
 endif()
+
+
+# Versioning
+message("--> Preparing environment variables and definitions for versioning...")
+
+# Don't forget to change it in "docs/Doxyfile" too !
+set(ENV{NP_GOODIES_VERSION_MAJOR} 0)
+set(ENV{NP_GOODIES_VERSION_MINOR} 3)
+set(ENV{NP_GOODIES_VERSION_PATCH} 0)
+set(ENV{NP_GOODIES_VERSION_EXTRA} 0)
+
+set(ENV{NP_GOODIES_VERSION_WINDOWS} "$ENV{NP_GOODIES_VERSION_MAJOR}.$ENV{NP_GOODIES_VERSION_MINOR}.$ENV{NP_GOODIES_VERSION_PATCH}.$ENV{NP_GOODIES_VERSION_EXTRA}")
+set(ENV{NP_GOODIES_VERSION_SEMVER} "$ENV{NP_GOODIES_VERSION_MAJOR}.$ENV{NP_GOODIES_VERSION_MINOR}.$ENV{NP_GOODIES_VERSION_PATCH}")
+
+add_compile_definitions(NP_GOODIES_VERSION_MAJOR=$ENV{NP_GOODIES_VERSION_MAJOR})
+add_compile_definitions(NP_GOODIES_VERSION_MINOR=$ENV{NP_GOODIES_VERSION_MINOR})
+add_compile_definitions(NP_GOODIES_VERSION_PATCH=$ENV{NP_GOODIES_VERSION_PATCH})
+add_compile_definitions(NP_GOODIES_VERSION_EXTRA=$ENV{NP_GOODIES_VERSION_EXTRA})
+
+add_compile_definitions(NP_GOODIES_VERSION_WINDOWS=\"$ENV{NP_GOODIES_VERSION_WINDOWS}\")
+add_compile_definitions(NP_GOODIES_VERSION_SEMVER=\"$ENV{NP_GOODIES_VERSION_SEMVER}\")
 
 
 # Targets
@@ -156,15 +177,6 @@ set_target_properties(np_clang_goodies_dll_static PROPERTIES LIBRARY_OUTPUT_DIRE
 set_target_properties(np_clang_goodies_dll_static PROPERTIES RUNTIME_OUTPUT_DIRECTORY "dll_static/")
 
 
-# Targets > Dev manual tester (Deprecated)
-#if(NP_GOODIES_IS_MAIN)
-#    message("---> Adding manual tester for non-imported context...")
-#    add_executable(manual_testing manual_testing.c ${src_all})
-#    set_target_properties(manual_testing PROPERTIES C_STANDARD 99)
-#    target_compile_definitions(manual_testing PUBLIC NP_DEBUG_LOGGING)
-#endif()
-
-
 # Targets > Examples
 if(NP_GOODIES_BUILD_EXAMPLES)
     message("---> Adding examples targets...")
@@ -184,26 +196,24 @@ endif()
 if(NP_GOODIES_BUILD_TESTS)
     message("---> Adding test targets...")
 
+    # Targets > Tests > Templates
+    #target_compile_definitions(target_name_here PUBLIC NP_DEBUG_LOGGING)
+
     # Targets > Tests > Arguments
     add_executable(test_args_options tests/arguments/test_options.c ${src_args} ${src_test_utils})
     add_test(NAME test_args_options COMMAND test_args_options)
-    #target_compile_definitions(test_args_options PUBLIC NP_DEBUG_LOGGING)
 
     add_executable(test_verb_registration tests/arguments/test_verb_registration.c ${src_args} ${src_test_utils})
     add_test(NAME test_verb_registration COMMAND test_verb_registration)
-    #target_compile_definitions(test_verb_registration PUBLIC NP_DEBUG_LOGGING)
 
     add_executable(test_args_parsing_basic tests/arguments/test_args_parsing_basic.c ${src_args} ${src_test_utils})
     add_test(NAME test_args_parsing_basic COMMAND test_args_parsing_basic)
-    #target_compile_definitions(test_args_parsing_basic PUBLIC NP_DEBUG_LOGGING)
 
     add_executable(test_args_required_option tests/arguments/test_args_required_option.c ${src_args} ${src_test_utils})
     add_test(NAME test_args_required_option COMMAND test_args_required_option)
-    #target_compile_definitions(test_args_required_option PUBLIC NP_DEBUG_LOGGING)
 
     add_executable(test_args_default_option tests/arguments/test_args_default_option.c ${src_args} ${src_test_utils})
     add_test(NAME test_args_default_option COMMAND test_args_default_option)
-    #target_compile_definitions(test_args_default_option PUBLIC NP_DEBUG_LOGGING)
 
     # Targets > Tests > Lists
     add_executable(test_llist_default_node_size tests/lists/test_llist_default_node_size.c ${src_llist} ${src_test_utils})
@@ -233,6 +243,10 @@ if(NP_GOODIES_BUILD_TESTS)
 
     add_executable(test_hashmap_chained_deletion tests/hashmap_chained/test_hashmap_chained_deletion.c ${src_hashmap} ${src_test_utils})
     add_test(NAME test_hashmap_chained_deletion COMMAND test_hashmap_chained_deletion)
+
+    # Targets > Tests > Misc
+    add_executable(test_version tests/misc/test_version.c src/version.h ${src_test_utils})
+    add_test(NAME test_version COMMAND test_version)
 else()
     message("---> Skipping test targets...")
 endif()
@@ -241,6 +255,8 @@ if(NP_GOODIES_BUILD_BENCHMARKS)
     message("---> Adding benchmark targets...")
 
     # See: https://blog.habets.se/2010/09/gettimeofday-should-never-be-used-to-measure-time.html
+
+    add_executable(bm_crc32_implementations benchmarks/bm_crc32_implementations.c)
 
     add_executable(bm_square_of_two_mask benchmarks/bm_square_of_two_mask.c)
 

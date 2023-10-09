@@ -5,24 +5,29 @@
 #include <stdint.h>
 #include <stdbool.h>
 
+/** @addtogroup group_hashmap
+ *  @{
+ */
+
+/**
+ * Shared base that gets extended by all HashMap implementations.
+ */
 typedef struct hashmap HashMap;
 
+/**
+ * Shared base that gets extended by all HashMap implementations.
+ */
 struct hashmap {
 	/**
-	 * ???
+	 * Amount of entries/buckets currently present in the list.
 	 */
 	size_t entryCount;
 	
 	/**
-	 * ???
+	 * Maximum amount of entries/buckets that can be inserted in the HashMap.
+	 * @warning This value doesn't take entry/bucket chaining into account.
 	 */
 	size_t capacity;
 };
 
-// nbBuckets, maxBuckets -> Derived from mask size !.
-// Load factor = nbUsedBuckets / maxNbBuckets
-
-// TODO: Make definition to have macros OR functions.
-
-// TODO: Use macros to have something like hashmap_set(hashmap, data) => hashmap->vtable->set(hashmap, data), & key !
-//#define hashmap_set(hashmap, key, value) hashmap->vtable->set();
+/** @} */ // end of group_hashmap
