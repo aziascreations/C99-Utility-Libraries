@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['verb_0',['Verb',['../arguments_2structs_8h.html#a4481b8afc45b3ad7ac92bafe3650c102',1,'structs.h']]]
+  ['hashmap_0',['HashMap',['../group__group__hashmap.html#ga245fe5fb7311d63b7a1bd7477a2a469d',1,'structs.h']]]
 ];

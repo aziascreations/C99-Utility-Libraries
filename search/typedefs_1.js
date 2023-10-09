@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['option_0',['Option',['../arguments_2structs_8h.html#aa32a72dced492864660882173e24c7b9',1,'structs.h']]]
+  ['doublelinkedlistnode_0',['DoubleLinkedListNode',['../group__group__llist.html#gaf40243f21e5a78b8deaaac15545ef442',1,'structs.h']]]
 ];

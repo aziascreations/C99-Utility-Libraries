@@ -1,14 +1,14 @@
 var dllist_8c =
 [
-    [ "dllist_create", "group__group__dllist.html#gab17a388e3fc4a400d055fd770a2c4aa4", null ],
-    [ "dllist_free", "group__group__dllist.html#ga1fff3cf486503ec4ddbb9237ef3995a9", null ],
-    [ "dllist_selectFirst", "group__group__dllist.html#ga0789668fbd409b12beb93fa098afe934", null ],
-    [ "dllist_selectNext", "group__group__dllist.html#ga8cab37d202e2ba500ff4bd547df4f7f7", null ],
-    [ "dllist_selectPrevious", "group__group__dllist.html#ga0e6518bd15509e83d22f3097e4d2aca4", null ],
-    [ "dllist_selectLast", "group__group__dllist.html#gae5ca9327498dacbd45c5223aae3eb39a", null ],
-    [ "dllist_selectFirstData", "group__group__dllist.html#ga73b7a470634e5b21171aea8e2d0f10ec", null ],
-    [ "dllist_selectNextData", "group__group__dllist.html#ga5aa6ccce6f62e8153dcedb769df58f1b", null ],
-    [ "dllist_getByIndex", "group__group__dllist.html#gae25b8bdd0cff5f2eba6a1eeffe554bab", null ],
-    [ "dllist_selectByIndex", "group__group__dllist.html#ga0a4a48e9143b3c6784d7727c3157d555", null ],
-    [ "dllist_append", "group__group__dllist.html#ga1bd903704428d4e22d1021f63dd055c5", null ]
+    [ "dllist_createNode", "group__group__dllist.html#ga50cb2b22bde855d4954a1340a4199934", null ],
+    [ "dllist_getPrevious", "group__group__dllist.html#ga6d67cd0e7fde5baf1da2626e13ddf094", null ],
+    [ "dllist_getPreviousData", "group__group__dllist.html#ga6070c5d3f05e554705be7636c2f2417d", null ],
+    [ "dllist_selectPrevious", "group__group__dllist.html#gaed3f34b2282265fce268d25a7145f8c6", null ],
+    [ "dllist_selectPreviousData", "group__group__dllist.html#ga8dc03d191616a63231823174229ff169", null ],
+    [ "dllist_prepend", "group__group__dllist.html#gaa8ba7df15ae3b243023e19d954739820", null ],
+    [ "dllist_append", "group__group__dllist.html#ga0e4bf76ee9e840db8c947584285a5885", null ],
+    [ "dllist_insertAfterCurrent", "group__group__dllist.html#ga98a3027c2a7b5c7d4720962c9cd2d84e", null ],
+    [ "dllist_deleteFirst", "group__group__dllist.html#ga5d5a158cd89db5d5aad267a8579546fe", null ],
+    [ "dllist_deleteCurrent", "group__group__dllist.html#ga6953218ca413fb08fbec840b2e1ea6c4", null ],
+    [ "dllist_deleteLast", "group__group__dllist.html#ga5fcb0b34dbeaebdf0e0faa6f7cf79fcb", null ]
 ];

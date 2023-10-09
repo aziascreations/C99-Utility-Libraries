@@ -27,7 +27,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign">
-   <div id="projectname">NibblePoker&#39;s Clang Goodies<span id="projectnumber">&#160;0.0.1</span>
+   <div id="projectname">NibblePoker&#39;s Clang Goodies<span id="projectnumber">&#160;0.3.0</span>
    </div>
    <div id="projectbrief">Small collection of utilities and libraries for C in order to simplify some development tasks.</div>
   </td>
@@ -100,20 +100,30 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 Features</h1>
 <ul>
 <li><img src="docs/images/console.png" alt="" class="inline"/> Robust launch arguments parsing &amp; handling with verb support</li>
-<li><img src="docs/images/chain.png" alt="" class="inline"/> Double linked lists with custom freeing callbacks</li>
+<li><img src="docs/images/chain.png" alt="" class="inline"/> Single &amp; double linked lists with custom node support and QoL functions</li>
+<li><img src="docs/images/captcha.png" alt="" class="inline"/> Basic chained HashMaps</li>
 <li><img src="docs/images/text.png" alt="" class="inline"/> Various string utilities</li>
 <li><img src="docs/images/bug.png" alt="" class="inline"/> Toggleable debugging output functions</li>
 <li><img src="docs/images/module.png" alt="" class="inline"/> Complete, toggleable &amp; macro-able <code>WCHAR</code> support</li>
-<li><img src="docs/images/view_more.png" alt="" class="inline"/> Other features such as UUID4, and more to come</li>
+<li><img src="docs/images/plus.png" alt="" class="inline"/> Small extras like UUID4 &amp; CRC32B</li>
+<li><img src="docs/images/view_more.png" alt="" class="inline"/> Other features to come as needed or requested</li>
 </ul>
 <h1><a class="anchor" id="autotoc_md2"></a>
+Planned Features</h1>
+<ul>
+<li>More HashMap types &amp; more utilities</li>
+<li>Platform-agnostic with some optional improvements on a per-OS and opt-in basis.</li>
+<li>Optional assembly-level optimisations for some procedures.</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md3"></a>
 Remarks</h1>
 <p >This project is by no mean complete or exhaustive in the features it provides.<br  />
  It is mainly intended to provide me with a set of utilities and libraries I often use while making other applications.</p>
-<p >While it is this way, its functions' names, signatures and behaviour should stay relatively similar as the project advances.<br  />
+<p >However, the functions' names, signatures and behaviour should stay relatively similar as the project advances.<br  />
  In the event I introduce breaking changes, you should be able to notice them since I'll be using <a href="https://semver.org/">Semantic Versioning</a>.</p>
-<h1><a class="anchor" id="autotoc_md3"></a>
+<h1><a class="anchor" id="autotoc_md4"></a>
 Usage</h1>
+<p ><b>TODO: Revamp section with CMake <code>include</code> directives.</b></p>
 <p >In order to use this library in your projects you need to do the following things:</p>
 <p >Firstly, add this repository as a submodule in your project and checkout to a specific tag or commit: </p><div class="fragment"><div class="line">git submodule add https://github.com/aziascreations/C99-Utility-Libraries.git libs/nibblepoker-c-goodies</div>
 <div class="line">git -C libs/nibblepoker-c-goodies checkout &lt;hash|tag&gt;</div>
@@ -122,14 +132,15 @@ Usage</h1>
 <div class="line">    CONFIGURE_DEPENDS &quot;libs/nibblepoker-c-goodies/src/*.h&quot; &quot;libs/nibblepoker-c-goodies/src/*.c&quot;</div>
 <div class="line">)</div>
 </div><!-- fragment --><p >Finally, modify you targets to add <code>${src_nibblepoker_c_goodies}</code> like so: </p><div class="fragment"><div class="line">add_executable(my_app src/main.c ${src_nibblepoker_c_goodies} ...)</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md4"></a>
+</div><!-- fragment --><p ><b>TODO: Add reminder to check the <a class="el" href="md__github_workspace_definitions.html">Definitions</a> page.</b></p>
+<h1><a class="anchor" id="autotoc_md5"></a>
 Examples</h1>
-<p ><b>TODO:</b> <em>Add intro text.</em></p>
+<p >Some examples that demonstrate how to use most of the functions this library provides can be found in the <a href="examples/">examples/</a> folder.</p>
 <p >Alternatively, you can also check the <a href="https://github.com/aziascreations/C99-Win32-Wifi-Utility">aziascreations/C99-Win32-Wifi-Utility</a> repository for a complete example in a "fully-fledged" Windows application.</p>
-<h2><a class="anchor" id="autotoc_md5"></a>
+<h2><a class="anchor" id="autotoc_md6"></a>
 Launch arguments</h2>
 <p ><b>TODO</b></p>
-<h2><a class="anchor" id="autotoc_md6"></a>
+<h2><a class="anchor" id="autotoc_md7"></a>
 Double Linked Lists</h2>
 <ul>
 <li><a href="examples/dllist_basic.c">Basic operations</a><ul>
@@ -140,8 +151,27 @@ Double Linked Lists</h2>
 <li>Same as above while using structured data that needs to be freed in a specific way.</li>
 </ul>
 </li>
+<li><a href="examples/dllist_custom_node.c">Custom list nodes</a><ul>
+<li>Same as above while using a custom superset of the standard list node in order to better suit some edge cases.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md7"></a>
+</li>
+<li><a href="examples/dllist_specific.c">Functions specific to double linked lists</a><ul>
+<li>Testing functions that have a <code>dllist</code>-specific implementation.</li>
+</ul>
+</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md8"></a>
+Hashing</h2>
+<ul>
+<li><a href="examples/crc32.c">CRC32B hashing</a><ul>
+<li>Basic example of hashing data with CRC32B.</li>
+</ul>
+</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md9"></a>
+HashMaps</h2>
+<p ><b>TODO</b></p>
+<h2><a class="anchor" id="autotoc_md10"></a>
 UUID</h2>
 <ul>
 <li><a href="examples/uuid_all.c">UUID4 generation</a><ul>
@@ -149,32 +179,46 @@ UUID</h2>
 </ul>
 </li>
 </ul>
-<h1><a class="anchor" id="autotoc_md8"></a>
+<h1><a class="anchor" id="autotoc_md11"></a>
 Documentation</h1>
-<h2><a class="anchor" id="autotoc_md9"></a>
+<h2><a class="anchor" id="autotoc_md12"></a>
 Viewing</h2>
 <p >You can consult the documentation at the following URL:<br  />
  &#160;&#160;&#160;&#160;<a href="https://aziascreations.github.io/C99-Utility-Libraries/">https://aziascreations.github.io/C99-Utility-Libraries/</a></p>
 <p >It is automatically updated when a commit is pushed onto the <code>master</code> branch.</p>
-<h2><a class="anchor" id="autotoc_md10"></a>
+<h2><a class="anchor" id="autotoc_md13"></a>
 Building</h2>
 <p >If you want to build the documentation, you need to do the following things:</p><ul>
 <li>Install <a href="https://www.doxygen.nl/">Doxygen</a> on your system.</li>
-<li>Clone the git submodules with <code>git submodule update --init --recursive</code></li>
+<li>Clone the git submodules with <code>git submodule update --init --recursive</code>.</li>
 <li>Run the <a href="https://github.com/aziascreations/C99-Utility-Libraries/blob/master/make-doc.bat">make-doc.bat</a> script.</li>
 <li>Go into <code>docs/html</code> and open the <code>index.html</code> file.</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md11"></a>
+<h1><a class="anchor" id="autotoc_md14"></a>
+Benchmarks</h1>
+<p >This project provides a couple of benchmarks in order to justify some of the design choices I made.</p>
+<p >Please refer to the <a class="el" href="md__github_workspace_benchmarks_readme.html">Benchmarks</a> page for more information.</p>
+<h1><a class="anchor" id="autotoc_md15"></a>
 Licenses</h1>
-<p ><a href="https://github.com/aziascreations/C99-Utility-Libraries/blob/master/LICENSE">MIT License</a></p>
-<p >The <a href="https://github.com/jothepro/doxygen-awesome-css">doxygen-awesome-css</a> repository uses the same <a href="https://github.com/jothepro/doxygen-awesome-css/blob/main/LICENSE">license</a>. </p>
+<p >This project is dual-licensed under the following open-source licenses.<br  />
+ You can choose the one that best suits your needs:</p><ol type="1">
+<li>[MIT License](LICENSE-MIT)<br  />
+ &#160;&#160;● Just include the <code>LICENSE-MIT</code> file and be done with it while using an OSI license.</li>
+<li>[CC0 1.0 Universal (CC0 1.0) (Public Domain)](LICENSE-CC0)<br  />
+ &#160;&#160;● Do whatever you want with it.<br  />
+ &#160;&#160;● No credit, mentions or anything else is needed.<br  />
+ &#160;&#160;● Just have fun programming :)</li>
+</ol>
+<p >Keep in mind, the <a href="https://github.com/jothepro/doxygen-awesome-css">doxygen-awesome-css</a> submodule repository uses an <a href="https://github.com/jothepro/doxygen-awesome-css/blob/main/LICENSE">MIT license</a>.<br  />
+ You can either not clone it or fork the project and remove it to be 100% safe if you use the <code>CC0 1.0</code> license.<br  />
+ The documentation will still build without it, but it will have a "worse"-looking UI. </p>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Sep 29 2023 01:30:57 for NibblePoker&#39;s Clang Goodies by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Mon Oct 9 2023 11:55:05 for NibblePoker&#39;s Clang Goodies by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['verbs_0',['verbs',['../structarguments__verb.html#a75419bfec7a6fdefb7c7d93252cd01b9',1,'arguments_verb']]]
+  ['registrationcount_0',['registrationCount',['../structarguments__option.html#a6e8236133b6c1b2fcd4eeb167f82a428',1,'arguments_option']]]
 ];

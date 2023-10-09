@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['parentverb_0',['parentVerb',['../structarguments__verb.html#a810f3cf8c53970a1cd207b6e3e2aa6f9',1,'arguments_verb']]],
-  ['previous_1',['previous',['../structdouble__linked__list__node.html#a1e92f9dc263fda1f074924768e141c2f',1,'double_linked_list_node']]]
+  ['last_0',['last',['../structsingle__linked__list.html#a6e694e36f7c975d2ef48d953a23eb5fb',1,'single_linked_list::last()'],['../structdouble__linked__list.html#ac3fb34d6b5b79fa7a9eb376ddbcc465c',1,'double_linked_list::last()']]]
 ];

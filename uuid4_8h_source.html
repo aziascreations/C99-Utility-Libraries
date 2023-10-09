@@ -27,7 +27,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign">
-   <div id="projectname">NibblePoker&#39;s Clang Goodies<span id="projectnumber">&#160;0.0.1</span>
+   <div id="projectname">NibblePoker&#39;s Clang Goodies<span id="projectnumber">&#160;0.3.0</span>
    </div>
    <div id="projectbrief">Small collection of utilities and libraries for C in order to simplify some development tasks.</div>
   </td>
@@ -103,14 +103,14 @@ $(document).ready(function(){initNavTree('uuid4_8h_source.html',''); initResizab
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;<a class="code" href="uuid_8h.html">./uuid.h</a>&quot;</span></div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;<a class="code" href="uuid_2structs_8h.html">./structs.h</a>&quot;</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#ifdef NP_UUID4_EXPORT</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#define DLL_EXPORT __declspec(dllexport)</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#if defined(NP_GOODIES_EXPORT_UUID4) || defined(NP_GOODIES_EXPORT_UUID_ALL) || defined(NP_GOODIES_EXPORT_ALL)</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#define DLL_EXP_UUID4 __declspec(dllexport)</span></div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#else</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#define DLL_EXPORT</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#define DLL_EXP_UUID4</span></div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>DLL_EXPORT <a class="code hl_struct" href="structuuid.html">UUID4</a> *<a class="code hl_function" href="group__group__uuid.html#ga12b8132477b8b5bec9314a29660af069">uuid4_generate</a>();</div>
-<div class="ttc" id="agroup__group__uuid_html_ga12b8132477b8b5bec9314a29660af069"><div class="ttname"><a href="group__group__uuid.html#ga12b8132477b8b5bec9314a29660af069">uuid4_generate</a></div><div class="ttdeci">DLL_EXPORT UUID4 * uuid4_generate()</div><div class="ttdef"><b>Definition:</b> uuid4.c:9</div></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>DLL_EXP_UUID4 <a class="code hl_struct" href="structuuid.html">UUID4</a> *<a class="code hl_function" href="group__group__uuid.html#ga12b8132477b8b5bec9314a29660af069">uuid4_generate</a>();</div>
+<div class="ttc" id="agroup__group__uuid_html_ga12b8132477b8b5bec9314a29660af069"><div class="ttname"><a href="group__group__uuid.html#ga12b8132477b8b5bec9314a29660af069">uuid4_generate</a></div><div class="ttdeci">DLL_EXP_UUID4 UUID4 * uuid4_generate()</div><div class="ttdef"><b>Definition:</b> uuid4.c:9</div></div>
 <div class="ttc" id="astructuuid_html"><div class="ttname"><a href="structuuid.html">uuid</a></div><div class="ttdef"><b>Definition:</b> uuid/structs.h:21</div></div>
 <div class="ttc" id="auuid_2structs_8h_html"><div class="ttname"><a href="uuid_2structs_8h.html">structs.h</a></div></div>
 <div class="ttc" id="auuid_8h_html"><div class="ttname"><a href="uuid_8h.html">uuid.h</a></div></div>
@@ -120,7 +120,7 @@ $(document).ready(function(){initNavTree('uuid4_8h_source.html',''); initResizab
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_7b7cd5aab2b2f3062d7eb7d46dfadcfe.html">uuid</a></li><li class="navelem"><a class="el" href="uuid4_8h.html">uuid4.h</a></li>
-    <li class="footer">Generated on Fri Sep 29 2023 01:30:57 for NibblePoker&#39;s Clang Goodies by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Mon Oct 9 2023 11:55:05 for NibblePoker&#39;s Clang Goodies by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>

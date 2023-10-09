@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['last_0',['last',['../structdouble__linked__list.html#a3f2f53a8268cc32aebf948c4c59e9a06',1,'double_linked_list']]],
-  ['structs_2eh_1',['structs.h',['../lists_2double_2structs_8h.html',1,'']]]
+  ['isstringempty_0',['isStringEmpty',['../group__group__nptext.html#ga8f4f4f3e2bf948124e34f32fbe593610',1,'isStringEmpty(char *string):&#160;text.c'],['../group__group__nptext.html#ga8f4f4f3e2bf948124e34f32fbe593610',1,'isStringEmpty(char *string):&#160;text.c']]],
+  ['iswcharstringempty_1',['isWCharStringEmpty',['../group__group__nptext.html#gaa726c3c6dd75c3dd43f51d01c892f2dd',1,'isWCharStringEmpty(wchar_t *string):&#160;text.c'],['../group__group__nptext.html#gaa726c3c6dd75c3dd43f51d01c892f2dd',1,'isWCharStringEmpty(wchar_t *string):&#160;text.c']]]
 ];

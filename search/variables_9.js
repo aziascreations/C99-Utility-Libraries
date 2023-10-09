@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['size_0',['size',['../structdouble__linked__list.html#a6a3c5324a9d63dbdab0ae4fcd9497bed',1,'double_linked_list']]]
+  ['occurrences_0',['occurrences',['../structarguments__option.html#abe18f03312feae68d08205cdf980abfc',1,'arguments_option']]],
+  ['options_1',['options',['../structarguments__verb.html#a22c000dd3177b5260c4428f8c7289853',1,'arguments_verb']]]
 ];
