@@ -183,6 +183,10 @@ else()
 
     set_target_properties(lib_np_clang_goodies PROPERTIES OUTPUT_NAME np_clang_goodies)
 
+    set_target_properties(lib_np_clang_goodies PROPERTIES ARCHIVE_OUTPUT_DIRECTORY "dll_dynamic/")
+    set_target_properties(lib_np_clang_goodies PROPERTIES LIBRARY_OUTPUT_DIRECTORY "dll_dynamic/")
+    set_target_properties(lib_np_clang_goodies PROPERTIES RUNTIME_OUTPUT_DIRECTORY "dll_dynamic/")
+
     if(WIN32)
         set_target_properties(lib_np_clang_goodies PROPERTIES MSVC_RUNTIME_LIBRARY MultiThreadedDLL)
     endif()
