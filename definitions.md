@@ -12,20 +12,20 @@
   * `NP_GOODIES_BUILD_TESTS` [➜](#build-tests)
 * [Library Exports Toggles](#library-exports-toggles) *(As a hierarchical list of priority)*
   * `NP_GOODIES_EXPORT_ALL` [➜](#everything)
-    * `NP_GOODIES_EXPORT_ARGUMENTS`
-    * `NP_GOODIES_EXPORT_HASH`
-      * `NP_GOODIES_EXPORT_CRC32`
-    * `NP_GOODIES_EXPORT_HASHMAP_ALL`
-      * `NP_GOODIES_EXPORT_HASHMAP_CHAINED`
-    * `NP_GOODIES_EXPORT_LIST_ALL`
-      * `NP_GOODIES_EXPORT_SLLIST`
-      * `NP_GOODIES_EXPORT_DLLIST`
+    * `NP_GOODIES_EXPORT_ARGUMENTS` [➜](#arguments-parser)
+    * `NP_GOODIES_EXPORT_HASH` [➜](#hashing-function---everything)
+      * `NP_GOODIES_EXPORT_CRC32` [➜](#hashing-function---crc32)
+    * `NP_GOODIES_EXPORT_HASHMAP_ALL` [➜](#hashmap---everything)
+      * `NP_GOODIES_EXPORT_HASHMAP_CHAINED` [➜](#hashmap---chained)
+    * `NP_GOODIES_EXPORT_LIST_ALL` [➜](#lists---everything)
+      * `NP_GOODIES_EXPORT_SLLIST` [➜](#lists---single-linked-lists)
+      * `NP_GOODIES_EXPORT_DLLIST` [➜](#lists---double-linked-lists)
     * <s>`NP_GOODIES_EXPORT_ULID`</s> **TODO**
-    * `NP_GOODIES_EXPORT_UUID_ALL`
-      * `NP_GOODIES_EXPORT_UUID4`
+    * `NP_GOODIES_EXPORT_UUID_ALL` [➜](#uuid---everything)
+      * `NP_GOODIES_EXPORT_UUID4` [➜](#uuid---version-4)
       * <s>`NP_GOODIES_EXPORT_UUID6`</s> **TODO**
       * <s>`NP_GOODIES_EXPORT_UUID7`</s> **TODO**
-    * `NP_GOODIES_EXPORT_TEXT`
+    * `NP_GOODIES_EXPORT_TEXT` [➜](#text-utilities)
 
 
 ## Features Toggles
@@ -88,10 +88,93 @@ CTest will also be included in CMake.
 
 
 ## Library Exports Toggles
-[TODO: Note about hierarchy and dependencies.]
+The export toggles work as a hierarchical list of priority, which means that the more important a
+definition is, the more will get exported regardless of which "lesser" related definitions are present.
 
 ### Everything
 **Definition:** `NP_GOODIES_EXPORT_ALL`
 
 If defined, every possible function is exported.<br>
 This definition takes precedence over any other `NP_GOODIES_EXPORT_*` definition.
+
+
+### Arguments Parser
+**Definition:** `NP_GOODIES_EXPORT_ARGUMENTS`
+
+If defined, every function in [src/arguments](src/arguments) is exported.
+
+⚠️ The lists and text-related functions will be present in the final executable
+but may not be exported unless their respective definition is present.
+
+
+### Hashing Function - Everything
+**Definition:** `NP_GOODIES_EXPORT_HASH`
+
+If defined, every possible hashing function is exported.<br>
+This definition takes precedence over any other `NP_GOODIES_EXPORT_*` definition
+that pertains to hashing functions.
+
+### Hashing Function - CRC32
+**Definition:** `NP_GOODIES_EXPORT_CRC32`
+
+If defined, every CRC32-related functions are exported.
+
+⚠️ The [NP_GOODIES_CRC32_DISABLE_LOOKUP_TABLE](#crc32---disable-lookup-table)
+and [NP_GOODIES_CRC32_ENABLE_BRANCHLESS](#crc32---enables-branchless-logic)
+definitions will affect the exported functions.
+
+
+### HashMap - Everything
+**Definition:** `NP_GOODIES_EXPORT_HASHMAP_ALL`
+
+If defined, every possible hashmap-related function is exported.<br>
+This definition takes precedence over any other `NP_GOODIES_EXPORT_*` definition
+that pertains to hashmaps.
+
+⚠️ No hashing function required for proper hashmap operations are included under this definition.
+
+### HashMap - Chained
+**Definition:** `NP_GOODIES_EXPORT_HASHMAP_CHAINED`
+
+If defined, every functions related to chained hashmaps are exported.
+
+⚠️ No hashing function required for proper hashmap operations are included under this definition.
+
+
+### Lists - Everything
+**Definition:** `NP_GOODIES_EXPORT_LIST_ALL`
+
+If defined, every possible list-related function is exported.<br>
+This definition takes precedence over any other `NP_GOODIES_EXPORT_*` definition
+that pertains to lists.
+
+### Lists - Single Linked Lists
+**Definition:** `NP_GOODIES_EXPORT_SLLIST`
+
+If defined, every functions related to single linked lists are exported.
+
+### Lists - Double Linked Lists
+**Definition:** `NP_GOODIES_EXPORT_DLLIST`
+
+If defined, every functions related to double linked lists are exported.
+
+
+### UUID - Everything
+**Definition:** `NP_GOODIES_EXPORT_UUID_ALL`
+
+If defined, every possible UUID-related function is exported.<br>
+This definition takes precedence over any other `NP_GOODIES_EXPORT_*` definition
+that pertains to UUIDs.
+
+### UUID - Version 4
+**Definition:** `NP_GOODIES_EXPORT_UUID4`
+
+If defined, every functions related to UUIDv4 are exported.
+
+
+### Text Utilities
+**Definition:** `NP_GOODIES_EXPORT_TEXT`
+
+If defined, every functions related to UUIDv4 are exported.
+
+⚠️ Some functions may not be exported if `NP_WIN32` isn't defined.
