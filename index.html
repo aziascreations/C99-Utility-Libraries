@@ -123,7 +123,44 @@ Remarks</h1>
  In the event I introduce breaking changes, you should be able to notice them since I'll be using <a href="https://semver.org/">Semantic Versioning</a>.</p>
 <h1><a class="anchor" id="autotoc_md4"></a>
 Usage</h1>
-<p ><b>TODO: Revamp section with CMake <code>include</code> directives.</b></p>
+<p ><b>TODO: Add reminder to check the <a class="el" href="md__github_workspace_definitions.html">Definitions</a> page.</b></p>
+<h2><a class="anchor" id="autotoc_md5"></a>
+CMake's FetchContent</h2>
+<p >Firstly, insert the following lines into your <code>CMakeLists.txt</code>: </p><div class="fragment"><div class="line"># Including the `FetchContent` directives.</div>
+<div class="line">include(FetchContent)</div>
+<div class="line"> </div>
+<div class="line"># Configuring the library. (Optional)</div>
+<div class="line">set(NP_GOODIES_BUILD_BENCHMARKS OFF CACHE BOOL &quot;&quot; FORCE)  # OFF by default.</div>
+<div class="line">set(NP_GOODIES_BUILD_EXAMPLES   OFF CACHE BOOL &quot;&quot; FORCE)  # OFF by default.</div>
+<div class="line">set(NP_GOODIES_BUILD_TESTS      OFF CACHE BOOL &quot;&quot; FORCE)  # OFF by default.</div>
+<div class="line"> </div>
+<div class="line"># Downloading the library in the build folder.</div>
+<div class="line">FetchContent_Declare(</div>
+<div class="line">        np_clang_goodies</div>
+<div class="line">        GIT_REPOSITORY &quot;https://github.com/aziascreations/C99-Utility-Libraries.git&quot;</div>
+<div class="line">        GIT_TAG &quot;master&quot;</div>
+<div class="line">        GIT_PROGRESS TRUE</div>
+<div class="line">)</div>
+<div class="line">FetchContent_MakeAvailable(np_clang_goodies)</div>
+<div class="line"> </div>
+<div class="line"># Moving the library into the build folder&#39;s root. (Optional)</div>
+<div class="line">set_target_properties(lib_np_clang_goodies PROPERTIES ARCHIVE_OUTPUT_DIRECTORY &quot;${CMAKE_CURRENT_BINARY_DIR}/&quot;)</div>
+<div class="line">set_target_properties(lib_np_clang_goodies PROPERTIES LIBRARY_OUTPUT_DIRECTORY &quot;${CMAKE_CURRENT_BINARY_DIR}/&quot;)</div>
+<div class="line">set_target_properties(lib_np_clang_goodies PROPERTIES RUNTIME_OUTPUT_DIRECTORY &quot;${CMAKE_CURRENT_BINARY_DIR}/&quot;)</div>
+</div><!-- fragment --><p >Finally, configure your targets like so: </p><div class="fragment"><div class="line"># Configuring out target</div>
+<div class="line">add_executable(MyApp src/main.c)  # Use your setup, only the target&#39;s name matters.</div>
+<div class="line"> </div>
+<div class="line">target_include_directories(MyApp PRIVATE ${PROJECT_INCLUDE})  # May be useless.</div>
+<div class="line">target_link_libraries(MyApp PRIVATE lib_np_clang_goodies)</div>
+<div class="line">add_dependencies(MyApp lib_np_clang_goodies)  # Does nothing in my tests, but it can&#39;t hurt.</div>
+<div class="line"> </div>
+<div class="line"># Optional per-target config</div>
+<div class="line">target_compile_definitions(MyApp PUBLIC NP_DEBUG_LOGGING)  # Enables debugging and optional error logging.</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md6"></a>
+CMake's Include</h2>
+<p ><b>TODO: Find a way to make this work properly, doesn't detect that its imported !</b></p>
+<h2><a class="anchor" id="autotoc_md7"></a>
+CMake Manual Import</h2>
 <p >In order to use this library in your projects you need to do the following things:</p>
 <p >Firstly, add this repository as a submodule in your project and checkout to a specific tag or commit: </p><div class="fragment"><div class="line">git submodule add https://github.com/aziascreations/C99-Utility-Libraries.git libs/nibblepoker-c-goodies</div>
 <div class="line">git -C libs/nibblepoker-c-goodies checkout &lt;hash|tag&gt;</div>
@@ -132,15 +169,14 @@ Usage</h1>
 <div class="line">    CONFIGURE_DEPENDS &quot;libs/nibblepoker-c-goodies/src/*.h&quot; &quot;libs/nibblepoker-c-goodies/src/*.c&quot;</div>
 <div class="line">)</div>
 </div><!-- fragment --><p >Finally, modify you targets to add <code>${src_nibblepoker_c_goodies}</code> like so: </p><div class="fragment"><div class="line">add_executable(my_app src/main.c ${src_nibblepoker_c_goodies} ...)</div>
-</div><!-- fragment --><p ><b>TODO: Add reminder to check the <a class="el" href="md__github_workspace_definitions.html">Definitions</a> page.</b></p>
-<h1><a class="anchor" id="autotoc_md5"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md8"></a>
 Examples</h1>
 <p >Some examples that demonstrate how to use most of the functions this library provides can be found in the <a href="examples/">examples/</a> folder.</p>
 <p >Alternatively, you can also check the <a href="https://github.com/aziascreations/C99-Win32-Wifi-Utility">aziascreations/C99-Win32-Wifi-Utility</a> repository for a complete example in a "fully-fledged" Windows application.</p>
-<h2><a class="anchor" id="autotoc_md6"></a>
+<h2><a class="anchor" id="autotoc_md9"></a>
 Launch arguments</h2>
 <p ><b>TODO</b></p>
-<h2><a class="anchor" id="autotoc_md7"></a>
+<h2><a class="anchor" id="autotoc_md10"></a>
 Double Linked Lists</h2>
 <ul>
 <li><a href="examples/dllist_basic.c">Basic operations</a><ul>
@@ -160,7 +196,7 @@ Double Linked Lists</h2>
 </ul>
 </li>
 </ul>
-<h2><a class="anchor" id="autotoc_md8"></a>
+<h2><a class="anchor" id="autotoc_md11"></a>
 Hashing</h2>
 <ul>
 <li><a href="examples/crc32.c">CRC32B hashing</a><ul>
@@ -168,10 +204,10 @@ Hashing</h2>
 </ul>
 </li>
 </ul>
-<h2><a class="anchor" id="autotoc_md9"></a>
+<h2><a class="anchor" id="autotoc_md12"></a>
 HashMaps</h2>
 <p ><b>TODO</b></p>
-<h2><a class="anchor" id="autotoc_md10"></a>
+<h2><a class="anchor" id="autotoc_md13"></a>
 UUID</h2>
 <ul>
 <li><a href="examples/uuid_all.c">UUID4 generation</a><ul>
@@ -179,14 +215,14 @@ UUID</h2>
 </ul>
 </li>
 </ul>
-<h1><a class="anchor" id="autotoc_md11"></a>
+<h1><a class="anchor" id="autotoc_md14"></a>
 Documentation</h1>
-<h2><a class="anchor" id="autotoc_md12"></a>
+<h2><a class="anchor" id="autotoc_md15"></a>
 Viewing</h2>
 <p >You can consult the documentation at the following URL:<br  />
  &#160;&#160;&#160;&#160;<a href="https://aziascreations.github.io/C99-Utility-Libraries/">https://aziascreations.github.io/C99-Utility-Libraries/</a></p>
 <p >It is automatically updated when a commit is pushed onto the <code>master</code> branch.</p>
-<h2><a class="anchor" id="autotoc_md13"></a>
+<h2><a class="anchor" id="autotoc_md16"></a>
 Building</h2>
 <p >If you want to build the documentation, you need to do the following things:</p><ul>
 <li>Install <a href="https://www.doxygen.nl/">Doxygen</a> on your system.</li>
@@ -194,11 +230,11 @@ Building</h2>
 <li>Run the <a href="https://github.com/aziascreations/C99-Utility-Libraries/blob/master/make-doc.bat">make-doc.bat</a> script.</li>
 <li>Go into <code>docs/html</code> and open the <code>index.html</code> file.</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md14"></a>
+<h1><a class="anchor" id="autotoc_md17"></a>
 Benchmarks</h1>
 <p >This project provides a couple of benchmarks in order to justify some of the design choices I made.</p>
 <p >Please refer to the <a class="el" href="md__github_workspace_benchmarks_readme.html">Benchmarks</a> page for more information.</p>
-<h1><a class="anchor" id="autotoc_md15"></a>
+<h1><a class="anchor" id="autotoc_md18"></a>
 Licenses</h1>
 <p >This project is dual-licensed under the following open-source licenses.<br  />
  You can choose the one that best suits your needs:</p><ol type="1">
@@ -218,7 +254,7 @@ Licenses</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Mon Oct 9 2023 11:55:05 for NibblePoker&#39;s Clang Goodies by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Tue Oct 10 2023 20:03:35 for NibblePoker&#39;s Clang Goodies by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>

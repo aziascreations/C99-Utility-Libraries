@@ -28,50 +28,54 @@ var NAVTREE =
     [ "Features", "index.html#autotoc_md1", null ],
     [ "Planned Features", "index.html#autotoc_md2", null ],
     [ "Remarks", "index.html#autotoc_md3", null ],
-    [ "Usage", "index.html#autotoc_md4", null ],
-    [ "Examples", "index.html#autotoc_md5", [
-      [ "Launch arguments", "index.html#autotoc_md6", null ],
-      [ "Double Linked Lists", "index.html#autotoc_md7", null ],
-      [ "Hashing", "index.html#autotoc_md8", null ],
-      [ "HashMaps", "index.html#autotoc_md9", null ],
-      [ "UUID", "index.html#autotoc_md10", null ]
+    [ "Usage", "index.html#autotoc_md4", [
+      [ "CMake's FetchContent", "index.html#autotoc_md5", null ],
+      [ "CMake's Include", "index.html#autotoc_md6", null ],
+      [ "CMake Manual Import", "index.html#autotoc_md7", null ]
     ] ],
-    [ "Documentation", "index.html#autotoc_md11", [
-      [ "Viewing", "index.html#autotoc_md12", null ],
-      [ "Building", "index.html#autotoc_md13", null ]
+    [ "Examples", "index.html#autotoc_md8", [
+      [ "Launch arguments", "index.html#autotoc_md9", null ],
+      [ "Double Linked Lists", "index.html#autotoc_md10", null ],
+      [ "Hashing", "index.html#autotoc_md11", null ],
+      [ "HashMaps", "index.html#autotoc_md12", null ],
+      [ "UUID", "index.html#autotoc_md13", null ]
     ] ],
-    [ "Benchmarks", "index.html#autotoc_md14", null ],
-    [ "Licenses", "index.html#autotoc_md15", null ],
+    [ "Documentation", "index.html#autotoc_md14", [
+      [ "Viewing", "index.html#autotoc_md15", null ],
+      [ "Building", "index.html#autotoc_md16", null ]
+    ] ],
+    [ "Benchmarks", "index.html#autotoc_md17", null ],
+    [ "Licenses", "index.html#autotoc_md18", null ],
     [ "Definitions", "md__github_workspace_definitions.html", [
-      [ "Summary", "md__github_workspace_definitions.html#autotoc_md17", null ],
-      [ "Features Toggles", "md__github_workspace_definitions.html#autotoc_md18", [
-        [ "CRC32 - Disable lookup table", "md__github_workspace_definitions.html#autotoc_md19", null ],
-        [ "CRC32 - Enables branchless logic", "md__github_workspace_definitions.html#autotoc_md20", null ],
-        [ "UUID Structure size check", "md__github_workspace_definitions.html#autotoc_md21", null ]
+      [ "Summary", "md__github_workspace_definitions.html#autotoc_md20", null ],
+      [ "Features Toggles", "md__github_workspace_definitions.html#autotoc_md21", [
+        [ "CRC32 - Disable lookup table", "md__github_workspace_definitions.html#autotoc_md22", null ],
+        [ "CRC32 - Enables branchless logic", "md__github_workspace_definitions.html#autotoc_md23", null ],
+        [ "UUID Structure size check", "md__github_workspace_definitions.html#autotoc_md24", null ]
       ] ],
-      [ "CMake Stuff", "md__github_workspace_definitions.html#autotoc_md22", [
-        [ "Build benchmarks", "md__github_workspace_definitions.html#autotoc_md23", null ],
-        [ "Build examples", "md__github_workspace_definitions.html#autotoc_md24", null ],
-        [ "Build tests", "md__github_workspace_definitions.html#autotoc_md25", null ]
+      [ "CMake Stuff", "md__github_workspace_definitions.html#autotoc_md25", [
+        [ "Build benchmarks", "md__github_workspace_definitions.html#autotoc_md26", null ],
+        [ "Build examples", "md__github_workspace_definitions.html#autotoc_md27", null ],
+        [ "Build tests", "md__github_workspace_definitions.html#autotoc_md28", null ]
       ] ],
-      [ "Library Exports Toggles", "md__github_workspace_definitions.html#autotoc_md26", [
-        [ "Everything", "md__github_workspace_definitions.html#autotoc_md27", null ],
-        [ "Arguments Parser", "md__github_workspace_definitions.html#autotoc_md28", null ],
-        [ "Hashing Function - Everything", "md__github_workspace_definitions.html#autotoc_md29", null ],
-        [ "Hashing Function - CRC32", "md__github_workspace_definitions.html#autotoc_md30", null ],
-        [ "HashMap - Everything", "md__github_workspace_definitions.html#autotoc_md31", null ],
-        [ "HashMap - Chained", "md__github_workspace_definitions.html#autotoc_md32", null ],
-        [ "Lists - Everything", "md__github_workspace_definitions.html#autotoc_md33", null ],
-        [ "Lists - Single Linked Lists", "md__github_workspace_definitions.html#autotoc_md34", null ],
-        [ "Lists - Double Linked Lists", "md__github_workspace_definitions.html#autotoc_md35", null ],
-        [ "UUID - Everything", "md__github_workspace_definitions.html#autotoc_md36", null ],
-        [ "UUID - Version 4", "md__github_workspace_definitions.html#autotoc_md37", null ],
-        [ "Text Utilities", "md__github_workspace_definitions.html#autotoc_md38", null ]
+      [ "Library Exports Toggles", "md__github_workspace_definitions.html#autotoc_md29", [
+        [ "Everything", "md__github_workspace_definitions.html#autotoc_md30", null ],
+        [ "Arguments Parser", "md__github_workspace_definitions.html#autotoc_md31", null ],
+        [ "Hashing Function - Everything", "md__github_workspace_definitions.html#autotoc_md32", null ],
+        [ "Hashing Function - CRC32", "md__github_workspace_definitions.html#autotoc_md33", null ],
+        [ "HashMap - Everything", "md__github_workspace_definitions.html#autotoc_md34", null ],
+        [ "HashMap - Chained", "md__github_workspace_definitions.html#autotoc_md35", null ],
+        [ "Lists - Everything", "md__github_workspace_definitions.html#autotoc_md36", null ],
+        [ "Lists - Single Linked Lists", "md__github_workspace_definitions.html#autotoc_md37", null ],
+        [ "Lists - Double Linked Lists", "md__github_workspace_definitions.html#autotoc_md38", null ],
+        [ "UUID - Everything", "md__github_workspace_definitions.html#autotoc_md39", null ],
+        [ "UUID - Version 4", "md__github_workspace_definitions.html#autotoc_md40", null ],
+        [ "Text Utilities", "md__github_workspace_definitions.html#autotoc_md41", null ]
       ] ]
     ] ],
     [ "Benchmarks", "md__github_workspace_benchmarks_readme.html", [
-      [ "CRC32 Implementations", "md__github_workspace_benchmarks_readme.html#autotoc_md40", null ],
-      [ "Calculating powers of 2", "md__github_workspace_benchmarks_readme.html#autotoc_md41", null ]
+      [ "CRC32 Implementations", "md__github_workspace_benchmarks_readme.html#autotoc_md43", null ],
+      [ "Calculating powers of 2", "md__github_workspace_benchmarks_readme.html#autotoc_md44", null ]
     ] ],
     [ "Modules", "modules.html", "modules" ],
     [ "Data Structures", "annotated.html", [
