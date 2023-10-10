@@ -1,6 +1,7 @@
 # NibblePoker's Clang Goodies
 Small collection of utilities and libraries for C in order to simplify some development tasks.
 
+
 ## Features
 * ![](docs/images/console.png) Robust launch arguments parsing & handling with verb support
 * ![](docs/images/chain.png) Single & double linked lists with custom node support and QoL functions
@@ -11,10 +12,12 @@ Small collection of utilities and libraries for C in order to simplify some deve
 * ![](docs/images/plus.png) Small extras like UUID4 & CRC32B
 * ![](docs/images/view_more.png) Other features to come as needed or requested
 
+
 ## Planned Features
 * More HashMap types & more utilities
 * Platform-agnostic with some optional improvements on a per-OS and opt-in basis.
 * Optional assembly-level optimisations for some procedures.
+
 
 ## Remarks
 This project is by no mean complete or exhaustive in the features it provides.<br>
@@ -25,9 +28,54 @@ advances.<br>
 In the event I introduce breaking changes, you should be able to notice them since I'll be using
 [Semantic Versioning](https://semver.org/).
 
-## Usage
-**TODO: Revamp section with CMake `include` directives.**
 
+## Usage
+**TODO: Add reminder to check the [Definitions](definitions.md) page.**
+
+### CMake's FetchContent
+
+Firstly, insert the following lines into your `CMakeLists.txt`:
+```cmake
+# Including the `FetchContent` directives.
+include(FetchContent)
+
+# Configuring the library. (Optional)
+set(NP_GOODIES_BUILD_BENCHMARKS OFF CACHE BOOL "" FORCE)  # OFF by default.
+set(NP_GOODIES_BUILD_EXAMPLES   OFF CACHE BOOL "" FORCE)  # OFF by default.
+set(NP_GOODIES_BUILD_TESTS      OFF CACHE BOOL "" FORCE)  # OFF by default.
+
+# Downloading the library in the build folder.
+FetchContent_Declare(
+        np_clang_goodies
+        GIT_REPOSITORY "https://github.com/aziascreations/C99-Utility-Libraries.git"
+        GIT_TAG "master"
+        GIT_PROGRESS TRUE
+)
+FetchContent_MakeAvailable(np_clang_goodies)
+
+# Moving the library into the build folder's root. (Optional)
+set_target_properties(lib_np_clang_goodies PROPERTIES ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/")
+set_target_properties(lib_np_clang_goodies PROPERTIES LIBRARY_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/")
+set_target_properties(lib_np_clang_goodies PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/")
+```
+
+Finally, configure your targets like so:
+```cmake
+# Configuring out target
+add_executable(MyApp src/main.c)  # Use your setup, only the target's name matters.
+
+target_include_directories(MyApp PRIVATE ${PROJECT_INCLUDE})  # May be useless.
+target_link_libraries(MyApp PRIVATE lib_np_clang_goodies)
+add_dependencies(MyApp lib_np_clang_goodies)  # Does nothing in my tests, but it can't hurt.
+
+# Optional per-target config
+target_compile_definitions(MyApp PUBLIC NP_DEBUG_LOGGING)  # Enables debugging and optional error logging.
+```
+
+### CMake's Include
+**TODO: Find a way to make this work properly, doesn't detect that its imported !**
+
+### CMake Manual Import
 In order to use this library in your projects you need to do the following things:
 
 Firstly, add this repository as a submodule in your project and checkout to a specific tag or commit:
@@ -49,7 +97,6 @@ Finally, modify you targets to add `${src_nibblepoker_c_goodies}` like so:
 add_executable(my_app src/main.c ${src_nibblepoker_c_goodies} ...)
 ```
 
-**TODO: Add reminder to check the [Definitions](definitions.md) page.**
 
 ## Examples
 Some examples that demonstrate how to use most of the functions this library provides can be found 
