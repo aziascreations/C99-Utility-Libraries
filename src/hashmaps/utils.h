@@ -15,6 +15,6 @@
  * @param hashmap Evaluated \ref hashmap "HashMap".
  * @return The HashMap's load factor as a `float` between `0.0` and `1.0`.
  */
-float hash_getLoadFactor(HashMap *hashmap);
+float hashmap_getLoadFactor(HashMap *hashmap);
 
 /** @} */ // end of group_hashmap

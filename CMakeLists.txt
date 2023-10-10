@@ -136,6 +136,7 @@ message("--> Preparing targets and related resources...")
 
 
 # Targets > Sources
+# FIXME: Revamp this section to be dependant on 'NP_GOODIES_IS_MAIN'.
 file(GLOB src_np_clang_goodies_commons CONFIGURE_DEPENDS "src/debug.h")
 
 file(GLOB src_np_clang_goodies_llist_base CONFIGURE_DEPENDS "src/lists/*.c" "src/lists/*.h" ${src_np_clang_goodies_commons})
@@ -178,21 +179,26 @@ if(NP_GOODIES_IS_MAIN)
 else()
     # Targets > DLLs > External Project
     add_library(lib_np_clang_goodies SHARED ${src_all} ./rsc/np_clang_goodies.rc)
-
-    target_compile_definitions(lib_np_clang_goodies PUBLIC NP_GOODIES_EXPORT_ALL)
-
     set_target_properties(lib_np_clang_goodies PROPERTIES OUTPUT_NAME np_clang_goodies)
 
-    #set_target_properties(lib_np_clang_goodies PROPERTIES ARCHIVE_OUTPUT_DIRECTORY "dll_dynamic/")
-    #set_target_properties(lib_np_clang_goodies PROPERTIES LIBRARY_OUTPUT_DIRECTORY "dll_dynamic/")
-    #set_target_properties(lib_np_clang_goodies PROPERTIES RUNTIME_OUTPUT_DIRECTORY "dll_dynamic/")
+    # Exporting everything
+    # TODO: Make it use the proper definitions !
+    target_compile_definitions(lib_np_clang_goodies PUBLIC NP_GOODIES_EXPORT_ALL)
 
+    # Forcing dynamic DLL
     if(WIN32)
         set_target_properties(lib_np_clang_goodies PROPERTIES MSVC_RUNTIME_LIBRARY MultiThreadedDLL)
     endif()
 
+    # Allowing easier imports
     target_include_directories(lib_np_clang_goodies PUBLIC ./src)
-    # add_subdirectory(src lib_np_clang_goodies)
+
+    # Unsure if required
+    # TODO: Test this a bit more
+
+    #set_target_properties(lib_np_clang_goodies PROPERTIES ARCHIVE_OUTPUT_DIRECTORY "dll_dynamic/")
+    #set_target_properties(lib_np_clang_goodies PROPERTIES LIBRARY_OUTPUT_DIRECTORY "dll_dynamic/")
+    #set_target_properties(lib_np_clang_goodies PROPERTIES RUNTIME_OUTPUT_DIRECTORY "dll_dynamic/")
 
     install(TARGETS lib_np_clang_goodies
             ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}"
