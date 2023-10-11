@@ -16,6 +16,7 @@ docs/latex
 
 # Misc.
 *.pdn
+*.bkp
 extra/words_dictionary.json
 
 # Unfinished stuff
