@@ -94,3 +94,20 @@ DLL_EXP_TEXT wchar_t *charStringToWChar(char *originalString);
 DLL_EXP_TEXT int nextWCharSpaceIndex(const wchar_t *string, int startIndex);
 
 #endif
+
+
+/**
+ * Copies the first available line in the given string into a new buffer and returns said buffer as-is.<br>
+ * ???
+ * @param string
+ * @param stringLength
+ * @param nextLine
+ * @param nextLineMaxLength
+ * @return The copied line's pointer, or `NULL` if an error occurred.
+ * @warning Failure to free the returned string WILL cause memory leaks !
+ */
+DLL_EXP_TEXT char *text_copyLine(const char *string, size_t stringLength, char **nextLine, size_t *nextLineMaxLength);
+
+#ifdef NP_WIN32
+
+#endif

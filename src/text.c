@@ -10,8 +10,10 @@
  *
  *  @{
  */
- 
+
 #include "text.h"
+
+#include "debug.h"
 
 char *copyString(char *stringToCopy) {
 	// Preparing the output buffer
@@ -125,5 +127,81 @@ int nextWCharSpaceIndex(const wchar_t *string, int startIndex) {
 }
 
 #endif
+
+
+char *text_copyLine(const char *string, size_t stringLength, char **nextLine, size_t *nextLineMaxLength) {
+	if(string == NULL || stringLength <= 0) {
+		//trace_println("Early exit !");
+		// Setting the return values to NULL/0 to prevent infinite loops.
+		if(nextLine != NULL) {
+			*nextLine = NULL;
+		}
+		if(nextLineMaxLength != NULL) {
+			*nextLineMaxLength = 0;
+		}
+		return NULL;
+	}
+	
+	// Going along the string until we find its end or a line return.
+	size_t lineLength = 0;
+	while(string[lineLength] != '\0' && string[lineLength] != '\r' && string[lineLength] != '\n' && lineLength < stringLength) {
+		lineLength++;
+	}
+	//trace_println("> Line length: %zu", lineLength);
+	
+	// Attempting to find the start of the next line if required.
+	if(nextLine != NULL) {
+		size_t nextLineOffset = lineLength;
+		
+		// Point to NULL/no next string by default for safety reasons.
+		*nextLine = NULL;
+		
+		// If we aren't right at the end of the string, we check for the presence of a CRLF or LFCR.
+		if(nextLineOffset < stringLength) {
+			//trace_println("> Checking for CRLF/LFCR");
+			//trace_println("> '%i'", string[nextLineOffset]);
+			
+			if (string[nextLineOffset] == '\r') {
+				//trace_println("> CR");
+				if (string[nextLineOffset + 1] == '\n') {
+					//trace_println("> LF");
+					nextLineOffset++;
+				}
+				nextLineOffset++;
+			} else if (string[nextLineOffset] == '\n') {
+				//trace_println("> LF");
+				if (string[nextLineOffset + 1] == '\r') {
+					//trace_println("> CR");
+					nextLineOffset++;
+				}
+				nextLineOffset++;
+			}
+			// An else case shouldn't happen unless `stringLength` includes the optional trailing '\0'.
+			// This is why the second `nextLineOffset++` is in each condition and not outside.
+		}
+		
+		//trace_println("> nextLineOffset: %zu", nextLineOffset);
+		//trace_println("> nextLineMaxLength: %zu", stringLength - nextLineOffset);
+		//trace_println("> Setting next line pointer...");
+		
+		if(stringLength - nextLineOffset > 0) {
+			*nextLine = ((char *) string) + nextLineOffset;
+		}
+		
+		// Preventing further expensive `strlen` calls when used in loops.
+		if(nextLineMaxLength != NULL) {
+			*nextLineMaxLength = stringLength - nextLineOffset;
+		}
+	}
+	
+	// Copying the line safely.
+	char* copiedLine = calloc(lineLength + 1, sizeof(char));
+	
+	if(copiedLine != NULL) {
+		memcpy(copiedLine, string, lineLength);
+	}
+	
+	return copiedLine;
+}
 
 /** @} */ // end of group_nptext

@@ -277,6 +277,11 @@ if(NP_GOODIES_BUILD_TESTS)
     add_executable(test_hashmap_chained_deletion tests/hashmap_chained/test_hashmap_chained_deletion.c ${src_hashmap} ${src_test_utils})
     add_test(NAME test_hashmap_chained_deletion COMMAND test_hashmap_chained_deletion)
 
+    # Targets > Tests > Text
+    add_executable(test_text_copyLine tests/text/test_text_copyLine.c ${src_text} ${src_test_utils})
+    add_test(NAME test_text_copyLine COMMAND test_text_copyLine)
+    target_compile_definitions(test_text_copyLine PUBLIC NP_DEBUG_LOGGING)
+
     # Targets > Tests > Misc
     add_executable(test_version tests/misc/test_version.c src/version.h ${src_test_utils})
     add_test(NAME test_version COMMAND test_version)
