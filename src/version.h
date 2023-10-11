@@ -2,6 +2,24 @@
 
 #pragma once
 
+// FIXME: Explain the patch ! - Should this version thing be reverted - Would be better tbh
+#ifndef NP_GOODIES_VERSION_SEMVER
+#define NP_GOODIES_VERSION_SEMVER "0.3.0"
+#endif
+
+#ifndef NP_GOODIES_VERSION_MAJOR
+#define NP_GOODIES_VERSION_MAJOR 0
+#endif
+#ifndef NP_GOODIES_VERSION_MINOR
+#define NP_GOODIES_VERSION_MINOR 3
+#endif
+#ifndef NP_GOODIES_VERSION_PATCH
+#define NP_GOODIES_VERSION_PATCH 0
+#endif
+#ifndef NP_GOODIES_VERSION_EXTRA
+#define NP_GOODIES_VERSION_EXTRA 0
+#endif
+
 #define NP_CLANG_GOODIES_VERSION NP_GOODIES_VERSION_SEMVER
 
 #ifdef NP_WIN32

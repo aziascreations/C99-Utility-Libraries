@@ -144,7 +144,8 @@ char *text_copyLine(const char *string, size_t stringLength, char **nextLine, si
 	
 	// Going along the string until we find its end or a line return.
 	size_t lineLength = 0;
-	while(string[lineLength] != '\0' && string[lineLength] != '\r' && string[lineLength] != '\n' && lineLength < stringLength) {
+	while(string[lineLength] != '\0' && string[lineLength] != '\r' && string[lineLength] != '\n' &&
+		  lineLength < stringLength) {
 		lineLength++;
 	}
 	//trace_println("> Line length: %zu", lineLength);
@@ -161,16 +162,16 @@ char *text_copyLine(const char *string, size_t stringLength, char **nextLine, si
 			//trace_println("> Checking for CRLF/LFCR");
 			//trace_println("> '%i'", string[nextLineOffset]);
 			
-			if (string[nextLineOffset] == '\r') {
+			if(string[nextLineOffset] == '\r') {
 				//trace_println("> CR");
-				if (string[nextLineOffset + 1] == '\n') {
+				if(string[nextLineOffset + 1] == '\n') {
 					//trace_println("> LF");
 					nextLineOffset++;
 				}
 				nextLineOffset++;
-			} else if (string[nextLineOffset] == '\n') {
+			} else if(string[nextLineOffset] == '\n') {
 				//trace_println("> LF");
-				if (string[nextLineOffset + 1] == '\r') {
+				if(string[nextLineOffset + 1] == '\r') {
 					//trace_println("> CR");
 					nextLineOffset++;
 				}
@@ -195,7 +196,7 @@ char *text_copyLine(const char *string, size_t stringLength, char **nextLine, si
 	}
 	
 	// Copying the line safely.
-	char* copiedLine = calloc(lineLength + 1, sizeof(char));
+	char *copiedLine = calloc(lineLength + 1, sizeof(char));
 	
 	if(copiedLine != NULL) {
 		memcpy(copiedLine, string, lineLength);
