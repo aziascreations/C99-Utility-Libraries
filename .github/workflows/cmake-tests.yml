@@ -18,18 +18,8 @@ jobs:
           submodules: false
           fetch-depth: 0
 
-      - name: Grabbing latest CMake and Ninja
-        uses: lukka/get-cmake@latest
+      - name: Configure, build, and test the project
+        uses: threeal/cmake-action@v1.3.0
         with:
-          cmakeVersion: latest
-          ninjaVersion: latest
-
-      - name: Preparing the build directory
-        run: |
-          sudo mkdir build
-          cd build
-
-      - name: Building and running tests
-        run: |
-          cmake ..
-          cmake --build . --config Release
+          run-build: true
+          run-test: true
