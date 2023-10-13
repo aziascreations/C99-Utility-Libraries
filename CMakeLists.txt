@@ -298,7 +298,10 @@ if(NP_GOODIES_BUILD_BENCHMARKS)
 
     add_executable(bm_square_of_two_mask benchmarks/bm_square_of_two_mask.c)
 
-    add_executable(bm_powers_of_two benchmarks/bm_powers_of_two.c)
+    if(WIN32)
+        # FIXME: pow() appears to be missing on GNUC, that's odd...
+        add_executable(bm_powers_of_two benchmarks/bm_powers_of_two.c)
+    endif()
 else()
     message("---> Skipping benchmark targets...")
 endif()
