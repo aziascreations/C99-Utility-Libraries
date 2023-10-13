@@ -1,0 +1,25 @@
+name: CMake Tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  do-tests:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    concurrency:
+      group: cicd-tests
+    steps:
+      - name: Checkout Git submodules
+        uses: actions/checkout@v3
+        with:
+          submodules: false
+          fetch-depth: 0
+
+      - name: Configure, build, and test the project
+        uses: threeal/cmake-action@v1.3.0
+        with:
+          run-build: true
+          run-test: true

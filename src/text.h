@@ -3,15 +3,23 @@
 #pragma once
 
 #include <ctype.h>
-#include <string.h>
-#include <stdlib.h>
-#include <stdint.h>
 #include <stdbool.h>
+#include <stddef.h>
+#include <stdint.h>
+#include <stdlib.h>
+#include <string.h>
 
 #if defined(NP_GOODIES_EXPORT_TEXT) || defined(NP_GOODIES_EXPORT_ALL)
-#define DLL_EXP_TEXT __declspec(dllexport)
+	#if WIN32 || defined(_MSC_VER)
+		#define DLL_EXP_TEXT __declspec(dllexport)
+	#elif UNIX || defined(__GNUC__)
+		#define DLL_EXP_TEXT __attribute__((visibility("default")))
+	#else
+		#define DLL_EXP_TEXT
+		#warning Unknown platform, prevent library exports !
+	#endif
 #else
-#define DLL_EXP_TEXT
+	#define DLL_EXP_TEXT
 #endif
 
 #define areStringsEqual(string1, string2) (strcmp(string1, string2) == 0)

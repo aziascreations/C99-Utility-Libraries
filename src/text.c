@@ -16,16 +16,21 @@
 #include "debug.h"
 
 char *copyString(char *stringToCopy) {
+	// FIXME: The malloc doesn't look right at all, check this !
+	
 	// Preparing the output buffer
 	size_t stringByteSize = strlen(stringToCopy) + 1;
 	char *newString = malloc(stringByteSize);
 	
 	// Copying and validating the operation's success
 	if(newString) {
-		if(strcpy_s(newString, stringByteSize, stringToCopy)) {
-			free(newString);
-			newString = NULL;
-		}
+		// TODO: Restore when using C11 !
+		//if(strcpy_s(newString, stringByteSize, stringToCopy)) {
+		//	free(newString);
+		//	newString = NULL;
+		//}
+		// Temporary safe fix for C11's strcpy_s in C99.
+		memcpy(newString, stringToCopy, stringByteSize);
 	}
 	
 	return newString;
