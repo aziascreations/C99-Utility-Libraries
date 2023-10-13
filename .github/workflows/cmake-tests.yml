@@ -1,0 +1,35 @@
+name: CMake Tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  do-tests:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    concurrency:
+      group: cicd-tests
+    steps:
+      - name: Checkout Git submodules
+        uses: actions/checkout@v3
+        with:
+          submodules: false
+          fetch-depth: 0
+
+      - name: Grabbing latest CMake and Ninja
+        uses: lukka/get-cmake@latest
+        with:
+          cmakeVersion: latest
+          ninjaVersion: latest
+
+      - name: Preparing the build directory
+        run: |
+          sudo mkdir build
+          cd build
+
+      - name: Building and running tests
+        run: |
+          cmake ..
+          cmake --build . --config Release
