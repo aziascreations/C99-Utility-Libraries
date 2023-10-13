@@ -5,9 +5,16 @@
 #include "structs.h"
 
 #if defined(NP_GOODIES_EXPORT_SLLIST) || defined(NP_GOODIES_EXPORT_DLLIST) || defined(NP_GOODIES_EXPORT_LIST_ALL) || defined(NP_GOODIES_EXPORT_ALL)
-#define DLL_EXP_LLIST __declspec(dllexport)
+	#if WIN32
+		#define DLL_EXP_LLIST __declspec(dllexport)
+	#elif UNIX
+		#define DLL_EXP_LLIST __attribute__((visibility("default")))
+	#else
+		#define DLL_EXP_LLIST
+		#warning Unknown platform, prevent library exports !
+	#endif
 #else
-#define DLL_EXP_LLIST
+	#define DLL_EXP_LLIST
 #endif
 
 /** @defgroup group_llist Linked lists commons

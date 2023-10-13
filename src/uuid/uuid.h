@@ -9,9 +9,16 @@
 #include "./structs.h"
 
 #if defined(NP_GOODIES_EXPORT_UUID) || defined(NP_GOODIES_EXPORT_UUID_ALL) || defined(NP_GOODIES_EXPORT_ALL)
-#define DLL_EXP_UUID __declspec(dllexport)
+	#if WIN32
+		#define DLL_EXP_UUID __declspec(dllexport)
+	#elif UNIX
+		#define DLL_EXP_UUID __attribute__((visibility("default")))
+	#else
+		#define DLL_EXP_UUID
+		#warning Unknown platform, prevent library exports !
+	#endif
 #else
-#define DLL_EXP_UUID
+	#define DLL_EXP_UUID
 #endif
 
 #define UUID_BYTE_LENGTH 16

@@ -10,9 +10,16 @@
 #include "../text.h"
 
 #if defined(NP_GOODIES_EXPORT_ARGUMENTS) || defined(NP_GOODIES_EXPORT_ALL)
-#define DLL_EXP_ARGS __declspec(dllexport)
+	#if WIN32
+		#define DLL_EXP_ARGS __declspec(dllexport)
+	#elif UNIX
+		#define DLL_EXP_ARGS __attribute__((visibility("default")))
+	#else
+		#define DLL_EXP_ARGS
+		#warning Unknown platform, prevent library exports !
+	#endif
 #else
-#define DLL_EXP_ARGS
+	#define DLL_EXP_ARGS
 #endif
 
 // Macros

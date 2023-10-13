@@ -8,9 +8,16 @@
 #include "../commons.h"
 
 #if defined(NP_GOODIES_EXPORT_SLLIST) || defined(NP_GOODIES_EXPORT_LIST_ALL) || defined(NP_GOODIES_EXPORT_ALL)
-#define DLL_EXP_SLLIST __declspec(dllexport)
+	#if WIN32
+		#define DLL_EXP_SLLIST __declspec(dllexport)
+	#elif UNIX
+		#define DLL_EXP_SLLIST __attribute__((visibility("default")))
+	#else
+		#define DLL_EXP_SLLIST
+		#warning Unknown platform, prevent library exports !
+	#endif
 #else
-#define DLL_EXP_SLLIST
+	#define DLL_EXP_SLLIST
 #endif
 
 /** @defgroup group_sllist Single linked lists
