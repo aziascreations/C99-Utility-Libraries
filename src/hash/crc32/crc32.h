@@ -2,8 +2,8 @@
 
 #pragma once
 
-#include <stdint.h>
 #include <stddef.h>
+#include <stdint.h>
 
 #if defined(NP_GOODIES_EXPORT_CRC32) || defined(NP_GOODIES_EXPORT_HASH) || defined(NP_GOODIES_EXPORT_ALL)
 	#if WIN32 || defined(_MSC_VER)

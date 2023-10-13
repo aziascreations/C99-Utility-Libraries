@@ -3,10 +3,11 @@
 #pragma once
 
 #include <ctype.h>
-#include <string.h>
-#include <stdlib.h>
-#include <stdint.h>
 #include <stdbool.h>
+#include <stddef.h>
+#include <stdint.h>
+#include <stdlib.h>
+#include <string.h>
 
 #if defined(NP_GOODIES_EXPORT_TEXT) || defined(NP_GOODIES_EXPORT_ALL)
 	#if WIN32 || defined(_MSC_VER)
