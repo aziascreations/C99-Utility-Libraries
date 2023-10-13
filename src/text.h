@@ -9,9 +9,9 @@
 #include <stdbool.h>
 
 #if defined(NP_GOODIES_EXPORT_TEXT) || defined(NP_GOODIES_EXPORT_ALL)
-#if WIN32
+	#if WIN32 || defined(_MSC_VER)
 		#define DLL_EXP_TEXT __declspec(dllexport)
-	#elif UNIX
+	#elif UNIX || defined(__GNUC__)
 		#define DLL_EXP_TEXT __attribute__((visibility("default")))
 	#else
 		#define DLL_EXP_TEXT

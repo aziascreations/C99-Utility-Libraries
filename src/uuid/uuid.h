@@ -9,9 +9,9 @@
 #include "./structs.h"
 
 #if defined(NP_GOODIES_EXPORT_UUID) || defined(NP_GOODIES_EXPORT_UUID_ALL) || defined(NP_GOODIES_EXPORT_ALL)
-	#if WIN32
+	#if WIN32 || defined(_MSC_VER)
 		#define DLL_EXP_UUID __declspec(dllexport)
-	#elif UNIX
+	#elif UNIX || defined(__GNUC__)
 		#define DLL_EXP_UUID __attribute__((visibility("default")))
 	#else
 		#define DLL_EXP_UUID

@@ -5,9 +5,9 @@
 #include "structs.h"
 
 #if defined(NP_GOODIES_EXPORT_SLLIST) || defined(NP_GOODIES_EXPORT_DLLIST) || defined(NP_GOODIES_EXPORT_LIST_ALL) || defined(NP_GOODIES_EXPORT_ALL)
-	#if WIN32
+	#if WIN32 || defined(_MSC_VER)
 		#define DLL_EXP_LLIST __declspec(dllexport)
-	#elif UNIX
+	#elif UNIX || defined(__GNUC__)
 		#define DLL_EXP_LLIST __attribute__((visibility("default")))
 	#else
 		#define DLL_EXP_LLIST
