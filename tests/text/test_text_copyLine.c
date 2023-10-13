@@ -34,8 +34,7 @@ int main(void) {
 	char *tmpNextLine = NULL;
 	size_t tmpNextLength = 0;
 	
-	// FIXME: Make sure we don't overrun the buffer if it ends with \r instead of \0.
-	
+	// FIXME: Make 200% sure we don't overrun the buffer if it ends with \r instead of \0 and doesn't include one !.
 	
 	// Testing text 01
 	{
@@ -46,7 +45,7 @@ int main(void) {
 		assert(tmpLine != NULL, "Text 01: Copied line isn't NULL.")
 		assert(strcmp(text_01, tmpLine) == 0, "Text 01: Copied line is the same as the original.")
 		assert(text_01 != tmpLine, "Text 01: Copied line doesn't point to the original.")
-		assert(memUtils_getSize(tmpLine) == 20, "Text 01: Copied line's memory size is `20` chars long.")
+		assert(memUtils_getSize(tmpLine) == sizeof(char) * 20, "Text 01: Copied line's memory size is `20` chars long.")
 		assert(strlen(tmpLine) == 19, "Text 01: Copied line's strlen is `19` chars long.")
 		
 		assert(tmpNextLine == NULL, "Text 01: Has no 2nd line.")
@@ -62,7 +61,7 @@ int main(void) {
 	{
 		tmpLine = text_copyLine(text_01, strlen(text_01) - 5, &tmpNextLine, &tmpNextLength);
 		
-		assert(memUtils_getSize(tmpLine) == 15, "Text 01 - Undersized: Copied line's memory size is `15` chars long.")
+		assert(memUtils_getSize(tmpLine) == sizeof(char) * 15, "Text 01 - Undersized: Copied line's memory size is `15` chars long.")
 		assert(strlen(tmpLine) == 14, "Text 01 - Undersized: Copied line's strlen is `14` chars long.")
 		assert(tmpNextLine == NULL, "Text 01 - Undersized: Has no 2nd line.")
 		assert(tmpNextLength == 0, "Text 01 - Undersized: Has zero characters left.")
@@ -108,7 +107,7 @@ int main(void) {
 		assert(strlen(text_13) == 10, "Text 13: Length is `10` char.")
 		
 		tmpLine = text_copyLine(text_10, strlen(text_10), &tmpNextLine, &tmpNextLength);
-		assert(memUtils_getSize(tmpLine) == 7, "Text 10: Copied line's memory size is `7` chars long.")
+		assert(memUtils_getSize(tmpLine) == sizeof(char) * 7, "Text 10: Copied line's memory size is `7` chars long.")
 		assert(strlen(tmpLine) == 6, "Text 10: Copied line's strlen is `6` chars long.")
 		assert(tmpNextLine == NULL, "Text 10: Has no 2nd line.")
 		assert(tmpNextLength == 0, "Text 10: Has zero characters left.")
@@ -118,7 +117,7 @@ int main(void) {
 		tmpNextLength = 0;
 		
 		tmpLine = text_copyLine(text_11, strlen(text_11), &tmpNextLine, &tmpNextLength);
-		assert(memUtils_getSize(tmpLine) == 7, "Text 11: Copied line's memory size is `7` chars long.")
+		assert(memUtils_getSize(tmpLine) == sizeof(char) * 7, "Text 11: Copied line's memory size is `7` chars long.")
 		assert(strlen(tmpLine) == 6, "Text 11: Copied line's strlen is `6` chars long.")
 		assert(tmpNextLine == NULL, "Text 11: Has no 2nd line.")
 		assert(tmpNextLength == 0, "Text 11: Has zero characters left.")
@@ -128,7 +127,7 @@ int main(void) {
 		tmpNextLength = 0;
 		
 		tmpLine = text_copyLine(text_12, strlen(text_12), &tmpNextLine, &tmpNextLength);
-		assert(memUtils_getSize(tmpLine) == 9, "Text 12: Copied line's memory size is `9` chars long.")
+		assert(memUtils_getSize(tmpLine) == sizeof(char) * 9, "Text 12: Copied line's memory size is `9` chars long.")
 		assert(strlen(tmpLine) == 8, "Text 12: Copied line's strlen is `8` chars long.")
 		assert(tmpNextLine == NULL, "Text 12: Has no 2nd line.")
 		assert(tmpNextLength == 0, "Text 12: Has zero characters left.")
@@ -138,7 +137,7 @@ int main(void) {
 		tmpNextLength = 0;
 		
 		tmpLine = text_copyLine(text_13, strlen(text_13), &tmpNextLine, &tmpNextLength);
-		assert(memUtils_getSize(tmpLine) == 9, "Text 13: Copied line's memory size is `9` chars long.")
+		assert(memUtils_getSize(tmpLine) == sizeof(char) * 9, "Text 13: Copied line's memory size is `9` chars long.")
 		assert(strlen(tmpLine) == 8, "Text 13: Copied line's strlen is `8` chars long.")
 		assert(tmpNextLine == NULL, "Text 13: Has no 2nd line.")
 		assert(tmpNextLength == 0, "Text 13: Has zero characters left.")
@@ -154,7 +153,7 @@ int main(void) {
 		
 		tmpLine = text_copyLine(text_14, strlen(text_14) + 2, &tmpNextLine, &tmpNextLength);
 		
-		assert(memUtils_getSize(tmpLine) == 9, "Text 14: Copied line's memory size is `9` chars long.")
+		assert(memUtils_getSize(tmpLine) == sizeof(char) * 9, "Text 14: Copied line's memory size is `9` chars long.")
 		assert(strlen(tmpLine) == 8, "Text 14: Copied line's strlen is `8` chars long.")
 		
 		assert(tmpNextLine == NULL, "Text 14: Has no 2nd line. (Ended with a '\\0')")
