@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "../../src/platform.h"
+
 #include "../assert.h"
 #include "../memutils.h"
 
@@ -26,11 +28,21 @@ int main(void) {
 	
 	assert(testHashMap->sizePower == 4, "HashMap's iData's `sizePower` is `4`.")
 	assert(testHashMap->buckets != NULL, "HashMap's iData's `buckets` isn't NULL.")
+
+    #ifndef NP_OS_WINDOWS
+    // Doing gimped checks on Unix.
+    assert(memUtils_getSize(testHashMap->buckets) >= pow(2, 4) * sizeof(ChainedHashMapBucket *),
+           "HashMap's iData's `buckets` is >=128 bytes long, via dynamic calculation. ((2^4)*8)  (Can't be 100% sure on Unix platforms !)")
+    assert(memUtils_getSize(testHashMap->buckets) >= 128,
+           "HashMap's iData's `buckets` is >=128 bytes long, via direct number. ((2^4)*8)  (Can't be 100% sure on Unix platforms !)")
+    #else
+    // Doing proper checks on Windows.
 	assert(memUtils_getSize(testHashMap->buckets) == pow(2, 4) * sizeof(ChainedHashMapBucket *),
 		   "HashMap's iData's `buckets` is 128 bytes long, via dynamic calculation. ((2^4)*8)")
 	assert(memUtils_getSize(testHashMap->buckets) == 128,
 		   "HashMap's iData's `buckets` is 128 bytes long, via direct number. ((2^4)*8)")
-	
+    #endif
+
 	bool areAllPointersNull = true;
 	for(int i = 0; i < pow(2, 4); i++) {
 		if(*testHashMap->buckets[i] != NULL) {

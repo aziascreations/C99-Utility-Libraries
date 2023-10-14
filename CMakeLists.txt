@@ -137,7 +137,7 @@ message("--> Preparing targets and related resources...")
 
 # Targets > Sources
 # FIXME: Revamp this section to be dependant on 'NP_GOODIES_IS_MAIN'.
-file(GLOB src_np_clang_goodies_commons CONFIGURE_DEPENDS "src/debug.h")
+file(GLOB src_np_clang_goodies_commons CONFIGURE_DEPENDS "src/debug.h" "src/platform.h")
 
 file(GLOB src_np_clang_goodies_llist_base CONFIGURE_DEPENDS "src/lists/*.c" "src/lists/*.h" ${src_np_clang_goodies_commons})
 file(GLOB src_dllist CONFIGURE_DEPENDS "src/lists/double/*.h" "src/lists/double/*.c" "src/lists/*.c" "src/lists/*.h" ${src_np_clang_goodies_commons})
@@ -154,7 +154,7 @@ file(GLOB src_uuid CONFIGURE_DEPENDS "src/uuid/*.h" "src/uuid/*.c" ${src_np_clan
 file(GLOB_RECURSE src_hash CONFIGURE_DEPENDS "src/hash/*.h" "src/hash/*.c" ${src_np_clang_goodies_commons})
 file(GLOB_RECURSE src_all CONFIGURE_DEPENDS "src/*.h" "src/*.c")
 
-file(GLOB src_test_utils CONFIGURE_DEPENDS "tests/assert.h" "tests/memutils.c" "tests/memutils.h")
+file(GLOB src_test_utils CONFIGURE_DEPENDS "tests/assert.h" "tests/memutils.c" "tests/memutils.h" "src/platform.h")
 
 
 # Targets > DLLs
@@ -283,6 +283,9 @@ if(NP_GOODIES_BUILD_TESTS)
     target_compile_definitions(test_text_copyLine PUBLIC NP_DEBUG_LOGGING)
 
     # Targets > Tests > Misc
+    add_executable(test_platform tests/misc/test_platform.c ${src_test_utils})
+    add_test(NAME test_platform COMMAND test_platform)
+
     add_executable(test_version tests/misc/test_version.c src/version.h ${src_test_utils})
     add_test(NAME test_version COMMAND test_version)
 else()

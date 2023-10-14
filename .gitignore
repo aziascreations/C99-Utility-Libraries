@@ -4,6 +4,7 @@
 
 # Cmake builds
 build/
+build*/
 cmake*/
 
 # Documentation builds
@@ -13,6 +14,7 @@ docs/latex
 # PureBasic stuff
 *.pb.cfg
 *.exe
+*.so
 
 # Misc.
 *.pdn

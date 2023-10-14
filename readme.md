@@ -12,12 +12,13 @@ Small collection of utilities and libraries for C in order to simplify some deve
 * ![](docs/images/plus.png) Small extras like UUID4 & CRC32B
 * ![](docs/images/view_more.png) Other features to come as needed or requested
 
-
 ## Planned Features
 * More HashMap types & more utilities
 * Platform-agnostic with some optional improvements on a per-OS and opt-in basis.
 * Optional assembly-level optimisations for some procedures.
-
+* Support for Windows and Linux
+* Supports MSVC, GCC, CLang & MinGW
+* Clean OS, Compiler & Architecture detector
 
 ## Remarks
 This project is by no mean complete or exhaustive in the features it provides.<br>
