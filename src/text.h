@@ -5,6 +5,7 @@
 #include "platform.h"
 
 #include <stdbool.h>
+#include <string.h>
 #include <wchar.h>
 
 #if defined(NP_GOODIES_EXPORT_TEXT) || defined(NP_GOODIES_EXPORT_ALL)

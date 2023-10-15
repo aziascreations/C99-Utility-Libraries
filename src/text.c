@@ -7,9 +7,10 @@
  *  @{
  */
 
-#include "ctype.h"
-#include "stdlib.h"
-#include "string.h"
+#include <ctype.h>
+#include <errno.h>
+#include <stdlib.h>
+#include <wctype.h>
 
 #include "text.h"
 
@@ -73,10 +74,12 @@ wchar_t *copyWCharString(wchar_t *stringToCopy) {
 	
 	// Copying and validating the operation's success
 	if(newString) {
-		if(wcscpy_s(newString, stringSize, stringToCopy)) {
-			free(newString);
-			newString = NULL;
-		}
+		// TODO: Include with a C11 check
+		//if(wcscpy_s(newString, stringSize, stringToCopy)) {
+		//	free(newString);
+		//	newString = NULL;
+		//}
+		memcpy(newString, stringToCopy, stringSize * sizeof(wchar_t));
 	}
 	
 	return newString;
