@@ -1,4 +1,4 @@
-# Setup > Import detection
+# Setup > FetchContent import detection
 if("${CMAKE_SOURCE_DIR}" STREQUAL "${CMAKE_CURRENT_SOURCE_DIR}")
     set(NP_GOODIES_IS_MAIN TRUE)
 else()
@@ -108,27 +108,6 @@ if(NP_GOODIES_IS_MAIN)
         set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /RELEASE")
     endif()
 endif()
-
-
-# Versioning
-message("--> Preparing environment variables and definitions for versioning...")
-
-# Don't forget to change it in "docs/Doxyfile" too !
-set(ENV{NP_GOODIES_VERSION_MAJOR} 0)
-set(ENV{NP_GOODIES_VERSION_MINOR} 3)
-set(ENV{NP_GOODIES_VERSION_PATCH} 0)
-set(ENV{NP_GOODIES_VERSION_EXTRA} 0)
-
-set(ENV{NP_GOODIES_VERSION_WINDOWS} "$ENV{NP_GOODIES_VERSION_MAJOR}.$ENV{NP_GOODIES_VERSION_MINOR}.$ENV{NP_GOODIES_VERSION_PATCH}.$ENV{NP_GOODIES_VERSION_EXTRA}")
-set(ENV{NP_GOODIES_VERSION_SEMVER} "$ENV{NP_GOODIES_VERSION_MAJOR}.$ENV{NP_GOODIES_VERSION_MINOR}.$ENV{NP_GOODIES_VERSION_PATCH}")
-
-add_compile_definitions(NP_GOODIES_VERSION_MAJOR=$ENV{NP_GOODIES_VERSION_MAJOR})
-add_compile_definitions(NP_GOODIES_VERSION_MINOR=$ENV{NP_GOODIES_VERSION_MINOR})
-add_compile_definitions(NP_GOODIES_VERSION_PATCH=$ENV{NP_GOODIES_VERSION_PATCH})
-add_compile_definitions(NP_GOODIES_VERSION_EXTRA=$ENV{NP_GOODIES_VERSION_EXTRA})
-
-add_compile_definitions(NP_GOODIES_VERSION_WINDOWS=\"$ENV{NP_GOODIES_VERSION_WINDOWS}\")
-add_compile_definitions(NP_GOODIES_VERSION_SEMVER=\"$ENV{NP_GOODIES_VERSION_SEMVER}\")
 
 
 # Targets
@@ -285,9 +264,6 @@ if(NP_GOODIES_BUILD_TESTS)
     # Targets > Tests > Misc
     add_executable(test_platform tests/misc/test_platform.c ${src_test_utils})
     add_test(NAME test_platform COMMAND test_platform)
-
-    add_executable(test_version tests/misc/test_version.c src/version.h ${src_test_utils})
-    add_test(NAME test_version COMMAND test_version)
 else()
     message("---> Skipping test targets...")
 endif()

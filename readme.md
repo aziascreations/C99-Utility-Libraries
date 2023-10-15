@@ -11,14 +11,14 @@ Small collection of utilities and libraries for C in order to simplify some deve
 * ![](docs/images/bug.png) Toggleable debugging output functions
 * ![](docs/images/module.png) Complete, toggleable & macro-able `WCHAR` support
 * ![](docs/images/plus.png) Small extras like UUID4, CRC32B & OS/Compiler/ISA detection
-* ![](docs/images/linux.png) Supports Linux, Windows, GCC, CLang, MinGW & MSVC
+* ![](docs/images/linux.png) Supports [a variety of OS, CPU ISA & Compilers](platforms.md)
 * ![](docs/images/view_more.png) Other features to come as needed or requested
 
 ## Planned Features
 * More HashMap types & more utilities
 * Platform-agnostic with some optional improvements on a per-OS and opt-in basis.
 * Optional assembly-level optimisations for some procedures.
-* Support for ReactOS
+* Support for ReactOS & TCC
 
 
 ## Usage

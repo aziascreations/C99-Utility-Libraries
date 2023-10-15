@@ -57,14 +57,7 @@
 #endif
 
 
-// Checking for native `wchar_t` support.
-// The check is done this way to avoid including "string.h" needlessly.
-#if defined(NP_OS_WIN) && (defined(NP_COMPILER_MSVC) || defined(NP_COMPILER_MINGW))
-    #define NP_PLATFORM_SUPPORTS_WCHAR_T
-#endif
-
-
-// Setting the OS-specific library export
+// Setting the OS-specific library export macro
 #if defined(NP_OS_WIN) || defined(NP_OS_CYGWIN)
     #define NP_DLL_EXPORT __declspec(dllexport)
 #elif defined(NP_OS_LINUX) || defined(NP_OS_UNIX)

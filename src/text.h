@@ -2,14 +2,10 @@
 
 #pragma once
 
-#include <ctype.h>
-#include <stdbool.h>
-#include <stddef.h>
-#include <stdint.h>
-#include <stdlib.h>
-#include <string.h>
-
 #include "platform.h"
+
+#include <stdbool.h>
+#include <wchar.h>
 
 #if defined(NP_GOODIES_EXPORT_TEXT) || defined(NP_GOODIES_EXPORT_ALL)
 	#define DLL_EXP_TEXT NP_DLL_EXPORT
@@ -51,19 +47,16 @@ DLL_EXP_TEXT bool isStringEmpty(char *string);
  */
 DLL_EXP_TEXT int nextCharSpaceIndex(const char *string, int startIndex);
 
-#if defined(NP_PLATFORM_SUPPORTS_WCHAR_T)
 /**
  * Copies the given string into a new buffer and returns said buffer as-is.<br>
- * Uses `wcscpy_s` internally.<br>
- * Only available if `NP_WIN32` is defined during compilation.
+ * Uses `wcscpy_s` internally.
  * @param stringToCopy The string to be copied.
  * @return The copied string's pointer, or `NULL` if an error occurred.
  */
 DLL_EXP_TEXT wchar_t *copyWCharString(wchar_t *stringToCopy);
 
 /**
- * Checks if a given \a string starts with a given \a prefix.<br>
- * Only available if `NP_WIN32` is defined during compilation.
+ * Checks if a given \a string starts with a given \a prefix.
  * @param string The searched string.
  * @param prefix The prefix to be searched for in \a string.
  * @return `true` if the string starts with the given prefix, `false` otherwise.
@@ -71,8 +64,7 @@ DLL_EXP_TEXT wchar_t *copyWCharString(wchar_t *stringToCopy);
 DLL_EXP_TEXT bool wCharStringStartsWith(wchar_t *string, wchar_t *prefix);
 
 /**
- * Checks if the given \a string is `NULL`, empty or filled with spaces.<br>
- * Only available if `NP_WIN32` is defined during compilation.
+ * Checks if the given \a string is `NULL`, empty or filled with spaces.
  * @param string The string to be checked.
  * @return `true` if the string is empty, `false` otherwise.
  */
@@ -80,24 +72,19 @@ DLL_EXP_TEXT bool isWCharStringEmpty(wchar_t *string);
 
 /**
  * Converts a given `char` string into a `wchar_t` one and returns its pointer.<br>
- * You will need to free the returned pointer when appropriate.<br>
- * Only available if `NP_WIN32` is defined during compilation.
+ * You will need to free the returned pointer when appropriate.
  * @param originalString The original string to be copied
  * @return The converted string's pointer, or `NULL` if an error occurred.
  */
 DLL_EXP_TEXT wchar_t *charStringToWChar(char *originalString);
 
 /**
- * Finds the next space in a given string and returns its index.<br>
- * Only available if `NP_WIN32` is defined during compilation.
+ * Finds the next space in a given string and returns its index.
  * @param string The string to be analysed.
  * @param startIndex The index at which the search will start in the given \a string.
  * @return The index at which the next space will be located if found, or the string's end index.
  */
 DLL_EXP_TEXT int nextWCharSpaceIndex(const wchar_t *string, int startIndex);
-
-#endif
-
 
 /**
  * Copies the first available line in the given string into a new buffer and returns said buffer as-is.<br>
@@ -116,6 +103,4 @@ DLL_EXP_TEXT int nextWCharSpaceIndex(const wchar_t *string, int startIndex);
  */
 DLL_EXP_TEXT char *text_copyLine(const char *string, size_t stringLength, char **nextLine, size_t *nextLineMaxLength);
 
-#if defined(NP_PLATFORM_SUPPORTS_WCHAR_T)
 //DLL_EXP_TEXT wchar_t *text_copyLineW(const wchar_t *string, size_t stringLength, wchar_t **nextLine, size_t *nextLineMaxLength);
-#endif

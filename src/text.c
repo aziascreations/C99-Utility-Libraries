@@ -4,16 +4,14 @@
  *
  *  Collection of various utility functions for `char` and `wchar_t` based strings.
  *
- *  <b>Warning:</b><br>
- *  Unless `NP_WIN32` is defined, all functions that uses or return a `wchar_t` typed variable won't be accessible.<br>
- *  This is due to the fact that `wchar_t` is only accessible easily on Windows platforms.
- *
  *  @{
  */
 
-#include "text.h"
+#include "ctype.h"
+#include "stdlib.h"
+#include "string.h"
 
-#include "debug.h"
+#include "text.h"
 
 char *copyString(char *stringToCopy) {
 	// FIXME: The malloc doesn't look right at all, check this !
@@ -51,6 +49,7 @@ bool isStringEmpty(char *string) {
 		size_t len = strlen(string);
 		
 		for(int i = 0; i < len; i++) {
+			// TODO: Benchmark this !
 			if(!isspace(string[i])) {
 				return false;
 			}
@@ -66,8 +65,6 @@ int nextCharSpaceIndex(const char *string, int startIndex) {
 	}
 	return startIndex;
 }
-
-#if defined(NP_PLATFORM_SUPPORTS_WCHAR_T)
 
 wchar_t *copyWCharString(wchar_t *stringToCopy) {
 	// Preparing the output buffer
@@ -130,9 +127,6 @@ int nextWCharSpaceIndex(const wchar_t *string, int startIndex) {
 	}
 	return startIndex;
 }
-
-#endif
-
 
 char *text_copyLine(const char *string, size_t stringLength, char **nextLine, size_t *nextLineMaxLength) {
 	if(string == NULL || stringLength <= 0) {
