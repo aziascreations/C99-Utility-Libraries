@@ -10,9 +10,12 @@ int main() {
     #ifdef NP_OS_WIN
     printf("> Windows\n");
     #endif
-    #ifdef NP_OS_UNIX
-    printf("> Unix\n");
-    #endif
+	#ifdef NP_OS_LINUX
+	printf("> Linux\n");
+	#endif
+	#ifdef NP_OS_UNIX
+	printf("> Unix\n");
+	#endif
     #ifdef NP_OS_CYGWIN
     printf("> Cygwin\n");
     #endif
@@ -41,9 +44,12 @@ int main() {
     #ifdef NP_ARCH_x86
     printf("> x86\n");
     #endif
-    #ifdef __ARM_ARCH
-    printf("> ARM (Generic)\n");
+    #ifdef NP_ARCH_ARM
+    printf("> ARM\n");
     #endif
+	#ifdef NP_ARCH_ARM_GENERIC
+	printf("> ARM (Generic)\n");
+	#endif
     #ifdef NP_ARCH_ARMv8
     printf("> ARMv8\n");
     #endif

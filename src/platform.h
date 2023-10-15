@@ -42,15 +42,15 @@
 #elif defined(__i386__) || defined(_M_IX86)
     // Untested !
     #define NP_ARCH_x86
+#elif defined(__aarch64__)
+    #define NP_ARCH_ARM
+    #define NP_ARCH_ARMv8
+    #define NP_ARCH_AARCH64
 #elif defined(__ARM_ARCH)
     // Untested !
     // TODO: Test on RPI1B+ or Orange Pi 0
     #define NP_ARCH_ARM
-#elif defined(__aarch64__)
-    // Untested !
-    // TODO: Test on NanoPi R4S
-    #define NP_ARCH_ARMv8
-    #define NP_ARCH_AARCH64
+    #define NP_ARCH_ARM_GENERIC
 #else
     #define NP_ARCH_UNKNOWN
     //#warning Unknown CPU architecture !
@@ -58,16 +58,17 @@
 
 
 // Checking for native `wchar_t` support.
+// The check is done this way to avoid including "string.h" needlessly.
 #if defined(NP_OS_WIN) && (defined(NP_COMPILER_MSVC) || defined(NP_COMPILER_MINGW))
-	#define NP_PLATFORM_SUPPORTS_WCHAR_T
+    #define NP_PLATFORM_SUPPORTS_WCHAR_T
 #endif
 
 
 // Setting the OS-specific library export
 #if defined(NP_OS_WIN) || defined(NP_OS_CYGWIN)
-	#define NP_DLL_EXPORT __declspec(dllexport)
+    #define NP_DLL_EXPORT __declspec(dllexport)
 #elif defined(NP_OS_LINUX) || defined(NP_OS_UNIX)
-	#define NP_DLL_EXPORT __attribute__((visibility("default")))
+    #define NP_DLL_EXPORT __attribute__((visibility("default")))
 #else
-	#define NP_DLL_EXPORT
+    #define NP_DLL_EXPORT
 #endif
