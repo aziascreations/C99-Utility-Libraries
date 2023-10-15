@@ -5,7 +5,6 @@
 #include "../assert.h"
 #include "../memutils.h"
 
-#include "../../src/debug.h"
 #include "../../src/text.h"
 
 // Test strings
@@ -194,6 +193,339 @@ int main(void) {
 		
 		free(tmpLine);
 		tmpLine = NULL;
+		tmpNextLine = NULL;
+		tmpNextLength = 0;
+	}
+	
+	// Testing text 20
+	{
+		assert(strlen(text_20) == 20, "Text 20: Length is `20` chars.")
+		
+		tmpLine = text_copyLine(text_20, strlen(text_20), &tmpNextLine, &tmpNextLength);
+		
+		assert(tmpLine != NULL, "Text 20: Copied line isn't NULL.")
+		assert(strlen(tmpLine) == 6, "Text 22: Copied line's length is `6` chars.")
+		assert(strcmp(tmpLine, "Line 1") == 0, "Text 20: Copied line #1 only contains line #1.")
+		assert(tmpNextLine != NULL, "Text 20: Next line isn't NULL.")
+		
+		free(tmpLine);
+		tmpLine = NULL;
+		
+		tmpLine = text_copyLine(tmpNextLine, strlen(tmpNextLine), &tmpNextLine, &tmpNextLength);
+		
+		assert(tmpLine != NULL, "Text 20: Copied line isn't NULL.")
+		assert(strlen(tmpLine) == 6, "Text 22: Copied line's length is `6` chars.")
+		assert(strcmp(tmpLine, "Line 2") == 0, "Text 20: Copied line #2 only contains line #2.")
+		assert(tmpNextLine != NULL, "Text 20: Next line isn't NULL.")
+		
+		free(tmpLine);
+		tmpLine = NULL;
+		
+		tmpLine = text_copyLine(tmpNextLine, strlen(tmpNextLine), &tmpNextLine, &tmpNextLength);
+		
+		assert(tmpLine != NULL, "Text 20: Copied line isn't NULL.")
+		assert(strlen(tmpLine) == 6, "Text 22: Copied line's length is `6` chars.")
+		assert(strcmp(tmpLine, "Line 3") == 0, "Text 20: Copied line #2 only contains line #2.")
+		assert(tmpNextLine == NULL, "Text 20: Next line is NULL.")
+		
+		free(tmpLine);
+		tmpLine = NULL;
+		
+		tmpNextLine = NULL;
+		tmpNextLength = 0;
+	}
+	
+	// Testing text 21
+	{
+		assert(strlen(text_21) == 20, "Text 21: Length is `20` chars.")
+		
+		tmpLine = text_copyLine(text_21, strlen(text_21), &tmpNextLine, &tmpNextLength);
+		
+		assert(tmpLine != NULL, "Text 21: Copied line isn't NULL.")
+		assert(strlen(tmpLine) == 6, "Text 22: Copied line's length is `6` chars.")
+		assert(strcmp(tmpLine, "Line 1") == 0, "Text 21: Copied line #1 only contains line #1.")
+		assert(tmpNextLine != NULL, "Text 21: Next line isn't NULL.")
+		
+		free(tmpLine);
+		tmpLine = NULL;
+		
+		tmpLine = text_copyLine(tmpNextLine, strlen(tmpNextLine), &tmpNextLine, &tmpNextLength);
+		
+		assert(tmpLine != NULL, "Text 21: Copied line isn't NULL.")
+		assert(strlen(tmpLine) == 6, "Text 22: Copied line's length is `6` chars.")
+		assert(strcmp(tmpLine, "Line 2") == 0, "Text 21: Copied line #2 only contains line #2.")
+		assert(tmpNextLine != NULL, "Text 21: Next line isn't NULL.")
+		
+		free(tmpLine);
+		tmpLine = NULL;
+		
+		tmpLine = text_copyLine(tmpNextLine, strlen(tmpNextLine), &tmpNextLine, &tmpNextLength);
+		
+		assert(tmpLine != NULL, "Text 21: Copied line isn't NULL.")
+		assert(strlen(tmpLine) == 6, "Text 22: Copied line's length is `6` chars.")
+		assert(strcmp(tmpLine, "Line 3") == 0, "Text 21: Copied line #2 only contains line #2.")
+		assert(tmpNextLine == NULL, "Text 21: Next line is NULL.")
+		
+		free(tmpLine);
+		tmpLine = NULL;
+		
+		tmpNextLine = NULL;
+		tmpNextLength = 0;
+	}
+	
+	// Testing text 22
+	{
+		assert(strlen(text_22) == 22, "Text 22: Length is `22` chars.")
+		
+		tmpLine = text_copyLine(text_22, strlen(text_22), &tmpNextLine, &tmpNextLength);
+		
+		assert(tmpLine != NULL, "Text 22: Copied line isn't NULL.")
+		assert(strlen(tmpLine) == 6, "Text 22: Copied line's length is `6` chars.")
+		assert(strcmp(tmpLine, "Line 1") == 0, "Text 22: Copied line #1 only contains line #1.")
+		assert(tmpNextLine != NULL, "Text 22: Next line isn't NULL.")
+		
+		free(tmpLine);
+		tmpLine = NULL;
+		
+		tmpLine = text_copyLine(tmpNextLine, strlen(tmpNextLine), &tmpNextLine, &tmpNextLength);
+		
+		assert(tmpLine != NULL, "Text 22: Copied line isn't NULL.")
+		assert(strlen(tmpLine) == 6, "Text 22: Copied line's length is `6` chars.")
+		assert(strcmp(tmpLine, "Line 2") == 0, "Text 22: Copied line #2 only contains line #2.")
+		assert(tmpNextLine != NULL, "Text 22: Next line isn't NULL.")
+		
+		free(tmpLine);
+		tmpLine = NULL;
+		
+		tmpLine = text_copyLine(tmpNextLine, strlen(tmpNextLine), &tmpNextLine, &tmpNextLength);
+		
+		assert(tmpLine != NULL, "Text 22: Copied line isn't NULL.")
+		assert(strlen(tmpLine) == 6, "Text 22: Copied line's length is `6` chars.")
+		assert(strcmp(tmpLine, "Line 3") == 0, "Text 22: Copied line #2 only contains line #2.")
+		assert(tmpNextLine == NULL, "Text 22: Next line is NULL.")
+		
+		free(tmpLine);
+		tmpLine = NULL;
+		
+		tmpNextLine = NULL;
+		tmpNextLength = 0;
+	}
+	
+	// Testing text 23
+	{
+		assert(strlen(text_23) == 22, "Text 23: Length is `22` chars.")
+		
+		tmpLine = text_copyLine(text_23, strlen(text_23), &tmpNextLine, &tmpNextLength);
+		
+		assert(tmpLine != NULL, "Text 23: Copied line isn't NULL.")
+		assert(strlen(tmpLine) == 6, "Text 23: Copied line's length is `6` chars.")
+		assert(strcmp(tmpLine, "Line 1") == 0, "Text 23: Copied line #1 only contains line #1.")
+		assert(tmpNextLine != NULL, "Text 23: Next line isn't NULL.")
+		
+		free(tmpLine);
+		tmpLine = NULL;
+		
+		tmpLine = text_copyLine(tmpNextLine, strlen(tmpNextLine), &tmpNextLine, &tmpNextLength);
+		
+		assert(tmpLine != NULL, "Text 23: Copied line isn't NULL.")
+		assert(strlen(tmpLine) == 6, "Text 23: Copied line's length is `6` chars.")
+		assert(strcmp(tmpLine, "Line 2") == 0, "Text 23: Copied line #2 only contains line #2.")
+		assert(tmpNextLine != NULL, "Text 23: Next line isn't NULL.")
+		
+		free(tmpLine);
+		tmpLine = NULL;
+		
+		tmpLine = text_copyLine(tmpNextLine, strlen(tmpNextLine), &tmpNextLine, &tmpNextLength);
+		
+		assert(tmpLine != NULL, "Text 23: Copied line isn't NULL.")
+		assert(strlen(tmpLine) == 6, "Text 23: Copied line's length is `6` chars.")
+		assert(strcmp(tmpLine, "Line 3") == 0, "Text 23: Copied line #2 only contains line #2.")
+		assert(tmpNextLine == NULL, "Text 23: Next line is NULL.")
+		
+		free(tmpLine);
+		tmpLine = NULL;
+		
+		tmpNextLine = NULL;
+		tmpNextLength = 0;
+	}
+	
+	// Testing text 30
+	{
+		assert(strlen(text_30) == 14, "Text 30: Length is `14` chars.")
+		
+		tmpLine = text_copyLine(text_30, strlen(text_30), &tmpNextLine, &tmpNextLength);
+		
+		assert(tmpLine != NULL, "Text 30: Copied line isn't NULL.")
+		assert(strlen(tmpLine) == 6, "Text 30: Copied line's length is `6` chars.")
+		assert(strcmp(tmpLine, "Line 1") == 0, "Text 30: Copied line #1 only contains line #1.")
+		assert(tmpNextLine != NULL, "Text 30: Next line isn't NULL.")
+		
+		free(tmpLine);
+		tmpLine = NULL;
+		
+		tmpLine = text_copyLine(tmpNextLine, strlen(tmpNextLine), &tmpNextLine, &tmpNextLength);
+		
+		assert(tmpLine != NULL, "Text 30: Copied line isn't NULL.")
+		assert(strlen(tmpLine) == 0, "Text 30: Copied line's length is `0` chars.")
+		assert(strcmp(tmpLine, "") == 0, "Text 30: Copied line #2 only contains line #2.")
+		assert(tmpNextLine != NULL, "Text 30: Next line isn't NULL.")
+		
+		free(tmpLine);
+		tmpLine = NULL;
+		
+		tmpLine = text_copyLine(tmpNextLine, strlen(tmpNextLine), &tmpNextLine, &tmpNextLength);
+		
+		assert(tmpLine != NULL, "Text 30: Copied line isn't NULL.")
+		assert(strlen(tmpLine) == 6, "Text 30: Copied line's length is `6` chars.")
+		assert(strcmp(tmpLine, "Line 3") == 0, "Text 30: Copied line #2 only contains line #2.")
+		assert(tmpNextLine == NULL, "Text 30: Next line is NULL.")
+		
+		free(tmpLine);
+		tmpLine = NULL;
+		
+		tmpNextLine = NULL;
+		tmpNextLength = 0;
+	}
+	
+	// Testing text 31
+	{
+		assert(strlen(text_31) == 14, "Text 31: Length is `14` chars.")
+		
+		tmpLine = text_copyLine(text_31, strlen(text_31), &tmpNextLine, &tmpNextLength);
+		
+		assert(tmpLine != NULL, "Text 31: Copied line isn't NULL.")
+		assert(strlen(tmpLine) == 6, "Text 31: Copied line's length is `6` chars.")
+		assert(strcmp(tmpLine, "Line 1") == 0, "Text 31: Copied line #1 only contains line #1.")
+		assert(tmpNextLine != NULL, "Text 31: Next line isn't NULL.")
+		
+		free(tmpLine);
+		tmpLine = NULL;
+		
+		tmpLine = text_copyLine(tmpNextLine, strlen(tmpNextLine), &tmpNextLine, &tmpNextLength);
+		
+		assert(tmpLine != NULL, "Text 31: Copied line isn't NULL.")
+		assert(strlen(tmpLine) == 0, "Text 31: Copied line's length is `0` chars.")
+		assert(strcmp(tmpLine, "") == 0, "Text 31: Copied line #2 only contains line #2.")
+		assert(tmpNextLine != NULL, "Text 31: Next line isn't NULL.")
+		
+		free(tmpLine);
+		tmpLine = NULL;
+		
+		tmpLine = text_copyLine(tmpNextLine, strlen(tmpNextLine), &tmpNextLine, &tmpNextLength);
+		
+		assert(tmpLine != NULL, "Text 31: Copied line isn't NULL.")
+		assert(strlen(tmpLine) == 6, "Text 31: Copied line's length is `6` chars.")
+		assert(strcmp(tmpLine, "Line 3") == 0, "Text 31: Copied line #2 only contains line #2.")
+		assert(tmpNextLine == NULL, "Text 31: Next line is NULL.")
+		
+		free(tmpLine);
+		tmpLine = NULL;
+		
+		tmpNextLine = NULL;
+		tmpNextLength = 0;
+	}
+	
+	// Testing text 32
+	{
+		assert(strlen(text_32) == 16, "Text 32: Length is `16` chars.")
+		
+		tmpLine = text_copyLine(text_32, strlen(text_32), &tmpNextLine, &tmpNextLength);
+		
+		assert(tmpLine != NULL, "Text 32: Copied line isn't NULL.")
+		assert(strlen(tmpLine) == 6, "Text 32: Copied line's length is `6` chars.")
+		assert(strcmp(tmpLine, "Line 1") == 0, "Text 32: Copied line #1 only contains line #1.")
+		assert(tmpNextLine != NULL, "Text 32: Next line isn't NULL.")
+		
+		free(tmpLine);
+		tmpLine = NULL;
+		
+		tmpLine = text_copyLine(tmpNextLine, strlen(tmpNextLine), &tmpNextLine, &tmpNextLength);
+		
+		assert(tmpLine != NULL, "Text 32: Copied line isn't NULL.")
+		assert(strlen(tmpLine) == 0, "Text 32: Copied line's length is `0` chars.")
+		assert(strcmp(tmpLine, "") == 0, "Text 32: Copied line #2 only contains line #2.")
+		assert(tmpNextLine != NULL, "Text 32: Next line isn't NULL.")
+		
+		free(tmpLine);
+		tmpLine = NULL;
+		
+		tmpLine = text_copyLine(tmpNextLine, strlen(tmpNextLine), &tmpNextLine, &tmpNextLength);
+		
+		assert(tmpLine != NULL, "Text 32: Copied line isn't NULL.")
+		assert(strlen(tmpLine) == 6, "Text 32: Copied line's length is `6` chars.")
+		assert(strcmp(tmpLine, "Line 3") == 0, "Text 32: Copied line #2 only contains line #2.")
+		assert(tmpNextLine == NULL, "Text 32: Next line is NULL.")
+		
+		free(tmpLine);
+		tmpLine = NULL;
+		
+		tmpNextLine = NULL;
+		tmpNextLength = 0;
+	}
+	
+	// Testing text 33
+	{
+		assert(strlen(text_33) == 16, "Text 33: Length is `16` chars.")
+		
+		tmpLine = text_copyLine(text_33, strlen(text_33), &tmpNextLine, &tmpNextLength);
+		
+		assert(tmpLine != NULL, "Text 33: Copied line isn't NULL.")
+		assert(strlen(tmpLine) == 6, "Text 33: Copied line's length is `6` chars.")
+		assert(strcmp(tmpLine, "Line 1") == 0, "Text 33: Copied line #1 only contains line #1.")
+		assert(tmpNextLine != NULL, "Text 33: Next line isn't NULL.")
+		
+		free(tmpLine);
+		tmpLine = NULL;
+		
+		tmpLine = text_copyLine(tmpNextLine, strlen(tmpNextLine), &tmpNextLine, &tmpNextLength);
+		
+		assert(tmpLine != NULL, "Text 33: Copied line isn't NULL.")
+		assert(strlen(tmpLine) == 0, "Text 33: Copied line's length is `0` chars.")
+		assert(strcmp(tmpLine, "") == 0, "Text 33: Copied line #2 only contains line #2.")
+		assert(tmpNextLine != NULL, "Text 33: Next line isn't NULL.")
+		
+		free(tmpLine);
+		tmpLine = NULL;
+		
+		tmpLine = text_copyLine(tmpNextLine, strlen(tmpNextLine), &tmpNextLine, &tmpNextLength);
+		
+		assert(tmpLine != NULL, "Text 33: Copied line isn't NULL.")
+		assert(strlen(tmpLine) == 6, "Text 33: Copied line's length is `6` chars.")
+		assert(strcmp(tmpLine, "Line 3") == 0, "Text 33: Copied line #2 only contains line #2.")
+		assert(tmpNextLine == NULL, "Text 33: Next line is NULL.")
+		
+		free(tmpLine);
+		tmpLine = NULL;
+		
+		tmpNextLine = NULL;
+		tmpNextLength = 0;
+	}
+	
+	//static const char *text_40 = "Line 1\rLine 2\0Line 3";
+	// Testing text 40
+	{
+		assert(strlen(text_40) == 13, "Text 40: Length is `13` chars.")
+		
+		tmpLine = text_copyLine(text_40, strlen(text_40), &tmpNextLine, &tmpNextLength);
+		
+		assert(tmpLine != NULL, "Text 40: Copied line isn't NULL.")
+		assert(strlen(tmpLine) == 6, "Text 40: Copied line's length is `6` chars.")
+		assert(strcmp(tmpLine, "Line 1") == 0, "Text 40: Copied line #1 only contains line #1.")
+		assert(tmpNextLine != NULL, "Text 40: Next line isn't NULL.")
+		
+		free(tmpLine);
+		tmpLine = NULL;
+		
+		tmpLine = text_copyLine(tmpNextLine, strlen(tmpNextLine), &tmpNextLine, &tmpNextLength);
+		
+		assert(tmpLine != NULL, "Text 40: Copied line isn't NULL.")
+		assert(strlen(tmpLine) == 6, "Text 40: Copied line's length is `6` chars.")
+		assert(strcmp(tmpLine, "Line 2") == 0, "Text 40: Copied line #2 only contains line #2.")
+		assert(tmpNextLine == NULL, "Text 40: Next line is NULL.")
+		
+		free(tmpLine);
+		tmpLine = NULL;
+		
 		tmpNextLine = NULL;
 		tmpNextLength = 0;
 	}
