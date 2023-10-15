@@ -109,7 +109,8 @@ bool isWCharStringEmpty(wchar_t *string) {
 	return true;
 }
 
-wchar_t *charStringToWChar(char *originalString) {
+// TODO: Reimplement with C11 toggle !
+/*wchar_t *charStringToWChar(char *originalString) {
 	size_t originalLength = strlen(originalString) + 1;
 	wchar_t *returnedString = (wchar_t *) malloc(sizeof(wchar_t) * originalLength);
 	size_t outSize;
@@ -117,6 +118,20 @@ wchar_t *charStringToWChar(char *originalString) {
 	errno = mbstowcs_s(&outSize, returnedString, originalLength, originalString, originalLength - 1);
 	
 	if(errno != 0) {
+		free(returnedString);
+		returnedString = NULL;
+	}
+	
+	return returnedString;
+}*/
+
+wchar_t *charStringToWChar(char *originalString) {
+	size_t originalLength = strlen(originalString) + 1;
+	wchar_t *returnedString = (wchar_t *) malloc(sizeof(wchar_t) * originalLength);
+	
+	size_t outSize = mbstowcs(returnedString, originalString, originalLength - 1);
+	
+	if(outSize == -1) {
 		free(returnedString);
 		returnedString = NULL;
 	}
