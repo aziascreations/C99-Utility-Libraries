@@ -2,6 +2,8 @@
 
 #pragma once
 
+#include "../platform.h"
+
 #include "./errors.h"
 #include "./flags.h"
 #include "./structs.h"
@@ -10,14 +12,7 @@
 #include "../text.h"
 
 #if defined(NP_GOODIES_EXPORT_ARGUMENTS) || defined(NP_GOODIES_EXPORT_ALL)
-	#if WIN32 || defined(_MSC_VER)
-		#define DLL_EXP_ARGS __declspec(dllexport)
-	#elif UNIX || defined(__GNUC__)
-		#define DLL_EXP_ARGS __attribute__((visibility("default")))
-	#else
-		#define DLL_EXP_ARGS
-		#warning Unknown platform, prevent library exports !
-	#endif
+	#define DLL_EXP_ARGS NP_DLL_EXPORT
 #else
 	#define DLL_EXP_ARGS
 #endif

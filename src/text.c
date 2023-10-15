@@ -67,7 +67,7 @@ int nextCharSpaceIndex(const char *string, int startIndex) {
 	return startIndex;
 }
 
-#ifdef NP_WIN32
+#if defined(NP_PLATFORM_SUPPORTS_WCHAR_T)
 
 wchar_t *copyWCharString(wchar_t *stringToCopy) {
 	// Preparing the output buffer

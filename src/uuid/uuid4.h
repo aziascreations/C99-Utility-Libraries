@@ -4,18 +4,13 @@
 
 #include <stdlib.h>
 
+#include "../platform.h"
+
 #include "./uuid.h"
 #include "./structs.h"
 
 #if defined(NP_GOODIES_EXPORT_UUID4) || defined(NP_GOODIES_EXPORT_UUID_ALL) || defined(NP_GOODIES_EXPORT_ALL)
-	#if WIN32 || defined(_MSC_VER)
-		#define DLL_EXP_UUID4 __declspec(dllexport)
-	#elif UNIX || defined(__GNUC__)
-		#define DLL_EXP_UUID4 __attribute__((visibility("default")))
-	#else
-		#define DLL_EXP_UUID4
-		#warning Unknown platform, prevent library exports !
-	#endif
+	#define DLL_EXP_UUID4 NP_DLL_EXPORT
 #else
 	#define DLL_EXP_UUID4
 #endif

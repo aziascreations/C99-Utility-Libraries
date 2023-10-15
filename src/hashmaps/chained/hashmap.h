@@ -5,18 +5,13 @@
 #include <stdbool.h>
 #include <stdint.h>
 
+#include "../../platform.h"
+
 #include "structs.h"
 #include "../structs.h"
 
 #if defined(NP_GOODIES_EXPORT_HASHMAP_CHAINED) || defined(NP_GOODIES_EXPORT_HASHMAP_ALL) || defined(NP_GOODIES_EXPORT_ALL)
-	#if WIN32 || defined(_MSC_VER)
-		#define DLL_EXP_CHAINED_HASHMAP __declspec(dllexport)
-	#elif UNIX || defined(__GNUC__)
-		#define DLL_EXP_CHAINED_HASHMAP __attribute__((visibility("default")))
-	#else
-		#define DLL_EXP_CHAINED_HASHMAP
-		#warning Unknown platform, prevent library exports !
-	#endif
+	#define DLL_EXP_CHAINED_HASHMAP NP_DLL_EXPORT
 #else
 	#define DLL_EXP_CHAINED_HASHMAP
 #endif

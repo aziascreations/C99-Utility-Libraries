@@ -9,15 +9,10 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "platform.h"
+
 #if defined(NP_GOODIES_EXPORT_TEXT) || defined(NP_GOODIES_EXPORT_ALL)
-	#if WIN32 || defined(_MSC_VER)
-		#define DLL_EXP_TEXT __declspec(dllexport)
-	#elif UNIX || defined(__GNUC__)
-		#define DLL_EXP_TEXT __attribute__((visibility("default")))
-	#else
-		#define DLL_EXP_TEXT
-		#warning Unknown platform, prevent library exports !
-	#endif
+	#define DLL_EXP_TEXT NP_DLL_EXPORT
 #else
 	#define DLL_EXP_TEXT
 #endif
@@ -56,7 +51,7 @@ DLL_EXP_TEXT bool isStringEmpty(char *string);
  */
 DLL_EXP_TEXT int nextCharSpaceIndex(const char *string, int startIndex);
 
-#ifdef NP_WIN32
+#if defined(NP_PLATFORM_SUPPORTS_WCHAR_T)
 /**
  * Copies the given string into a new buffer and returns said buffer as-is.<br>
  * Uses `wcscpy_s` internally.<br>
@@ -106,7 +101,7 @@ DLL_EXP_TEXT int nextWCharSpaceIndex(const wchar_t *string, int startIndex);
 
 /**
  * Copies the first available line in the given string into a new buffer and returns said buffer as-is.<br>
- * ???
+ * Depending on the arguments given, it can also easily iterate over every line in a block of text.
  * @param string The string whose first line will be copied and returned.
  * @param stringLength The given string's length with or without the trailing NULL byte.<br>
  *                     May overshoot the actual length if a NULL byte is present in the string.<br>
@@ -121,6 +116,6 @@ DLL_EXP_TEXT int nextWCharSpaceIndex(const wchar_t *string, int startIndex);
  */
 DLL_EXP_TEXT char *text_copyLine(const char *string, size_t stringLength, char **nextLine, size_t *nextLineMaxLength);
 
-#ifdef NP_WIN32
+#if defined(NP_PLATFORM_SUPPORTS_WCHAR_T)
 //DLL_EXP_TEXT wchar_t *text_copyLineW(const wchar_t *string, size_t stringLength, wchar_t **nextLine, size_t *nextLineMaxLength);
 #endif
