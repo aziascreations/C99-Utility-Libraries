@@ -28,6 +28,10 @@ Works, but needs more testing.
 Untested
 * `NP_COMPILER_MINGW`
 
+### Tiny C Compiler
+Tested with [QT's Jom](https://wiki.qt.io/Jom) in ReactOS 0.4.14
+* `NP_COMPILER_TCC`
+
 ### Unknown
 * `NP_COMPILER_UNKNOWN`
 
@@ -49,6 +53,11 @@ Untested.
 
 ### Cygwin
 Untested.
+
+### ReactOS
+Tested on ReactOS 0.4.14 x86.
+* `NP_OS_WIN`  *(May change in the future)*
+* `NP_ARCH_x86`
 
 ### Linux x64
 Tested on Kubuntu 23.10 in a VM with GCC & CLang.

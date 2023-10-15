@@ -1,4 +1,23 @@
+/** @file */
+
 #pragma once
+
+/** @defgroup group_np_platform Platforms detection
+ *
+ * Single header whose main purpose in is to let you easily identify which compiler, OS and ISA is being
+ * targeted to potentially implement platform-specific code.
+ *
+ * Once included, you can check for various definitions that can help you target specific targets.
+ *
+ * For a complete list of scenarios and their associated definitions, check [platforms.md](../platforms.md).
+ *
+ * \see https://sourceforge.net/p/predef/wiki/Architectures/
+ * \see https://sourceforge.net/p/predef/wiki/Compilers/
+ * \see https://sourceforge.net/p/predef/wiki/OperatingSystems/
+ * \see [platforms.md](../platforms.md)
+ *
+ * @{
+ */
 
 // See: https://sourceforge.net/p/predef/wiki/OperatingSystems/
 // Others: __APPLE__, __FreeBSD__, __NetBSD__, __OpenBSD__, __sun, _AIX, __HAIKU__, __ANDROID__
@@ -12,7 +31,6 @@
     #define NP_OS_CYGWIN
 #else
     #define NP_OS_UNKNOWN
-    //#warning Unknown OS !
 #endif
 
 
@@ -28,9 +46,10 @@
 #elif defined(__MINGW32__) || defined(__MINGW64__)
     // Untested !
     #define NP_COMPILER_MINGW
+#elif defined(__TINYC__)
+    #define NP_COMPILER_TCC
 #else
     #define NP_COMPILER_UNKNOWN
-    //#warning Unknown compiler !
 #endif
 
 
@@ -40,7 +59,6 @@
 #if defined(__x86_64__) || defined(_M_X64)
     #define NP_ARCH_x64
 #elif defined(__i386__) || defined(_M_IX86)
-    // Untested !
     #define NP_ARCH_x86
 #elif defined(__aarch64__)
     #define NP_ARCH_ARM
@@ -53,7 +71,6 @@
     #define NP_ARCH_ARM_GENERIC
 #else
     #define NP_ARCH_UNKNOWN
-    //#warning Unknown CPU architecture !
 #endif
 
 
@@ -65,3 +82,5 @@
 #else
     #define NP_DLL_EXPORT
 #endif
+
+/** @} */ // end of group_np_platform

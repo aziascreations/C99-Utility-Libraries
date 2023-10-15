@@ -30,9 +30,15 @@ int main() {
     #ifdef NP_COMPILER_GNUC
     printf("> GNUC\n");
     #endif
-    #ifdef NP_COMPILER_CLANG
-    printf("> CLANG\n");
-    #endif
+	#ifdef NP_COMPILER_CLANG
+	printf("> CLANG\n");
+	#endif
+	#ifdef NP_COMPILER_MINGW
+	printf("> MINGW\n");
+	#endif
+	#ifdef NP_COMPILER_TCC
+	printf("> TCC\n");
+	#endif
     #ifdef NP_COMPILER_UNKNOWN
     printf("> Unknown\n");
     #endif

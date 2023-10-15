@@ -251,6 +251,7 @@ INPUT                  = "../extra/" \
                          "../src/uuid/" \
                          "../readme.md" \
                          "../definitions.md" \
+                         "../platforms.md" \
                          "../benchmarks/readme.md" \
                          "../benchmarks/"
 INPUT_ENCODING         = UTF-8

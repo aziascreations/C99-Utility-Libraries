@@ -261,6 +261,10 @@ if(NP_GOODIES_BUILD_TESTS)
     add_test(NAME test_text_copyLine COMMAND test_text_copyLine)
     target_compile_definitions(test_text_copyLine PUBLIC NP_DEBUG_LOGGING)
 
+    add_executable(test_text_copyLineW tests/text/test_text_copyLineW.c ${src_text} ${src_test_utils})
+    add_test(NAME test_text_copyLineW COMMAND test_text_copyLineW)
+    target_compile_definitions(test_text_copyLineW PUBLIC NP_DEBUG_LOGGING)
+
     # Targets > Tests > Misc
     add_executable(test_platform tests/misc/test_platform.c ${src_test_utils})
     add_test(NAME test_platform COMMAND test_platform)
