@@ -22,9 +22,9 @@ message("--> Configuring CMake...")
 
 # Configuring CMake > Checking minimum version
 message("---> Checking CMake's version...")
-message("----> Require 3.16")
+message("----> Require 3.13")
 message("----> Using ${CMAKE_VERSION}")
-cmake_minimum_required(VERSION 3.16)
+cmake_minimum_required(VERSION 3.13)
 
 
 # Configuring CMake > Preparing C revision and project itself...
