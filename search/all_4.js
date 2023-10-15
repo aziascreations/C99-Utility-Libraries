@@ -15,7 +15,5 @@ var searchData=
   ['error_5farguments_5funknown_5foption_12',['ERROR_ARGUMENTS_UNKNOWN_OPTION',['../group__arguments.html#gga8db04c5bff185ed40154146a665b8cdfa3c213242424f75ccd18f804b8bcc69b9',1,'errors.h']]],
   ['error_5fprint_13',['error_print',['../group__group__np__debug.html#ga643ff41c124640eb217b60421f40aa05',1,'debug.h']]],
   ['error_5fprintln_14',['error_println',['../group__group__np__debug.html#ga066ff324eb29d6acd5a34608027a3c07',1,'debug.h']]],
-  ['error_5fwprint_15',['error_wprint',['../group__group__np__debug.html#ga43c50294caa7288f8555e17398b343cb',1,'debug.h']]],
-  ['error_5fwprintln_16',['error_wprintln',['../group__group__np__debug.html#ga810335d86506dc7c93352d2214438695',1,'debug.h']]],
-  ['errors_2eh_17',['errors.h',['../errors_8h.html',1,'']]]
+  ['errors_2eh_15',['errors.h',['../errors_8h.html',1,'']]]
 ];

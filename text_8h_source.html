@@ -27,7 +27,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign">
-   <div id="projectname">NibblePoker&#39;s Clang Goodies<span id="projectnumber">&#160;0.3.0</span>
+   <div id="projectname">NibblePoker&#39;s Clang Goodies<span id="projectnumber">&#160;0.4.0</span>
    </div>
    <div id="projectbrief">Small collection of utilities and libraries for C in order to simplify some development tasks.</div>
   </td>
@@ -98,16 +98,16 @@ $(document).ready(function(){initNavTree('text_8h_source.html',''); initResizabl
 <a href="text_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;ctype.h&gt;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;string.h&gt;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;stdbool.h&gt;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;<a class="code" href="platform_8h.html">platform.h</a>&quot;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;stdbool.h&gt;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;string.h&gt;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;wchar.h&gt;</span></div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#if defined(NP_GOODIES_EXPORT_TEXT) || defined(NP_GOODIES_EXPORT_ALL)</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#define DLL_EXP_TEXT __declspec(dllexport)</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">    #define DLL_EXP_TEXT NP_DLL_EXPORT</span></div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#else</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#define DLL_EXP_TEXT</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">    #define DLL_EXP_TEXT</span></div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#define areStringsEqual(string1, string2) (strcmp(string1, string2) == 0)</span></div>
@@ -121,34 +121,46 @@ $(document).ready(function(){initNavTree('text_8h_source.html',''); initResizabl
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>DLL_EXP_TEXT <span class="keywordtype">int</span> <a class="code hl_function" href="group__group__nptext.html#ga897836327167edc2a25c305874e36074">nextCharSpaceIndex</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *<span class="keywordtype">string</span>, <span class="keywordtype">int</span> startIndex);</div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="preprocessor">#ifdef NP_WIN32</span></div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>DLL_EXP_TEXT <span class="keywordtype">wchar_t</span> *<a class="code hl_function" href="group__group__nptext.html#gac5f05d61789b552dae560425249819ff">copyWCharString</a>(<span class="keywordtype">wchar_t</span> *stringToCopy);</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>DLL_EXP_TEXT <span class="keywordtype">bool</span> <a class="code hl_function" href="group__group__nptext.html#gabe29c7f1744260c89c5148c3195f4c22">wCharStringStartsWith</a>(<span class="keywordtype">wchar_t</span> *<span class="keywordtype">string</span>, <span class="keywordtype">wchar_t</span> *prefix);</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>DLL_EXP_TEXT <span class="keywordtype">bool</span> <a class="code hl_function" href="group__group__nptext.html#gaa726c3c6dd75c3dd43f51d01c892f2dd">isWCharStringEmpty</a>(<span class="keywordtype">wchar_t</span> *<span class="keywordtype">string</span>);</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>DLL_EXP_TEXT <span class="keywordtype">wchar_t</span> *<a class="code hl_function" href="group__group__nptext.html#ga3f87e67f0c001bbec26e141eae906c26">charStringToWChar</a>(<span class="keywordtype">char</span> *originalString);</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>DLL_EXP_TEXT <span class="keywordtype">int</span> <a class="code hl_function" href="group__group__nptext.html#gaa6dd80bf6a0013a3bbdf90c1f2d4e40b">nextWCharSpaceIndex</a>(<span class="keyword">const</span> <span class="keywordtype">wchar_t</span> *<span class="keywordtype">string</span>, <span class="keywordtype">int</span> startIndex);</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="agroup__group__nptext_html_ga3f87e67f0c001bbec26e141eae906c26"><div class="ttname"><a href="group__group__nptext.html#ga3f87e67f0c001bbec26e141eae906c26">charStringToWChar</a></div><div class="ttdeci">DLL_EXP_TEXT wchar_t * charStringToWChar(char *originalString)</div><div class="ttdef"><b>Definition:</b> text.c:105</div></div>
-<div class="ttc" id="agroup__group__nptext_html_ga897836327167edc2a25c305874e36074"><div class="ttname"><a href="group__group__nptext.html#ga897836327167edc2a25c305874e36074">nextCharSpaceIndex</a></div><div class="ttdeci">DLL_EXP_TEXT int nextCharSpaceIndex(const char *string, int startIndex)</div><div class="ttdef"><b>Definition:</b> text.c:56</div></div>
-<div class="ttc" id="agroup__group__nptext_html_ga8f4f4f3e2bf948124e34f32fbe593610"><div class="ttname"><a href="group__group__nptext.html#ga8f4f4f3e2bf948124e34f32fbe593610">isStringEmpty</a></div><div class="ttdeci">DLL_EXP_TEXT bool isStringEmpty(char *string)</div><div class="ttdef"><b>Definition:</b> text.c:42</div></div>
-<div class="ttc" id="agroup__group__nptext_html_ga952cc06a6bce31aa2931047ec0f720d7"><div class="ttname"><a href="group__group__nptext.html#ga952cc06a6bce31aa2931047ec0f720d7">copyString</a></div><div class="ttdeci">DLL_EXP_TEXT char * copyString(char *stringToCopy)</div><div class="ttdef"><b>Definition:</b> text.c:16</div></div>
-<div class="ttc" id="agroup__group__nptext_html_gaa6dd80bf6a0013a3bbdf90c1f2d4e40b"><div class="ttname"><a href="group__group__nptext.html#gaa6dd80bf6a0013a3bbdf90c1f2d4e40b">nextWCharSpaceIndex</a></div><div class="ttdeci">DLL_EXP_TEXT int nextWCharSpaceIndex(const wchar_t *string, int startIndex)</div><div class="ttdef"><b>Definition:</b> text.c:120</div></div>
-<div class="ttc" id="agroup__group__nptext_html_gaa726c3c6dd75c3dd43f51d01c892f2dd"><div class="ttname"><a href="group__group__nptext.html#gaa726c3c6dd75c3dd43f51d01c892f2dd">isWCharStringEmpty</a></div><div class="ttdeci">DLL_EXP_TEXT bool isWCharStringEmpty(wchar_t *string)</div><div class="ttdef"><b>Definition:</b> text.c:91</div></div>
-<div class="ttc" id="agroup__group__nptext_html_gabe29c7f1744260c89c5148c3195f4c22"><div class="ttname"><a href="group__group__nptext.html#gabe29c7f1744260c89c5148c3195f4c22">wCharStringStartsWith</a></div><div class="ttdeci">DLL_EXP_TEXT bool wCharStringStartsWith(wchar_t *string, wchar_t *prefix)</div><div class="ttdef"><b>Definition:</b> text.c:81</div></div>
-<div class="ttc" id="agroup__group__nptext_html_gac5f05d61789b552dae560425249819ff"><div class="ttname"><a href="group__group__nptext.html#gac5f05d61789b552dae560425249819ff">copyWCharString</a></div><div class="ttdeci">DLL_EXP_TEXT wchar_t * copyWCharString(wchar_t *stringToCopy)</div><div class="ttdef"><b>Definition:</b> text.c:65</div></div>
-<div class="ttc" id="agroup__group__nptext_html_gaeee816549c859da05febc301d34e36de"><div class="ttname"><a href="group__group__nptext.html#gaeee816549c859da05febc301d34e36de">stringStartsWith</a></div><div class="ttdeci">DLL_EXP_TEXT bool stringStartsWith(char *string, char *prefix)</div><div class="ttdef"><b>Definition:</b> text.c:32</div></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>DLL_EXP_TEXT <span class="keywordtype">wchar_t</span> *<a class="code hl_function" href="group__group__nptext.html#gac5f05d61789b552dae560425249819ff">copyWCharString</a>(<span class="keywordtype">wchar_t</span> *stringToCopy);</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>DLL_EXP_TEXT <span class="keywordtype">bool</span> <a class="code hl_function" href="group__group__nptext.html#gabe29c7f1744260c89c5148c3195f4c22">wCharStringStartsWith</a>(<span class="keywordtype">wchar_t</span> *<span class="keywordtype">string</span>, <span class="keywordtype">wchar_t</span> *prefix);</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>DLL_EXP_TEXT <span class="keywordtype">bool</span> <a class="code hl_function" href="group__group__nptext.html#gaa726c3c6dd75c3dd43f51d01c892f2dd">isWCharStringEmpty</a>(<span class="keywordtype">wchar_t</span> *<span class="keywordtype">string</span>);</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>DLL_EXP_TEXT <span class="keywordtype">wchar_t</span> *<a class="code hl_function" href="group__group__nptext.html#ga3f87e67f0c001bbec26e141eae906c26">charStringToWChar</a>(<span class="keywordtype">char</span> *originalString);</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>DLL_EXP_TEXT <span class="keywordtype">int</span> <a class="code hl_function" href="group__group__nptext.html#gaa6dd80bf6a0013a3bbdf90c1f2d4e40b">nextWCharSpaceIndex</a>(<span class="keyword">const</span> <span class="keywordtype">wchar_t</span> *<span class="keywordtype">string</span>, <span class="keywordtype">int</span> startIndex);</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>DLL_EXP_TEXT <span class="keywordtype">char</span> *<a class="code hl_function" href="group__group__nptext.html#gac7a8ab001fe7dc51e89f16c447f89b19">text_copyLine</a>(</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>        <span class="keyword">const</span> <span class="keywordtype">char</span> *<span class="keywordtype">string</span>,</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        <span class="keywordtype">size_t</span> stringLength,</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>        <span class="keywordtype">char</span> **nextLine,</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>        <span class="keywordtype">size_t</span> *nextLineMaxLength);</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span> </div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>DLL_EXP_TEXT <span class="keywordtype">wchar_t</span> *<a class="code hl_function" href="group__group__nptext.html#ga29b1afe340b45c4831a808b0d4bf6b9f">text_copyLineW</a>(</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>        <span class="keyword">const</span> <span class="keywordtype">wchar_t</span> *<span class="keywordtype">string</span>,</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>        <span class="keywordtype">size_t</span> stringLength,</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>        <span class="keywordtype">wchar_t</span> **nextLine,</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>        <span class="keywordtype">size_t</span> *nextLineMaxLength);</div>
+<div class="ttc" id="agroup__group__nptext_html_ga29b1afe340b45c4831a808b0d4bf6b9f"><div class="ttname"><a href="group__group__nptext.html#ga29b1afe340b45c4831a808b0d4bf6b9f">text_copyLineW</a></div><div class="ttdeci">DLL_EXP_TEXT wchar_t * text_copyLineW(const wchar_t *string, size_t stringLength, wchar_t **nextLine, size_t *nextLineMaxLength)</div><div class="ttdef"><b>Definition:</b> text.c:216</div></div>
+<div class="ttc" id="agroup__group__nptext_html_ga3f87e67f0c001bbec26e141eae906c26"><div class="ttname"><a href="group__group__nptext.html#ga3f87e67f0c001bbec26e141eae906c26">charStringToWChar</a></div><div class="ttdeci">DLL_EXP_TEXT wchar_t * charStringToWChar(char *originalString)</div><div class="ttdef"><b>Definition:</b> text.c:128</div></div>
+<div class="ttc" id="agroup__group__nptext_html_ga897836327167edc2a25c305874e36074"><div class="ttname"><a href="group__group__nptext.html#ga897836327167edc2a25c305874e36074">nextCharSpaceIndex</a></div><div class="ttdeci">DLL_EXP_TEXT int nextCharSpaceIndex(const char *string, int startIndex)</div><div class="ttdef"><b>Definition:</b> text.c:63</div></div>
+<div class="ttc" id="agroup__group__nptext_html_ga8f4f4f3e2bf948124e34f32fbe593610"><div class="ttname"><a href="group__group__nptext.html#ga8f4f4f3e2bf948124e34f32fbe593610">isStringEmpty</a></div><div class="ttdeci">DLL_EXP_TEXT bool isStringEmpty(char *string)</div><div class="ttdef"><b>Definition:</b> text.c:48</div></div>
+<div class="ttc" id="agroup__group__nptext_html_ga952cc06a6bce31aa2931047ec0f720d7"><div class="ttname"><a href="group__group__nptext.html#ga952cc06a6bce31aa2931047ec0f720d7">copyString</a></div><div class="ttdeci">DLL_EXP_TEXT char * copyString(char *stringToCopy)</div><div class="ttdef"><b>Definition:</b> text.c:17</div></div>
+<div class="ttc" id="agroup__group__nptext_html_gaa6dd80bf6a0013a3bbdf90c1f2d4e40b"><div class="ttname"><a href="group__group__nptext.html#gaa6dd80bf6a0013a3bbdf90c1f2d4e40b">nextWCharSpaceIndex</a></div><div class="ttdeci">DLL_EXP_TEXT int nextWCharSpaceIndex(const wchar_t *string, int startIndex)</div><div class="ttdef"><b>Definition:</b> text.c:142</div></div>
+<div class="ttc" id="agroup__group__nptext_html_gaa726c3c6dd75c3dd43f51d01c892f2dd"><div class="ttname"><a href="group__group__nptext.html#gaa726c3c6dd75c3dd43f51d01c892f2dd">isWCharStringEmpty</a></div><div class="ttdeci">DLL_EXP_TEXT bool isWCharStringEmpty(wchar_t *string)</div><div class="ttdef"><b>Definition:</b> text.c:98</div></div>
+<div class="ttc" id="agroup__group__nptext_html_gabe29c7f1744260c89c5148c3195f4c22"><div class="ttname"><a href="group__group__nptext.html#gabe29c7f1744260c89c5148c3195f4c22">wCharStringStartsWith</a></div><div class="ttdeci">DLL_EXP_TEXT bool wCharStringStartsWith(wchar_t *string, wchar_t *prefix)</div><div class="ttdef"><b>Definition:</b> text.c:88</div></div>
+<div class="ttc" id="agroup__group__nptext_html_gac5f05d61789b552dae560425249819ff"><div class="ttname"><a href="group__group__nptext.html#gac5f05d61789b552dae560425249819ff">copyWCharString</a></div><div class="ttdeci">DLL_EXP_TEXT wchar_t * copyWCharString(wchar_t *stringToCopy)</div><div class="ttdef"><b>Definition:</b> text.c:70</div></div>
+<div class="ttc" id="agroup__group__nptext_html_gac7a8ab001fe7dc51e89f16c447f89b19"><div class="ttname"><a href="group__group__nptext.html#gac7a8ab001fe7dc51e89f16c447f89b19">text_copyLine</a></div><div class="ttdeci">DLL_EXP_TEXT char * text_copyLine(const char *string, size_t stringLength, char **nextLine, size_t *nextLineMaxLength)</div><div class="ttdef"><b>Definition:</b> text.c:149</div></div>
+<div class="ttc" id="agroup__group__nptext_html_gaeee816549c859da05febc301d34e36de"><div class="ttname"><a href="group__group__nptext.html#gaeee816549c859da05febc301d34e36de">stringStartsWith</a></div><div class="ttdeci">DLL_EXP_TEXT bool stringStartsWith(char *string, char *prefix)</div><div class="ttdef"><b>Definition:</b> text.c:38</div></div>
+<div class="ttc" id="aplatform_8h_html"><div class="ttname"><a href="platform_8h.html">platform.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="text_8h.html">text.h</a></li>
-    <li class="footer">Generated on Tue Oct 10 2023 20:03:35 for NibblePoker&#39;s Clang Goodies by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Sun Oct 15 2023 20:48:34 for NibblePoker&#39;s Clang Goodies by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>

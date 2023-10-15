@@ -27,18 +27,18 @@ var NAVTREE =
   [ "NibblePoker's Clang Goodies", "index.html", [
     [ "Features", "index.html#autotoc_md1", null ],
     [ "Planned Features", "index.html#autotoc_md2", null ],
-    [ "Remarks", "index.html#autotoc_md3", null ],
-    [ "Usage", "index.html#autotoc_md4", [
-      [ "CMake's FetchContent", "index.html#autotoc_md5", null ],
-      [ "CMake's Include", "index.html#autotoc_md6", null ],
-      [ "CMake Manual Import", "index.html#autotoc_md7", null ]
+    [ "Usage", "index.html#autotoc_md3", [
+      [ "CMake's FetchContent", "index.html#autotoc_md4", null ],
+      [ "CMake's Include", "index.html#autotoc_md5", null ],
+      [ "CMake Manual Import", "index.html#autotoc_md6", null ]
     ] ],
-    [ "Examples", "index.html#autotoc_md8", [
-      [ "Launch arguments", "index.html#autotoc_md9", null ],
-      [ "Double Linked Lists", "index.html#autotoc_md10", null ],
-      [ "Hashing", "index.html#autotoc_md11", null ],
-      [ "HashMaps", "index.html#autotoc_md12", null ],
-      [ "UUID", "index.html#autotoc_md13", null ]
+    [ "Examples", "index.html#autotoc_md7", [
+      [ "Launch arguments", "index.html#autotoc_md8", null ],
+      [ "Double Linked Lists", "index.html#autotoc_md9", null ],
+      [ "Hashing", "index.html#autotoc_md10", null ],
+      [ "HashMaps", "index.html#autotoc_md11", null ],
+      [ "UUID", "index.html#autotoc_md12", null ],
+      [ "Text", "index.html#autotoc_md13", null ]
     ] ],
     [ "Documentation", "index.html#autotoc_md14", [
       [ "Viewing", "index.html#autotoc_md15", null ],
@@ -73,9 +73,32 @@ var NAVTREE =
         [ "Text Utilities", "md__github_workspace_definitions.html#autotoc_md41", null ]
       ] ]
     ] ],
+    [ "Platforms detection", "md__github_workspace_platforms.html", [
+      [ "Compilers", "md__github_workspace_platforms.html#autotoc_md43", [
+        [ "MSVC", "md__github_workspace_platforms.html#autotoc_md44", null ],
+        [ "CLang", "md__github_workspace_platforms.html#autotoc_md45", null ],
+        [ "GCC", "md__github_workspace_platforms.html#autotoc_md46", null ],
+        [ "MinGW", "md__github_workspace_platforms.html#autotoc_md47", null ],
+        [ "Tiny C Compiler", "md__github_workspace_platforms.html#autotoc_md48", null ],
+        [ "Unknown", "md__github_workspace_platforms.html#autotoc_md49", null ]
+      ] ],
+      [ "Platforms & ISA", "md__github_workspace_platforms.html#autotoc_md50", [
+        [ "Windows x64", "md__github_workspace_platforms.html#autotoc_md51", null ],
+        [ "Windows x86", "md__github_workspace_platforms.html#autotoc_md52", null ],
+        [ "Windows ARM", "md__github_workspace_platforms.html#autotoc_md53", null ],
+        [ "Cygwin", "md__github_workspace_platforms.html#autotoc_md54", null ],
+        [ "ReactOS", "md__github_workspace_platforms.html#autotoc_md55", null ],
+        [ "Linux x64", "md__github_workspace_platforms.html#autotoc_md56", null ],
+        [ "Linux x86", "md__github_workspace_platforms.html#autotoc_md57", null ],
+        [ "Linux ARMv8/AArch64/ARM64", "md__github_workspace_platforms.html#autotoc_md58", null ],
+        [ "Linux ARM Generic", "md__github_workspace_platforms.html#autotoc_md59", null ],
+        [ "Unknown OS *(Apple, ReactOS, ...)*", "md__github_workspace_platforms.html#autotoc_md60", null ],
+        [ "Unknown ISA", "md__github_workspace_platforms.html#autotoc_md61", null ]
+      ] ]
+    ] ],
     [ "Benchmarks", "md__github_workspace_benchmarks_readme.html", [
-      [ "CRC32 Implementations", "md__github_workspace_benchmarks_readme.html#autotoc_md43", null ],
-      [ "Calculating powers of 2", "md__github_workspace_benchmarks_readme.html#autotoc_md44", null ]
+      [ "CRC32 Implementations", "md__github_workspace_benchmarks_readme.html#autotoc_md63", null ],
+      [ "Calculating powers of 2", "md__github_workspace_benchmarks_readme.html#autotoc_md64", null ]
     ] ],
     [ "Modules", "modules.html", "modules" ],
     [ "Data Structures", "annotated.html", [
@@ -103,7 +126,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"md__github_workspace_definitions.html#autotoc_md30"
+"md__github_workspace_definitions.html#autotoc_md33"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

@@ -8,5 +8,7 @@ var group__group__nptext =
     [ "wCharStringStartsWith", "group__group__nptext.html#gabe29c7f1744260c89c5148c3195f4c22", null ],
     [ "isWCharStringEmpty", "group__group__nptext.html#gaa726c3c6dd75c3dd43f51d01c892f2dd", null ],
     [ "charStringToWChar", "group__group__nptext.html#ga3f87e67f0c001bbec26e141eae906c26", null ],
-    [ "nextWCharSpaceIndex", "group__group__nptext.html#gaa6dd80bf6a0013a3bbdf90c1f2d4e40b", null ]
+    [ "nextWCharSpaceIndex", "group__group__nptext.html#gaa6dd80bf6a0013a3bbdf90c1f2d4e40b", null ],
+    [ "text_copyLine", "group__group__nptext.html#gac7a8ab001fe7dc51e89f16c447f89b19", null ],
+    [ "text_copyLineW", "group__group__nptext.html#ga29b1afe340b45c4831a808b0d4bf6b9f", null ]
 ];

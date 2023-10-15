@@ -27,7 +27,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign">
-   <div id="projectname">NibblePoker&#39;s Clang Goodies<span id="projectnumber">&#160;0.3.0</span>
+   <div id="projectname">NibblePoker&#39;s Clang Goodies<span id="projectnumber">&#160;0.4.0</span>
    </div>
    <div id="projectbrief">Small collection of utilities and libraries for C in order to simplify some development tasks.</div>
   </td>
@@ -104,8 +104,9 @@ Features</h1>
 <li><img src="docs/images/captcha.png" alt="" class="inline"/> Basic chained HashMaps</li>
 <li><img src="docs/images/text.png" alt="" class="inline"/> Various string utilities</li>
 <li><img src="docs/images/bug.png" alt="" class="inline"/> Toggleable debugging output functions</li>
-<li><img src="docs/images/module.png" alt="" class="inline"/> Complete, toggleable &amp; macro-able <code>WCHAR</code> support</li>
-<li><img src="docs/images/plus.png" alt="" class="inline"/> Small extras like UUID4 &amp; CRC32B</li>
+<li><img src="docs/images/module.png" alt="" class="inline"/> Complete, macro-able <code>WCHAR</code> support</li>
+<li><img src="docs/images/plus.png" alt="" class="inline"/> Small extras like UUID4, CRC32B &amp; platform detection</li>
+<li><img src="docs/images/linux.png" alt="" class="inline"/> Supports <a class="el" href="md__github_workspace_platforms.html">a variety of OS, CPU ISA &amp; Compilers</a></li>
 <li><img src="docs/images/view_more.png" alt="" class="inline"/> Other features to come as needed or requested</li>
 </ul>
 <h1><a class="anchor" id="autotoc_md2"></a>
@@ -114,17 +115,13 @@ Planned Features</h1>
 <li>More HashMap types &amp; more utilities</li>
 <li>Platform-agnostic with some optional improvements on a per-OS and opt-in basis.</li>
 <li>Optional assembly-level optimisations for some procedures.</li>
+<li>Support for ReactOS &amp; TCC</li>
+<li>An INI config parser (<img src="docs/images/settings.png" alt="" class="inline"/>)</li>
 </ul>
 <h1><a class="anchor" id="autotoc_md3"></a>
-Remarks</h1>
-<p >This project is by no mean complete or exhaustive in the features it provides.<br  />
- It is mainly intended to provide me with a set of utilities and libraries I often use while making other applications.</p>
-<p >However, the functions' names, signatures and behaviour should stay relatively similar as the project advances.<br  />
- In the event I introduce breaking changes, you should be able to notice them since I'll be using <a href="https://semver.org/">Semantic Versioning</a>.</p>
-<h1><a class="anchor" id="autotoc_md4"></a>
 Usage</h1>
 <p ><b>TODO: Add reminder to check the <a class="el" href="md__github_workspace_definitions.html">Definitions</a> page.</b></p>
-<h2><a class="anchor" id="autotoc_md5"></a>
+<h2><a class="anchor" id="autotoc_md4"></a>
 CMake's FetchContent</h2>
 <p >Firstly, insert the following lines into your <code>CMakeLists.txt</code>: </p><div class="fragment"><div class="line"># Including the `FetchContent` directives.</div>
 <div class="line">include(FetchContent)</div>
@@ -156,12 +153,12 @@ CMake's FetchContent</h2>
 <div class="line"> </div>
 <div class="line"># Optional per-target config</div>
 <div class="line">target_compile_definitions(MyApp PUBLIC NP_DEBUG_LOGGING)  # Enables debugging and optional error logging.</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md6"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md5"></a>
 CMake's Include</h2>
 <p ><b>TODO: Find a way to make this work properly, doesn't detect that its imported !</b></p>
-<h2><a class="anchor" id="autotoc_md7"></a>
+<h2><a class="anchor" id="autotoc_md6"></a>
 CMake Manual Import</h2>
-<p >In order to use this library in your projects you need to do the following things:</p>
+<p >In order to use this library in your projects via a manual import you need to do the following things:</p>
 <p >Firstly, add this repository as a submodule in your project and checkout to a specific tag or commit: </p><div class="fragment"><div class="line">git submodule add https://github.com/aziascreations/C99-Utility-Libraries.git libs/nibblepoker-c-goodies</div>
 <div class="line">git -C libs/nibblepoker-c-goodies checkout &lt;hash|tag&gt;</div>
 </div><!-- fragment --><p >Afterward, add the following lines in your <em>CMakeLists.txt</em>: </p><div class="fragment"><div class="line">file(</div>
@@ -169,14 +166,14 @@ CMake Manual Import</h2>
 <div class="line">    CONFIGURE_DEPENDS &quot;libs/nibblepoker-c-goodies/src/*.h&quot; &quot;libs/nibblepoker-c-goodies/src/*.c&quot;</div>
 <div class="line">)</div>
 </div><!-- fragment --><p >Finally, modify you targets to add <code>${src_nibblepoker_c_goodies}</code> like so: </p><div class="fragment"><div class="line">add_executable(my_app src/main.c ${src_nibblepoker_c_goodies} ...)</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md8"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md7"></a>
 Examples</h1>
 <p >Some examples that demonstrate how to use most of the functions this library provides can be found in the <a href="examples/">examples/</a> folder.</p>
 <p >Alternatively, you can also check the <a href="https://github.com/aziascreations/C99-Win32-Wifi-Utility">aziascreations/C99-Win32-Wifi-Utility</a> repository for a complete example in a "fully-fledged" Windows application.</p>
-<h2><a class="anchor" id="autotoc_md9"></a>
+<h2><a class="anchor" id="autotoc_md8"></a>
 Launch arguments</h2>
 <p ><b>TODO</b></p>
-<h2><a class="anchor" id="autotoc_md10"></a>
+<h2><a class="anchor" id="autotoc_md9"></a>
 Double Linked Lists</h2>
 <ul>
 <li><a href="examples/dllist_basic.c">Basic operations</a><ul>
@@ -196,7 +193,7 @@ Double Linked Lists</h2>
 </ul>
 </li>
 </ul>
-<h2><a class="anchor" id="autotoc_md11"></a>
+<h2><a class="anchor" id="autotoc_md10"></a>
 Hashing</h2>
 <ul>
 <li><a href="examples/crc32.c">CRC32B hashing</a><ul>
@@ -204,10 +201,10 @@ Hashing</h2>
 </ul>
 </li>
 </ul>
-<h2><a class="anchor" id="autotoc_md12"></a>
+<h2><a class="anchor" id="autotoc_md11"></a>
 HashMaps</h2>
 <p ><b>TODO</b></p>
-<h2><a class="anchor" id="autotoc_md13"></a>
+<h2><a class="anchor" id="autotoc_md12"></a>
 UUID</h2>
 <ul>
 <li><a href="examples/uuid_all.c">UUID4 generation</a><ul>
@@ -215,6 +212,9 @@ UUID</h2>
 </ul>
 </li>
 </ul>
+<h2><a class="anchor" id="autotoc_md13"></a>
+Text</h2>
+<p ><b>TODO</b></p>
 <h1><a class="anchor" id="autotoc_md14"></a>
 Documentation</h1>
 <h2><a class="anchor" id="autotoc_md15"></a>
@@ -254,7 +254,7 @@ Licenses</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Tue Oct 10 2023 20:03:35 for NibblePoker&#39;s Clang Goodies by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Sun Oct 15 2023 20:48:34 for NibblePoker&#39;s Clang Goodies by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>

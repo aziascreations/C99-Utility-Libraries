@@ -27,7 +27,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign">
-   <div id="projectname">NibblePoker&#39;s Clang Goodies<span id="projectnumber">&#160;0.3.0</span>
+   <div id="projectname">NibblePoker&#39;s Clang Goodies<span id="projectnumber">&#160;0.4.0</span>
    </div>
    <div id="projectbrief">Small collection of utilities and libraries for C in order to simplify some development tasks.</div>
   </td>
@@ -118,12 +118,13 @@ Functions</h2></td></tr>
 <tr class="separator:ga3f87e67f0c001bbec26e141eae906c26"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaa6dd80bf6a0013a3bbdf90c1f2d4e40b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__nptext.html#gaa6dd80bf6a0013a3bbdf90c1f2d4e40b">nextWCharSpaceIndex</a> (const wchar_t *string, int startIndex)</td></tr>
 <tr class="separator:gaa6dd80bf6a0013a3bbdf90c1f2d4e40b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac7a8ab001fe7dc51e89f16c447f89b19"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__nptext.html#gac7a8ab001fe7dc51e89f16c447f89b19">text_copyLine</a> (const char *string, size_t stringLength, char **nextLine, size_t *nextLineMaxLength)</td></tr>
+<tr class="separator:gac7a8ab001fe7dc51e89f16c447f89b19"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga29b1afe340b45c4831a808b0d4bf6b9f"><td class="memItemLeft" align="right" valign="top">wchar_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__nptext.html#ga29b1afe340b45c4831a808b0d4bf6b9f">text_copyLineW</a> (const wchar_t *string, size_t stringLength, wchar_t **nextLine, size_t *nextLineMaxLength)</td></tr>
+<tr class="separator:ga29b1afe340b45c4831a808b0d4bf6b9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<p >Collection of various utility functions for <code>char</code> and <code>wchar_t</code> based strings.</p>
-<p ><b>Warning:</b><br  />
- Unless <code>NP_WIN32</code> is defined, all functions that uses or return a <code>wchar_t</code> typed variable won't be accessible.<br  />
- This is due to the fact that <code>wchar_t</code> is only accessible easily on Windows platforms. </p>
+<p >Collection of various utility functions for <code>char</code> and <code>wchar_t</code> based strings. </p>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="ga952cc06a6bce31aa2931047ec0f720d7" name="ga952cc06a6bce31aa2931047ec0f720d7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga952cc06a6bce31aa2931047ec0f720d7">&#9670;&#160;</a></span>copyString()</h2>
@@ -264,8 +265,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p >Copies the given string into a new buffer and returns said buffer as-is.<br  />
- Uses <code>wcscpy_s</code> internally.<br  />
- Only available if <code>NP_WIN32</code> is defined during compilation. </p><dl class="params"><dt>Parameters</dt><dd>
+ Uses <code>wcscpy_s</code> internally. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">stringToCopy</td><td>The string to be copied. </td></tr>
   </table>
@@ -300,8 +300,7 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >Checks if a given <em>string</em> starts with a given <em>prefix</em>.<br  />
- Only available if <code>NP_WIN32</code> is defined during compilation. </p><dl class="params"><dt>Parameters</dt><dd>
+<p >Checks if a given <em>string</em> starts with a given <em>prefix</em>. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">string</td><td>The searched string. </td></tr>
     <tr><td class="paramname">prefix</td><td>The prefix to be searched for in <em>string</em>. </td></tr>
@@ -327,8 +326,7 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >Checks if the given <em>string</em> is <code>NULL</code>, empty or filled with spaces.<br  />
- Only available if <code>NP_WIN32</code> is defined during compilation. </p><dl class="params"><dt>Parameters</dt><dd>
+<p >Checks if the given <em>string</em> is <code>NULL</code>, empty or filled with spaces. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">string</td><td>The string to be checked. </td></tr>
   </table>
@@ -354,8 +352,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p >Converts a given <code>char</code> string into a <code>wchar_t</code> one and returns its pointer.<br  />
- You will need to free the returned pointer when appropriate.<br  />
- Only available if <code>NP_WIN32</code> is defined during compilation. </p><dl class="params"><dt>Parameters</dt><dd>
+ You will need to free the returned pointer when appropriate. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">originalString</td><td>The original string to be copied </td></tr>
   </table>
@@ -390,8 +387,7 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >Finds the next space in a given string and returns its index.<br  />
- Only available if <code>NP_WIN32</code> is defined during compilation. </p><dl class="params"><dt>Parameters</dt><dd>
+<p >Finds the next space in a given string and returns its index. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">string</td><td>The string to be analysed. </td></tr>
     <tr><td class="paramname">startIndex</td><td>The index at which the search will start in the given <em>string</em>. </td></tr>
@@ -402,12 +398,124 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="gac7a8ab001fe7dc51e89f16c447f89b19" name="gac7a8ab001fe7dc51e89f16c447f89b19"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gac7a8ab001fe7dc51e89f16c447f89b19">&#9670;&#160;</a></span>text_copyLine()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char * text_copyLine </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>string</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>stringLength</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>nextLine</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t *&#160;</td>
+          <td class="paramname"><em>nextLineMaxLength</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Copies the first available line in the given string into a new buffer and returns said buffer as-is.<br  />
+ Depending on the arguments given, it can also easily iterate over every line in a block of text. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">string</td><td>The string whose first line will be copied and returned. </td></tr>
+    <tr><td class="paramname">stringLength</td><td>The given string's length with or without the trailing NULL byte.<br  />
+ May overshoot the actual length if a NULL byte is present in the string.<br  />
+ And may also undershoot the actual length to simulate a truncated string. </td></tr>
+    <tr><td class="paramname">nextLine</td><td>Optional pointer to a string pointer that is set to the start of the next line in the given text. If no more line is present in the given text, it will be set to NULL.<br  />
+ This pointer must never be freed ! </td></tr>
+    <tr><td class="paramname">nextLineMaxLength</td><td>Optional pointer that returns expected remaining string length for <code>nextLine</code>.<br  />
+ Will be ignored if <code>nextLine</code> is NULL. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The copied line's pointer, or <code>NULL</code> if an error occurred or no line could be found. </dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>Failure to free the returned string WILL cause memory leaks ! </dd></dl>
+
+</div>
+</div>
+<a id="ga29b1afe340b45c4831a808b0d4bf6b9f" name="ga29b1afe340b45c4831a808b0d4bf6b9f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga29b1afe340b45c4831a808b0d4bf6b9f">&#9670;&#160;</a></span>text_copyLineW()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">wchar_t * text_copyLineW </td>
+          <td>(</td>
+          <td class="paramtype">const wchar_t *&#160;</td>
+          <td class="paramname"><em>string</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>stringLength</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">wchar_t **&#160;</td>
+          <td class="paramname"><em>nextLine</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t *&#160;</td>
+          <td class="paramname"><em>nextLineMaxLength</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Copies the first available line in the given string into a new buffer and returns said buffer as-is.<br  />
+ Depending on the arguments given, it can also easily iterate over every line in a block of text. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">string</td><td>The string whose first line will be copied and returned. </td></tr>
+    <tr><td class="paramname">stringLength</td><td>The given string's length with or without the trailing NULL byte.<br  />
+ May overshoot the actual length if a NULL byte is present in the string.<br  />
+ And may also undershoot the actual length to simulate a truncated string. </td></tr>
+    <tr><td class="paramname">nextLine</td><td>Optional pointer to a string pointer that is set to the start of the next line in the given text. If no more line is present in the given text, it will be set to NULL.<br  />
+ This pointer must never be freed ! </td></tr>
+    <tr><td class="paramname">nextLineMaxLength</td><td>Optional pointer that returns expected remaining string length for <code>nextLine</code>.<br  />
+ Will be ignored if <code>nextLine</code> is NULL. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The copied line's pointer, or <code>NULL</code> if an error occurred or no line could be found. </dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>Failure to free the returned string WILL cause memory leaks ! </dd></dl>
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Tue Oct 10 2023 20:03:35 for NibblePoker&#39;s Clang Goodies by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Sun Oct 15 2023 20:48:34 for NibblePoker&#39;s Clang Goodies by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>

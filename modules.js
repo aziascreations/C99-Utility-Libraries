@@ -1,6 +1,7 @@
 var modules =
 [
     [ "Debug printing", "group__group__np__debug.html", "group__group__np__debug" ],
+    [ "Platforms detection", "group__group__np__platform.html", null ],
     [ "String utilities", "group__group__nptext.html", "group__group__nptext" ],
     [ "Arguments parser", "group__arguments.html", "group__arguments" ],
     [ "CRC32", "group__group__crc32.html", "group__group__crc32" ],
