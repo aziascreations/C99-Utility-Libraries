@@ -8,25 +8,17 @@ Small collection of utilities and libraries for C in order to simplify some deve
 * ![](docs/images/captcha.png) Basic chained HashMaps
 * ![](docs/images/text.png) Various string utilities
 * ![](docs/images/bug.png) Toggleable debugging output functions
-* ![](docs/images/module.png) Complete, toggleable & macro-able `WCHAR` support
-* ![](docs/images/plus.png) Small extras like UUID4 & CRC32B
+* ![](docs/images/module.png) Complete, macro-able `WCHAR` support
+* ![](docs/images/plus.png) Small extras like UUID4, CRC32B & platform detection
+* ![](docs/images/linux.png) Supports [a variety of OS, CPU ISA & Compilers](platforms.md)
 * ![](docs/images/view_more.png) Other features to come as needed or requested
-
 
 ## Planned Features
 * More HashMap types & more utilities
 * Platform-agnostic with some optional improvements on a per-OS and opt-in basis.
 * Optional assembly-level optimisations for some procedures.
-
-
-## Remarks
-This project is by no mean complete or exhaustive in the features it provides.<br>
-It is mainly intended to provide me with a set of utilities and libraries I often use while making other applications.
-
-However, the functions' names, signatures and behaviour should stay relatively similar as the project
-advances.<br>
-In the event I introduce breaking changes, you should be able to notice them since I'll be using
-[Semantic Versioning](https://semver.org/).
+* Support for ReactOS & TCC
+* An INI config parser (![](docs/images/settings.png))
 
 
 ## Usage
@@ -76,7 +68,7 @@ target_compile_definitions(MyApp PUBLIC NP_DEBUG_LOGGING)  # Enables debugging a
 **TODO: Find a way to make this work properly, doesn't detect that its imported !**
 
 ### CMake Manual Import
-In order to use this library in your projects you need to do the following things:
+In order to use this library in your projects via a manual import you need to do the following things:
 
 Firstly, add this repository as a submodule in your project and checkout to a specific tag or commit:
 ```bash
@@ -128,6 +120,10 @@ repository for a complete example in a "fully-fledged" Windows application.
 ### UUID
 * [UUID4 generation](examples/uuid_all.c)
   * Rudimentary RNG setup & UUID4 generation.
+
+### Text
+**TODO**
+
 
 ## Documentation
 

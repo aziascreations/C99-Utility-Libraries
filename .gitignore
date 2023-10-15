@@ -4,6 +4,7 @@
 
 # Cmake builds
 build/
+build*/
 cmake*/
 
 # Documentation builds
@@ -13,10 +14,13 @@ docs/latex
 # PureBasic stuff
 *.pb.cfg
 *.exe
+*.so
 
 # Misc.
 *.pdn
+*.bkp
 extra/words_dictionary.json
 
 # Unfinished stuff
 CONTRIBUTING.md
+conventions.md

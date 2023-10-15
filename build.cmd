@@ -11,10 +11,15 @@ rmdir build /s /q
 mkdir build
 cd build
 cmake ..
-cmake --build . --config Debug
+::cmake --build . --config Debug
 cmake --build . --config Release
-cmake --build . --config RelWithDebInfo
-cmake --build . --config MinSizeRel
+::cmake --build . --config RelWithDebInfo
+::cmake --build . --config MinSizeRel
 cd ..
+
+:: ReactOS
+:: Requires QT's Jom as nmake.
+:: Remove all list tests, all examples, all benchmarks & DLLs !
+::cmake -D CMAKE_C_COMPILER=tcc ..
 
 pause

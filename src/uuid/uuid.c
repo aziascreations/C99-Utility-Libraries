@@ -45,7 +45,14 @@ char *uuid_toString(UUID4 *uuid) {
 		uuidString = malloc(sizeof(char) * (UUID_CHAR_COUNT + 1));
 		
 		if(uuidString != NULL) {
-			if(sprintf_s(uuidString, UUID_CHAR_COUNT + 1, "%08X-%04X-%04X-%04X-%04X%04X%04X",
+			// TODO: Restore when using C11 !
+			/*if(sprintf_s(uuidString, UUID_CHAR_COUNT + 1, "%08X-%04X-%04X-%04X-%04X%04X%04X",
+						 ((uint32_t *)uuid)[0], ((uint16_t *)uuid)[2], ((uint16_t *)uuid)[3], ((uint16_t *)uuid)[4],
+						 ((uint16_t *)uuid)[5], ((uint16_t *)uuid)[6], ((uint16_t *)uuid)[7]) < 0) {
+				free(uuidString);
+				uuidString = NULL;
+			}*/
+			if(sprintf(uuidString, "%08X-%04X-%04X-%04X-%04X%04X%04X",
 						 ((uint32_t *)uuid)[0], ((uint16_t *)uuid)[2], ((uint16_t *)uuid)[3], ((uint16_t *)uuid)[4],
 						 ((uint16_t *)uuid)[5], ((uint16_t *)uuid)[6], ((uint16_t *)uuid)[7]) < 0) {
 				free(uuidString);
@@ -69,6 +76,7 @@ wchar_t *uuid_toWcharString(struct uuid *uuid) {
 		uuidString = malloc(sizeof(wchar_t) * (UUID_CHAR_COUNT + 1));
 		
 		if(uuidString != NULL) {
+			// FIXME: Check if it works on other WIN32 compilers !
 			if(swprintf_s(uuidString, UUID_CHAR_COUNT + 1, L"%08X-%04X-%04X-%04X-%04X%04X%04X",
 						  ((uint32_t *)uuid)[0], ((uint16_t *)uuid)[2], ((uint16_t *)uuid)[3], ((uint16_t *)uuid)[4],
 						  ((uint16_t *)uuid)[5], ((uint16_t *)uuid)[6], ((uint16_t *)uuid)[7]) < 0) {

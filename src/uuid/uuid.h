@@ -6,12 +6,14 @@
 #include <stdio.h>
 #include <string.h>
 
+#include "../platform.h"
+
 #include "./structs.h"
 
 #if defined(NP_GOODIES_EXPORT_UUID) || defined(NP_GOODIES_EXPORT_UUID_ALL) || defined(NP_GOODIES_EXPORT_ALL)
-#define DLL_EXP_UUID __declspec(dllexport)
+	#define DLL_EXP_UUID NP_DLL_EXPORT
 #else
-#define DLL_EXP_UUID
+	#define DLL_EXP_UUID
 #endif
 
 #define UUID_BYTE_LENGTH 16

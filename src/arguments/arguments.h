@@ -2,6 +2,8 @@
 
 #pragma once
 
+#include "../platform.h"
+
 #include "./errors.h"
 #include "./flags.h"
 #include "./structs.h"
@@ -10,9 +12,9 @@
 #include "../text.h"
 
 #if defined(NP_GOODIES_EXPORT_ARGUMENTS) || defined(NP_GOODIES_EXPORT_ALL)
-#define DLL_EXP_ARGS __declspec(dllexport)
+	#define DLL_EXP_ARGS NP_DLL_EXPORT
 #else
-#define DLL_EXP_ARGS
+	#define DLL_EXP_ARGS
 #endif
 
 // Macros

@@ -5,13 +5,15 @@
 #include <malloc.h>
 #include <stdbool.h>
 
+#include "../../platform.h"
+
 #include "../structs.h"
 #include "../commons.h"
 
 #if defined(NP_GOODIES_EXPORT_DLLIST) || defined(NP_GOODIES_EXPORT_LIST_ALL) || defined(NP_GOODIES_EXPORT_ALL)
-#define DLL_EXP_DLLIST __declspec(dllexport)
+	#define DLL_EXP_DLLIST NP_DLL_EXPORT
 #else
-#define DLL_EXP_DLLIST
+	#define DLL_EXP_DLLIST
 #endif
 
 /** @defgroup group_dllist Double linked lists

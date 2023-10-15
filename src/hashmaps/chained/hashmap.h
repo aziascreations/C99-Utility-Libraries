@@ -5,13 +5,15 @@
 #include <stdbool.h>
 #include <stdint.h>
 
+#include "../../platform.h"
+
 #include "structs.h"
 #include "../structs.h"
 
 #if defined(NP_GOODIES_EXPORT_HASHMAP_CHAINED) || defined(NP_GOODIES_EXPORT_HASHMAP_ALL) || defined(NP_GOODIES_EXPORT_ALL)
-#define DLL_EXP_CHAINED_HASHMAP __declspec(dllexport)
+	#define DLL_EXP_CHAINED_HASHMAP NP_DLL_EXPORT
 #else
-#define DLL_EXP_CHAINED_HASHMAP
+	#define DLL_EXP_CHAINED_HASHMAP
 #endif
 
 /** @defgroup group_hashmap_chained Chained HashMap

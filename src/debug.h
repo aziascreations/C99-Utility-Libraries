@@ -4,6 +4,8 @@
 
 #include <stdio.h>
 
+#include "platform.h"
+
 /** @defgroup group_np_debug Debug printing
  *
  * All macros print a given string in the following format:<br>
@@ -83,7 +85,7 @@
             printf(fmt, __VA_ARGS__); \
             printf("\n")
 
-#ifdef NP_WIN32
+#if defined(NP_PLATFORM_SUPPORTS_WCHAR_T)
 
 /*!
  * Only available if `NP_DEBUG_LOGGING` and `NP_WIN32` are defined during compilation.

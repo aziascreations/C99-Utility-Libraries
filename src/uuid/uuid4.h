@@ -4,13 +4,15 @@
 
 #include <stdlib.h>
 
+#include "../platform.h"
+
 #include "./uuid.h"
 #include "./structs.h"
 
 #if defined(NP_GOODIES_EXPORT_UUID4) || defined(NP_GOODIES_EXPORT_UUID_ALL) || defined(NP_GOODIES_EXPORT_ALL)
-#define DLL_EXP_UUID4 __declspec(dllexport)
+	#define DLL_EXP_UUID4 NP_DLL_EXPORT
 #else
-#define DLL_EXP_UUID4
+	#define DLL_EXP_UUID4
 #endif
 
 /**

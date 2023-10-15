@@ -123,15 +123,18 @@ int args_printOption(Option *option, short consoleWidth, int newLineSpaceLength,
 	
     // Printing the actual option details
 	np_args_char *optText = args_getOptionText(option, addBrackets, expectedLength);
+	#if defined(NP_WIN32) && defined(NP_ARGS_WCHAR)
 	printf("%ws", optText);
+	#else
+	printf("%s", optText);
+	#endif
+	
 	free(optText);
 	
     return currentX;
 }
 
 // Public functions
-
-// TODO: Change some formats for non-wchar_t prints.
 
 bool args_printHelpText(Verb *verb, np_args_char *programName, short consoleWidth) {
     if (verb == NULL || programName == NULL) {
@@ -155,7 +158,11 @@ bool args_printHelpText(Verb *verb, np_args_char *programName, short consoleWidt
 	Option *currentOption = NULL;
 	
 	// Printing the usage
-    printf("%ws ", programName);
+	#if defined(NP_WIN32) && defined(NP_ARGS_WCHAR)
+	printf("%ws ", programName);
+	#else
+	printf("%s ", programName);
+	#endif
 	
 	// TODO: Print the verbs used in the reverse order "exe v1 v2 <...> v3 (options) sub-verbs"
 
@@ -180,7 +187,11 @@ bool args_printHelpText(Verb *verb, np_args_char *programName, short consoleWidt
 		printf("Actions:\n");
 		Verb *currentSubVerb = dllist_selectFirstData(verb->verbs);
 		while (currentSubVerb != NULL) {
-			printf("  %ws", currentSubVerb->name);
+			#if defined(NP_WIN32) && defined(NP_ARGS_WCHAR)
+			printf("%ws ", currentSubVerb->name);
+			#else
+			printf("%s ", currentSubVerb->name);
+			#endif
 			currentSubVerb = dllist_selectNextData(verb->verbs);
 			printf("\n");
 		}

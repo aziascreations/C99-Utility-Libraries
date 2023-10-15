@@ -2,12 +2,14 @@
 
 #pragma once
 
+#include "../platform.h"
+
 #include "structs.h"
 
 #if defined(NP_GOODIES_EXPORT_SLLIST) || defined(NP_GOODIES_EXPORT_DLLIST) || defined(NP_GOODIES_EXPORT_LIST_ALL) || defined(NP_GOODIES_EXPORT_ALL)
-#define DLL_EXP_LLIST __declspec(dllexport)
+	#define DLL_EXP_LLIST NP_DLL_EXPORT
 #else
-#define DLL_EXP_LLIST
+	#define DLL_EXP_LLIST
 #endif
 
 /** @defgroup group_llist Linked lists commons

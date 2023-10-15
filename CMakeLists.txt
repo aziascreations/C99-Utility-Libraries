@@ -1,4 +1,4 @@
-# Setup > Import detection
+# Setup > FetchContent import detection
 if("${CMAKE_SOURCE_DIR}" STREQUAL "${CMAKE_CURRENT_SOURCE_DIR}")
     set(NP_GOODIES_IS_MAIN TRUE)
 else()
@@ -22,9 +22,9 @@ message("--> Configuring CMake...")
 
 # Configuring CMake > Checking minimum version
 message("---> Checking CMake's version...")
-message("----> Require 3.16")
+message("----> Require 3.13")
 message("----> Using ${CMAKE_VERSION}")
-cmake_minimum_required(VERSION 3.16)
+cmake_minimum_required(VERSION 3.13)
 
 
 # Configuring CMake > Preparing C revision and project itself...
@@ -110,34 +110,13 @@ if(NP_GOODIES_IS_MAIN)
 endif()
 
 
-# Versioning
-message("--> Preparing environment variables and definitions for versioning...")
-
-# Don't forget to change it in "docs/Doxyfile" too !
-set(ENV{NP_GOODIES_VERSION_MAJOR} 0)
-set(ENV{NP_GOODIES_VERSION_MINOR} 3)
-set(ENV{NP_GOODIES_VERSION_PATCH} 0)
-set(ENV{NP_GOODIES_VERSION_EXTRA} 0)
-
-set(ENV{NP_GOODIES_VERSION_WINDOWS} "$ENV{NP_GOODIES_VERSION_MAJOR}.$ENV{NP_GOODIES_VERSION_MINOR}.$ENV{NP_GOODIES_VERSION_PATCH}.$ENV{NP_GOODIES_VERSION_EXTRA}")
-set(ENV{NP_GOODIES_VERSION_SEMVER} "$ENV{NP_GOODIES_VERSION_MAJOR}.$ENV{NP_GOODIES_VERSION_MINOR}.$ENV{NP_GOODIES_VERSION_PATCH}")
-
-add_compile_definitions(NP_GOODIES_VERSION_MAJOR=$ENV{NP_GOODIES_VERSION_MAJOR})
-add_compile_definitions(NP_GOODIES_VERSION_MINOR=$ENV{NP_GOODIES_VERSION_MINOR})
-add_compile_definitions(NP_GOODIES_VERSION_PATCH=$ENV{NP_GOODIES_VERSION_PATCH})
-add_compile_definitions(NP_GOODIES_VERSION_EXTRA=$ENV{NP_GOODIES_VERSION_EXTRA})
-
-add_compile_definitions(NP_GOODIES_VERSION_WINDOWS=\"$ENV{NP_GOODIES_VERSION_WINDOWS}\")
-add_compile_definitions(NP_GOODIES_VERSION_SEMVER=\"$ENV{NP_GOODIES_VERSION_SEMVER}\")
-
-
 # Targets
 message("--> Preparing targets and related resources...")
 
 
 # Targets > Sources
 # FIXME: Revamp this section to be dependant on 'NP_GOODIES_IS_MAIN'.
-file(GLOB src_np_clang_goodies_commons CONFIGURE_DEPENDS "src/debug.h")
+file(GLOB src_np_clang_goodies_commons CONFIGURE_DEPENDS "src/debug.h" "src/platform.h")
 
 file(GLOB src_np_clang_goodies_llist_base CONFIGURE_DEPENDS "src/lists/*.c" "src/lists/*.h" ${src_np_clang_goodies_commons})
 file(GLOB src_dllist CONFIGURE_DEPENDS "src/lists/double/*.h" "src/lists/double/*.c" "src/lists/*.c" "src/lists/*.h" ${src_np_clang_goodies_commons})
@@ -154,7 +133,7 @@ file(GLOB src_uuid CONFIGURE_DEPENDS "src/uuid/*.h" "src/uuid/*.c" ${src_np_clan
 file(GLOB_RECURSE src_hash CONFIGURE_DEPENDS "src/hash/*.h" "src/hash/*.c" ${src_np_clang_goodies_commons})
 file(GLOB_RECURSE src_all CONFIGURE_DEPENDS "src/*.h" "src/*.c")
 
-file(GLOB src_test_utils CONFIGURE_DEPENDS "tests/assert.h" "tests/memutils.c" "tests/memutils.h")
+file(GLOB src_test_utils CONFIGURE_DEPENDS "tests/assert.h" "tests/memutils.c" "tests/memutils.h" "src/platform.h")
 
 
 # Targets > DLLs
@@ -277,9 +256,18 @@ if(NP_GOODIES_BUILD_TESTS)
     add_executable(test_hashmap_chained_deletion tests/hashmap_chained/test_hashmap_chained_deletion.c ${src_hashmap} ${src_test_utils})
     add_test(NAME test_hashmap_chained_deletion COMMAND test_hashmap_chained_deletion)
 
+    # Targets > Tests > Text
+    add_executable(test_text_copyLine tests/text/test_text_copyLine.c ${src_text} ${src_test_utils})
+    add_test(NAME test_text_copyLine COMMAND test_text_copyLine)
+    target_compile_definitions(test_text_copyLine PUBLIC NP_DEBUG_LOGGING)
+
+    add_executable(test_text_copyLineW tests/text/test_text_copyLineW.c ${src_text} ${src_test_utils})
+    add_test(NAME test_text_copyLineW COMMAND test_text_copyLineW)
+    target_compile_definitions(test_text_copyLineW PUBLIC NP_DEBUG_LOGGING)
+
     # Targets > Tests > Misc
-    add_executable(test_version tests/misc/test_version.c src/version.h ${src_test_utils})
-    add_test(NAME test_version COMMAND test_version)
+    add_executable(test_platform tests/misc/test_platform.c ${src_test_utils})
+    add_test(NAME test_platform COMMAND test_platform)
 else()
     message("---> Skipping test targets...")
 endif()
@@ -293,7 +281,10 @@ if(NP_GOODIES_BUILD_BENCHMARKS)
 
     add_executable(bm_square_of_two_mask benchmarks/bm_square_of_two_mask.c)
 
-    add_executable(bm_powers_of_two benchmarks/bm_powers_of_two.c)
+    if(WIN32)
+        # FIXME: pow() appears to be missing on GNUC, that's odd...
+        add_executable(bm_powers_of_two benchmarks/bm_powers_of_two.c)
+    endif()
 else()
     message("---> Skipping benchmark targets...")
 endif()

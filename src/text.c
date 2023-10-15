@@ -4,26 +4,32 @@
  *
  *  Collection of various utility functions for `char` and `wchar_t` based strings.
  *
- *  <b>Warning:</b><br>
- *  Unless `NP_WIN32` is defined, all functions that uses or return a `wchar_t` typed variable won't be accessible.<br>
- *  This is due to the fact that `wchar_t` is only accessible easily on Windows platforms.
- *
  *  @{
  */
- 
+
+#include <ctype.h>
+#include <errno.h>
+#include <stdlib.h>
+#include <wctype.h>
+
 #include "text.h"
 
 char *copyString(char *stringToCopy) {
+	// FIXME: The malloc doesn't look right at all, check this !
+	
 	// Preparing the output buffer
 	size_t stringByteSize = strlen(stringToCopy) + 1;
 	char *newString = malloc(stringByteSize);
 	
 	// Copying and validating the operation's success
 	if(newString) {
-		if(strcpy_s(newString, stringByteSize, stringToCopy)) {
-			free(newString);
-			newString = NULL;
-		}
+		// TODO: Restore when using C11 !
+		//if(strcpy_s(newString, stringByteSize, stringToCopy)) {
+		//	free(newString);
+		//	newString = NULL;
+		//}
+		// Temporary safe fix for C11's strcpy_s in C99.
+		memcpy(newString, stringToCopy, stringByteSize);
 	}
 	
 	return newString;
@@ -44,6 +50,7 @@ bool isStringEmpty(char *string) {
 		size_t len = strlen(string);
 		
 		for(int i = 0; i < len; i++) {
+			// TODO: Benchmark this !
 			if(!isspace(string[i])) {
 				return false;
 			}
@@ -60,8 +67,6 @@ int nextCharSpaceIndex(const char *string, int startIndex) {
 	return startIndex;
 }
 
-#ifdef NP_WIN32
-
 wchar_t *copyWCharString(wchar_t *stringToCopy) {
 	// Preparing the output buffer
 	size_t stringSize = wcslen(stringToCopy) + 1;
@@ -69,10 +74,12 @@ wchar_t *copyWCharString(wchar_t *stringToCopy) {
 	
 	// Copying and validating the operation's success
 	if(newString) {
-		if(wcscpy_s(newString, stringSize, stringToCopy)) {
-			free(newString);
-			newString = NULL;
-		}
+		// TODO: Include with a C11 check
+		//if(wcscpy_s(newString, stringSize, stringToCopy)) {
+		//	free(newString);
+		//	newString = NULL;
+		//}
+		memcpy(newString, stringToCopy, stringSize * sizeof(wchar_t));
 	}
 	
 	return newString;
@@ -102,7 +109,8 @@ bool isWCharStringEmpty(wchar_t *string) {
 	return true;
 }
 
-wchar_t *charStringToWChar(char *originalString) {
+// TODO: Reimplement with C11 toggle !
+/*wchar_t *charStringToWChar(char *originalString) {
 	size_t originalLength = strlen(originalString) + 1;
 	wchar_t *returnedString = (wchar_t *) malloc(sizeof(wchar_t) * originalLength);
 	size_t outSize;
@@ -110,6 +118,20 @@ wchar_t *charStringToWChar(char *originalString) {
 	errno = mbstowcs_s(&outSize, returnedString, originalLength, originalString, originalLength - 1);
 	
 	if(errno != 0) {
+		free(returnedString);
+		returnedString = NULL;
+	}
+	
+	return returnedString;
+}*/
+
+wchar_t *charStringToWChar(char *originalString) {
+	size_t originalLength = strlen(originalString) + 1;
+	wchar_t *returnedString = (wchar_t *) malloc(sizeof(wchar_t) * originalLength);
+	
+	size_t outSize = mbstowcs(returnedString, originalString, originalLength - 1);
+	
+	if(outSize == -1) {
 		free(returnedString);
 		returnedString = NULL;
 	}
@@ -124,6 +146,138 @@ int nextWCharSpaceIndex(const wchar_t *string, int startIndex) {
 	return startIndex;
 }
 
-#endif
+char *text_copyLine(const char *string, size_t stringLength, char **nextLine, size_t *nextLineMaxLength) {
+	if(string == NULL || stringLength <= 0) {
+		// Setting the return values to NULL/0 to prevent infinite loops.
+		if(nextLine != NULL) {
+			*nextLine = NULL;
+		}
+		if(nextLineMaxLength != NULL) {
+			*nextLineMaxLength = 0;
+		}
+		return NULL;
+	}
+	
+	// Going along the string until we find its end or a line return.
+	size_t lineLength = 0;
+	while(string[lineLength] != '\0' && string[lineLength] != '\r' && string[lineLength] != '\n' &&
+		  lineLength < stringLength) {
+		lineLength++;
+	}
+	
+	// Attempting to find the start of the next line if required.
+	if(nextLine != NULL) {
+		size_t nextLineOffset = lineLength;
+		
+		// Point to NULL/no next string by default for safety reasons.
+		*nextLine = NULL;
+		
+		// If we aren't right at the end of the string, we check for the presence of a CRLF or LFCR.
+		if(nextLineOffset < stringLength) {
+			
+			if(string[nextLineOffset] == '\r') {
+				if(string[nextLineOffset + 1] == '\n') {
+					nextLineOffset++;
+				}
+				nextLineOffset++;
+			} else if(string[nextLineOffset] == '\n') {
+				if(string[nextLineOffset + 1] == '\r') {
+					nextLineOffset++;
+				}
+				nextLineOffset++;
+			} else if(string[nextLineOffset] == '\0') {
+				// Edge case that shouldn't happen unless `stringLength` wrongfully includes a '\0'.
+				// We'll simply say that there's nothing after this line to prevent issues.
+				nextLineOffset = stringLength;
+			}
+		}
+		
+		if(stringLength - nextLineOffset > 0) {
+			//*nextLine = ((char *) string) + (nextLineOffset * sizeof(char));
+			*nextLine = ((char *) string) + nextLineOffset;
+		}
+		
+		// Preventing further expensive `strlen` calls when used in loops.
+		if(nextLineMaxLength != NULL) {
+			*nextLineMaxLength = stringLength - nextLineOffset;
+		}
+	}
+	
+	// Copying the line safely.
+	char *copiedLine = calloc(lineLength + 1, sizeof(char));
+	
+	if(copiedLine != NULL) {
+		memcpy(copiedLine, string, lineLength * sizeof(char));
+	}
+	
+	return copiedLine;
+}
+
+wchar_t *text_copyLineW(const wchar_t *string, size_t stringLength, wchar_t **nextLine, size_t *nextLineMaxLength) {
+	if(string == NULL || stringLength <= 0) {
+		// Setting the return values to NULL/0 to prevent infinite loops.
+		if(nextLine != NULL) {
+			*nextLine = NULL;
+		}
+		if(nextLineMaxLength != NULL) {
+			*nextLineMaxLength = 0;
+		}
+		return NULL;
+	}
+	
+	// Going along the string until we find its end or a line return.
+	size_t lineLength = 0;
+	while(string[lineLength] != '\0' && string[lineLength] != '\r' && string[lineLength] != '\n' &&
+		  lineLength < stringLength) {
+		lineLength++;
+	}
+	
+	// Attempting to find the start of the next line if required.
+	if(nextLine != NULL) {
+		size_t nextLineOffset = lineLength;
+		
+		// Point to NULL/no next string by default for safety reasons.
+		*nextLine = NULL;
+		
+		// If we aren't right at the end of the string, we check for the presence of a CRLF or LFCR.
+		if(nextLineOffset < stringLength) {
+			
+			if(string[nextLineOffset] == '\r') {
+				if(string[nextLineOffset + 1] == '\n') {
+					nextLineOffset++;
+				}
+				nextLineOffset++;
+			} else if(string[nextLineOffset] == '\n') {
+				if(string[nextLineOffset + 1] == '\r') {
+					nextLineOffset++;
+				}
+				nextLineOffset++;
+			} else if(string[nextLineOffset] == '\0') {
+				// Edge case that shouldn't happen unless `stringLength` wrongfully includes a '\0'.
+				// We'll simply say that there's nothing after this line to prevent issues.
+				nextLineOffset = stringLength;
+			}
+		}
+		
+		if(stringLength - nextLineOffset > 0) {
+			//*nextLine = ((wchar_t *) string) + (nextLineOffset * sizeof(wchar_t));
+			*nextLine = ((wchar_t *) string) + nextLineOffset;
+		}
+		
+		// Preventing further expensive `strlen` calls when used in loops.
+		if(nextLineMaxLength != NULL) {
+			*nextLineMaxLength = stringLength - nextLineOffset;
+		}
+	}
+	
+	// Copying the line safely.
+	wchar_t *copiedLine = calloc(lineLength + 1, sizeof(wchar_t));
+	
+	if(copiedLine != NULL) {
+		memcpy(copiedLine, string, lineLength * sizeof(wchar_t));
+	}
+	
+	return copiedLine;
+}
 
 /** @} */ // end of group_nptext

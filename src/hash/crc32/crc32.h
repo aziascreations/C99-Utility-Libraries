@@ -2,12 +2,15 @@
 
 #pragma once
 
+#include <stddef.h>
 #include <stdint.h>
 
+#include "../../platform.h"
+
 #if defined(NP_GOODIES_EXPORT_CRC32) || defined(NP_GOODIES_EXPORT_HASH) || defined(NP_GOODIES_EXPORT_ALL)
-#define DLL_EXP_CRC32 __declspec(dllexport)
+	#define DLL_EXP_CRC32 NP_DLL_EXPORT
 #else
-#define DLL_EXP_CRC32
+	#define DLL_EXP_CRC32
 #endif
 
 /** @defgroup group_crc32 CRC32
