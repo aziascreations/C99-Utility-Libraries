@@ -39,11 +39,14 @@ int main() {
 	// Converting the UUID4 to a `char` string.
 	// The `uuid_toWcharString` function can be used to get a `wchar_t` string.
 	char *uuidStr = uuid_toString(uuid4);
+	wchar_t *uuidStrW = uuid_toStringW(uuid4);
 	
 	// Printing it out.
 	printf("%s\n", uuidStr);
+	printf("%ls\n", uuidStrW);
 	
 	// Freeing resources.
+	free(uuidStrW);
 	free(uuidStr);
 	free(uuid4);
 }

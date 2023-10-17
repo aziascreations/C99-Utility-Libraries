@@ -52,4 +52,4 @@ DLL_EXP_UUID char *uuid_toString(struct uuid *uuid);
  * @return A `wchar_t *` string containing the representation of the given UUID.
  * @warning Failure to free the returned string WILL cause memory leaks !
  */
-DLL_EXP_UUID wchar_t *uuid_toWcharString(struct uuid *uuid);
+DLL_EXP_UUID wchar_t *uuid_toStringW(struct uuid *uuid);
