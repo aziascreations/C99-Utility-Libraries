@@ -198,11 +198,10 @@ if(NP_GOODIES_BUILD_EXAMPLES)
     add_executable(example_dllist_custom_node examples/dllist_custom_node.c ${src_dllist} ${src_text})
     add_executable(example_dllist_specific examples/dllist_specific.c ${src_dllist} ${src_text})
     add_executable(example_uuid_all examples/uuid_all.c ${src_uuid})
-    add_executable(example_uuid_win32 examples/uuid_win32.c ${src_uuid})
+    add_executable(example_crc32 examples/crc32.c ${src_hash})
 
     if(WIN32)
-        add_executable(example_crc32 examples/crc32.c ${src_hash})
-        target_link_libraries(example_crc32 Advapi32.lib)  # Used to access "CryptGenRandom".
+        add_executable(example_uuid_win32 examples/uuid_win32.c ${src_uuid})
     endif()
 else()
     message("---> Skipping examples targets...")
@@ -264,11 +263,13 @@ if(NP_GOODIES_BUILD_TESTS)
     # Targets > Tests > Text
     add_executable(test_text_copyLine tests/text/test_text_copyLine.c ${src_text} ${src_test_utils})
     add_test(NAME test_text_copyLine COMMAND test_text_copyLine)
-    target_compile_definitions(test_text_copyLine PUBLIC NP_DEBUG_LOGGING)
 
     add_executable(test_text_copyLineW tests/text/test_text_copyLineW.c ${src_text} ${src_test_utils})
     add_test(NAME test_text_copyLineW COMMAND test_text_copyLineW)
-    target_compile_definitions(test_text_copyLineW PUBLIC NP_DEBUG_LOGGING)
+
+    add_executable(test_text_copy tests/text/test_text_copy.c ${src_text} ${src_test_utils})
+    add_test(NAME test_text_copy COMMAND test_text_copy)
+    target_compile_definitions(test_text_copy PUBLIC NP_GOODIES_ADD_C11_OPTIMIZATIONS)
 
     # Targets > Tests > Misc
     add_executable(test_platform tests/misc/test_platform.c ${src_test_utils})
