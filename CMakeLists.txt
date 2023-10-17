@@ -198,7 +198,12 @@ if(NP_GOODIES_BUILD_EXAMPLES)
     add_executable(example_dllist_custom_node examples/dllist_custom_node.c ${src_dllist} ${src_text})
     add_executable(example_dllist_specific examples/dllist_specific.c ${src_dllist} ${src_text})
     add_executable(example_uuid_all examples/uuid_all.c ${src_uuid})
-    add_executable(example_crc32 examples/crc32.c ${src_hash})
+    add_executable(example_uuid_win32 examples/uuid_win32.c ${src_uuid})
+
+    if(WIN32)
+        add_executable(example_crc32 examples/crc32.c ${src_hash})
+        target_link_libraries(example_crc32 Advapi32.lib)  # Used to access "CryptGenRandom".
+    endif()
 else()
     message("---> Skipping examples targets...")
 endif()

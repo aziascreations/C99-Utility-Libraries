@@ -121,6 +121,9 @@ repository for a complete example in a "fully-fledged" Windows application.
 * [UUID4 generation](examples/uuid_all.c)
   * Rudimentary RNG setup & UUID4 generation.
 
+* [UUID4 generation with Win32API](examples/uuid_win32.c)
+  * Safe RNG setup with Win32APIs & UUID4 generation.
+
 ### Text
 **TODO**
 

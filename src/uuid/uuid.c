@@ -64,8 +64,6 @@ char *uuid_toString(UUID4 *uuid) {
 	return uuidString;
 }
 
-#ifdef NP_WIN32
-
 wchar_t *uuid_toWcharString(struct uuid *uuid) {
 	// C99-compatible compile-time check for the UUID4 structure's size.
 	NP_GOODIES_UUID_CHECK_STRUCT_SIZE(sizeof(UUID4) != UUID_BYTE_LENGTH);
@@ -88,7 +86,5 @@ wchar_t *uuid_toWcharString(struct uuid *uuid) {
 	
 	return uuidString;
 }
-
-#endif
 
 /** @} */ // end of group_uuid
