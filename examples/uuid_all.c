@@ -4,7 +4,7 @@
 
 #include "../src/uuid/uuid4.h"
 
-void bufferRandomFiller(void *uuidData, size_t uuidLength) {
+bool bufferRandomFiller(void *uuidData, size_t uuidLength) {
 	// Filling the UUID4 buffer with random data first.
 	// Notes:
 	//   * A compiler "#if" is used to optimize the random population.

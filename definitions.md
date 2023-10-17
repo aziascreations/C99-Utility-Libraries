@@ -2,6 +2,7 @@
 
 ## Summary
 * [Features Toggles](#features-toggles)
+  * `NP_GOODIES_ADD_C11_OPTIMIZATIONS` [➜](#everything---add-c11-optimizations)
   * `NP_GOODIES_CRC32_DISABLE_LOOKUP_TABLE` [➜](#crc32---disable-lookup-table)
   * `NP_GOODIES_CRC32_ENABLE_BRANCHLESS` [➜](#crc32---enables-branchless-logic)
   * <s>`NP_GOODIES_LIST_USE_COMMON_DELETER`</s> **TODO**
@@ -29,6 +30,13 @@
 
 
 ## Features Toggles
+
+### Everything - Add C11 Optimizations
+**Definition:** `NP_GOODIES_ADD_C11_OPTIMIZATIONS`
+
+Enables various optimizations that take advantage of new and safer features provided in the C11 standard.
+
+If C11 support isn't available or allowed by your compiler, nothing will be changed.
 
 ### CRC32 - Disable lookup table
 **Definition:** `NP_GOODIES_CRC32_DISABLE_LOOKUP_TABLE`
