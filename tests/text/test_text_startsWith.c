@@ -8,6 +8,12 @@
 static const char *text_01 = "Hello world !";
 
 int main(void) {
+	// Preliminary tests
+	assert(!text_startsWith(NULL, "Hello w"),
+		   "Fails if `string` is NULL")
+	assert(!text_startsWith(text_01, NULL),
+		   "Fails if `prefix` is NULL")
+	   
 	// Basic tests
 	assert(text_startsWith(text_01, "Hello w"),
 		   "Valid test #1")

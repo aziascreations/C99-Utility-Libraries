@@ -215,7 +215,7 @@ if(NP_GOODIES_BUILD_TESTS)
     # Targets > Tests > Templates
     #target_compile_definitions(target_name_here PUBLIC NP_DEBUG_LOGGING)
 
-    # Targets > Tests > Arguments
+    # Targets > Tests > Arguments > Char
     add_executable(test_args_options tests/arguments/test_options.c ${src_args} ${src_test_utils})
     add_test(NAME test_args_options COMMAND test_args_options)
 
@@ -230,6 +230,27 @@ if(NP_GOODIES_BUILD_TESTS)
 
     add_executable(test_args_default_option tests/arguments/test_args_default_option.c ${src_args} ${src_test_utils})
     add_test(NAME test_args_default_option COMMAND test_args_default_option)
+
+    add_executable(test_args_options_wchar tests/arguments/test_options.c ${src_args} ${src_test_utils})
+    add_test(NAME test_args_options_wchar COMMAND test_args_options_wchar)
+    target_compile_definitions(test_args_options_wchar PUBLIC NP_GOODIES_ARGUMENTS_USE_WCHAR)
+
+    # Targets > Tests > Arguments > WChar
+    add_executable(test_verb_registration_wchar tests/arguments/test_verb_registration.c ${src_args} ${src_test_utils})
+    add_test(NAME test_verb_registration_wchar COMMAND test_verb_registration_wchar)
+    target_compile_definitions(test_verb_registration_wchar PUBLIC NP_GOODIES_ARGUMENTS_USE_WCHAR)
+
+    add_executable(test_args_parsing_basic_wchar tests/arguments/test_args_parsing_basic.c ${src_args} ${src_test_utils})
+    add_test(NAME test_args_parsing_basic_wchar COMMAND test_args_parsing_basic_wchar)
+    target_compile_definitions(test_args_parsing_basic_wchar PUBLIC NP_GOODIES_ARGUMENTS_USE_WCHAR)
+
+    add_executable(test_args_required_option_wchar tests/arguments/test_args_required_option.c ${src_args} ${src_test_utils})
+    add_test(NAME test_args_required_option_wchar COMMAND test_args_required_option_wchar)
+    target_compile_definitions(test_args_required_option_wchar PUBLIC NP_GOODIES_ARGUMENTS_USE_WCHAR)
+
+    add_executable(test_args_default_option_wchar tests/arguments/test_args_default_option.c ${src_args} ${src_test_utils})
+    add_test(NAME test_args_default_option_wchar COMMAND test_args_default_option_wchar)
+    target_compile_definitions(test_args_default_option_wchar PUBLIC NP_GOODIES_ARGUMENTS_USE_WCHAR)
 
     # Targets > Tests > Lists
     add_executable(test_llist_default_node_size tests/lists/test_llist_default_node_size.c ${src_llist} ${src_test_utils})
@@ -282,6 +303,15 @@ if(NP_GOODIES_BUILD_TESTS)
     add_executable(test_text_isEmptyW tests/text/test_text_isEmptyW.c ${src_text} ${src_test_utils})
     add_test(NAME test_text_isEmptyW COMMAND test_text_isEmptyW)
 
+    add_executable(test_text_nextSpaceIndex tests/text/test_text_nextSpaceIndex.c ${src_text} ${src_test_utils})
+    add_test(NAME test_text_nextSpaceIndex COMMAND test_text_nextSpaceIndex)
+    add_executable(test_text_nextSpaceIndexW tests/text/test_text_nextSpaceIndexW.c ${src_text} ${src_test_utils})
+    add_test(NAME test_text_nextSpaceIndexW COMMAND test_text_nextSpaceIndexW)
+
+    add_executable(test_text_charToWChar tests/text/test_text_charToWChar.c ${src_text} ${src_test_utils})
+    add_test(NAME test_text_charToWChar COMMAND test_text_charToWChar)
+    #target_compile_definitions(test_text_charToWChar PUBLIC NP_GOODIES_ADD_C11_OPTIMIZATIONS)
+
     # Targets > Tests > Misc
     add_executable(test_platform tests/misc/test_platform.c ${src_test_utils})
     add_test(NAME test_platform COMMAND test_platform)
@@ -297,8 +327,6 @@ if(NP_GOODIES_BUILD_BENCHMARKS)
     add_executable(bm_crc32_implementations benchmarks/bm_crc32_implementations.c)
 
     add_executable(bm_square_of_two_mask benchmarks/bm_square_of_two_mask.c)
-
-    #add_executable(bm_hashmap_chained benchmarks/bm_hashmap_chained.c ${src_hashmap})
 
     if(WIN32)
         # FIXME: pow() appears to be missing on GNUC, that's odd...

@@ -119,6 +119,10 @@ wchar_t *text_copyW_s(const wchar_t *string, size_t maxLength) {
 }
 
 bool text_startsWith(const char *string, const char *prefix) {
+	if(string == NULL || prefix == NULL) {
+		return false;
+	}
+	
 	size_t prefixLength = strlen(prefix);
 	
 	if(prefixLength > strlen(string)) {
@@ -129,6 +133,10 @@ bool text_startsWith(const char *string, const char *prefix) {
 }
 
 bool text_startsWithW(const wchar_t *string, const wchar_t *prefix) {
+	if(string == NULL || prefix == NULL) {
+		return false;
+	}
+	
 	size_t prefixLength = wcslen(prefix);
 	
 	if(prefixLength > wcslen(string)) {
@@ -138,7 +146,7 @@ bool text_startsWithW(const wchar_t *string, const wchar_t *prefix) {
 	return memcmp(string, prefix, prefixLength * sizeof(wchar_t)) == 0;
 }
 
-bool text_isEmpty(char *string) {
+bool text_isEmpty(const char *string) {
 	if(string != NULL) {
 		size_t len = strlen(string);
 		
@@ -152,7 +160,7 @@ bool text_isEmpty(char *string) {
 	return true;
 }
 
-bool text_isEmptyW(wchar_t *string) {
+bool text_isEmptyW(const wchar_t *string) {
 	if(string != NULL) {
 		size_t len = wcslen(string);
 		
@@ -166,21 +174,45 @@ bool text_isEmptyW(wchar_t *string) {
 	return true;
 }
 
-int nextCharSpaceIndex(const char *string, int startIndex) {
-	while(string[startIndex] != '\0' && string[startIndex] != ' ') {
+int text_nextSpaceIndex(const char *string, int startIndex) {
+	if(string == NULL) {
+		return 0;
+	}
+	
+	size_t maxIndex = strlen(string);
+	if(startIndex > maxIndex) {
+		startIndex = (int) maxIndex;
+	}
+	
+	while(startIndex < maxIndex && string[startIndex] != '\0' && string[startIndex] != ' ') {
 		startIndex++;
 	}
+	
 	return startIndex;
 }
 
-int nextWCharSpaceIndex(const wchar_t *string, int startIndex) {
-	while(string[startIndex] != L'\0' && string[startIndex] != L' ') {
+int text_nextSpaceIndexW(const wchar_t *string, int startIndex) {
+	if(string == NULL) {
+		return 0;
+	}
+	
+	size_t maxIndex = wcslen(string);
+	if(startIndex > maxIndex) {
+		startIndex = (int) maxIndex;
+	}
+	
+	while(startIndex < maxIndex && string[startIndex] != L'\0' && string[startIndex] != L' ') {
 		startIndex++;
 	}
+	
 	return startIndex;
 }
 
-wchar_t *charStringToWChar(char *originalString) {
+wchar_t *text_charToWChar(const char *originalString) {
+	if(originalString == NULL) {
+		return NULL;
+	}
+	
 	size_t originalLength = strlen(originalString) + 1;
 	wchar_t *returnedString = (wchar_t *) malloc(sizeof(wchar_t) * originalLength);
 

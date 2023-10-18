@@ -9,6 +9,12 @@
 static const wchar_t *text_01 = L"Hello world !";
 
 int main(void) {
+	// Preliminary tests
+	assert(!text_startsWithW(NULL, L"Hello w"),
+		   "Fails if `string` is NULL")
+	assert(!text_startsWithW(text_01, NULL),
+		   "Fails if `prefix` is NULL")
+	
 	// Basic tests
 	assert(text_startsWithW(text_01, L"Hello w"),
 		   "Valid test #1")

@@ -34,7 +34,7 @@ Verb *args_createVerb(np_args_char *verb, np_args_char *description) {
 	
 	// Quickly "fixing" NULL parameters for later.
 	if(verb == NULL) {
-#if defined(NP_WIN32) && defined(NP_ARGS_WCHAR)
+#if defined(NP_GOODIES_ARGUMENTS_USE_WCHAR)
 		verb = L"";
 #else
 		verb = "";
@@ -42,7 +42,7 @@ Verb *args_createVerb(np_args_char *verb, np_args_char *description) {
 	}
 	
 	if(description == NULL) {
-#if defined(NP_WIN32) && defined(NP_ARGS_WCHAR)
+#if defined(NP_GOODIES_ARGUMENTS_USE_WCHAR)
 		description = L"";
 #else
 		description = "";
@@ -76,7 +76,7 @@ Option *args_createOption(np_args_char token, np_args_char *name, np_args_char *
 	}
 	
 	if(name == NULL) {
-#if defined(NP_WIN32) && defined(NP_ARGS_WCHAR)
+#if defined(NP_GOODIES_ARGUMENTS_USE_WCHAR)
 		name = L"";
 #else
 		name = "";
@@ -84,7 +84,7 @@ Option *args_createOption(np_args_char token, np_args_char *name, np_args_char *
 	}
 	
 	if(description == NULL) {
-#if defined(NP_WIN32) && defined(NP_ARGS_WCHAR)
+#if defined(NP_GOODIES_ARGUMENTS_USE_WCHAR)
 		description = L"";
 #else
 		description = "";

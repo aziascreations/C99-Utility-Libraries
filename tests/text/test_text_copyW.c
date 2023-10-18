@@ -13,6 +13,12 @@
 static const wchar_t *text_01 = L"Hello world !";
 
 int main(void) {
+	// Preliminary tests
+	assert(text_copyW(NULL) == NULL,
+		   "Returns NULL if `string` is NULL")
+	assert(text_copyW_s(NULL, 42) == NULL,
+		   "Returns NULL if `string` is NULL and length is positive")
+		   
 	// Preparing temporary variable.
 	wchar_t *tmpCopy = NULL;
 	

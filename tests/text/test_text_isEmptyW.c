@@ -5,6 +5,10 @@
 #include "../../src/text.h"
 
 int main(void) {
+	// Preliminary tests
+	assert(text_isEmptyW(NULL),
+		   "Returns `true` if `string` is NULL")
+	   
 	// Space-only tests
 	assert(text_isEmptyW(L""),
 		   "Empty string (true)")

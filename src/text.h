@@ -14,8 +14,8 @@
 	#define DLL_EXP_TEXT
 #endif
 
-#define areStringsEqual(string1, string2) (strcmp(string1, string2) == 0)
-#define areWCharStringsEqual(string1, string2) (wcscmp(string1, string2) == 0)
+#define text_areStringsEqual(string1, string2) (strcmp(string1, string2) == 0)
+#define text_areStringsEqualW(string1, string2) (wcscmp(string1, string2) == 0)
 
 /**
  * Copies the given string into a new buffer and returns said buffer as-is.
@@ -31,7 +31,6 @@ DLL_EXP_TEXT char *text_copy(const char *string);
  * @param maxLength The string's maximum character count, not including the trailing NULL byte.
  * @return The copied string's pointer, or `NULL` if an error occurred.
  * @warning Failure to free the returned string WILL cause memory leaks !
- * @warning Can crash if the given length is too big without C11 optimizations !
  */
 DLL_EXP_TEXT char *text_copy_s(const char *string, size_t maxLength);
 
@@ -73,14 +72,14 @@ DLL_EXP_TEXT bool text_startsWithW(const wchar_t *string, const wchar_t *prefix)
  * @param string The string to be checked.
  * @return `true` if the string is empty, `false` otherwise.
  */
-DLL_EXP_TEXT bool text_isEmpty(char *string);
+DLL_EXP_TEXT bool text_isEmpty(const char *string);
 
 /**
  * Checks if the given \a string is `NULL`, empty or filled with spaces.
  * @param string The string to be checked.
  * @return `true` if the string is empty, `false` otherwise.
  */
-DLL_EXP_TEXT bool text_isEmptyW(wchar_t *string);
+DLL_EXP_TEXT bool text_isEmptyW(const wchar_t *string);
 
 /**
  * Finds the next space in a given string and returns its index.
@@ -88,7 +87,7 @@ DLL_EXP_TEXT bool text_isEmptyW(wchar_t *string);
  * @param startIndex The index at which the search will start in the given \a string.
  * @return The index at which the next space will be located if found, or the string's end index.
  */
-DLL_EXP_TEXT int nextCharSpaceIndex(const char *string, int startIndex);
+DLL_EXP_TEXT int text_nextSpaceIndex(const char *string, int startIndex);
 
 /**
  * Finds the next space in a given string and returns its index.
@@ -96,15 +95,15 @@ DLL_EXP_TEXT int nextCharSpaceIndex(const char *string, int startIndex);
  * @param startIndex The index at which the search will start in the given \a string.
  * @return The index at which the next space will be located if found, or the string's end index.
  */
-DLL_EXP_TEXT int nextWCharSpaceIndex(const wchar_t *string, int startIndex);
+DLL_EXP_TEXT int text_nextSpaceIndexW(const wchar_t *string, int startIndex);
 
 /**
- * Converts a given `char` string into a `wchar_t` one and returns its pointer.<br>
- * You will need to free the returned pointer when appropriate.
+ * Converts a given `char` string into a `wchar_t` one and returns its pointer.
  * @param originalString The original string to be copied
  * @return The converted string's pointer, or `NULL` if an error occurred.
+ * @warning Failure to free the returned string WILL cause memory leaks !
  */
-DLL_EXP_TEXT wchar_t *charStringToWChar(char *originalString);
+DLL_EXP_TEXT wchar_t *text_charToWChar(const char *originalString);
 
 /**
  * Copies the first available line in the given string into a new buffer and returns said buffer as-is.<br>

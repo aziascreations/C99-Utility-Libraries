@@ -12,6 +12,12 @@
 static const char *text_01 = "Hello world !";
 
 int main(void) {
+	// Preliminary tests
+	assert(text_copy(NULL) == NULL,
+		   "Returns NULL if `string` is NULL")
+	assert(text_copy_s(NULL, 42) == NULL,
+		   "Returns NULL if `string` is NULL and length is positive")
+		   
 	// Preparing temporary variable.
 	char *tmpCopy = NULL;
 	

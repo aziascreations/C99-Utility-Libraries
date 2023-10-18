@@ -31,6 +31,10 @@ static const wchar_t *text_33 = L"Line 1\n\r\n\rLine 3";
 static const wchar_t *text_40 = L"Line 1\rLine 2\0Line 3";
 
 int main(void) {
+	// Preliminary tests
+	assert(text_copyLineW(NULL, 42, NULL, NULL) == NULL,
+		   "Returns NULL if `string` is NULL and length is positive")
+		   
 	// Preparing temporary variables.
 	wchar_t *tmpLine = NULL;
 	wchar_t *tmpNextLine = NULL;
