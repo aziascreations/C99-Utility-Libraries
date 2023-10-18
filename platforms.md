@@ -52,7 +52,8 @@ Untested.
 Untested.
 
 ### Cygwin
-Untested.
+Tested and returned `NP_COMPILER_GNUC` as the compiler, needs more testing.
+* `NP_OS_CYGWIN`
 
 ### ReactOS
 Tested on ReactOS 0.4.14 x86.
@@ -83,7 +84,7 @@ Untested, will be done soon.
 * `NP_ARCH_ARM`
 * `NP_ARCH_ARM_GENERIC`
 
-### Unknown OS *(Apple, ReactOS, ...)*
+### Unknown OS *(Apple, ...)*
 * `NP_OS_UNKNOWN`
 
 ### Unknown ISA

@@ -15,7 +15,7 @@
 
 #define np_args_areStringsEqual areWCharStringsEqual
 #define np_args_copyString text_copyW
-#define np_args_stringStartsWith wCharStringStartsWith
+#define np_args_stringStartsWith text_startsWithW
 #define np_args_isStringEmpty isWCharStringEmpty
 #define np_args_nextSpaceIndex nextWCharSpaceIndex
 
@@ -33,7 +33,7 @@
 
 #define np_args_areStringsEqual areStringsEqual
 #define np_args_copyString text_copy
-#define np_args_stringStartsWith stringStartsWith
+#define np_args_stringStartsWith text_startsWith
 #define np_args_isStringEmpty isStringEmpty
 #define np_args_nextSpaceIndex nextCharSpaceIndex
 

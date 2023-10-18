@@ -263,16 +263,19 @@ if(NP_GOODIES_BUILD_TESTS)
     # Targets > Tests > Text
     add_executable(test_text_copyLine tests/text/test_text_copyLine.c ${src_text} ${src_test_utils})
     add_test(NAME test_text_copyLine COMMAND test_text_copyLine)
-
     add_executable(test_text_copyLineW tests/text/test_text_copyLineW.c ${src_text} ${src_test_utils})
     add_test(NAME test_text_copyLineW COMMAND test_text_copyLineW)
 
     add_executable(test_text_copy tests/text/test_text_copy.c ${src_text} ${src_test_utils})
     add_test(NAME test_text_copy COMMAND test_text_copy)
-
     add_executable(test_text_copyW tests/text/test_text_copyW.c ${src_text} ${src_test_utils})
     add_test(NAME test_text_copyW COMMAND test_text_copyW)
     #target_compile_definitions(test_text_copyW PUBLIC NP_GOODIES_ADD_C11_OPTIMIZATIONS)
+
+    add_executable(test_text_startsWith tests/text/test_text_startsWith.c ${src_text} ${src_test_utils})
+    add_test(NAME test_text_startsWith COMMAND test_text_startsWith)
+    add_executable(test_text_startsWithW tests/text/test_text_startsWithW.c ${src_text} ${src_test_utils})
+    add_test(NAME test_text_startsWithW COMMAND test_text_startsWithW)
 
     # Targets > Tests > Misc
     add_executable(test_platform tests/misc/test_platform.c ${src_test_utils})

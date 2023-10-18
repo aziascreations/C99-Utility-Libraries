@@ -118,7 +118,7 @@ wchar_t *text_copyW_s(const wchar_t *string, size_t maxLength) {
 	return newString;
 }
 
-bool stringStartsWith(char *string, char *prefix) {
+bool text_startsWith(const char *string, const char *prefix) {
 	size_t prefixLength = strlen(prefix);
 	
 	if(prefixLength > strlen(string)) {
@@ -128,7 +128,7 @@ bool stringStartsWith(char *string, char *prefix) {
 	return memcmp(string, prefix, prefixLength) == 0;
 }
 
-bool wCharStringStartsWith(wchar_t *string, wchar_t *prefix) {
+bool text_startsWithW(const wchar_t *string, const wchar_t *prefix) {
 	size_t prefixLength = wcslen(prefix);
 	
 	if(prefixLength > wcslen(string)) {

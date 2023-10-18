@@ -58,7 +58,7 @@ DLL_EXP_TEXT wchar_t *text_copyW_s(const wchar_t *string, size_t maxLength);
  * @param prefix The prefix to be searched for in \a string.
  * @return `true` if the string starts with the given prefix, `false` otherwise.
  */
-DLL_EXP_TEXT bool stringStartsWith(char *string, char *prefix);
+DLL_EXP_TEXT bool text_startsWith(const char *string, const char *prefix);
 
 /**
  * Checks if a given \a string starts with a given \a prefix.
@@ -66,7 +66,7 @@ DLL_EXP_TEXT bool stringStartsWith(char *string, char *prefix);
  * @param prefix The prefix to be searched for in \a string.
  * @return `true` if the string starts with the given prefix, `false` otherwise.
  */
-DLL_EXP_TEXT bool wCharStringStartsWith(wchar_t *string, wchar_t *prefix);
+DLL_EXP_TEXT bool text_startsWithW(const wchar_t *string, const wchar_t *prefix);
 
 /**
  * Checks if the given \a string is `NULL`, empty or filled with spaces.
