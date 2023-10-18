@@ -1,14 +1,14 @@
 var searchData=
 [
-  ['text_2ec_0',['text.c',['../text_8c.html',1,'']]],
-  ['text_2eh_1',['text.h',['../text_8h.html',1,'']]],
-  ['text_5fcopyline_2',['text_copyLine',['../group__group__nptext.html#gac7a8ab001fe7dc51e89f16c447f89b19',1,'text_copyLine(const char *string, size_t stringLength, char **nextLine, size_t *nextLineMaxLength):&#160;text.c'],['../group__group__nptext.html#gac7a8ab001fe7dc51e89f16c447f89b19',1,'text_copyLine(const char *string, size_t stringLength, char **nextLine, size_t *nextLineMaxLength):&#160;text.c']]],
-  ['text_5fcopylinew_3',['text_copyLineW',['../group__group__nptext.html#ga29b1afe340b45c4831a808b0d4bf6b9f',1,'text_copyLineW(const wchar_t *string, size_t stringLength, wchar_t **nextLine, size_t *nextLineMaxLength):&#160;text.c'],['../group__group__nptext.html#ga29b1afe340b45c4831a808b0d4bf6b9f',1,'text_copyLineW(const wchar_t *string, size_t stringLength, wchar_t **nextLine, size_t *nextLineMaxLength):&#160;text.c']]],
-  ['time_5fhi_5fand_5fversion_4',['time_hi_and_version',['../structuuid.html#ac89486073118cbca117c9204aeecb9d4',1,'uuid']]],
-  ['time_5flow_5',['time_low',['../structuuid.html#aeabb39e916355b8a0cdd8912e8c27317',1,'uuid']]],
-  ['time_5fmid_6',['time_mid',['../structuuid.html#a0b92f5d247288e1db17317232ae29694',1,'uuid']]],
-  ['token_7',['token',['../structarguments__option.html#aff8fd35d59d85ee4b34203114869deec',1,'arguments_option']]],
-  ['trace_5fprint_8',['trace_print',['../group__group__np__debug.html#ga254c6f187e0baab6826269de3e8bd67b',1,'debug.h']]],
-  ['trace_5fprintln_9',['trace_println',['../group__group__np__debug.html#ga4ff61f331adb16d92909b963e719757e',1,'debug.h']]],
-  ['types_2eh_10',['types.h',['../types_8h.html',1,'']]]
+  ['structs_2eh_0',['structs.h',['../uuid_2structs_8h.html',1,'']]],
+  ['uuid_1',['UUID',['../group__group__uuid.html',1,'']]],
+  ['uuid_2',['uuid',['../structuuid.html',1,'']]],
+  ['uuid_2ec_3',['uuid.c',['../uuid_8c.html',1,'']]],
+  ['uuid_2eh_4',['uuid.h',['../uuid_8h.html',1,'']]],
+  ['uuid4_2ec_5',['uuid4.c',['../uuid4_8c.html',1,'']]],
+  ['uuid4_2eh_6',['uuid4.h',['../uuid4_8h.html',1,'']]],
+  ['uuid4_5fgenerate_7',['uuid4_generate',['../group__group__uuid.html#ga422ad643b2bf53504f75e2e1a6369736',1,'uuid4_generate(bool(*cb_randomFillBuffer)(void *buffer, size_t length)):&#160;uuid4.c'],['../group__group__uuid.html#ga422ad643b2bf53504f75e2e1a6369736',1,'uuid4_generate(bool(*cb_randomFillBuffer)(void *buffer, size_t length)):&#160;uuid4.c']]],
+  ['uuid_5fcompare_8',['uuid_compare',['../uuid_8h.html#af9deebc19c7cbf1bfd58fdbf9c17f354',1,'uuid.h']]],
+  ['uuid_5ftostring_9',['uuid_toString',['../group__group__uuid.html#ga859f8385aebbeb391232e67aa09deb67',1,'uuid_toString(UUID4 *uuid):&#160;uuid.c'],['../group__group__uuid.html#ga859f8385aebbeb391232e67aa09deb67',1,'uuid_toString(struct uuid *uuid):&#160;uuid.c']]],
+  ['uuid_5ftostringw_10',['uuid_toStringW',['../group__group__uuid.html#ga4b291aaf5cf3e488c76000766796d572',1,'uuid_toStringW(struct uuid *uuid):&#160;uuid.c'],['../group__group__uuid.html#ga4b291aaf5cf3e488c76000766796d572',1,'uuid_toStringW(struct uuid *uuid):&#160;uuid.c']]]
 ];

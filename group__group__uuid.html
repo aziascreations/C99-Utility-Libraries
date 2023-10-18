@@ -27,7 +27,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign">
-   <div id="projectname">NibblePoker&#39;s Clang Goodies<span id="projectnumber">&#160;0.4.0</span>
+   <div id="projectname">NibblePoker&#39;s Clang Goodies<span id="projectnumber">&#160;0.5.0</span>
    </div>
    <div id="projectbrief">Small collection of utilities and libraries for C in order to simplify some development tasks.</div>
   </td>
@@ -102,14 +102,14 @@ $(document).ready(function(){initNavTree('group__group__uuid.html',''); initResi
 Functions</h2></td></tr>
 <tr class="memitem:ga859f8385aebbeb391232e67aa09deb67"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__uuid.html#ga859f8385aebbeb391232e67aa09deb67">uuid_toString</a> (<a class="el" href="structuuid.html">UUID4</a> *<a class="el" href="structuuid.html">uuid</a>)</td></tr>
 <tr class="separator:ga859f8385aebbeb391232e67aa09deb67"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaad92c0620670c9ce5872f2dd430ca1a2"><td class="memItemLeft" align="right" valign="top">wchar_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__uuid.html#gaad92c0620670c9ce5872f2dd430ca1a2">uuid_toWcharString</a> (struct <a class="el" href="structuuid.html">uuid</a> *<a class="el" href="structuuid.html">uuid</a>)</td></tr>
-<tr class="separator:gaad92c0620670c9ce5872f2dd430ca1a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga12b8132477b8b5bec9314a29660af069"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structuuid.html">UUID4</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__uuid.html#ga12b8132477b8b5bec9314a29660af069">uuid4_generate</a> ()</td></tr>
-<tr class="separator:ga12b8132477b8b5bec9314a29660af069"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4b291aaf5cf3e488c76000766796d572"><td class="memItemLeft" align="right" valign="top">wchar_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__uuid.html#ga4b291aaf5cf3e488c76000766796d572">uuid_toStringW</a> (struct <a class="el" href="structuuid.html">uuid</a> *<a class="el" href="structuuid.html">uuid</a>)</td></tr>
+<tr class="separator:ga4b291aaf5cf3e488c76000766796d572"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga422ad643b2bf53504f75e2e1a6369736"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structuuid.html">UUID4</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__uuid.html#ga422ad643b2bf53504f75e2e1a6369736">uuid4_generate</a> (bool(*cb_randomFillBuffer)(void *buffer, size_t length))</td></tr>
+<tr class="separator:ga422ad643b2bf53504f75e2e1a6369736"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p ><b>Warning:</b><br  />
- The <a class="el" href="group__group__uuid.html#ga12b8132477b8b5bec9314a29660af069">uuid4_generate</a> function uses the rand function internally in order to remain compatible with C99.<br  />
+ The <a class="el" href="group__group__uuid.html#ga422ad643b2bf53504f75e2e1a6369736">uuid4_generate</a> function uses the rand function internally in order to remain compatible with C99.<br  />
  You <b>MUST</b> call srand before generating any UUID if you want random UUIDs and not the same sequence than ones generated in previous executions.<br  />
  If a more secure random number generator is required, you should seek out other implementations of UUID4 generators since C99 and C11 only support <code>rand</code> and <code>srand</code> as far as I could tell.</p>
 <p >The <a class="el" href="structuuid.html">uuid</a> structure isn't explicitly packed since MSVC seems to struggle with the <code>__attribute__((packed))</code> directive.<br  />
@@ -155,17 +155,18 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A <code>char *</code> string containing the representation of the given UUID. </dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>Failure to free the returned string WILL cause memory leaks ! </dd></dl>
 
 </div>
 </div>
-<a id="gaad92c0620670c9ce5872f2dd430ca1a2" name="gaad92c0620670c9ce5872f2dd430ca1a2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaad92c0620670c9ce5872f2dd430ca1a2">&#9670;&#160;</a></span>uuid_toWcharString()</h2>
+<a id="ga4b291aaf5cf3e488c76000766796d572" name="ga4b291aaf5cf3e488c76000766796d572"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga4b291aaf5cf3e488c76000766796d572">&#9670;&#160;</a></span>uuid_toStringW()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">wchar_t * uuid_toWcharString </td>
+          <td class="memname">wchar_t * uuid_toStringW </td>
           <td>(</td>
           <td class="paramtype">struct <a class="el" href="structuuid.html">uuid</a> *&#160;</td>
           <td class="paramname"><em>uuid</em></td><td>)</td>
@@ -177,18 +178,19 @@ Functions</h2></td></tr>
 </p>
 <p >The returned string should match the following regex:<br  />
  &#160;&#160;&#160;&#160;<code>^[0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{12}$</code></p>
-<p >Only available if <code>NP_WIN32</code> is defined during compilation. </p><dl class="params"><dt>Parameters</dt><dd>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">uuid</td><td>The UUID to represent as a string. </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A <code>wchar_t *</code> string containing the representation of the given UUID. </dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>Failure to free the returned string WILL cause memory leaks ! </dd></dl>
 
 </div>
 </div>
-<a id="ga12b8132477b8b5bec9314a29660af069" name="ga12b8132477b8b5bec9314a29660af069"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga12b8132477b8b5bec9314a29660af069">&#9670;&#160;</a></span>uuid4_generate()</h2>
+<a id="ga422ad643b2bf53504f75e2e1a6369736" name="ga422ad643b2bf53504f75e2e1a6369736"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga422ad643b2bf53504f75e2e1a6369736">&#9670;&#160;</a></span>uuid4_generate()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -196,12 +198,20 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="structuuid.html">UUID4</a> * uuid4_generate </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">bool(*)(void *buffer, size_t length)&#160;</td>
+          <td class="paramname"><em>cb_randomFillBuffer</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >Generate a new <a class="el" href="structuuid.html">UUID4</a> and returns its pointer. </p><dl class="section return"><dt>Returns</dt><dd>The <a class="el" href="structuuid.html">UUID4</a>'s pointer, or <code>NULL</code> if an error occurred. </dd></dl>
+<p >Generate a new <a class="el" href="structuuid.html">UUID4</a> and returns its pointer. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cb_randomFillBuffer</td><td>Callback used to fill the UUID4's buffer with random data.<br  />
+ If it returns <code>true</code> the RNG succeeded, if <code>false</code>, the <code>uuid4_generate</code> function will return NULL. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The <a class="el" href="structuuid.html">UUID4</a>'s pointer, or <code>NULL</code> if an error occurred. </dd></dl>
 
 </div>
 </div>
@@ -210,7 +220,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sun Oct 15 2023 20:48:34 for NibblePoker&#39;s Clang Goodies by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Wed Oct 18 2023 23:12:59 for NibblePoker&#39;s Clang Goodies by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>

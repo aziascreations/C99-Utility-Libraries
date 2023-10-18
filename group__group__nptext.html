@@ -27,7 +27,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign">
-   <div id="projectname">NibblePoker&#39;s Clang Goodies<span id="projectnumber">&#160;0.4.0</span>
+   <div id="projectname">NibblePoker&#39;s Clang Goodies<span id="projectnumber">&#160;0.5.0</span>
    </div>
    <div id="projectbrief">Small collection of utilities and libraries for C in order to simplify some development tasks.</div>
   </td>
@@ -100,24 +100,28 @@ $(document).ready(function(){initNavTree('group__group__nptext.html',''); initRe
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga952cc06a6bce31aa2931047ec0f720d7"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__nptext.html#ga952cc06a6bce31aa2931047ec0f720d7">copyString</a> (char *stringToCopy)</td></tr>
-<tr class="separator:ga952cc06a6bce31aa2931047ec0f720d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaeee816549c859da05febc301d34e36de"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__nptext.html#gaeee816549c859da05febc301d34e36de">stringStartsWith</a> (char *string, char *prefix)</td></tr>
-<tr class="separator:gaeee816549c859da05febc301d34e36de"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga8f4f4f3e2bf948124e34f32fbe593610"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__nptext.html#ga8f4f4f3e2bf948124e34f32fbe593610">isStringEmpty</a> (char *string)</td></tr>
-<tr class="separator:ga8f4f4f3e2bf948124e34f32fbe593610"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga897836327167edc2a25c305874e36074"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__nptext.html#ga897836327167edc2a25c305874e36074">nextCharSpaceIndex</a> (const char *string, int startIndex)</td></tr>
-<tr class="separator:ga897836327167edc2a25c305874e36074"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac5f05d61789b552dae560425249819ff"><td class="memItemLeft" align="right" valign="top">wchar_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__nptext.html#gac5f05d61789b552dae560425249819ff">copyWCharString</a> (wchar_t *stringToCopy)</td></tr>
-<tr class="separator:gac5f05d61789b552dae560425249819ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gabe29c7f1744260c89c5148c3195f4c22"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__nptext.html#gabe29c7f1744260c89c5148c3195f4c22">wCharStringStartsWith</a> (wchar_t *string, wchar_t *prefix)</td></tr>
-<tr class="separator:gabe29c7f1744260c89c5148c3195f4c22"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa726c3c6dd75c3dd43f51d01c892f2dd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__nptext.html#gaa726c3c6dd75c3dd43f51d01c892f2dd">isWCharStringEmpty</a> (wchar_t *string)</td></tr>
-<tr class="separator:gaa726c3c6dd75c3dd43f51d01c892f2dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga3f87e67f0c001bbec26e141eae906c26"><td class="memItemLeft" align="right" valign="top">wchar_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__nptext.html#ga3f87e67f0c001bbec26e141eae906c26">charStringToWChar</a> (char *originalString)</td></tr>
-<tr class="separator:ga3f87e67f0c001bbec26e141eae906c26"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa6dd80bf6a0013a3bbdf90c1f2d4e40b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__nptext.html#gaa6dd80bf6a0013a3bbdf90c1f2d4e40b">nextWCharSpaceIndex</a> (const wchar_t *string, int startIndex)</td></tr>
-<tr class="separator:gaa6dd80bf6a0013a3bbdf90c1f2d4e40b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9849ce5261708cde89064006bca37e16"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__nptext.html#ga9849ce5261708cde89064006bca37e16">text_copy</a> (const char *string)</td></tr>
+<tr class="separator:ga9849ce5261708cde89064006bca37e16"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaba3d35bef49c264a43d7421ac331b3fb"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__nptext.html#gaba3d35bef49c264a43d7421ac331b3fb">text_copy_s</a> (const char *string, size_t maxLength)</td></tr>
+<tr class="separator:gaba3d35bef49c264a43d7421ac331b3fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga789c0c23db4d5e4734f6a9cf4a0b8638"><td class="memItemLeft" align="right" valign="top">wchar_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__nptext.html#ga789c0c23db4d5e4734f6a9cf4a0b8638">text_copyW</a> (const wchar_t *string)</td></tr>
+<tr class="separator:ga789c0c23db4d5e4734f6a9cf4a0b8638"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga34073395361fa67dbe8c2457df5f4182"><td class="memItemLeft" align="right" valign="top">wchar_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__nptext.html#ga34073395361fa67dbe8c2457df5f4182">text_copyW_s</a> (const wchar_t *string, size_t maxLength)</td></tr>
+<tr class="separator:ga34073395361fa67dbe8c2457df5f4182"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gafcb8226e205a446987cf07508ca15cd1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__nptext.html#gafcb8226e205a446987cf07508ca15cd1">text_startsWith</a> (const char *string, const char *prefix)</td></tr>
+<tr class="separator:gafcb8226e205a446987cf07508ca15cd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2e12e8d8eca74d7bb157462bb3972e27"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__nptext.html#ga2e12e8d8eca74d7bb157462bb3972e27">text_startsWithW</a> (const wchar_t *string, const wchar_t *prefix)</td></tr>
+<tr class="separator:ga2e12e8d8eca74d7bb157462bb3972e27"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga15b2e00f2b60bd676d26b0ddffd6552f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__nptext.html#ga15b2e00f2b60bd676d26b0ddffd6552f">text_isEmpty</a> (const char *string)</td></tr>
+<tr class="separator:ga15b2e00f2b60bd676d26b0ddffd6552f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5b2029cd63be69d49d569d5b9da7e63f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__nptext.html#ga5b2029cd63be69d49d569d5b9da7e63f">text_isEmptyW</a> (const wchar_t *string)</td></tr>
+<tr class="separator:ga5b2029cd63be69d49d569d5b9da7e63f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaedf63a2088fb8d73cd954ed1d4bfa7ec"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__nptext.html#gaedf63a2088fb8d73cd954ed1d4bfa7ec">text_nextSpaceIndex</a> (const char *string, int startIndex)</td></tr>
+<tr class="separator:gaedf63a2088fb8d73cd954ed1d4bfa7ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7fb25539d989383c641a180b347a249b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__nptext.html#ga7fb25539d989383c641a180b347a249b">text_nextSpaceIndexW</a> (const wchar_t *string, int startIndex)</td></tr>
+<tr class="separator:ga7fb25539d989383c641a180b347a249b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3f143e33653718693e095c2cf7cd25d2"><td class="memItemLeft" align="right" valign="top">wchar_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__nptext.html#ga3f143e33653718693e095c2cf7cd25d2">text_charToWChar</a> (const char *originalString)</td></tr>
+<tr class="separator:ga3f143e33653718693e095c2cf7cd25d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gac7a8ab001fe7dc51e89f16c447f89b19"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__nptext.html#gac7a8ab001fe7dc51e89f16c447f89b19">text_copyLine</a> (const char *string, size_t stringLength, char **nextLine, size_t *nextLineMaxLength)</td></tr>
 <tr class="separator:gac7a8ab001fe7dc51e89f16c447f89b19"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga29b1afe340b45c4831a808b0d4bf6b9f"><td class="memItemLeft" align="right" valign="top">wchar_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__nptext.html#ga29b1afe340b45c4831a808b0d4bf6b9f">text_copyLineW</a> (const wchar_t *string, size_t stringLength, wchar_t **nextLine, size_t *nextLineMaxLength)</td></tr>
@@ -126,48 +130,148 @@ Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p >Collection of various utility functions for <code>char</code> and <code>wchar_t</code> based strings. </p>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="ga952cc06a6bce31aa2931047ec0f720d7" name="ga952cc06a6bce31aa2931047ec0f720d7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga952cc06a6bce31aa2931047ec0f720d7">&#9670;&#160;</a></span>copyString()</h2>
+<a id="ga9849ce5261708cde89064006bca37e16" name="ga9849ce5261708cde89064006bca37e16"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga9849ce5261708cde89064006bca37e16">&#9670;&#160;</a></span>text_copy()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">char * copyString </td>
+          <td class="memname">char * text_copy </td>
           <td>(</td>
-          <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>stringToCopy</em></td><td>)</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>string</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >Copies the given string into a new buffer and returns said buffer as-is.<br  />
- Uses <code>strcpy_s</code> internally. </p><dl class="params"><dt>Parameters</dt><dd>
+<p >Copies the given string into a new buffer and returns said buffer as-is. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">stringToCopy</td><td>The string to be copied. </td></tr>
+    <tr><td class="paramname">string</td><td>The string to be copied. </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The copied string's pointer, or <code>NULL</code> if an error occurred. </dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>Failure to free the returned string WILL cause memory leaks ! </dd></dl>
 
 </div>
 </div>
-<a id="gaeee816549c859da05febc301d34e36de" name="gaeee816549c859da05febc301d34e36de"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaeee816549c859da05febc301d34e36de">&#9670;&#160;</a></span>stringStartsWith()</h2>
+<a id="gaba3d35bef49c264a43d7421ac331b3fb" name="gaba3d35bef49c264a43d7421ac331b3fb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaba3d35bef49c264a43d7421ac331b3fb">&#9670;&#160;</a></span>text_copy_s()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool stringStartsWith </td>
+          <td class="memname">char * text_copy_s </td>
           <td>(</td>
-          <td class="paramtype">char *&#160;</td>
+          <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>string</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">char *&#160;</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>maxLength</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Copies the given string into a new buffer and returns said buffer as-is. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">string</td><td>The string to be copied. </td></tr>
+    <tr><td class="paramname">maxLength</td><td>The string's maximum character count, not including the trailing NULL byte. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The copied string's pointer, or <code>NULL</code> if an error occurred. </dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>Failure to free the returned string WILL cause memory leaks ! </dd></dl>
+
+</div>
+</div>
+<a id="ga789c0c23db4d5e4734f6a9cf4a0b8638" name="ga789c0c23db4d5e4734f6a9cf4a0b8638"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga789c0c23db4d5e4734f6a9cf4a0b8638">&#9670;&#160;</a></span>text_copyW()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">wchar_t * text_copyW </td>
+          <td>(</td>
+          <td class="paramtype">const wchar_t *&#160;</td>
+          <td class="paramname"><em>string</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Copies the given string into a new buffer and returns said buffer as-is. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">string</td><td>The string to be copied. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The copied string's pointer, or <code>NULL</code> if an error occurred. </dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>Failure to free the returned string WILL cause memory leaks ! </dd></dl>
+
+</div>
+</div>
+<a id="ga34073395361fa67dbe8c2457df5f4182" name="ga34073395361fa67dbe8c2457df5f4182"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga34073395361fa67dbe8c2457df5f4182">&#9670;&#160;</a></span>text_copyW_s()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">wchar_t * text_copyW_s </td>
+          <td>(</td>
+          <td class="paramtype">const wchar_t *&#160;</td>
+          <td class="paramname"><em>string</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>maxLength</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Copies the given string into a new buffer and returns said buffer as-is. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">string</td><td>The string to be copied. </td></tr>
+    <tr><td class="paramname">maxLength</td><td>The string's maximum character count. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The copied string's pointer, or <code>NULL</code> if an error occurred. </dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>Failure to free the returned string WILL cause memory leaks ! </dd></dl>
+
+</div>
+</div>
+<a id="gafcb8226e205a446987cf07508ca15cd1" name="gafcb8226e205a446987cf07508ca15cd1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gafcb8226e205a446987cf07508ca15cd1">&#9670;&#160;</a></span>text_startsWith()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool text_startsWith </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>string</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>prefix</em>&#160;</td>
         </tr>
         <tr>
@@ -188,16 +292,52 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ga8f4f4f3e2bf948124e34f32fbe593610" name="ga8f4f4f3e2bf948124e34f32fbe593610"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga8f4f4f3e2bf948124e34f32fbe593610">&#9670;&#160;</a></span>isStringEmpty()</h2>
+<a id="ga2e12e8d8eca74d7bb157462bb3972e27" name="ga2e12e8d8eca74d7bb157462bb3972e27"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga2e12e8d8eca74d7bb157462bb3972e27">&#9670;&#160;</a></span>text_startsWithW()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool isStringEmpty </td>
+          <td class="memname">bool text_startsWithW </td>
           <td>(</td>
-          <td class="paramtype">char *&#160;</td>
+          <td class="paramtype">const wchar_t *&#160;</td>
+          <td class="paramname"><em>string</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const wchar_t *&#160;</td>
+          <td class="paramname"><em>prefix</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Checks if a given <em>string</em> starts with a given <em>prefix</em>. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">string</td><td>The searched string. </td></tr>
+    <tr><td class="paramname">prefix</td><td>The prefix to be searched for in <em>string</em>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if the string starts with the given prefix, <code>false</code> otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="ga15b2e00f2b60bd676d26b0ddffd6552f" name="ga15b2e00f2b60bd676d26b0ddffd6552f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga15b2e00f2b60bd676d26b0ddffd6552f">&#9670;&#160;</a></span>text_isEmpty()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool text_isEmpty </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>string</em></td><td>)</td>
           <td></td>
         </tr>
@@ -213,14 +353,39 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ga897836327167edc2a25c305874e36074" name="ga897836327167edc2a25c305874e36074"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga897836327167edc2a25c305874e36074">&#9670;&#160;</a></span>nextCharSpaceIndex()</h2>
+<a id="ga5b2029cd63be69d49d569d5b9da7e63f" name="ga5b2029cd63be69d49d569d5b9da7e63f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga5b2029cd63be69d49d569d5b9da7e63f">&#9670;&#160;</a></span>text_isEmptyW()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int nextCharSpaceIndex </td>
+          <td class="memname">bool text_isEmptyW </td>
+          <td>(</td>
+          <td class="paramtype">const wchar_t *&#160;</td>
+          <td class="paramname"><em>string</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Checks if the given <em>string</em> is <code>NULL</code>, empty or filled with spaces. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">string</td><td>The string to be checked. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if the string is empty, <code>false</code> otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="gaedf63a2088fb8d73cd954ed1d4bfa7ec" name="gaedf63a2088fb8d73cd954ed1d4bfa7ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaedf63a2088fb8d73cd954ed1d4bfa7ec">&#9670;&#160;</a></span>text_nextSpaceIndex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int text_nextSpaceIndex </td>
           <td>(</td>
           <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>string</em>, </td>
@@ -249,127 +414,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="gac5f05d61789b552dae560425249819ff" name="gac5f05d61789b552dae560425249819ff"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gac5f05d61789b552dae560425249819ff">&#9670;&#160;</a></span>copyWCharString()</h2>
+<a id="ga7fb25539d989383c641a180b347a249b" name="ga7fb25539d989383c641a180b347a249b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga7fb25539d989383c641a180b347a249b">&#9670;&#160;</a></span>text_nextSpaceIndexW()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">wchar_t * copyWCharString </td>
-          <td>(</td>
-          <td class="paramtype">wchar_t *&#160;</td>
-          <td class="paramname"><em>stringToCopy</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p >Copies the given string into a new buffer and returns said buffer as-is.<br  />
- Uses <code>wcscpy_s</code> internally. </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">stringToCopy</td><td>The string to be copied. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The copied string's pointer, or <code>NULL</code> if an error occurred. </dd></dl>
-
-</div>
-</div>
-<a id="gabe29c7f1744260c89c5148c3195f4c22" name="gabe29c7f1744260c89c5148c3195f4c22"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gabe29c7f1744260c89c5148c3195f4c22">&#9670;&#160;</a></span>wCharStringStartsWith()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool wCharStringStartsWith </td>
-          <td>(</td>
-          <td class="paramtype">wchar_t *&#160;</td>
-          <td class="paramname"><em>string</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">wchar_t *&#160;</td>
-          <td class="paramname"><em>prefix</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p >Checks if a given <em>string</em> starts with a given <em>prefix</em>. </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">string</td><td>The searched string. </td></tr>
-    <tr><td class="paramname">prefix</td><td>The prefix to be searched for in <em>string</em>. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd><code>true</code> if the string starts with the given prefix, <code>false</code> otherwise. </dd></dl>
-
-</div>
-</div>
-<a id="gaa726c3c6dd75c3dd43f51d01c892f2dd" name="gaa726c3c6dd75c3dd43f51d01c892f2dd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaa726c3c6dd75c3dd43f51d01c892f2dd">&#9670;&#160;</a></span>isWCharStringEmpty()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool isWCharStringEmpty </td>
-          <td>(</td>
-          <td class="paramtype">wchar_t *&#160;</td>
-          <td class="paramname"><em>string</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p >Checks if the given <em>string</em> is <code>NULL</code>, empty or filled with spaces. </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">string</td><td>The string to be checked. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd><code>true</code> if the string is empty, <code>false</code> otherwise. </dd></dl>
-
-</div>
-</div>
-<a id="ga3f87e67f0c001bbec26e141eae906c26" name="ga3f87e67f0c001bbec26e141eae906c26"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga3f87e67f0c001bbec26e141eae906c26">&#9670;&#160;</a></span>charStringToWChar()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">wchar_t * charStringToWChar </td>
-          <td>(</td>
-          <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>originalString</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p >Converts a given <code>char</code> string into a <code>wchar_t</code> one and returns its pointer.<br  />
- You will need to free the returned pointer when appropriate. </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">originalString</td><td>The original string to be copied </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The converted string's pointer, or <code>NULL</code> if an error occurred. </dd></dl>
-
-</div>
-</div>
-<a id="gaa6dd80bf6a0013a3bbdf90c1f2d4e40b" name="gaa6dd80bf6a0013a3bbdf90c1f2d4e40b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaa6dd80bf6a0013a3bbdf90c1f2d4e40b">&#9670;&#160;</a></span>nextWCharSpaceIndex()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int nextWCharSpaceIndex </td>
+          <td class="memname">int text_nextSpaceIndexW </td>
           <td>(</td>
           <td class="paramtype">const wchar_t *&#160;</td>
           <td class="paramname"><em>string</em>, </td>
@@ -395,6 +447,32 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The index at which the next space will be located if found, or the string's end index. </dd></dl>
+
+</div>
+</div>
+<a id="ga3f143e33653718693e095c2cf7cd25d2" name="ga3f143e33653718693e095c2cf7cd25d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga3f143e33653718693e095c2cf7cd25d2">&#9670;&#160;</a></span>text_charToWChar()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">wchar_t * text_charToWChar </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>originalString</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Converts a given <code>char</code> string into a <code>wchar_t</code> one and returns its pointer. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">originalString</td><td>The original string to be copied </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The converted string's pointer, or <code>NULL</code> if an error occurred. </dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>Failure to free the returned string WILL cause memory leaks ! </dd></dl>
 
 </div>
 </div>
@@ -515,7 +593,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sun Oct 15 2023 20:48:34 for NibblePoker&#39;s Clang Goodies by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Wed Oct 18 2023 23:12:59 for NibblePoker&#39;s Clang Goodies by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>
