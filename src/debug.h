@@ -85,8 +85,6 @@
             printf(fmt, __VA_ARGS__); \
             printf("\n")
 
-#if defined(NP_PLATFORM_SUPPORTS_WCHAR_T)
-
 /*!
  * Only available if `NP_DEBUG_LOGGING` and `NP_WIN32` are defined during compilation.
  * \param fmt A `char` string using standard `printf` formatting.
@@ -143,7 +141,6 @@
             printf("T> %s:%d:%s() - ", __FILE__, __LINE__, __func__); \
             wprintf(L##fmt, __VA_ARGS__); \
             printf("\n")
-#endif
 
 #else
 
@@ -159,8 +156,6 @@
 
 #define trace_println(fmt, ...)
 
-#ifdef NP_WIN32
-
 #define debug_wprint(fmt, ...)
 
 #define debug_wprintln(fmt, ...)
@@ -172,8 +167,6 @@
 #define trace_wprint(fmt, ...)
 
 #define trace_wprintln(fmt, ...)
-
-#endif
 
 #endif
 
