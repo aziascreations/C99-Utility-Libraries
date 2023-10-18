@@ -31,6 +31,10 @@ static const char *text_33 = "Line 1\n\r\n\rLine 3";
 static const char *text_40 = "Line 1\rLine 2\0Line 3";
 
 int main(void) {
+	// Preliminary tests
+	assert(text_copyLine(NULL, 42, NULL, NULL) == NULL,
+		   "Returns NULL if `string` is NULL and length is positive")
+		   
 	// Preparing temporary variables.
 	char *tmpLine = NULL;
 	char *tmpNextLine = NULL;

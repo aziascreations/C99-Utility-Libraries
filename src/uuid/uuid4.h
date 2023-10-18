@@ -2,6 +2,7 @@
 
 #pragma once
 
+#include <stdbool.h>
 #include <stdlib.h>
 
 #include "../platform.h"
@@ -17,6 +18,9 @@
 
 /**
  * Generate a new \ref uuid "UUID4" and returns its pointer.
+ * @param cb_randomFillBuffer Callback used to fill the UUID4's buffer with random data.<br>
+ *                            If it returns `true` the RNG succeeded, if `false`, the `uuid4_generate` function will
+ *                            return NULL.
  * @return The \ref uuid "UUID4"'s pointer, or `NULL` if an error occurred.
  */
-DLL_EXP_UUID4 UUID4 *uuid4_generate();
+DLL_EXP_UUID4 UUID4 *uuid4_generate(bool (*cb_randomFillBuffer)(void *buffer, size_t length));

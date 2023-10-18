@@ -6,7 +6,7 @@
 
 DOXYFILE_ENCODING      = UTF-8
 PROJECT_NAME           = "NibblePoker's Clang Goodies"
-PROJECT_NUMBER         = "0.4.0"
+PROJECT_NUMBER         = "0.5.0"
 PROJECT_BRIEF          = "Small collection of utilities and libraries for C in order to simplify some development tasks."
 PROJECT_LOGO           = "./logo.png"
 OUTPUT_DIRECTORY       =

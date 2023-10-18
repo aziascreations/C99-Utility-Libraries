@@ -14,6 +14,8 @@
  * \see https://sourceforge.net/p/predef/wiki/Architectures/
  * \see https://sourceforge.net/p/predef/wiki/Compilers/
  * \see https://sourceforge.net/p/predef/wiki/OperatingSystems/
+ * \see https://sourceforge.net/p/predef/wiki/Standards/
+ * \see https://learn.microsoft.com/en-us/cpp/preprocessor/predefined-macros
  * \see [platforms.md](../platforms.md)
  *
  * @{
@@ -23,7 +25,7 @@
 // Others: __APPLE__, __FreeBSD__, __NetBSD__, __OpenBSD__, __sun, _AIX, __HAIKU__, __ANDROID__
 
 #if defined(_WIN32) || defined(_WIN64)
-    #define NP_OS_WIN
+    #define NP_OS_WINDOWS
 #elif defined(__linux__)
     #define NP_OS_UNIX
     #define NP_OS_LINUX
@@ -71,6 +73,43 @@
     #define NP_ARCH_ARM_GENERIC
 #else
     #define NP_ARCH_UNKNOWN
+#endif
+
+
+// See: https://sourceforge.net/p/predef/wiki/Standards/
+
+#if defined(__STDC_VERSION__) && (__STDC_VERSION__ >= 199409L)
+	#define NP_STDC_C94
+#endif
+#if defined(__STDC_VERSION__) && (__STDC_VERSION__ >= 199901L)
+	#define NP_STDC_C99
+#endif
+#if defined(__STDC_VERSION__) && (__STDC_VERSION__ >= 201112L)
+	#define NP_STDC_C11
+#endif
+#if defined(__STDC_VERSION__) && (__STDC_VERSION__ >= 201710L)
+	#define NP_STDC_C18
+#endif
+
+#if defined(__STDC__) || defined(NP_STDC_C94)
+	#define NP_STDC_C89
+	#define NP_STDC_C90
+#endif
+
+#if !defined(__STDC__) && !defined(NP_STDC_C94)
+	#define NP_STDC_UNKNOWN
+#endif
+
+
+// Small fix for MSVC if no specific standard was EXPLICITLY given to the MSVC compiler.
+// See: https://learn.microsoft.com/en-us/cpp/preprocessor/predefined-macros
+// FIXME: Flesh out and test properly
+#if defined(NP_STDC_UNKNOWN) && defined(NP_COMPILER_MSVC)
+	#undef NP_STDC_UNKNOWN
+	#define NP_STDC_C89
+	#define NP_STDC_C90
+	#define NP_STDC_C99
+	#define NP_STDC_C11
 #endif
 
 

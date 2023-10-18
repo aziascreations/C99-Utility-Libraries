@@ -45,28 +45,28 @@ char *uuid_toString(UUID4 *uuid) {
 		uuidString = malloc(sizeof(char) * (UUID_CHAR_COUNT + 1));
 		
 		if(uuidString != NULL) {
-			// TODO: Restore when using C11 !
-			/*if(sprintf_s(uuidString, UUID_CHAR_COUNT + 1, "%08X-%04X-%04X-%04X-%04X%04X%04X",
-						 ((uint32_t *)uuid)[0], ((uint16_t *)uuid)[2], ((uint16_t *)uuid)[3], ((uint16_t *)uuid)[4],
-						 ((uint16_t *)uuid)[5], ((uint16_t *)uuid)[6], ((uint16_t *)uuid)[7]) < 0) {
-				free(uuidString);
-				uuidString = NULL;
-			}*/
-			if(sprintf(uuidString, "%08X-%04X-%04X-%04X-%04X%04X%04X",
+			#if defined(NP_GOODIES_ADD_C11_OPTIMIZATIONS) && defined(NP_STDC_C11)
+			if(sprintf_s(uuidString, UUID_CHAR_COUNT + 1, "%08X-%04X-%04X-%04X-%04X%04X%04X",
 						 ((uint32_t *)uuid)[0], ((uint16_t *)uuid)[2], ((uint16_t *)uuid)[3], ((uint16_t *)uuid)[4],
 						 ((uint16_t *)uuid)[5], ((uint16_t *)uuid)[6], ((uint16_t *)uuid)[7]) < 0) {
 				free(uuidString);
 				uuidString = NULL;
 			}
+			#else
+			if(sprintf(uuidString, "%08X-%04X-%04X-%04X-%04X%04X%04X",
+					   ((uint32_t *)uuid)[0], ((uint16_t *)uuid)[2], ((uint16_t *)uuid)[3], ((uint16_t *)uuid)[4],
+					   ((uint16_t *)uuid)[5], ((uint16_t *)uuid)[6], ((uint16_t *)uuid)[7]) < 0) {
+				free(uuidString);
+				uuidString = NULL;
+			}
+			#endif
 		}
 	}
 	
 	return uuidString;
 }
 
-#ifdef NP_WIN32
-
-wchar_t *uuid_toWcharString(struct uuid *uuid) {
+wchar_t *uuid_toStringW(struct uuid *uuid) {
 	// C99-compatible compile-time check for the UUID4 structure's size.
 	NP_GOODIES_UUID_CHECK_STRUCT_SIZE(sizeof(UUID4) != UUID_BYTE_LENGTH);
 	
@@ -76,19 +76,25 @@ wchar_t *uuid_toWcharString(struct uuid *uuid) {
 		uuidString = malloc(sizeof(wchar_t) * (UUID_CHAR_COUNT + 1));
 		
 		if(uuidString != NULL) {
-			// FIXME: Check if it works on other WIN32 compilers !
+			#if defined(NP_GOODIES_ADD_C11_OPTIMIZATIONS) && defined(NP_STDC_C11)
 			if(swprintf_s(uuidString, UUID_CHAR_COUNT + 1, L"%08X-%04X-%04X-%04X-%04X%04X%04X",
 						  ((uint32_t *)uuid)[0], ((uint16_t *)uuid)[2], ((uint16_t *)uuid)[3], ((uint16_t *)uuid)[4],
 						  ((uint16_t *)uuid)[5], ((uint16_t *)uuid)[6], ((uint16_t *)uuid)[7]) < 0) {
 				free(uuidString);
 				uuidString = NULL;
 			}
+			#else
+			if(swprintf(uuidString, UUID_CHAR_COUNT + 1, L"%08X-%04X-%04X-%04X-%04X%04X%04X",
+						((uint32_t *)uuid)[0], ((uint16_t *)uuid)[2], ((uint16_t *)uuid)[3], ((uint16_t *)uuid)[4],
+						((uint16_t *)uuid)[5], ((uint16_t *)uuid)[6], ((uint16_t *)uuid)[7]) < 0) {
+				free(uuidString);
+				uuidString = NULL;
+			}
+			#endif
 		}
 	}
 	
 	return uuidString;
 }
-
-#endif
 
 /** @} */ // end of group_uuid

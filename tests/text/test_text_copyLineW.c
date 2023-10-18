@@ -31,6 +31,10 @@ static const wchar_t *text_33 = L"Line 1\n\r\n\rLine 3";
 static const wchar_t *text_40 = L"Line 1\rLine 2\0Line 3";
 
 int main(void) {
+	// Preliminary tests
+	assert(text_copyLineW(NULL, 42, NULL, NULL) == NULL,
+		   "Returns NULL if `string` is NULL and length is positive")
+		   
 	// Preparing temporary variables.
 	wchar_t *tmpLine = NULL;
 	wchar_t *tmpNextLine = NULL;
@@ -49,12 +53,12 @@ int main(void) {
 		assert(text_01 != tmpLine, "Text 01: Copied line doesn't point to the original.")
 
         #ifndef NP_OS_WINDOWS
-        assert(memUtils_getSize(tmpLine) >= sizeof(char) * 20, "Text 01: Copied line's memory size is `>=20` chars long.")
+        assert(memUtils_getSize(tmpLine) >= sizeof(wchar_t) * 20, "Text 01: Copied line's memory size is `>=20` wchar long.")
         #else
-        assert(memUtils_getSize(tmpLine) == sizeof(char) * 20, "Text 01: Copied line's memory size is `==20` chars long.")
+        assert(memUtils_getSize(tmpLine) == sizeof(wchar_t) * 20, "Text 01: Copied line's memory size is `==20` wchar long.")
         #endif
 
-		assert(wcslen(tmpLine) == 19, "Text 01: Copied line's wcslen is `19` chars long.")
+		assert(wcslen(tmpLine) == 19, "Text 01: Copied line's wcslen is `19` wchar long.")
 		
 		assert(tmpNextLine == NULL, "Text 01: Has no 2nd line.")
 		assert(tmpNextLength == 0, "Text 01: Has zero characters left.")
@@ -70,12 +74,12 @@ int main(void) {
 		tmpLine = text_copyLineW(text_01, wcslen(text_01) - 5, &tmpNextLine, &tmpNextLength);
 
         #ifndef NP_OS_WINDOWS
-        assert(memUtils_getSize(tmpLine) >= sizeof(char) * 15, "Text 01 - Undersized: Copied line's memory size is `>=15` chars long.")
+        assert(memUtils_getSize(tmpLine) >= sizeof(wchar_t) * 15, "Text 01 - Undersized: Copied line's memory size is `>=15` wchar long.")
         #else
-        assert(memUtils_getSize(tmpLine) == sizeof(char) * 15, "Text 01 - Undersized: Copied line's memory size is `==15` chars long.")
+        assert(memUtils_getSize(tmpLine) == sizeof(wchar_t) * 15, "Text 01 - Undersized: Copied line's memory size is `==15` wchar long.")
         #endif
 
-        assert(wcslen(tmpLine) == 14, "Text 01 - Undersized: Copied line's wcslen is `14` chars long.")
+        assert(wcslen(tmpLine) == 14, "Text 01 - Undersized: Copied line's wcslen is `14` wchar long.")
 		assert(tmpNextLine == NULL, "Text 01 - Undersized: Has no 2nd line.")
 		assert(tmpNextLength == 0, "Text 01 - Undersized: Has zero characters left.")
 		
@@ -102,7 +106,7 @@ int main(void) {
 		// This is an edge-case TBH, and it shouldn't happen unless voluntarily provoked.
 		tmpLine = text_copyLineW(text_02, wcslen(text_02) + 42, &tmpNextLine, &tmpNextLength);
 		assert(tmpLine != NULL, "Text 02: Copied line isn't NULL anymore, its length was faked.")
-		assert(wcslen(tmpLine) == 0, "Text 02: Copied line's wcslen is `0` chars long.")
+		assert(wcslen(tmpLine) == 0, "Text 02: Copied line's wcslen is `0` wchar long.")
 		assert(tmpNextLine == NULL, "Text 02: Has no 2nd line.")
 		assert(tmpNextLength == 0, "Text 02: Has zero characters left.")
 		
@@ -121,11 +125,11 @@ int main(void) {
 		
 		tmpLine = text_copyLineW(text_10, wcslen(text_10), &tmpNextLine, &tmpNextLength);
         #ifndef NP_OS_WINDOWS
-        assert(memUtils_getSize(tmpLine) >= sizeof(char) * 7, "Text 10: Copied line's memory size is `>=7` chars long.")
+        assert(memUtils_getSize(tmpLine) >= sizeof(wchar_t) * 7, "Text 10: Copied line's memory size is `>=7` wchar long.")
         #else
-        assert(memUtils_getSize(tmpLine) == sizeof(char) * 7, "Text 10: Copied line's memory size is `==7` chars long.")
+        assert(memUtils_getSize(tmpLine) == sizeof(wchar_t) * 7, "Text 10: Copied line's memory size is `==7` wchar long.")
         #endif
-        assert(wcslen(tmpLine) == 6, "Text 10: Copied line's wcslen is `6` chars long.")
+        assert(wcslen(tmpLine) == 6, "Text 10: Copied line's wcslen is `6` wchar long.")
 		assert(tmpNextLine == NULL, "Text 10: Has no 2nd line.")
 		assert(tmpNextLength == 0, "Text 10: Has zero characters left.")
 		free(tmpLine);
@@ -135,11 +139,11 @@ int main(void) {
 		
 		tmpLine = text_copyLineW(text_11, wcslen(text_11), &tmpNextLine, &tmpNextLength);
         #ifndef NP_OS_WINDOWS
-        assert(memUtils_getSize(tmpLine) >= sizeof(char) * 7, "Text 11: Copied line's memory size is `>=7` chars long.")
+        assert(memUtils_getSize(tmpLine) >= sizeof(wchar_t) * 7, "Text 11: Copied line's memory size is `>=7` wchar long.")
         #else
-        assert(memUtils_getSize(tmpLine) == sizeof(char) * 7, "Text 11: Copied line's memory size is `==7` chars long.")
+        assert(memUtils_getSize(tmpLine) == sizeof(wchar_t) * 7, "Text 11: Copied line's memory size is `==7` wchar long.")
         #endif
-        assert(wcslen(tmpLine) == 6, "Text 11: Copied line's wcslen is `6` chars long.")
+        assert(wcslen(tmpLine) == 6, "Text 11: Copied line's wcslen is `6` wchar long.")
 		assert(tmpNextLine == NULL, "Text 11: Has no 2nd line.")
 		assert(tmpNextLength == 0, "Text 11: Has zero characters left.")
 		free(tmpLine);
@@ -149,11 +153,11 @@ int main(void) {
 		
 		tmpLine = text_copyLineW(text_12, wcslen(text_12), &tmpNextLine, &tmpNextLength);
 		#ifndef NP_OS_WINDOWS
-        assert(memUtils_getSize(tmpLine) >= sizeof(char) * 9, "Text 12: Copied line's memory size is `>=9` chars long.")
+        assert(memUtils_getSize(tmpLine) >= sizeof(wchar_t) * 9, "Text 12: Copied line's memory size is `>=9` wchar long.")
         #else
-        assert(memUtils_getSize(tmpLine) == sizeof(char) * 9, "Text 12: Copied line's memory size is `==9` chars long.")
+        assert(memUtils_getSize(tmpLine) == sizeof(wchar_t) * 9, "Text 12: Copied line's memory size is `==9` wchar long.")
         #endif
-		assert(wcslen(tmpLine) == 8, "Text 12: Copied line's wcslen is `8` chars long.")
+		assert(wcslen(tmpLine) == 8, "Text 12: Copied line's wcslen is `8` wchar long.")
 		assert(tmpNextLine == NULL, "Text 12: Has no 2nd line.")
 		assert(tmpNextLength == 0, "Text 12: Has zero characters left.")
 		free(tmpLine);
@@ -163,11 +167,11 @@ int main(void) {
 		
 		tmpLine = text_copyLineW(text_13, wcslen(text_13), &tmpNextLine, &tmpNextLength);
         #ifndef NP_OS_WINDOWS
-        assert(memUtils_getSize(tmpLine) >= sizeof(char) * 9, "Text 13: Copied line's memory size is `>=9` chars long.")
+        assert(memUtils_getSize(tmpLine) >= sizeof(wchar_t) * 9, "Text 13: Copied line's memory size is `>=9` wchar long.")
         #else
-        assert(memUtils_getSize(tmpLine) == sizeof(char) * 9, "Text 13: Copied line's memory size is `==9` chars long.")
+        assert(memUtils_getSize(tmpLine) == sizeof(wchar_t) * 9, "Text 13: Copied line's memory size is `==9` wchar long.")
         #endif
-        assert(wcslen(tmpLine) == 8, "Text 13: Copied line's wcslen is `8` chars long.")
+        assert(wcslen(tmpLine) == 8, "Text 13: Copied line's wcslen is `8` wchar long.")
 		assert(tmpNextLine == NULL, "Text 13: Has no 2nd line.")
 		assert(tmpNextLength == 0, "Text 13: Has zero characters left.")
 		free(tmpLine);
@@ -183,11 +187,11 @@ int main(void) {
 		tmpLine = text_copyLineW(text_14, wcslen(text_14) + 2, &tmpNextLine, &tmpNextLength);
 
         #ifndef NP_OS_WINDOWS
-        assert(memUtils_getSize(tmpLine) >= sizeof(char) * 9, "Text 14: Copied line's memory size is `>=9` chars long.")
+        assert(memUtils_getSize(tmpLine) >= sizeof(wchar_t) * 9, "Text 14: Copied line's memory size is `>=9` wchar long.")
         #else
-        assert(memUtils_getSize(tmpLine) == sizeof(char) * 9, "Text 14: Copied line's memory size is `==9` chars long.")
+        assert(memUtils_getSize(tmpLine) == sizeof(wchar_t) * 9, "Text 14: Copied line's memory size is `==9` wchar long.")
         #endif
-        assert(wcslen(tmpLine) == 8, "Text 14: Copied line's wcslen is `8` chars long.")
+        assert(wcslen(tmpLine) == 8, "Text 14: Copied line's wcslen is `8` wchar long.")
 		
 		assert(tmpNextLine == NULL, "Text 14: Has no 2nd line. (Ended with a '\\0')")
 		assert(tmpNextLength == 0, "Text 14: Has zero characters left.")

@@ -11,10 +11,10 @@ int main() {
 	// We're also making a copy of these strings so that they can be freed later on.
 	// If we use "static" strings will get some errors when they are passed to the `&free` function.
 	// This can be ignored to some extent by using a custom data freeing callback as show in other examples.
-	dllist_append(myList, copyString("Hello world !"), NULL);
-	dllist_append(myList, copyString("Lorem ipsum donor si amet."), NULL);
-	dllist_append(myList, copyString("Test 123"), NULL);
-	dllist_append(myList, copyString("I'm at the end :)"), NULL);
+	dllist_append(myList, text_copy("Hello world !"), NULL);
+	dllist_append(myList, text_copy("Lorem ipsum donor si amet."), NULL);
+	dllist_append(myList, text_copy("Test 123"), NULL);
+	dllist_append(myList, text_copy("I'm at the end :)"), NULL);
 	
 	// Accessing the `DoubleLinkedListNode`, not the data.
 	// This should only be done when manually browsing the list or when using custom nodes.

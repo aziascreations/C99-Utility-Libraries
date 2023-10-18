@@ -40,23 +40,24 @@ Tested with [QT's Jom](https://wiki.qt.io/Jom) in ReactOS 0.4.14
 
 ### Windows x64
 Tested on Windows 11 22H2 with MSVC.
-* `NP_OS_WIN`
+* `NP_OS_WINDOWS`
 * `NP_ARCH_x64`
 
 ### Windows x86
 Untested.
-* `NP_OS_WIN`
+* `NP_OS_WINDOWS`
 * `NP_ARCH_x86`
 
 ### Windows ARM
 Untested.
 
 ### Cygwin
-Untested.
+Tested and returned `NP_COMPILER_GNUC` as the compiler, needs more testing.
+* `NP_OS_CYGWIN`
 
 ### ReactOS
 Tested on ReactOS 0.4.14 x86.
-* `NP_OS_WIN`  *(May change in the future)*
+* `NP_OS_WINDOWS`  *(May change in the future)*
 * `NP_ARCH_x86`
 
 ### Linux x64
@@ -83,7 +84,7 @@ Untested, will be done soon.
 * `NP_ARCH_ARM`
 * `NP_ARCH_ARM_GENERIC`
 
-### Unknown OS *(Apple, ReactOS, ...)*
+### Unknown OS *(Apple, ...)*
 * `NP_OS_UNKNOWN`
 
 ### Unknown ISA
