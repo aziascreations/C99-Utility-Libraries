@@ -269,7 +269,10 @@ if(NP_GOODIES_BUILD_TESTS)
 
     add_executable(test_text_copy tests/text/test_text_copy.c ${src_text} ${src_test_utils})
     add_test(NAME test_text_copy COMMAND test_text_copy)
-    target_compile_definitions(test_text_copy PUBLIC NP_GOODIES_ADD_C11_OPTIMIZATIONS)
+
+    add_executable(test_text_copyW tests/text/test_text_copyW.c ${src_text} ${src_test_utils})
+    add_test(NAME test_text_copyW COMMAND test_text_copyW)
+    #target_compile_definitions(test_text_copyW PUBLIC NP_GOODIES_ADD_C11_OPTIMIZATIONS)
 
     # Targets > Tests > Misc
     add_executable(test_platform tests/misc/test_platform.c ${src_test_utils})
@@ -286,6 +289,8 @@ if(NP_GOODIES_BUILD_BENCHMARKS)
     add_executable(bm_crc32_implementations benchmarks/bm_crc32_implementations.c)
 
     add_executable(bm_square_of_two_mask benchmarks/bm_square_of_two_mask.c)
+
+    #add_executable(bm_hashmap_chained benchmarks/bm_hashmap_chained.c ${src_hashmap})
 
     if(WIN32)
         # FIXME: pow() appears to be missing on GNUC, that's odd...

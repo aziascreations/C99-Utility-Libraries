@@ -26,7 +26,7 @@ bool win32RandomFiller(void *uuidData, size_t uuidLength) {
 }
 
 int main() {
-	// Creating a new random UUID4
+	// Creating a new random UUID4.
 	UUID4 *uuid4 = uuid4_generate(&win32RandomFiller);
 	
 	// Converting the UUID4 to a `char` string.

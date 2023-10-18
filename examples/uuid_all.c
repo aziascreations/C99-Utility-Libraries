@@ -26,6 +26,8 @@ bool bufferRandomFiller(void *uuidData, size_t uuidLength) {
 		((uint8_t*) uuidData)[i] = (uint8_t) rand();
 	}
 	#endif
+	
+	return true;
 }
 
 int main() {
@@ -33,7 +35,7 @@ int main() {
 	// You should seek out better seed sources such as `/dev/urandom` or `BCryptGenRandom`.
 	srand(time(NULL));
 	
-	// Creating a new random UUID4
+	// Creating a new random UUID4.
 	UUID4 *uuid4 = uuid4_generate(&bufferRandomFiller);
 	
 	// Converting the UUID4 to a `char` string.
