@@ -138,12 +138,11 @@ bool text_startsWithW(const wchar_t *string, const wchar_t *prefix) {
 	return memcmp(string, prefix, prefixLength * sizeof(wchar_t)) == 0;
 }
 
-bool isStringEmpty(char *string) {
+bool text_isEmpty(char *string) {
 	if(string != NULL) {
 		size_t len = strlen(string);
 		
 		for(int i = 0; i < len; i++) {
-			// TODO: Benchmark this !
 			if(!isspace(string[i])) {
 				return false;
 			}
@@ -153,7 +152,7 @@ bool isStringEmpty(char *string) {
 	return true;
 }
 
-bool isWCharStringEmpty(wchar_t *string) {
+bool text_isEmptyW(wchar_t *string) {
 	if(string != NULL) {
 		size_t len = wcslen(string);
 		
@@ -169,6 +168,13 @@ bool isWCharStringEmpty(wchar_t *string) {
 
 int nextCharSpaceIndex(const char *string, int startIndex) {
 	while(string[startIndex] != '\0' && string[startIndex] != ' ') {
+		startIndex++;
+	}
+	return startIndex;
+}
+
+int nextWCharSpaceIndex(const wchar_t *string, int startIndex) {
+	while(string[startIndex] != L'\0' && string[startIndex] != L' ') {
 		startIndex++;
 	}
 	return startIndex;
@@ -197,13 +203,6 @@ wchar_t *charStringToWChar(char *originalString) {
 	#endif
 	
 	return returnedString;
-}
-
-int nextWCharSpaceIndex(const wchar_t *string, int startIndex) {
-	while(string[startIndex] != L'\0' && string[startIndex] != L' ') {
-		startIndex++;
-	}
-	return startIndex;
 }
 
 char *text_copyLine(const char *string, size_t stringLength, char **nextLine, size_t *nextLineMaxLength) {

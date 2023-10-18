@@ -188,7 +188,8 @@ bool args_registerVerb(Verb *registeredVerb, Verb *parentVerb) {
 		return false;
 	}
 	
-	if(registeredVerb->name == NULL || np_args_strlen(registeredVerb->name) == 0 || np_args_isStringEmpty(registeredVerb->name)) {
+	if(registeredVerb->name == NULL || np_args_strlen(registeredVerb->name) == 0 ||
+			np_args_isStringEmpty(registeredVerb->name)) {
 		np_args_error_println("Unable to register verb: The sub's name is NULL or empty !  (name: @0x%p)",
 					  registeredVerb->name);
 		return false;

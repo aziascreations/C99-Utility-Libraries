@@ -73,14 +73,14 @@ DLL_EXP_TEXT bool text_startsWithW(const wchar_t *string, const wchar_t *prefix)
  * @param string The string to be checked.
  * @return `true` if the string is empty, `false` otherwise.
  */
-DLL_EXP_TEXT bool isStringEmpty(char *string);
+DLL_EXP_TEXT bool text_isEmpty(char *string);
 
 /**
  * Checks if the given \a string is `NULL`, empty or filled with spaces.
  * @param string The string to be checked.
  * @return `true` if the string is empty, `false` otherwise.
  */
-DLL_EXP_TEXT bool isWCharStringEmpty(wchar_t *string);
+DLL_EXP_TEXT bool text_isEmptyW(wchar_t *string);
 
 /**
  * Finds the next space in a given string and returns its index.
@@ -91,20 +91,20 @@ DLL_EXP_TEXT bool isWCharStringEmpty(wchar_t *string);
 DLL_EXP_TEXT int nextCharSpaceIndex(const char *string, int startIndex);
 
 /**
- * Converts a given `char` string into a `wchar_t` one and returns its pointer.<br>
- * You will need to free the returned pointer when appropriate.
- * @param originalString The original string to be copied
- * @return The converted string's pointer, or `NULL` if an error occurred.
- */
-DLL_EXP_TEXT wchar_t *charStringToWChar(char *originalString);
-
-/**
  * Finds the next space in a given string and returns its index.
  * @param string The string to be analysed.
  * @param startIndex The index at which the search will start in the given \a string.
  * @return The index at which the next space will be located if found, or the string's end index.
  */
 DLL_EXP_TEXT int nextWCharSpaceIndex(const wchar_t *string, int startIndex);
+
+/**
+ * Converts a given `char` string into a `wchar_t` one and returns its pointer.<br>
+ * You will need to free the returned pointer when appropriate.
+ * @param originalString The original string to be copied
+ * @return The converted string's pointer, or `NULL` if an error occurred.
+ */
+DLL_EXP_TEXT wchar_t *charStringToWChar(char *originalString);
 
 /**
  * Copies the first available line in the given string into a new buffer and returns said buffer as-is.<br>

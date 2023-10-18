@@ -27,9 +27,9 @@ int main(void) {
 	assert(text_startsWith(text_01, "Hello \0world !"),
 		   "Edge-case test #1 - Middle NULL with same string")
 	assert(text_startsWith(text_01, "Hello \0planet earth !"),
-		   "Edge-case test #1 - Middle NULL with invalid end")
+		   "Edge-case test #2 - Middle NULL with invalid end")
 	assert(!text_startsWith(text_01, "Howdy \0world !"),
-		   "Edge-case test #1 - Middle NULL with invalid start")
+		   "Edge-case test #3 - Middle NULL with invalid start")
 	
 	return 0;
 }

@@ -277,6 +277,11 @@ if(NP_GOODIES_BUILD_TESTS)
     add_executable(test_text_startsWithW tests/text/test_text_startsWithW.c ${src_text} ${src_test_utils})
     add_test(NAME test_text_startsWithW COMMAND test_text_startsWithW)
 
+    add_executable(test_text_isEmpty tests/text/test_text_isEmpty.c ${src_text} ${src_test_utils})
+    add_test(NAME test_text_isEmpty COMMAND test_text_isEmpty)
+    add_executable(test_text_isEmptyW tests/text/test_text_isEmptyW.c ${src_text} ${src_test_utils})
+    add_test(NAME test_text_isEmptyW COMMAND test_text_isEmptyW)
+
     # Targets > Tests > Misc
     add_executable(test_platform tests/misc/test_platform.c ${src_test_utils})
     add_test(NAME test_platform COMMAND test_platform)
