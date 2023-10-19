@@ -137,9 +137,27 @@ DLL_EXP_TEXT size_t text_lastDifferentIndexW(const wchar_t *string, wchar_t excl
  */
 DLL_EXP_TEXT size_t text_lastDifferentIndex(const char *string, char excludedChar);
 
-//DLL_EXP_TEXT char *text_trim(const char *string, char trimmedChar);
-//
-//DLL_EXP_TEXT wchar_t *text_trimW(const wchar_t *string, wchar_t trimmedChar);
+/**
+ * Trims the given character from a string's left and right side.<br>
+ * The returned string is a trimmed copy of the given string.
+ * @param string The string that will be trimmed.
+ * @param trimmedChar The character that should be trimmed.
+ * @return The trimmed string as a new string.<br>
+ *         Or `NULL` is the string or character were NULL, or if the resulting string would have been empty.
+ * @warning Failure to free the returned string WILL cause memory leaks !
+ */
+DLL_EXP_TEXT char *text_trim(const char *string, char trimmedChar);
+
+/**
+ * Trims the given character from a string's left and right side.<br>
+ * The returned string is a trimmed copy of the given string.
+ * @param string The string that will be trimmed.
+ * @param trimmedChar The character that should be trimmed.
+ * @return The trimmed string as a new string.<br>
+ *         Or `NULL` is the string or character were NULL, or if the resulting string would have been empty.
+ * @warning Failure to free the returned string WILL cause memory leaks !
+ */
+DLL_EXP_TEXT wchar_t *text_trimW(const wchar_t *string, wchar_t trimmedChar);
 
 /**
  * Converts a given `char` string into a `wchar_t` one and returns its pointer.

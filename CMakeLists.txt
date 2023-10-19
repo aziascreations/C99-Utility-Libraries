@@ -326,6 +326,11 @@ if(NP_GOODIES_BUILD_TESTS)
     add_executable(test_text_lastDifferentIndexW tests/text/test_text_lastDifferentIndexW.c ${src_text} ${src_test_utils})
     add_test(NAME test_text_lastDifferentIndexW COMMAND test_text_lastDifferentIndexW)
 
+    add_executable(test_text_trim tests/text/test_text_trim.c ${src_text} ${src_test_utils})
+    add_test(NAME test_text_trim COMMAND test_text_trim)
+    add_executable(test_text_trimW tests/text/test_text_trimW.c ${src_text} ${src_test_utils})
+    add_test(NAME test_text_trimW COMMAND test_text_trimW)
+
     add_executable(test_text_charToWChar tests/text/test_text_charToWChar.c ${src_text} ${src_test_utils})
     add_test(NAME test_text_charToWChar COMMAND test_text_charToWChar)
     #target_compile_definitions(test_text_charToWChar PUBLIC NP_GOODIES_ADD_C11_OPTIMIZATIONS)

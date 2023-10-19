@@ -305,16 +305,59 @@ size_t text_lastDifferentIndexW(const wchar_t *string, wchar_t excludedChar) {
 	}
 }
 
+char *text_trim(const char *string, char trimmedChar) {
+	if(string == NULL || trimmedChar == '\0') {
+		return NULL;
+	}
+	
+	size_t stringLength = strlen(string);
+	if(stringLength == 0) {
+		return NULL;
+	}
+	
+	size_t indexStart = text_internal_firstDifferentIndex(string, trimmedChar, stringLength);
+	if(indexStart == stringLength) {
+		return NULL;
+	}
+	
+	size_t indexEnd = text_internal_lastDifferentIndex(string, trimmedChar, stringLength) + 1;
+	
+	char *newString = malloc((indexEnd - indexStart + 1) * sizeof(char));
+	
+	if(newString != NULL) {
+		memcpy(newString, string + indexStart, (indexEnd - indexStart) * sizeof(char));
+		newString[indexEnd - indexStart] = '\0';
+	}
+	
+	return newString;
+}
 
-//char *text_trim(const char *string, char trimmedChar) {
-//	//if(string == NULL) {
-//	//
-//	//}
-//}
-//
-//wchar_t *text_trimW(const wchar_t *string, wchar_t trimmedChar) {
-//
-//}
+wchar_t *text_trimW(const wchar_t *string, wchar_t trimmedChar) {
+	if(string == NULL || trimmedChar == '\0') {
+		return NULL;
+	}
+	
+	size_t stringLength = wcslen(string);
+	if(stringLength == 0) {
+		return NULL;
+	}
+	
+	size_t indexStart = text_internal_firstDifferentIndexW(string, trimmedChar, stringLength);
+	if(indexStart == stringLength) {
+		return NULL;
+	}
+	
+	size_t indexEnd = text_internal_lastDifferentIndexW(string, trimmedChar, stringLength) + 1;
+	
+	wchar_t *newString = malloc((indexEnd - indexStart + 1) * sizeof(wchar_t));
+	
+	if(newString != NULL) {
+		memcpy(newString, string + indexStart, (indexEnd - indexStart) * sizeof(wchar_t));
+		newString[indexEnd - indexStart] = '\0';
+	}
+	
+	return newString;
+}
 
 wchar_t *text_charToWChar(const char *originalString) {
 	if(originalString == NULL) {
