@@ -277,7 +277,7 @@ wchar_t *text_charToWChar(const char *originalString) {
 	#if defined(NP_GOODIES_ADD_C11_OPTIMIZATIONS) && defined(NP_STDC_C11)
 	size_t outSize;
 	
-	errno = mbstowcs_s(&outSize, returnedString, originalLength, originalString, originalLength - 1);
+	errno = mbstowcs_s(&outSize, returnedString, originalLength + 1, originalString, originalLength);
 	
 	if(errno != 0) {
 		free(returnedString);
