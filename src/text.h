@@ -98,6 +98,26 @@ DLL_EXP_TEXT int text_nextSpaceIndex(const char *string, int startIndex);
 DLL_EXP_TEXT int text_nextSpaceIndexW(const wchar_t *string, int startIndex);
 
 /**
+ * Finds the first non-excluded char in a string and returns its index.
+ * @param string The analysed string.
+ * @param excludedChar The character that should be skipped over.
+ * @return The first non-excluded char's index, or `0` if the string or excluded char is NULL.
+ */
+DLL_EXP_TEXT size_t text_firstDifferentIndex(const char *string, char excludedChar);
+
+/**
+ * Finds the first non-excluded char in a string and returns its index.
+ * @param string The analysed string.
+ * @param excludedChar The character that should be skipped over.
+ * @return The first non-excluded char's index, or `0` if the string or excluded char is NULL.
+ */
+DLL_EXP_TEXT size_t text_firstDifferentIndexW(const wchar_t *string, wchar_t excludedChar);
+
+//DLL_EXP_TEXT char *text_trim(const char *string, char trimmedChar);
+//
+//DLL_EXP_TEXT wchar_t *text_trimW(const wchar_t *string, wchar_t trimmedChar);
+
+/**
  * Converts a given `char` string into a `wchar_t` one and returns its pointer.
  * @param originalString The original string to be copied
  * @return The converted string's pointer, or `NULL` if an error occurred.

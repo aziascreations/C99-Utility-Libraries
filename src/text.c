@@ -208,14 +208,72 @@ int text_nextSpaceIndexW(const wchar_t *string, int startIndex) {
 	return startIndex;
 }
 
+size_t text_internal_firstDifferentIndex(const char *string, char excludedChar, size_t stringLength) {
+	if(string != NULL && excludedChar != '\0') {
+		size_t returnedIndex = 0;
+		
+		// We assume the `stringLength` is 100% valid.
+		// This avoids repeating a `strlen` by forcing the source to do it.
+		while(returnedIndex < stringLength && string[returnedIndex] == excludedChar) {
+			returnedIndex++;
+		}
+		
+		return returnedIndex;
+	}
+	
+	return 0;
+}
+
+size_t text_internal_firstDifferentIndexW(const wchar_t *string, wchar_t excludedChar, size_t stringLength) {
+	if(string != NULL && excludedChar != '\0') {
+		size_t returnedIndex = 0;
+		
+		// We assume the `stringLength` is 100% valid.
+		// This avoids repeating a `wcslen` by forcing the source to do it.
+		while(returnedIndex < stringLength && string[returnedIndex] == excludedChar) {
+			returnedIndex++;
+		}
+		
+		return returnedIndex;
+	}
+	
+	return 0;
+}
+
+size_t text_firstDifferentIndex(const char *string, char excludedChar) {
+	if(string != NULL) {
+		return text_internal_firstDifferentIndex(string, excludedChar, strlen(string));
+	} else {
+		return 0;
+	}
+}
+
+size_t text_firstDifferentIndexW(const wchar_t *string, wchar_t excludedChar) {
+	if(string != NULL) {
+		return text_internal_firstDifferentIndexW(string, excludedChar, wcslen(string));
+	} else {
+		return 0;
+	}
+}
+
+//char *text_trim(const char *string, char trimmedChar) {
+//	//if(string == NULL) {
+//	//
+//	//}
+//}
+//
+//wchar_t *text_trimW(const wchar_t *string, wchar_t trimmedChar) {
+//
+//}
+
 wchar_t *text_charToWChar(const char *originalString) {
 	if(originalString == NULL) {
 		return NULL;
 	}
 	
-	size_t originalLength = strlen(originalString) + 1;
-	wchar_t *returnedString = (wchar_t *) malloc(sizeof(wchar_t) * originalLength);
-
+	size_t originalLength = strlen(originalString);
+	wchar_t *returnedString = (wchar_t *) malloc(sizeof(wchar_t) * (originalLength + 1));
+	
 	#if defined(NP_GOODIES_ADD_C11_OPTIMIZATIONS) && defined(NP_STDC_C11)
 	size_t outSize;
 	
@@ -226,7 +284,8 @@ wchar_t *text_charToWChar(const char *originalString) {
 		returnedString = NULL;
 	}
 	#else
-	size_t outSize = mbstowcs(returnedString, originalString, originalLength - 1);
+	size_t outSize = mbstowcs(returnedString, originalString, originalLength);
+	returnedString[originalLength] = '\0';
 	
 	if(outSize == -1) {
 		free(returnedString);
