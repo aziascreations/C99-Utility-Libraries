@@ -16,6 +16,7 @@
 
 //#if defined(NP_GOODIES_ADD_C11_OPTIMIZATIONS) && defined(NP_STDC_C11)
 //#include <stdio.h>
+//#include <stdint.h>
 
 char *text_copy(const char *string) {
 	// Safety check
@@ -255,6 +256,55 @@ size_t text_firstDifferentIndexW(const wchar_t *string, wchar_t excludedChar) {
 		return 0;
 	}
 }
+
+size_t text_internal_lastDifferentIndex(const char *string, char excludedChar, size_t stringLength) {
+	if(string != NULL && excludedChar != '\0' && stringLength > 0) {
+		size_t returnedIndex = stringLength;
+		
+		// We assume the `stringLength` is 100% valid.
+		// This avoids repeating a `strlen` by forcing the source to do it.
+		do{
+			returnedIndex--;
+		} while(returnedIndex > 0 && string[returnedIndex] == excludedChar);
+		
+		return returnedIndex;
+	}
+	
+	return 0;
+}
+
+size_t text_internal_lastDifferentIndexW(const wchar_t *string, wchar_t excludedChar, size_t stringLength) {
+	if(string != NULL && excludedChar != '\0' && stringLength > 0) {
+		size_t returnedIndex = stringLength;
+		
+		// We assume the `stringLength` is 100% valid.
+		// This avoids repeating a `wcslen` by forcing the source to do it.
+		do{
+			returnedIndex--;
+		} while(returnedIndex > 0 && string[returnedIndex] == excludedChar);
+		
+		return returnedIndex;
+	}
+	
+	return 0;
+}
+
+size_t text_lastDifferentIndex(const char *string, char excludedChar) {
+	if(string != NULL) {
+		return text_internal_lastDifferentIndex(string, excludedChar, strlen(string));
+	} else {
+		return 0;
+	}
+}
+
+size_t text_lastDifferentIndexW(const wchar_t *string, wchar_t excludedChar) {
+	if(string != NULL) {
+		return text_internal_lastDifferentIndexW(string, excludedChar, wcslen(string));
+	} else {
+		return 0;
+	}
+}
+
 
 //char *text_trim(const char *string, char trimmedChar) {
 //	//if(string == NULL) {

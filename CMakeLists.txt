@@ -321,6 +321,11 @@ if(NP_GOODIES_BUILD_TESTS)
     add_executable(test_text_firstDifferentIndexW tests/text/test_text_firstDifferentIndexW.c ${src_text} ${src_test_utils})
     add_test(NAME test_text_firstDifferentIndexW COMMAND test_text_firstDifferentIndexW)
 
+    add_executable(test_text_lastDifferentIndex tests/text/test_text_lastDifferentIndex.c ${src_text} ${src_test_utils})
+    add_test(NAME test_text_lastDifferentIndex COMMAND test_text_firstDifferentIndex)
+    add_executable(test_text_lastDifferentIndexW tests/text/test_text_lastDifferentIndexW.c ${src_text} ${src_test_utils})
+    add_test(NAME test_text_lastDifferentIndexW COMMAND test_text_lastDifferentIndexW)
+
     add_executable(test_text_charToWChar tests/text/test_text_charToWChar.c ${src_text} ${src_test_utils})
     add_test(NAME test_text_charToWChar COMMAND test_text_charToWChar)
     #target_compile_definitions(test_text_charToWChar PUBLIC NP_GOODIES_ADD_C11_OPTIMIZATIONS)

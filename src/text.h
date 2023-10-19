@@ -113,6 +113,30 @@ DLL_EXP_TEXT size_t text_firstDifferentIndex(const char *string, char excludedCh
  */
 DLL_EXP_TEXT size_t text_firstDifferentIndexW(const wchar_t *string, wchar_t excludedChar);
 
+/**
+ * Finds the last non-excluded char in a string and returns its index.
+ * @param string The analysed string.
+ * @param excludedChar The character that should be skipped over.
+ * @return The last non-excluded char's index.<br>
+ *         If none were present, the return value will be the `strlen(string) - 1`.<br>
+ *         If the string is empty or NULL, and if the excluded char is NULL, it will return `0`.
+ * @warning The returned value points at the character BEFORE the last ignored one.<br>
+ *          You should assume the next character is either ignored or a '\0'.
+ */
+DLL_EXP_TEXT size_t text_lastDifferentIndexW(const wchar_t *string, wchar_t excludedChar);
+
+/**
+ * Finds the last non-excluded char in a string and returns its index.
+ * @param string The analysed string.
+ * @param excludedChar The character that should be skipped over.
+ * @return The last non-excluded char's index.<br>
+ *         If none were present, the return value will be the `wcslen(string) - 1`.<br>
+ *         If the string is empty or NULL, and if the excluded char is NULL, it will return `0`.
+ * @warning The returned value points at the character BEFORE the last ignored one.<br>
+ *          You should assume the next character is either ignored or a '\0'.
+ */
+DLL_EXP_TEXT size_t text_lastDifferentIndex(const char *string, char excludedChar);
+
 //DLL_EXP_TEXT char *text_trim(const char *string, char trimmedChar);
 //
 //DLL_EXP_TEXT wchar_t *text_trimW(const wchar_t *string, wchar_t trimmedChar);
