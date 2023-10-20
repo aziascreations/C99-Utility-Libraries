@@ -7,7 +7,7 @@
 
 int main() {
     printf("Operating System:\n");
-    #ifdef NP_OS_WIN
+    #ifdef NP_OS_WINDOWS
     printf("> Windows\n");
     #endif
 	#ifdef NP_OS_LINUX

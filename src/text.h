@@ -98,6 +98,68 @@ DLL_EXP_TEXT int text_nextSpaceIndex(const char *string, int startIndex);
 DLL_EXP_TEXT int text_nextSpaceIndexW(const wchar_t *string, int startIndex);
 
 /**
+ * Finds the first non-excluded char in a string and returns its index.
+ * @param string The analysed string.
+ * @param excludedChar The character that should be skipped over.
+ * @return The first non-excluded char's index, or `0` if the string or excluded char is NULL.
+ */
+DLL_EXP_TEXT size_t text_firstDifferentIndex(const char *string, char excludedChar);
+
+/**
+ * Finds the first non-excluded char in a string and returns its index.
+ * @param string The analysed string.
+ * @param excludedChar The character that should be skipped over.
+ * @return The first non-excluded char's index, or `0` if the string or excluded char is NULL.
+ */
+DLL_EXP_TEXT size_t text_firstDifferentIndexW(const wchar_t *string, wchar_t excludedChar);
+
+/**
+ * Finds the last non-excluded char in a string and returns its index.
+ * @param string The analysed string.
+ * @param excludedChar The character that should be skipped over.
+ * @return The last non-excluded char's index.<br>
+ *         If none were present, the return value will be the `strlen(string) - 1`.<br>
+ *         If the string is empty or NULL, and if the excluded char is NULL, it will return `0`.
+ * @warning The returned value points at the character BEFORE the last ignored one.<br>
+ *          You should assume the next character is either ignored or a '\0'.
+ */
+DLL_EXP_TEXT size_t text_lastDifferentIndexW(const wchar_t *string, wchar_t excludedChar);
+
+/**
+ * Finds the last non-excluded char in a string and returns its index.
+ * @param string The analysed string.
+ * @param excludedChar The character that should be skipped over.
+ * @return The last non-excluded char's index.<br>
+ *         If none were present, the return value will be the `wcslen(string) - 1`.<br>
+ *         If the string is empty or NULL, and if the excluded char is NULL, it will return `0`.
+ * @warning The returned value points at the character BEFORE the last ignored one.<br>
+ *          You should assume the next character is either ignored or a '\0'.
+ */
+DLL_EXP_TEXT size_t text_lastDifferentIndex(const char *string, char excludedChar);
+
+/**
+ * Trims the given character from a string's left and right side.<br>
+ * The returned string is a trimmed copy of the given string.
+ * @param string The string that will be trimmed.
+ * @param trimmedChar The character that should be trimmed.
+ * @return The trimmed string as a new string.<br>
+ *         Or `NULL` is the string or character were NULL, or if the resulting string would have been empty.
+ * @warning Failure to free the returned string WILL cause memory leaks !
+ */
+DLL_EXP_TEXT char *text_trim(const char *string, char trimmedChar);
+
+/**
+ * Trims the given character from a string's left and right side.<br>
+ * The returned string is a trimmed copy of the given string.
+ * @param string The string that will be trimmed.
+ * @param trimmedChar The character that should be trimmed.
+ * @return The trimmed string as a new string.<br>
+ *         Or `NULL` is the string or character were NULL, or if the resulting string would have been empty.
+ * @warning Failure to free the returned string WILL cause memory leaks !
+ */
+DLL_EXP_TEXT wchar_t *text_trimW(const wchar_t *string, wchar_t trimmedChar);
+
+/**
  * Converts a given `char` string into a `wchar_t` one and returns its pointer.
  * @param originalString The original string to be copied
  * @return The converted string's pointer, or `NULL` if an error occurred.

@@ -62,19 +62,6 @@ if(NP_GOODIES_BUILD_TESTS)
 endif()
 
 
-# TODO: Remove for 1.0.0
-# Feature constants
-message("--> Setting up constants")
-if(WIN32)
-    message("---> Defining 'NP_WIN32' and 'NP_ARGS_WCHAR'")
-    # Enables some wchar_t related functions
-    add_definitions(-DNP_WIN32)
-    # This constant changes the args_* functions and related structs to use wchar_t instead of char strings.
-    # You can comment it if you need char strings on windows.
-    add_definitions(-DNP_ARGS_WCHAR)
-endif()
-
-
 # Compiler > Config
 if(NP_GOODIES_IS_MAIN)
     message("--> Compiler configuration in non-imported context")
@@ -92,20 +79,40 @@ if(NP_GOODIES_IS_MAIN)
         set(CMAKE_C_FLAGS_MINSIZEREL "/Os ${CMAKE_C_FLAGS_MINSIZEREL}")
         set(CMAKE_C_FLAGS_RELWITHDEBINFO "/Ot ${CMAKE_C_FLAGS_RELWITHDEBINFO}")
 
-        # /ALIGN:x     -> Align final executable's section to multiples of x bytes.
+        if(NOT _MSVC_C_ARCHITECTURE_FAMILY STREQUAL "ARM")
+            message("----> Adding some flags that only work on non generic ARM platforms...")
+            # /ALIGN:x     -> Align final executable's section to multiples of x bytes.
+            set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /ALIGN:128")
+        endif()
+
         # /FILEALIGN:x -> Forces section alignment to multiples of x bytes.
         # /OPT:REF     -> Eliminates functions and data that are never referenced.
-        set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /ALIGN:128 /FILEALIGN:16 /OPT:REF")
+        set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /FILEALIGN:16 /OPT:REF")
 
         # /CGTHREADS:x -> Makes 'cl.exe' use x thread(s).
         set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /CGTHREADS:8")
 
         # /GUARD:CF       -> Enables Control Flow Guard protection.
-        # /DYNAMICBASE:NO -> Disables ASLR since Win32 ARM platforms don't support it.
-        set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /GUARD:CF /DYNAMICBASE:NO")
+        set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /GUARD:CF")
 
         # /RELEASE -> Sets the Checksum in the header of final executable.
         set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /RELEASE")
+    endif()
+
+    if(MINGW)
+        message("---> Detected MinGW compiler, adding custom flags to compiler and linker...")
+
+        set(CMAKE_C_FLAGS_DEBUG "-O0 -g -std=c99")
+
+        set(CMAKE_C_FLAGS_RELEASE "-Ofast -DNDEBUG -std=c99 -fno-exceptions -ffunction-sections -fdata-sections")
+        set(CMAKE_EXE_LINKER_FLAGS_RELEASE "-s -static-libgcc -ffunction-sections -fdata-sections -Wl,--gc-sections")
+
+        set(CMAKE_C_FLAGS_MINSIZEREL "-Os -DNDEBUG -std=c99 -fno-exceptions -ffunction-sections -fdata-sections")
+        set(CMAKE_EXE_LINKER_FLAGS_MINSIZEREL "-s -static-libgcc -ffunction-sections -fdata-sections -Wl,--gc-sections")
+
+        set(CMAKE_C_FLAGS_RELWITHDEBINFO "-Og -g -std=c99")
+
+        # Could also use -Oz on CLang
     endif()
 endif()
 
@@ -148,6 +155,7 @@ if(NP_GOODIES_IS_MAIN)
     set_target_properties(np_clang_goodies_dll_dynamic PROPERTIES RUNTIME_OUTPUT_DIRECTORY "dll_dynamic/")
 
     # Targets > DLLs > Static
+    # FIXME: Doesn't appear to work properly since the updates to Visual Studio...
     add_library(np_clang_goodies_dll_static SHARED ${src_all} rsc/np_clang_goodies.rc)
     target_compile_definitions(np_clang_goodies_dll_static PUBLIC NP_GOODIES_EXPORT_ALL)
     set_target_properties(np_clang_goodies_dll_static PROPERTIES OUTPUT_NAME np_clang_goodies)
@@ -308,12 +316,27 @@ if(NP_GOODIES_BUILD_TESTS)
     add_executable(test_text_nextSpaceIndexW tests/text/test_text_nextSpaceIndexW.c ${src_text} ${src_test_utils})
     add_test(NAME test_text_nextSpaceIndexW COMMAND test_text_nextSpaceIndexW)
 
+    add_executable(test_text_firstDifferentIndex tests/text/test_text_firstDifferentIndex.c ${src_text} ${src_test_utils})
+    add_test(NAME test_text_firstDifferentIndex COMMAND test_text_firstDifferentIndex)
+    add_executable(test_text_firstDifferentIndexW tests/text/test_text_firstDifferentIndexW.c ${src_text} ${src_test_utils})
+    add_test(NAME test_text_firstDifferentIndexW COMMAND test_text_firstDifferentIndexW)
+
+    add_executable(test_text_lastDifferentIndex tests/text/test_text_lastDifferentIndex.c ${src_text} ${src_test_utils})
+    add_test(NAME test_text_lastDifferentIndex COMMAND test_text_firstDifferentIndex)
+    add_executable(test_text_lastDifferentIndexW tests/text/test_text_lastDifferentIndexW.c ${src_text} ${src_test_utils})
+    add_test(NAME test_text_lastDifferentIndexW COMMAND test_text_lastDifferentIndexW)
+
+    add_executable(test_text_trim tests/text/test_text_trim.c ${src_text} ${src_test_utils})
+    add_test(NAME test_text_trim COMMAND test_text_trim)
+    add_executable(test_text_trimW tests/text/test_text_trimW.c ${src_text} ${src_test_utils})
+    add_test(NAME test_text_trimW COMMAND test_text_trimW)
+
     add_executable(test_text_charToWChar tests/text/test_text_charToWChar.c ${src_text} ${src_test_utils})
     add_test(NAME test_text_charToWChar COMMAND test_text_charToWChar)
     #target_compile_definitions(test_text_charToWChar PUBLIC NP_GOODIES_ADD_C11_OPTIMIZATIONS)
 
     # Targets > Tests > Misc
-    add_executable(test_platform tests/misc/test_platform.c ${src_test_utils})
+    add_executable(test_platform tests/misc/test_platform.c "tests/assert.h" "src/platform.h")
     add_test(NAME test_platform COMMAND test_platform)
 else()
     message("---> Skipping test targets...")

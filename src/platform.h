@@ -41,13 +41,12 @@
 
 #if defined(_MSC_VER)
     #define NP_COMPILER_MSVC
+#elif defined(__MINGW32__) || defined(__MINGW64__)
+	#define NP_COMPILER_MINGW
 #elif defined(__clang__)
     #define NP_COMPILER_CLANG
 #elif defined(__GNUC__)
     #define NP_COMPILER_GNUC
-#elif defined(__MINGW32__) || defined(__MINGW64__)
-    // Untested !
-    #define NP_COMPILER_MINGW
 #elif defined(__TINYC__)
     #define NP_COMPILER_TCC
 #else
@@ -62,13 +61,12 @@
     #define NP_ARCH_x64
 #elif defined(__i386__) || defined(_M_IX86)
     #define NP_ARCH_x86
-#elif defined(__aarch64__)
+#elif defined(__aarch64__) || defined(_M_ARM64)
     #define NP_ARCH_ARM
     #define NP_ARCH_ARMv8
     #define NP_ARCH_AARCH64
-#elif defined(__ARM_ARCH)
-    // Untested !
-    // TODO: Test on RPI1B+ or Orange Pi 0
+#elif defined(__ARM_ARCH) || defined(_M_ARM)
+    // TODO: Test on Linux via RPI1B+ or Orange Pi 0
     #define NP_ARCH_ARM
     #define NP_ARCH_ARM_GENERIC
 #else
@@ -114,7 +112,7 @@
 
 
 // Setting the OS-specific library export macro
-#if defined(NP_OS_WIN) || defined(NP_OS_CYGWIN)
+#if defined(NP_OS_WINDOWS) || defined(NP_OS_CYGWIN)
     #define NP_DLL_EXPORT __declspec(dllexport)
 #elif defined(NP_OS_LINUX) || defined(NP_OS_UNIX)
     #define NP_DLL_EXPORT __attribute__((visibility("default")))

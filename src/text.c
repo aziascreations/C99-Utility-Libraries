@@ -16,6 +16,7 @@
 
 //#if defined(NP_GOODIES_ADD_C11_OPTIMIZATIONS) && defined(NP_STDC_C11)
 //#include <stdio.h>
+//#include <stdint.h>
 
 char *text_copy(const char *string) {
 	// Safety check
@@ -208,25 +209,176 @@ int text_nextSpaceIndexW(const wchar_t *string, int startIndex) {
 	return startIndex;
 }
 
+size_t text_internal_firstDifferentIndex(const char *string, char excludedChar, size_t stringLength) {
+	if(string != NULL && excludedChar != '\0') {
+		size_t returnedIndex = 0;
+		
+		// We assume the `stringLength` is 100% valid.
+		// This avoids repeating a `strlen` by forcing the source to do it.
+		while(returnedIndex < stringLength && string[returnedIndex] == excludedChar) {
+			returnedIndex++;
+		}
+		
+		return returnedIndex;
+	}
+	
+	return 0;
+}
+
+size_t text_internal_firstDifferentIndexW(const wchar_t *string, wchar_t excludedChar, size_t stringLength) {
+	if(string != NULL && excludedChar != '\0') {
+		size_t returnedIndex = 0;
+		
+		// We assume the `stringLength` is 100% valid.
+		// This avoids repeating a `wcslen` by forcing the source to do it.
+		while(returnedIndex < stringLength && string[returnedIndex] == excludedChar) {
+			returnedIndex++;
+		}
+		
+		return returnedIndex;
+	}
+	
+	return 0;
+}
+
+size_t text_firstDifferentIndex(const char *string, char excludedChar) {
+	if(string != NULL) {
+		return text_internal_firstDifferentIndex(string, excludedChar, strlen(string));
+	} else {
+		return 0;
+	}
+}
+
+size_t text_firstDifferentIndexW(const wchar_t *string, wchar_t excludedChar) {
+	if(string != NULL) {
+		return text_internal_firstDifferentIndexW(string, excludedChar, wcslen(string));
+	} else {
+		return 0;
+	}
+}
+
+size_t text_internal_lastDifferentIndex(const char *string, char excludedChar, size_t stringLength) {
+	if(string != NULL && excludedChar != '\0' && stringLength > 0) {
+		size_t returnedIndex = stringLength;
+		
+		// We assume the `stringLength` is 100% valid.
+		// This avoids repeating a `strlen` by forcing the source to do it.
+		do{
+			returnedIndex--;
+		} while(returnedIndex > 0 && string[returnedIndex] == excludedChar);
+		
+		return returnedIndex;
+	}
+	
+	return 0;
+}
+
+size_t text_internal_lastDifferentIndexW(const wchar_t *string, wchar_t excludedChar, size_t stringLength) {
+	if(string != NULL && excludedChar != '\0' && stringLength > 0) {
+		size_t returnedIndex = stringLength;
+		
+		// We assume the `stringLength` is 100% valid.
+		// This avoids repeating a `wcslen` by forcing the source to do it.
+		do{
+			returnedIndex--;
+		} while(returnedIndex > 0 && string[returnedIndex] == excludedChar);
+		
+		return returnedIndex;
+	}
+	
+	return 0;
+}
+
+size_t text_lastDifferentIndex(const char *string, char excludedChar) {
+	if(string != NULL) {
+		return text_internal_lastDifferentIndex(string, excludedChar, strlen(string));
+	} else {
+		return 0;
+	}
+}
+
+size_t text_lastDifferentIndexW(const wchar_t *string, wchar_t excludedChar) {
+	if(string != NULL) {
+		return text_internal_lastDifferentIndexW(string, excludedChar, wcslen(string));
+	} else {
+		return 0;
+	}
+}
+
+char *text_trim(const char *string, char trimmedChar) {
+	if(string == NULL || trimmedChar == '\0') {
+		return NULL;
+	}
+	
+	size_t stringLength = strlen(string);
+	if(stringLength == 0) {
+		return NULL;
+	}
+	
+	size_t indexStart = text_internal_firstDifferentIndex(string, trimmedChar, stringLength);
+	if(indexStart == stringLength) {
+		return NULL;
+	}
+	
+	size_t indexEnd = text_internal_lastDifferentIndex(string, trimmedChar, stringLength) + 1;
+	
+	char *newString = malloc((indexEnd - indexStart + 1) * sizeof(char));
+	
+	if(newString != NULL) {
+		memcpy(newString, string + indexStart, (indexEnd - indexStart) * sizeof(char));
+		newString[indexEnd - indexStart] = '\0';
+	}
+	
+	return newString;
+}
+
+wchar_t *text_trimW(const wchar_t *string, wchar_t trimmedChar) {
+	if(string == NULL || trimmedChar == '\0') {
+		return NULL;
+	}
+	
+	size_t stringLength = wcslen(string);
+	if(stringLength == 0) {
+		return NULL;
+	}
+	
+	size_t indexStart = text_internal_firstDifferentIndexW(string, trimmedChar, stringLength);
+	if(indexStart == stringLength) {
+		return NULL;
+	}
+	
+	size_t indexEnd = text_internal_lastDifferentIndexW(string, trimmedChar, stringLength) + 1;
+	
+	wchar_t *newString = malloc((indexEnd - indexStart + 1) * sizeof(wchar_t));
+	
+	if(newString != NULL) {
+		memcpy(newString, string + indexStart, (indexEnd - indexStart) * sizeof(wchar_t));
+		newString[indexEnd - indexStart] = '\0';
+	}
+	
+	return newString;
+}
+
 wchar_t *text_charToWChar(const char *originalString) {
 	if(originalString == NULL) {
 		return NULL;
 	}
 	
-	size_t originalLength = strlen(originalString) + 1;
-	wchar_t *returnedString = (wchar_t *) malloc(sizeof(wchar_t) * originalLength);
-
+	size_t originalLength = strlen(originalString);
+	wchar_t *returnedString = (wchar_t *) malloc(sizeof(wchar_t) * (originalLength + 1));
+	
 	#if defined(NP_GOODIES_ADD_C11_OPTIMIZATIONS) && defined(NP_STDC_C11)
 	size_t outSize;
 	
-	errno = mbstowcs_s(&outSize, returnedString, originalLength, originalString, originalLength - 1);
+	errno = mbstowcs_s(&outSize, returnedString, originalLength + 1, originalString, originalLength);
 	
 	if(errno != 0) {
 		free(returnedString);
 		returnedString = NULL;
 	}
 	#else
-	size_t outSize = mbstowcs(returnedString, originalString, originalLength - 1);
+	size_t outSize = mbstowcs(returnedString, originalString, originalLength);
+	returnedString[originalLength] = '\0';
 	
 	if(outSize == -1) {
 		free(returnedString);

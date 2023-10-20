@@ -25,8 +25,10 @@ Works, but needs more testing.
 * `NP_COMPILER_GNUC`
 
 ### MinGW
-Untested
 * `NP_COMPILER_MINGW`
+
+Supersedes:
+* `NP_COMPILER_GNUC`
 
 ### Tiny C Compiler
 Tested with [QT's Jom](https://wiki.qt.io/Jom) in ReactOS 0.4.14
@@ -48,8 +50,19 @@ Untested.
 * `NP_OS_WINDOWS`
 * `NP_ARCH_x86`
 
+### Windows ARM64
+Tested via `strings` on Windows 11 22H2 with MSVC `amd64_arm64` target.
+* `NP_OS_WINDOWS`
+* `NP_ARCH_ARM`
+* `NP_ARCH_ARMv8`
+* `NP_ARCH_AARCH64`
+
 ### Windows ARM
-Untested.
+Tested via `strings` on Windows 11 22H2 with MSVC `amd64_arm` target.<br>
+**Doesn't compile properly just yet !**
+* `NP_OS_WINDOWS`
+* `NP_ARCH_ARM`
+* `NP_ARCH_ARM_GENERIC`
 
 ### Cygwin
 Tested and returned `NP_COMPILER_GNUC` as the compiler, needs more testing.
