@@ -114,6 +114,24 @@ if(NP_GOODIES_IS_MAIN)
 
         # Could also use -Oz on CLang
     endif()
+
+    if(CMAKE_C_COMPILER_ID STREQUAL "TinyCC")
+        message("---> Detected TinyCC, adding custom flags to compiler and linker...")
+
+        # See: https://bellard.org/tcc/tcc-doc.html
+
+        # CMAKE_C_FLAGS is set via 'cmake' in the CLI
+        #set(CMAKE_C_FLAGS "-m32")
+        #if(WIN32)
+        #    message("----> Adding '-mms-bitfields' to stay compatible with MSVC and not GCC on Win32...")
+        #    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -mms-bitfields")
+        #endif()
+
+        set(CMAKE_C_FLAGS_DEBUG "-g")
+        set(CMAKE_C_FLAGS_RELEASE "-DNDEBUG")
+        set(CMAKE_C_FLAGS_MINSIZEREL "-DNDEBUG")
+        set(CMAKE_C_FLAGS_RELWITHDEBINFO "-g -DNDEBUG")
+    endif()
 endif()
 
 

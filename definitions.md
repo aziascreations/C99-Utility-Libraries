@@ -8,6 +8,7 @@
   * `NP_GOODIES_CRC32_ENABLE_BRANCHLESS` [➜](#crc32---enables-branchless-logic)
   * <s>`NP_GOODIES_LIST_USE_COMMON_DELETER`</s> **TODO**
   * `NP_GOODIES_UUID_DISABLE_STRUCT_SIZE_CHECK` [➜](#uuid-structure-size-check)
+  * <s>`NP_DEBUG_LOGGING`</s> **TODO**
 * [CMake Stuff](#cmake-stuff)
   * `NP_GOODIES_BUILD_BENCHMARKS` [➜](#build-benchmarks)
   * `NP_GOODIES_BUILD_EXAMPLES` [➜](#build-examples)
