@@ -222,6 +222,7 @@ if(NP_GOODIES_BUILD_TESTS)
 
     # Targets > Tests > Templates
     #target_compile_definitions(target_name_here PUBLIC NP_DEBUG_LOGGING)
+    #target_compile_definitions(target_name_here PUBLIC NP_GOODIES_ADD_C11_OPTIMIZATIONS)
 
     # Targets > Tests > Arguments > Char
     add_executable(test_args_options tests/arguments/test_options.c ${src_args} ${src_test_utils})

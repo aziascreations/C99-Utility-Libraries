@@ -1,6 +1,7 @@
 /** @file */
 
-#pragma once
+#if !defined(NP_ONCE_C99_GOODIES_VERSION)
+#define NP_ONCE_C99_GOODIES_VERSION
 
 #include "platform.h"
 
@@ -11,3 +12,5 @@
 #define NP_CLANG_GOODIES_VERSION_MINOR 5
 #define NP_CLANG_GOODIES_VERSION_PATCH 0
 #define NP_CLANG_GOODIES_VERSION_EXTRA 0
+
+#endif /* !NP_ONCE_C99_GOODIES_VERSION */

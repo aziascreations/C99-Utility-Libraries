@@ -1,6 +1,7 @@
 /** @file */
 
-#pragma once
+#if !defined(NP_ONCE_C99_GOODIES_ARGUMENTS_STRUCTS)
+#define NP_ONCE_C99_GOODIES_ARGUMENTS_STRUCTS
 
 #include <malloc.h>
 #include <stdbool.h>
@@ -105,3 +106,5 @@ typedef struct arguments_verb {
 	 */
 	struct arguments_verb *parentVerb;
 } Verb;
+
+#endif /* !NP_ONCE_C99_GOODIES_ARGUMENTS_STRUCTS */

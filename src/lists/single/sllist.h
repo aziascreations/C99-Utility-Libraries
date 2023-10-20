@@ -1,6 +1,7 @@
 /** @file */
 
-#pragma once
+#if !defined(NP_ONCE_C99_GOODIES_LLIST_SINGLE)
+#define NP_ONCE_C99_GOODIES_LLIST_SINGLE
 
 #include <stdbool.h>
 
@@ -261,3 +262,5 @@ DLL_EXP_SLLIST bool sllist_deleteLast(
 		void (*cb_freeNode)(void *data));
 
 /** @} */ // end of group_sllist
+
+#endif /* !NP_ONCE_C99_GOODIES_LLIST_SINGLE */

@@ -31,7 +31,7 @@ Supersedes:
 * `NP_COMPILER_GNUC`
 
 ### Tiny C Compiler
-Tested with [QT's Jom](https://wiki.qt.io/Jom) in ReactOS 0.4.14
+Tested with [QT's Jom](https://wiki.qt.io/Jom) in ReactOS 0.4.14 and on Windows 11 22H2
 * `NP_COMPILER_TCC`
 
 ### Unknown

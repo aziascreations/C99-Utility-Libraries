@@ -1,6 +1,7 @@
 /** @file */
 
-#pragma once
+#if !defined(NP_ONCE_C99_GOODIES_TEXT)
+#define NP_ONCE_C99_GOODIES_TEXT
 
 #include "platform.h"
 
@@ -208,3 +209,5 @@ DLL_EXP_TEXT wchar_t *text_copyLineW(
 		size_t stringLength,
 		wchar_t **nextLine,
 		size_t *nextLineMaxLength);
+
+#endif /* !NP_ONCE_C99_GOODIES_TEXT */

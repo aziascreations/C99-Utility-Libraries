@@ -1,6 +1,7 @@
 /** @file */
 
-#pragma once
+#if !defined(NP_ONCE_C99_GOODIES_UUID_COMMONS)
+#define NP_ONCE_C99_GOODIES_UUID_COMMONS
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -53,3 +54,5 @@ DLL_EXP_UUID char *uuid_toString(struct uuid *uuid);
  * @warning Failure to free the returned string WILL cause memory leaks !
  */
 DLL_EXP_UUID wchar_t *uuid_toStringW(struct uuid *uuid);
+
+#endif /* !NP_ONCE_C99_GOODIES_UUID_COMMONS */

@@ -1,6 +1,7 @@
 /** @file */
 
-#pragma once
+#if !defined(NP_ONCE_C99_GOODIES_ARGUMENTS_FLAGS)
+#define NP_ONCE_C99_GOODIES_ARGUMENTS_FLAGS
 
 #include "./types.h"
 
@@ -75,3 +76,5 @@ enum EOptionFlags {
 };
 
 /** @} */ // end of arguments
+
+#endif /* !NP_ONCE_C99_GOODIES_ARGUMENTS_FLAGS */

@@ -1,4 +1,7 @@
-#pragma once
+/// @file utils.h
+
+#if !defined(NP_ONCE_C99_GOODIES_HASHMAP_COMMONS_UTILS)
+#define NP_ONCE_C99_GOODIES_HASHMAP_COMMONS_UTILS
 
 #include "structs.h"
 
@@ -18,3 +21,5 @@
 float hashmap_getLoadFactor(HashMap *hashmap);
 
 /** @} */ // end of group_hashmap
+
+#endif /* !NP_ONCE_C99_GOODIES_HASHMAP_COMMONS_UTILS */

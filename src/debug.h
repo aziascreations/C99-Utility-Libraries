@@ -1,6 +1,7 @@
 /** @file */
 
-#pragma once
+#if !defined(NP_ONCE_C99_GOODIES_DEBUG)
+#define NP_ONCE_C99_GOODIES_DEBUG
 
 #include <stdio.h>
 
@@ -171,3 +172,5 @@
 #endif
 
 /** @} */ // end of group_np_debug
+
+#endif /* !NP_ONCE_C99_GOODIES_DEBUG */

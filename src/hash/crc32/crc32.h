@@ -1,6 +1,7 @@
 /** @file */
 
-#pragma once
+#if !defined(NP_ONCE_C99_GOODIES_HASH_CRC32)
+#define NP_ONCE_C99_GOODIES_HASH_CRC32
 
 #include <stddef.h>
 #include <stdint.h>
@@ -59,3 +60,5 @@ DLL_EXP_CRC32 uint32_t hash_crc32b(const char *data, size_t data_size);
 // * https://www.felixcloutier.com/x86/crc32
 
 /** @} */ // end of group_crc32
+
+#endif /* !NP_ONCE_C99_GOODIES_HASH_CRC32 */

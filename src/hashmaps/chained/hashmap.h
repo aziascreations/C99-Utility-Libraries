@@ -1,6 +1,7 @@
 /// @file hashmap.h
 
-#pragma once
+#if !defined(NP_ONCE_C99_GOODIES_HASHMAP_CHAINED_MAIN)
+#define NP_ONCE_C99_GOODIES_HASHMAP_CHAINED_MAIN
 
 #include <stdbool.h>
 #include <stdint.h>
@@ -102,3 +103,5 @@ DLL_EXP_CHAINED_HASHMAP bool hashmap_chained_deleteByHash(
 DLL_EXP_CHAINED_HASHMAP void hashmap_chained_free(ChainedHashMap *hashMap, void (*cb_freeData)(void *data));
 
 /** @} */ // end of group_hashmap_chained
+
+#endif /* !NP_ONCE_C99_GOODIES_HASHMAP_CHAINED_MAIN */

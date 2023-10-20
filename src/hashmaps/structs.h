@@ -1,6 +1,7 @@
 /// @file structs.h
 
-#pragma once
+#if !defined(NP_ONCE_C99_GOODIES_HASHMAP_COMMONS_STRUCTS)
+#define NP_ONCE_C99_GOODIES_HASHMAP_COMMONS_STRUCTS
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -32,3 +33,5 @@ struct hashmap {
 };
 
 /** @} */ // end of group_hashmap
+
+#endif /* !NP_ONCE_C99_GOODIES_HASHMAP_COMMONS_STRUCTS */

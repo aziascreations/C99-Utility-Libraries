@@ -1,6 +1,7 @@
 /** @file */
 
-#pragma once
+#if !defined(NP_ONCE_C99_GOODIES_LLIST_COMMONS)
+#define NP_ONCE_C99_GOODIES_LLIST_COMMONS
 
 #include "../platform.h"
 
@@ -149,3 +150,5 @@ DLL_EXP_LLIST LinkedListNode *llist_getByIndex(LinkedList *list, size_t index);
 DLL_EXP_LLIST LinkedListNode *llist_selectByIndex(LinkedList *list, size_t index);
 
 /** @} */ // end of group_llist
+
+#endif /* !NP_ONCE_C99_GOODIES_LLIST_COMMONS */

@@ -1,6 +1,7 @@
 /** @file */
 
-#pragma once
+#if !defined(NP_ONCE_C99_GOODIES_LLIST_STRUCTS)
+#define NP_ONCE_C99_GOODIES_LLIST_STRUCTS
 
 #include <stddef.h>
 
@@ -169,3 +170,5 @@ struct double_linked_list {
 };
 
 /** @} */ // end of group_llist
+
+#endif /* !NP_ONCE_C99_GOODIES_LLIST_STRUCTS */

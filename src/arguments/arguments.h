@@ -1,6 +1,7 @@
 /** @file */
 
-#pragma once
+#if !defined(NP_ONCE_C99_GOODIES_ARGUMENTS_MAIN)
+#define NP_ONCE_C99_GOODIES_ARGUMENTS_MAIN
 
 #include "../platform.h"
 
@@ -198,3 +199,5 @@ DLL_EXP_ARGS bool args_isOptionAlreadyRegistered(Option *option, Verb *parentVer
  */
 DLL_EXP_ARGS enum EArgumentParserErrors
 args_parseArguments(Verb *rootVerb, np_args_char *arguments[], int startIndex, int endIndex, Verb **pRelevantVerb);
+
+#endif /* !NP_ONCE_C99_GOODIES_ARGUMENTS_MAIN */

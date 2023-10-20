@@ -1,6 +1,7 @@
 /** @file */
 
-#pragma once
+#if !defined(NP_ONCE_C99_GOODIES_ARGUMENTS_MACROS)
+#define NP_ONCE_C99_GOODIES_ARGUMENTS_MACROS
 
 #include "../text.h"
 
@@ -41,3 +42,5 @@
 #define np_args_trace_println trace_println
 
 #endif
+
+#endif /* !NP_ONCE_C99_GOODIES_ARGUMENTS_MACROS */

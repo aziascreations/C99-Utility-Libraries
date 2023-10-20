@@ -1,6 +1,7 @@
 /** @file */
 
-#pragma once
+#if !defined(NP_ONCE_C99_GOODIES_PLATFORM)
+#define NP_ONCE_C99_GOODIES_PLATFORM
 
 /** @defgroup group_np_platform Platforms detection
  *
@@ -112,7 +113,9 @@
 
 
 // Setting the OS-specific library export macro
-#if defined(NP_OS_WINDOWS) || defined(NP_OS_CYGWIN)
+#if defined(NP_OS_WINDOWS) && defined(NP_COMPILER_TCC)
+	#define NP_DLL_EXPORT __attribute__((dllexport))
+#elif defined(NP_OS_WINDOWS) || defined(NP_OS_CYGWIN)
     #define NP_DLL_EXPORT __declspec(dllexport)
 #elif defined(NP_OS_LINUX) || defined(NP_OS_UNIX)
     #define NP_DLL_EXPORT __attribute__((visibility("default")))
@@ -121,3 +124,5 @@
 #endif
 
 /** @} */ // end of group_np_platform
+
+#endif /* !NP_ONCE_C99_GOODIES_PLATFORM */
