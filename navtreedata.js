@@ -87,20 +87,21 @@ var NAVTREE =
       [ "Platforms & ISA", "md__github_workspace_platforms.html#autotoc_md52", [
         [ "Windows x64", "md__github_workspace_platforms.html#autotoc_md53", null ],
         [ "Windows x86", "md__github_workspace_platforms.html#autotoc_md54", null ],
-        [ "Windows ARM", "md__github_workspace_platforms.html#autotoc_md55", null ],
-        [ "Cygwin", "md__github_workspace_platforms.html#autotoc_md56", null ],
-        [ "ReactOS", "md__github_workspace_platforms.html#autotoc_md57", null ],
-        [ "Linux x64", "md__github_workspace_platforms.html#autotoc_md58", null ],
-        [ "Linux x86", "md__github_workspace_platforms.html#autotoc_md59", null ],
-        [ "Linux ARMv8/AArch64/ARM64", "md__github_workspace_platforms.html#autotoc_md60", null ],
-        [ "Linux ARM Generic", "md__github_workspace_platforms.html#autotoc_md61", null ],
-        [ "Unknown OS *(Apple, ...)*", "md__github_workspace_platforms.html#autotoc_md62", null ],
-        [ "Unknown ISA", "md__github_workspace_platforms.html#autotoc_md63", null ]
+        [ "Windows ARM64", "md__github_workspace_platforms.html#autotoc_md55", null ],
+        [ "Windows ARM", "md__github_workspace_platforms.html#autotoc_md56", null ],
+        [ "Cygwin", "md__github_workspace_platforms.html#autotoc_md57", null ],
+        [ "ReactOS", "md__github_workspace_platforms.html#autotoc_md58", null ],
+        [ "Linux x64", "md__github_workspace_platforms.html#autotoc_md59", null ],
+        [ "Linux x86", "md__github_workspace_platforms.html#autotoc_md60", null ],
+        [ "Linux ARMv8/AArch64/ARM64", "md__github_workspace_platforms.html#autotoc_md61", null ],
+        [ "Linux ARM Generic", "md__github_workspace_platforms.html#autotoc_md62", null ],
+        [ "Unknown OS *(Apple, ...)*", "md__github_workspace_platforms.html#autotoc_md63", null ],
+        [ "Unknown ISA", "md__github_workspace_platforms.html#autotoc_md64", null ]
       ] ]
     ] ],
     [ "Benchmarks", "md__github_workspace_benchmarks_readme.html", [
-      [ "CRC32 Implementations", "md__github_workspace_benchmarks_readme.html#autotoc_md65", null ],
-      [ "Calculating powers of 2", "md__github_workspace_benchmarks_readme.html#autotoc_md66", null ]
+      [ "CRC32 Implementations", "md__github_workspace_benchmarks_readme.html#autotoc_md66", null ],
+      [ "Calculating powers of 2", "md__github_workspace_benchmarks_readme.html#autotoc_md67", null ]
     ] ],
     [ "Modules", "modules.html", "modules" ],
     [ "Data Structures", "annotated.html", [
@@ -128,7 +129,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"md__github_workspace_definitions.html#autotoc_md28"
+"md__github_workspace_definitions.html#autotoc_md22"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

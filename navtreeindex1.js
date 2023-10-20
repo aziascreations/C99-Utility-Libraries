@@ -1,5 +1,11 @@
 var NAVTREEINDEX1 =
 {
+"md__github_workspace_definitions.html#autotoc_md22":[7,1,0],
+"md__github_workspace_definitions.html#autotoc_md23":[7,1,1],
+"md__github_workspace_definitions.html#autotoc_md24":[7,1,2],
+"md__github_workspace_definitions.html#autotoc_md25":[7,1,3],
+"md__github_workspace_definitions.html#autotoc_md26":[7,1,4],
+"md__github_workspace_definitions.html#autotoc_md27":[7,2],
 "md__github_workspace_definitions.html#autotoc_md28":[7,2,0],
 "md__github_workspace_definitions.html#autotoc_md29":[7,2,1],
 "md__github_workspace_definitions.html#autotoc_md30":[7,2,2],
@@ -36,6 +42,7 @@ var NAVTREEINDEX1 =
 "md__github_workspace_platforms.html#autotoc_md61":[8,1,8],
 "md__github_workspace_platforms.html#autotoc_md62":[8,1,9],
 "md__github_workspace_platforms.html#autotoc_md63":[8,1,10],
+"md__github_workspace_platforms.html#autotoc_md64":[8,1,11],
 "modules.html":[10],
 "pages.html":[],
 "platform_8h.html":[12,0,0,6],

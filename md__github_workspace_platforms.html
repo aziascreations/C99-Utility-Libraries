@@ -120,8 +120,11 @@ GCC</h2>
 </ul>
 <h2><a class="anchor" id="autotoc_md49"></a>
 MinGW</h2>
-<p >Untested</p><ul>
+<ul>
 <li><code>NP_COMPILER_MINGW</code></li>
+</ul>
+<p >Supersedes:</p><ul>
+<li><code>NP_COMPILER_GNUC</code></li>
 </ul>
 <h2><a class="anchor" id="autotoc_md50"></a>
 Tiny C Compiler</h2>
@@ -148,30 +151,43 @@ Windows x86</h2>
 <li><code>NP_ARCH_x86</code></li>
 </ul>
 <h2><a class="anchor" id="autotoc_md55"></a>
-Windows ARM</h2>
-<p >Untested.</p>
+Windows ARM64</h2>
+<p >Tested via <code>strings</code> on Windows 11 22H2 with MSVC <code>amd64_arm64</code> target.</p><ul>
+<li><code>NP_OS_WINDOWS</code></li>
+<li><code>NP_ARCH_ARM</code></li>
+<li><code>NP_ARCH_ARMv8</code></li>
+<li><code>NP_ARCH_AARCH64</code></li>
+</ul>
 <h2><a class="anchor" id="autotoc_md56"></a>
+Windows ARM</h2>
+<p >Tested via <code>strings</code> on Windows 11 22H2 with MSVC <code>amd64_arm</code> target.<br  />
+ <b>Doesn't compile properly just yet !</b></p><ul>
+<li><code>NP_OS_WINDOWS</code></li>
+<li><code>NP_ARCH_ARM</code></li>
+<li><code>NP_ARCH_ARM_GENERIC</code></li>
+</ul>
+<h2><a class="anchor" id="autotoc_md57"></a>
 Cygwin</h2>
 <p >Tested and returned <code>NP_COMPILER_GNUC</code> as the compiler, needs more testing.</p><ul>
 <li><code>NP_OS_CYGWIN</code></li>
 </ul>
-<h2><a class="anchor" id="autotoc_md57"></a>
+<h2><a class="anchor" id="autotoc_md58"></a>
 ReactOS</h2>
 <p >Tested on ReactOS 0.4.14 x86.</p><ul>
 <li><code>NP_OS_WINDOWS</code> *(May change in the future)*</li>
 <li><code>NP_ARCH_x86</code></li>
 </ul>
-<h2><a class="anchor" id="autotoc_md58"></a>
+<h2><a class="anchor" id="autotoc_md59"></a>
 Linux x64</h2>
 <p >Tested on Kubuntu 23.10 in a VM with GCC &amp; CLang.</p><ul>
 <li><code>NP_OS_UNIX</code></li>
 <li><code>NP_OS_LINUX</code></li>
 <li><code>NP_ARCH_x64</code></li>
 </ul>
-<h2><a class="anchor" id="autotoc_md59"></a>
+<h2><a class="anchor" id="autotoc_md60"></a>
 Linux x86</h2>
 <p >Untested.</p>
-<h2><a class="anchor" id="autotoc_md60"></a>
+<h2><a class="anchor" id="autotoc_md61"></a>
 Linux ARMv8/AArch64/ARM64</h2>
 <p >Tested on NanoPi R4S with Armbian (23.02.2).</p><ul>
 <li><code>NP_OS_UNIX</code></li>
@@ -180,7 +196,7 @@ Linux ARMv8/AArch64/ARM64</h2>
 <li><code>NP_ARCH_ARMv8</code></li>
 <li><code>NP_ARCH_AARCH64</code></li>
 </ul>
-<h2><a class="anchor" id="autotoc_md61"></a>
+<h2><a class="anchor" id="autotoc_md62"></a>
 Linux ARM Generic</h2>
 <p >Untested, will be done soon.</p><ul>
 <li><code>NP_OS_UNIX</code></li>
@@ -188,12 +204,12 @@ Linux ARM Generic</h2>
 <li><code>NP_ARCH_ARM</code></li>
 <li><code>NP_ARCH_ARM_GENERIC</code></li>
 </ul>
-<h2><a class="anchor" id="autotoc_md62"></a>
+<h2><a class="anchor" id="autotoc_md63"></a>
 Unknown OS *(Apple, ...)*</h2>
 <ul>
 <li><code>NP_OS_UNKNOWN</code></li>
 </ul>
-<h2><a class="anchor" id="autotoc_md63"></a>
+<h2><a class="anchor" id="autotoc_md64"></a>
 Unknown ISA</h2>
 <ul>
 <li><code>NP_ARCH_UNKNOWN</code> </li>
@@ -204,7 +220,7 @@ Unknown ISA</h2>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Wed Oct 18 2023 23:12:59 for NibblePoker&#39;s Clang Goodies by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Fri Oct 20 2023 00:46:06 for NibblePoker&#39;s Clang Goodies by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>
