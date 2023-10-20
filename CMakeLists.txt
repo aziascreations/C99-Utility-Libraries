@@ -127,10 +127,19 @@ if(NP_GOODIES_IS_MAIN)
         #    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -mms-bitfields")
         #endif()
 
+        #    target_compile_options(test_win32_registry_doesKeyExist PRIVATE "-ladvapi32")
+        #set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -ladvapi32")
+
         set(CMAKE_C_FLAGS_DEBUG "-g")
         set(CMAKE_C_FLAGS_RELEASE "-DNDEBUG")
         set(CMAKE_C_FLAGS_MINSIZEREL "-DNDEBUG")
         set(CMAKE_C_FLAGS_RELWITHDEBINFO "-g -DNDEBUG")
+
+        message("MAKE_C_LINK_EXECUTABLE => ${MAKE_C_LINK_EXECUTABLE}")
+
+        #message("CMAKE_EXE_LINKER_FLAGS => ${CMAKE_EXE_LINKER_FLAGS}")
+        #set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -L./rsc -ladvapi32")
+        #message("CMAKE_EXE_LINKER_FLAGS => ${CMAKE_EXE_LINKER_FLAGS}")
     endif()
 endif()
 
@@ -156,6 +165,12 @@ file(GLOB_RECURSE src_hashmap CONFIGURE_DEPENDS "src/hashmaps/*.c" "src/hashmaps
 
 file(GLOB src_uuid CONFIGURE_DEPENDS "src/uuid/*.h" "src/uuid/*.c" ${src_np_clang_goodies_commons})
 file(GLOB_RECURSE src_hash CONFIGURE_DEPENDS "src/hash/*.h" "src/hash/*.c" ${src_np_clang_goodies_commons})
+
+#if(WIN32)
+#    file(GLOB_RECURSE src_win32 CONFIGURE_DEPENDS "src/win32/*.h" "src/win32/*.c")
+#    # "rsc/advapi32.def"
+#endif()
+
 file(GLOB_RECURSE src_all CONFIGURE_DEPENDS "src/*.h" "src/*.c")
 
 file(GLOB src_test_utils CONFIGURE_DEPENDS "tests/assert.h" "tests/memutils.c" "tests/memutils.h" "src/platform.h")
@@ -227,7 +242,9 @@ if(NP_GOODIES_BUILD_EXAMPLES)
     add_executable(example_crc32 examples/crc32.c ${src_hash})
 
     if(WIN32)
-        add_executable(example_uuid_win32 examples/uuid_win32.c ${src_uuid})
+        if(NOT CMAKE_C_COMPILER_ID STREQUAL "TinyCC")
+            add_executable(example_uuid_win32 examples/uuid_win32.c ${src_uuid})
+        endif()
     endif()
 else()
     message("---> Skipping examples targets...")
@@ -353,6 +370,17 @@ if(NP_GOODIES_BUILD_TESTS)
     add_executable(test_text_charToWChar tests/text/test_text_charToWChar.c ${src_text} ${src_test_utils})
     add_test(NAME test_text_charToWChar COMMAND test_text_charToWChar)
     #target_compile_definitions(test_text_charToWChar PUBLIC NP_GOODIES_ADD_C11_OPTIMIZATIONS)
+
+    # Targets > Tests > Win32
+    #if(WIN32)
+    #    add_executable(test_win32_registry_doesKeyExist tests/win32/registry/test_win32_registry_doesKeyExist.c ${src_win32} ${src_test_utils})
+    #    add_test(NAME test_win32_registry_doesKeyExist COMMAND test_win32_registry_doesKeyExist)
+    #    if(CMAKE_C_COMPILER_ID STREQUAL "TinyCC")
+    #        target_link_libraries(test_win32_registry_doesKeyExist PRIVATE "advapi32.lib")
+    #        target_link_options(test_win32_registry_doesKeyExist PRIVATE "-L./rsc -ladvapi32")
+    #        target_compile_options(test_win32_registry_doesKeyExist PRIVATE "-L./rsc -ladvapi32")
+    #    endif()
+    #endif()
 
     # Targets > Tests > Misc
     add_executable(test_platform tests/misc/test_platform.c "tests/assert.h" "src/platform.h")
