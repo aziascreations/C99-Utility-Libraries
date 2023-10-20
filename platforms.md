@@ -31,7 +31,7 @@ Supersedes:
 * `NP_COMPILER_GNUC`
 
 ### Tiny C Compiler
-Tested with [QT's Jom](https://wiki.qt.io/Jom) in ReactOS 0.4.14 and on Windows 11 22H2
+Tested with [Qt's Jom](https://wiki.qt.io/Jom) in ReactOS 0.4.14, and nmake on Windows 11 22H2
 * `NP_COMPILER_TCC`
 
 ### Unknown
@@ -46,7 +46,7 @@ Tested on Windows 11 22H2 with MSVC.
 * `NP_ARCH_x64`
 
 ### Windows x86
-Untested.
+Tested on Windows 11 22H2 with TCC.
 * `NP_OS_WINDOWS`
 * `NP_ARCH_x86`
 

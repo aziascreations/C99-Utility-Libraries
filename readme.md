@@ -1,5 +1,5 @@
 # NibblePoker's Clang Goodies
-Small collection of utilities and libraries for C in order to simplify some development tasks.
+Small collection of utilities and libraries for C99 that aims to simplify some development tasks.
 
 
 ## Features
@@ -8,21 +8,35 @@ Small collection of utilities and libraries for C in order to simplify some deve
 * ![](docs/images/captcha.png) Basic chained HashMaps
 * ![](docs/images/text.png) Various string utilities
 * ![](docs/images/bug.png) Toggleable debugging output functions
-* ![](docs/images/module.png) Complete, macro-able `WCHAR` support
+* ![](docs/images/module.png) Completely macro-able `char`↔`wchar_t` support
 * ![](docs/images/plus.png) Small extras like UUID4, CRC32B & platform detection
-* ![](docs/images/linux.png) Supports [a variety of OS, CPU ISA & Compilers](platforms.md)
+* ![](docs/images/linux.png) Supports [a wide variety of OS, CPU ISA & Compilers](platforms.md)
 * ![](docs/images/view_more.png) Other features to come as needed or requested
 
 ## Planned Features
 * More HashMap types & more utilities
-* Platform-agnostic with some optional improvements on a per-OS and opt-in basis.
-* Optional assembly-level optimisations for some procedures.
-* Support for ReactOS & TCC
 * An INI config parser (![](docs/images/settings.png))
 
 
 ## Usage
-**TODO: Add reminder to check the [Definitions](definitions.md) page.**
+
+### Preamble
+**Requirements:**<br>
+&nbsp;&nbsp;● CMake 3.13+<br>
+&nbsp;&nbsp;● [Qt's Jom](https://wiki.qt.io/Jom)&nbsp;&nbsp;*(ReactOS only, replaces nmake)*
+
+**Supported OS:**<br>
+&nbsp;&nbsp;Windows, Cygwin, Linux & ReactOS
+
+**Supported Compilers:**<br>
+&nbsp;&nbsp;MSVC, CLang, GCC, MinGW & TinyCC
+
+**Supported CPU architectures:**<br>
+&nbsp;&nbsp;x86, x64, <s>ARM</s> & ARM64
+
+![](docs/images/info.png) Check [platforms.md](platforms.md) for more info on the platform detector.<br>
+![](docs/images/settings.png) Check [definitions.md](definitions.md) for a complete listing of the configuration definitions.
+
 
 ### CMake's FetchContent
 
@@ -64,8 +78,11 @@ add_dependencies(MyApp lib_np_clang_goodies)  # Does nothing in my tests, but it
 target_compile_definitions(MyApp PUBLIC NP_DEBUG_LOGGING)  # Enables debugging and optional error logging.
 ```
 
+
 ### CMake's Include
-**TODO: Find a way to make this work properly, doesn't detect that its imported !**
+The `Include` directive isn't supported yet.<br>
+The included project doesn't detect that it's being included properly like `FetchContent` does.
+
 
 ### CMake Manual Import
 In order to use this library in your projects via a manual import you need to do the following things:
@@ -143,10 +160,12 @@ If you want to build the documentation, you need to do the following things:
 * Run the [make-doc.bat](https://github.com/aziascreations/C99-Utility-Libraries/blob/master/make-doc.bat) script.
 * Go into `docs/html` and open the `index.html` file.
 
+
 ## Benchmarks
 This project provides a couple of benchmarks in order to justify some of the design choices I made.
 
 Please refer to the [Benchmarks](benchmarks/readme.md) page for more information.
+
 
 ## Licenses
 This project is dual-licensed under the following open-source licenses.<br>
