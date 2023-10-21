@@ -1,0 +1,6 @@
+LIBRARY Advapi32.dll
+
+EXPORTS
+CryptAcquireContextA
+CryptGenRandom
+CryptReleaseContext

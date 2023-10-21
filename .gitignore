@@ -26,3 +26,6 @@ trash/
 CONTRIBUTING.md
 trash/conventions.md
 trash/build-quick-strip.cmd
+
+# TCC
+.bin/

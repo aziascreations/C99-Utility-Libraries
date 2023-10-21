@@ -1,4 +1,4 @@
-#pragma comment(lib, "crypt32.lib")
+//#pragma comment(lib, "crypt32.lib")
 
 #include <stdio.h>
 #include <stdlib.h>
