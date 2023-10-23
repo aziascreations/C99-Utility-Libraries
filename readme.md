@@ -115,7 +115,7 @@ Alternatively, you can also check the [aziascreations/C99-Win32-Wifi-Utility](ht
 repository for a complete example in a "fully-fledged" Windows application.
 
 ### Launch arguments
-* [Basic usage with `char` & `wchar_t` support](examples/debug_logging.c)
+* [Basic usage with `char` & `wchar_t` support](examples/arguments_basic.c)
   * Define `NP_GOODIES_ARGUMENTS_USE_WCHAR` to support `wchar_t` instead of `char`.
 
 ### Debugging Utilities
