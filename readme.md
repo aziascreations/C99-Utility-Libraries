@@ -15,7 +15,7 @@ Small collection of utilities and libraries for C99 that aims to simplify some d
 
 ## Planned Features
 * More HashMap types & more utilities
-* An INI config parser (![](docs/images/settings.png))
+* An INI config parser
 
 
 ## Usage
@@ -115,7 +115,12 @@ Alternatively, you can also check the [aziascreations/C99-Win32-Wifi-Utility](ht
 repository for a complete example in a "fully-fledged" Windows application.
 
 ### Launch arguments
-**TODO**
+* [Basic usage with `char` & `wchar_t` support](examples/debug_logging.c)
+  * Define `NP_GOODIES_ARGUMENTS_USE_WCHAR` to support `wchar_t` instead of `char`.
+
+### Debugging Utilities
+* [Complete usage](examples/debug_logging.c)
+  * You may need to define `NP_DEBUG_LOGGING` to enable the special prints.
 
 ### Double Linked Lists
 * [Basic operations](examples/dllist_basic.c)
@@ -137,7 +142,6 @@ repository for a complete example in a "fully-fledged" Windows application.
 ### UUID
 * [UUID4 generation](examples/uuid_all.c)
   * Rudimentary RNG setup & UUID4 generation.
-
 * [UUID4 generation with Win32API](examples/uuid_win32.c)
   * Safe RNG setup with Win32APIs & UUID4 generation.
 
@@ -172,6 +176,7 @@ This project is dual-licensed under the following open-source licenses.<br>
 You can choose the one that best suits your needs:
 1. [MIT License](LICENSE-MIT)<br>
    &nbsp;&nbsp;● Just include the `LICENSE-MIT` file and be done with it while using an OSI license.
+
 2. [CC0 1.0 Universal (CC0 1.0) (Public Domain)](LICENSE-CC0)<br>
    &nbsp;&nbsp;● Do whatever you want with it.<br>
    &nbsp;&nbsp;● No credit, mentions or anything else is needed.<br>
@@ -180,4 +185,4 @@ You can choose the one that best suits your needs:
 Keep in mind, the [doxygen-awesome-css](https://github.com/jothepro/doxygen-awesome-css) submodule repository uses an
 [MIT license](https://github.com/jothepro/doxygen-awesome-css/blob/main/LICENSE).<br>
 You can either not clone it or fork the project and remove it to be 100% safe if you use the `CC0 1.0` license.<br>
-The documentation will still build without it, but it will have a "worse"-looking UI.
+The documentation will still build without it, but it will have a "worse-looking" UI.

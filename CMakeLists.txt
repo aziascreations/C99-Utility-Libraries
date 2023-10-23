@@ -234,12 +234,20 @@ endif()
 if(NP_GOODIES_BUILD_EXAMPLES)
     message("---> Adding examples targets...")
 
+    add_executable(example_arguments_basic_char examples/arguments_basic.c ${src_args})
+    add_executable(example_arguments_basic_wchar examples/arguments_basic.c ${src_args})
+    target_compile_definitions(example_arguments_basic_wchar PUBLIC NP_GOODIES_ARGUMENTS_USE_WCHAR)
+
     add_executable(example_dllist_basic examples/dllist_basic.c ${src_dllist} ${src_text})
     add_executable(example_dllist_custom_free examples/dllist_custom_free.c ${src_dllist} ${src_text})
     add_executable(example_dllist_custom_node examples/dllist_custom_node.c ${src_dllist} ${src_text})
     add_executable(example_dllist_specific examples/dllist_specific.c ${src_dllist} ${src_text})
     add_executable(example_uuid_all examples/uuid_all.c ${src_uuid})
     add_executable(example_crc32 examples/crc32.c ${src_hash})
+
+    add_executable(example_debug_logging_off examples/debug_logging.c ${src_np_clang_goodies_commons})
+    add_executable(example_debug_logging_on  examples/debug_logging.c ${src_np_clang_goodies_commons})
+    target_compile_definitions(example_debug_logging_on PUBLIC NP_DEBUG_LOGGING)
 
     if(WIN32)
         if(NOT CMAKE_C_COMPILER_ID STREQUAL "TinyCC")
