@@ -36,7 +36,7 @@
  */
 #define debug_print(fmt, ...) \
             printf("D> %s:%d:%s() - ", __FILE__, __LINE__, __func__); \
-            printf(fmt, __VA_ARGS__)
+            printf(fmt, ##__VA_ARGS__)
 
 /*!
  * Only available if `NP_DEBUG_LOGGING` is defined during compilation.
@@ -45,7 +45,7 @@
  */
 #define debug_println(fmt, ...) \
             printf("D> %s:%d:%s() - ", __FILE__, __LINE__, __func__); \
-            printf(fmt, __VA_ARGS__); \
+            printf(fmt, ##__VA_ARGS__); \
             printf("\n")
 
 /*!
@@ -55,7 +55,7 @@
  */
 #define error_print(fmt, ...) \
             printf("E> %s:%d:%s() - ", __FILE__, __LINE__, __func__); \
-            printf(fmt, __VA_ARGS__)
+            printf(fmt, ##__VA_ARGS__)
 
 /*!
  * Only available if `NP_DEBUG_LOGGING` is defined during compilation.
@@ -64,7 +64,7 @@
  */
 #define error_println(fmt, ...) \
             printf("E> %s:%d:%s() - ", __FILE__, __LINE__, __func__); \
-            printf(fmt, __VA_ARGS__); \
+            printf(fmt, ##__VA_ARGS__); \
             printf("\n")
 
 /*!
@@ -74,7 +74,7 @@
  */
 #define trace_print(fmt, ...) \
             printf("T> %s:%d:%s() - ", __FILE__, __LINE__, __func__); \
-            printf(fmt, __VA_ARGS__)
+            printf(fmt, ##__VA_ARGS__)
 
 /*!
  * Only available if `NP_DEBUG_LOGGING` is defined during compilation.
@@ -83,7 +83,7 @@
  */
 #define trace_println(fmt, ...) \
             printf("T> %s:%d:%s() - ", __FILE__, __LINE__, __func__); \
-            printf(fmt, __VA_ARGS__); \
+            printf(fmt, ##__VA_ARGS__); \
             printf("\n")
 
 /*!
@@ -93,7 +93,7 @@
  */
 #define debug_wprint(fmt, ...) \
             printf("D> %s:%d:%s() - ", __FILE__, __LINE__, __func__); \
-            wprintf(L##fmt, __VA_ARGS__)
+            wprintf(L##fmt, ##__VA_ARGS__)
 
 /*!
  * Only available if `NP_DEBUG_LOGGING` and `NP_WIN32` are defined during compilation.
@@ -102,7 +102,7 @@
  */
 #define debug_wprintln(fmt, ...) \
             printf("D> %s:%d:%s() - ", __FILE__, __LINE__, __func__); \
-            wprintf(L##fmt, __VA_ARGS__); \
+            wprintf(L##fmt, ##__VA_ARGS__); \
             printf("\n")
 
 /*!
@@ -112,7 +112,7 @@
  */
 #define error_wprint(fmt, ...) \
             printf("E> %s:%d:%s() - ", __FILE__, __LINE__, __func__); \
-            wprintf(L##fmt, __VA_ARGS__)
+            wprintf(L##fmt, ##__VA_ARGS__)
 
 /*!
  * Only available if `NP_DEBUG_LOGGING` and `NP_WIN32` are defined during compilation.
@@ -121,7 +121,7 @@
  */
 #define error_wprintln(fmt, ...) \
             printf("E> %s:%d:%s() - ", __FILE__, __LINE__, __func__); \
-            wprintf(L##fmt, __VA_ARGS__); \
+            wprintf(L##fmt, ##__VA_ARGS__); \
             printf("\n")
 
 /*!
@@ -131,7 +131,7 @@
  */
 #define trace_wprint(fmt, ...) \
             printf("T> %s:%d:%s() - ", __FILE__, __LINE__, __func__); \
-            wprintf(L##fmt, __VA_ARGS__)
+            wprintf(L##fmt, ##__VA_ARGS__)
 
 /*!
  * Only available if `NP_DEBUG_LOGGING` and `NP_WIN32` are defined during compilation.
@@ -140,7 +140,7 @@
  */
 #define trace_wprintln(fmt, ...) \
             printf("T> %s:%d:%s() - ", __FILE__, __LINE__, __func__); \
-            wprintf(L##fmt, __VA_ARGS__); \
+            wprintf(L##fmt, ##__VA_ARGS__); \
             printf("\n")
 
 #else
