@@ -39,6 +39,7 @@
 #define np_ini_hashmapCreate(sizePower) hashmap_chained_create(sizePower)
 #define np_ini_hashmapGetByHash(hashMap, hash) hashmap_chained_getByHash(hashMap, hash)
 #define np_ini_hashmapOverwriteByHash(hashMap, data, hash, cb_freeData) hashmap_chained_overwriteByHash(hashMap, data, hash, cb_freeData)
+#define np_ini_hashmapDeleteByHash(hashMap, hash, cb_freeData) hashmap_chained_deleteByHash(hashMap, hash, cb_freeData)
 #define np_ini_hashmapFree(hashMap, cb_freeData) hashmap_chained_free(hashMap, cb_freeData)
 
 #endif //NP_ONCE_C99_GOODIES_INI_MACROS

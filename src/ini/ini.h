@@ -42,8 +42,13 @@ DLL_EXP_INI void ini_freeGroup(IniGroupData *iniGroup);
 
 // Registers
 
-// Will return false for duplicates !
+// Returns false for duplicates !
 DLL_EXP_INI bool ini_registerGroup(IniData *ini, IniGroupData *iniGroup);
+
+// Removers
+
+DLL_EXP_INI IniGroupData* ini_deregisterGroup(IniData *ini, np_ini_char *groupName);
+DLL_EXP_INI bool ini_deleteGroup(IniData *ini, np_ini_char *groupName);
 
 // Getters
 

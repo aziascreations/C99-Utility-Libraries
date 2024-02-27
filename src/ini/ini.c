@@ -112,6 +112,37 @@ bool ini_registerGroup(IniData *ini, IniGroupData *iniGroup) {
 }
 
 
+// Removers
+
+IniGroupData* ini_deregisterGroup(IniData *ini, np_ini_char *groupName) {
+	IniGroupData *returnedGroup = NULL;
+	
+	if(ini != NULL && groupName != NULL) {
+		uint64_t groupNameHash = hash_crc32b(groupName, np_ini_strlen(groupName) * sizeof(np_ini_char));
+		
+		returnedGroup = np_ini_hashmapGetByHash((np_ini_hashmap *) ini->groups,groupNameHash);
+		
+		if(returnedGroup != NULL) {
+			np_ini_hashmapDeleteByHash((np_ini_hashmap *) ini->groups, groupNameHash, NULL);
+			returnedGroup->parentIni = NULL;
+		}
+	}
+	
+	return returnedGroup;
+}
+
+bool ini_deleteGroup(IniData *ini, np_ini_char *groupName) {
+	IniGroupData *deregisteredGroup = ini_deregisterGroup(ini, groupName);
+	
+	if(deregisteredGroup != NULL) {
+		ini_freeGroup(deregisteredGroup);
+		return true;
+	}
+	
+	return false;
+}
+
+
 // Getters
 
 IniGroupData *ini_getGroup(IniData *ini, np_ini_char *groupName) {

@@ -58,6 +58,30 @@ int main(void) {
 	assert(ini->groups->entryCount == 2, "The internal HashMap still has 2 entries");
 	assert(iniGroup1Bis->parentIni == NULL, "Group #1.bis parent is intact");
 	
+	printf("> Checking group deregistration function parameter failures...\n");
+	assert(ini_deregisterGroup(ini, np_ini_L("nope")) == NULL, "Cannot remove fake group")
+	assert(ini_deregisterGroup(NULL, np_ini_L("nope")) == NULL, "Cannot remove group from NULL")
+	assert(ini_deregisterGroup(ini, NULL) == NULL, "Cannot remove NULL group")
+	
+	printf("> Checking group deregistration function parameter success...\n");
+	assert(ini_deregisterGroup(ini, groupName2) == iniGroup2, "Removed group #2, and got its pointer back")
+	assert(iniGroup2->parentIni == NULL, "Group #2's parent is NULL again")
+	assert(ini->groups->entryCount == 1, "The internal HashMap has 1 entry");
+	assert(ini_deregisterGroup(ini, groupName2) == NULL, "Cannot remove group #2 again")
+	
+	printf("> Preparing for deletion tests...\n");
+	assert(ini_registerGroup(ini, iniGroup2), "Registered group #2 again for testing");
+	assert(ini->groups->entryCount == 2, "The internal HashMap has 2 entry");
+	
+	printf("> Checking group deletion function parameter failures...\n");
+	assert(!ini_deleteGroup(ini, np_ini_L("nope")), "Cannot delete fake group")
+	assert(!ini_deleteGroup(NULL, np_ini_L("nope")), "Cannot delete group from NULL")
+	assert(!ini_deleteGroup(ini, NULL), "Cannot delete NULL group")
+	
+	printf("> Checking group deletion function parameter success...\n");
+	assert(ini_deleteGroup(ini, groupName2), "Deleted and freed group #2")
+	assert(ini->groups->entryCount == 1, "The internal HashMap has 1 entry");
+	
 	// Freeing this one before "ini" ensures the test will crash if it has been referenced inside "ini".
 	ini_freeGroup(iniGroup1Bis);
 	
