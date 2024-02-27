@@ -245,6 +245,7 @@ INPUT                  = "../extra/" \
                          "../src/hash/crc32/" \
                          "../src/hashmaps/" \
                          "../src/hashmaps/chained/" \
+                         "../src/ini/" \
                          "../src/lists/" \
                          "../src/lists/double/" \
                          "../src/lists/single/" \

@@ -166,6 +166,8 @@ file(GLOB_RECURSE src_hashmap CONFIGURE_DEPENDS "src/hashmaps/*.c" "src/hashmaps
 file(GLOB src_uuid CONFIGURE_DEPENDS "src/uuid/*.h" "src/uuid/*.c" ${src_np_clang_goodies_commons})
 file(GLOB_RECURSE src_hash CONFIGURE_DEPENDS "src/hash/*.h" "src/hash/*.c" ${src_np_clang_goodies_commons})
 
+file(GLOB_RECURSE src_ini CONFIGURE_DEPENDS "src/ini/*.h" "src/ini/*.c" ${src_text} ${src_hash} ${src_hashmap} ${src_llist} ${src_np_clang_goodies_commons})
+
 #if(WIN32)
 #    file(GLOB_RECURSE src_win32 CONFIGURE_DEPENDS "src/win32/*.h" "src/win32/*.c")
 #    # "rsc/advapi32.def"
@@ -389,6 +391,10 @@ if(NP_GOODIES_BUILD_TESTS)
     #        target_compile_options(test_win32_registry_doesKeyExist PRIVATE "-L./rsc -ladvapi32")
     #    endif()
     #endif()
+
+    # Targets > Tests > INI
+    add_executable(test_ini_registration tests/ini/test_ini_registration.c ${src_ini} ${src_test_utils})
+    add_test(NAME test_ini_registration COMMAND test_ini_registration)
 
     # Targets > Tests > Misc
     add_executable(test_platform tests/misc/test_platform.c "tests/assert.h" "src/platform.h")

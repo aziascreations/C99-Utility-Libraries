@@ -5,7 +5,7 @@
 
 #include "../text.h"
 
-#if defined(NP_GOODIES_ARGUMENTS_USE_WCHAR)
+#if defined(NP_GOODIES_ARGUMENTS_USE_WCHAR) || defined(NP_GOODIES_ALL_USE_WCHAR)
 
 #define np_args_L(str) L##str
 
