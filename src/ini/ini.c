@@ -77,41 +77,6 @@ void ini_freeGroup(IniGroupData *iniGroup) {
 }
 
 
-// Registers
-
-bool ini_registerGroup(IniData *ini, IniGroupData *iniGroup) {
-	if(ini == NULL || iniGroup == NULL) {
-		trace_println("INI: Given root and/or group is NULL ! => @%p & @%p", ini, groupName);
-		return false;
-	}
-	
-	if(iniGroup->parentIni != NULL) {
-		trace_println("INI: Given group is already registered ! => @%p to @%p", iniGroup, iniGroup->parentIni);
-		return false;
-	}
-	
-	if(ini->groups == NULL) {
-		trace_println("INI: Creating root's group hashmap => %u", ini->options.hashmapSizePower);
-		ini->groups = (HashMap *) np_ini_hashmapCreate(ini->options.hashmapSizePower);
-		
-		if(ini->groups == NULL) {
-			error_println("INI: Failed to create a hashmap with '%u' as its size power !", ini->options.hashmapSizePower);
-			return false;
-		}
-	}
-	
-	if(np_ini_hashmapOverwriteByHash((np_ini_hashmap *) ini->groups, iniGroup,
-									 hash_crc32b(iniGroup->name, np_ini_strlen(iniGroup->name) * sizeof(np_ini_char)),
-									 NULL)) {
-		iniGroup->parentIni = ini;
-		return true;
-	} else {
-		trace_println("INI: Couldn't register group due to hashmap-related reasons");
-		return false;
-	}
-}
-
-
 // Removers
 
 IniGroupData* ini_deregisterGroup(IniData *ini, np_ini_char *groupName) {
@@ -166,6 +131,106 @@ IniGroupData *ini_getGroup(IniData *ini, np_ini_char *groupName) {
 	return np_ini_hashmapGetByHash(
 			(np_ini_hashmap *) ini->groups,
 			hash_crc32b(groupName, groupNameLength * sizeof(np_ini_char)));
+}
+
+np_ini_char *ini_getPrimitiveReference(IniGroupData *iniGroup, const np_ini_char *primitiveKey) {
+	if(iniGroup == NULL || primitiveKey == NULL) {
+		trace_println("INI: Given group and/or key is NULL ! => @%p & @%p", iniGroup, primitiveKey);
+		return NULL;
+	}
+	
+	if(iniGroup->primitives == NULL) {
+		trace_println("INI: Group @%p doesn't have any primitives !", iniGroup);
+		return NULL;
+	}
+	
+	return np_ini_hashmapGetByHash(
+			(np_ini_hashmap *) iniGroup->primitives,
+			hash_crc32b(primitiveKey, np_ini_strlen(primitiveKey) * sizeof(np_ini_char)));
+}
+
+np_ini_char *ini_getPrimitiveCopy(IniGroupData *iniGroup, const np_ini_char *primitiveKey) {
+	np_ini_char *primitiveData = ini_getPrimitiveReference(iniGroup, primitiveKey);
+	
+	if(primitiveData != NULL) {
+		primitiveData = np_ini_copyString(primitiveData);
+	}
+	
+	return primitiveData;
+}
+
+// Setters
+
+bool ini_setGroup(IniData *ini, IniGroupData *iniGroup) {
+	if(ini == NULL || iniGroup == NULL) {
+		trace_println("INI: Given root and/or group is NULL ! => @%p & @%p", ini, iniGroup);
+		return false;
+	}
+	
+	if(iniGroup->parentIni != NULL) {
+		trace_println("INI: Given group is already registered ! => @%p to @%p", iniGroup, iniGroup->parentIni);
+		return false;
+	}
+	
+	if(ini->groups == NULL) {
+		trace_println("INI: Creating root's group hashmap => %u", ini->options.hashmapSizePower);
+		ini->groups = (HashMap *) np_ini_hashmapCreate(ini->options.hashmapSizePower);
+		
+		if(ini->groups == NULL) {
+			error_println("INI: Failed to create a hashmap with '%u' as its size power !", ini->options.hashmapSizePower);
+			return false;
+		}
+	}
+	
+	if(np_ini_hashmapOverwriteByHash((np_ini_hashmap *) ini->groups, iniGroup,
+									 hash_crc32b(iniGroup->name, np_ini_strlen(iniGroup->name) * sizeof(np_ini_char)),
+									 NULL)) {
+		iniGroup->parentIni = ini;
+		return true;
+	} else {
+		trace_println("INI: Couldn't register group due to hashmap-related reasons");
+		return false;
+	}
+}
+
+bool ini_setPrimitive(IniGroupData *iniGroup, const np_ini_char *primitiveKey, const np_ini_char *primitiveValue, bool overwriteAndFree) {
+	if(iniGroup == NULL || primitiveKey == NULL || primitiveValue == NULL) {
+		trace_println("INI: Given group and/or primitive is NULL ! => @%p & @%p & @%p", iniGroup, primitiveKey, primitiveValue);
+		return false;
+	}
+	
+	if(iniGroup->parentIni == NULL) {
+		trace_println("INI: Given group has no parent ! => @%p", iniGroup);
+		return false;
+	}
+	
+	if(iniGroup->primitives == NULL) {
+		trace_println("INI: Creating group's primitive hashmap => %u", iniGroup->parentIni->options.hashmapSizePower);
+		iniGroup->primitives = (HashMap *) np_ini_hashmapCreate(iniGroup->parentIni->options.hashmapSizePower);
+		
+		if(iniGroup->primitives == NULL) {
+			error_println("INI: Failed to create a hashmap with '%u' as its size power !", iniGroup->parentIni->options.hashmapSizePower);
+			return false;
+		}
+	}
+	
+	np_ini_char *primitiveValueCopy = np_ini_copyString(primitiveValue);
+	if(primitiveValueCopy == NULL) {
+		trace_println("INI: Failed to copy primitive data !");
+		return false;
+	}
+	
+	uint64_t primitiveKeyHash = hash_crc32b(primitiveKey, np_ini_strlen(primitiveKey) * sizeof(np_ini_char));
+	
+	if(np_ini_hashmapOverwriteByHash((np_ini_hashmap *) iniGroup->primitives, primitiveValueCopy, primitiveKeyHash,
+									 (overwriteAndFree ? &free : NULL))) {
+		return true;
+	} else {
+		trace_println("INI: Failed to insert primitive data, now freeing copy !");
+		free(primitiveValueCopy);
+	}
+	
+	return false;
 }
 
 /** @} */ // end of group_ini

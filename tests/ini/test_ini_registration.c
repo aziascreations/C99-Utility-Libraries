@@ -12,7 +12,6 @@ int main(void) {
 	
 	IniData *ini = ini_create((IniOptions) {
 			.mergeGroups = true,
-			.overrideSimpleValues = true,
 			.hashmapSizePower = 4,
 	});
 	printf("> Checking root's allocation...\n");
@@ -33,28 +32,28 @@ int main(void) {
 	assert(iniGroup1 != NULL, "Group 2 has been allocated");
 	
 	printf("> Checking registration function parameter failures...\n");
-	assert(!ini_registerGroup(ini, NULL), "Cannot register NULL group");
-	assert(!ini_registerGroup(NULL, iniGroup1), "Cannot register into NULL IniData");
-	assert(!ini_registerGroup(NULL, NULL), "Cannot register NULL into NULL");
+	assert(!ini_setGroup(ini, NULL), "Cannot register NULL group");
+	assert(!ini_setGroup(NULL, iniGroup1), "Cannot register into NULL IniData");
+	assert(!ini_setGroup(NULL, NULL), "Cannot register NULL into NULL");
 	
 	printf("> Checking registration function normal operations...\n");
-	assert(ini_registerGroup(ini, iniGroup1), "Registered group #1 properly");
+	assert(ini_setGroup(ini, iniGroup1), "Registered group #1 properly");
 	assert(ini->groups != NULL, "The internal HashMap isn't NULL");
 	assert(ini->groups->entryCount == 1, "The internal HashMap has 1 entry");
 	assert(iniGroup1->parentIni == ini, "Group #1 parent is set");
 	
 	iniGroup2->parentIni = (void*) 420;
-	assert(!ini_registerGroup(ini, iniGroup2), "Cannot register group #2 with faked parent");
+	assert(!ini_setGroup(ini, iniGroup2), "Cannot register group #2 with faked parent");
 	iniGroup2->parentIni = NULL;
-	assert(ini_registerGroup(ini, iniGroup2), "Registered group #2 properly, parent was set back to NULL");
+	assert(ini_setGroup(ini, iniGroup2), "Registered group #2 properly, parent was set back to NULL");
 	assert(ini->groups->entryCount == 2, "The internal HashMap has 2 entries");
 	assert(iniGroup2->parentIni == ini, "Group #2 parent is set");
 	
-	assert(!ini_registerGroup(ini, iniGroup2), "Cannot register group #1 again");
-	assert(!ini_registerGroup(ini, iniGroup2), "Cannot register group #2 again");
+	assert(!ini_setGroup(ini, iniGroup2), "Cannot register group #1 again");
+	assert(!ini_setGroup(ini, iniGroup2), "Cannot register group #2 again");
 	assert(ini->groups->entryCount == 2, "The internal HashMap still has 2 entries");
 	
-	assert(!ini_registerGroup(ini, iniGroup1Bis), "Cannot register group #1.bis, identical name to #1");
+	assert(!ini_setGroup(ini, iniGroup1Bis), "Cannot register group #1.bis, identical name to #1");
 	assert(ini->groups->entryCount == 2, "The internal HashMap still has 2 entries");
 	assert(iniGroup1Bis->parentIni == NULL, "Group #1.bis parent is intact");
 	
@@ -70,7 +69,7 @@ int main(void) {
 	assert(ini_deregisterGroup(ini, groupName2) == NULL, "Cannot remove group #2 again")
 	
 	printf("> Preparing for deletion tests...\n");
-	assert(ini_registerGroup(ini, iniGroup2), "Registered group #2 again for testing");
+	assert(ini_setGroup(ini, iniGroup2), "Registered group #2 again for testing");
 	assert(ini->groups->entryCount == 2, "The internal HashMap has 2 entry");
 	
 	printf("> Checking group deletion function parameter failures...\n");

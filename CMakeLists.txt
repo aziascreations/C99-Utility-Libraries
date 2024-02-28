@@ -87,7 +87,8 @@ if(NP_GOODIES_IS_MAIN)
 
         # /FILEALIGN:x -> Forces section alignment to multiples of x bytes.
         # /OPT:REF     -> Eliminates functions and data that are never referenced.
-        set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /FILEALIGN:16 /OPT:REF")
+        # /OPT:ICF=x   -> Performs x iterations of COMDAT folding.
+        set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /FILEALIGN:16 /OPT:REF /OPT:ICF=9")
 
         # /CGTHREADS:x -> Makes 'cl.exe' use x thread(s).
         set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /CGTHREADS:8")
@@ -97,6 +98,10 @@ if(NP_GOODIES_IS_MAIN)
 
         # /RELEASE -> Sets the Checksum in the header of final executable.
         set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /RELEASE")
+
+        # /RELEASE -> Enables link-time code generation/optimizations.
+        set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /LTCG")
+        # No real size difference seen.
     endif()
 
     if(MINGW)
@@ -113,6 +118,16 @@ if(NP_GOODIES_IS_MAIN)
         set(CMAKE_C_FLAGS_RELWITHDEBINFO "-Og -g -std=c99")
 
         # Could also use -Oz on CLang
+
+        # See "C:\cygwin64\bin\strip.exe" about reducing size
+        # MinGW just bloats the final DLL to shit with sections and junk
+        # Tested: Went from 120Kb to 70kb in an instant...
+        # There's still like 50 copies of "GCC: (GNU) 13.1.0" throughout tho...
+
+        # The worst are idiots that spout shit like this:
+        # - "A good toolchain [GCC] will not need to be told that [it needs to strip its shit from the executable], though."
+        # Namely: "https://stackoverflow.com/a/200776"
+        # Eat a bowl of dicks and choke on it.
     endif()
 
     if(CMAKE_C_COMPILER_ID STREQUAL "TinyCC")
@@ -168,6 +183,7 @@ file(GLOB_RECURSE src_hash CONFIGURE_DEPENDS "src/hash/*.h" "src/hash/*.c" ${src
 
 file(GLOB_RECURSE src_ini CONFIGURE_DEPENDS "src/ini/*.h" "src/ini/*.c" ${src_text} ${src_hash} ${src_hashmap} ${src_llist} ${src_np_clang_goodies_commons})
 
+# Was this a test for TCC or the registry's APIs ?
 #if(WIN32)
 #    file(GLOB_RECURSE src_win32 CONFIGURE_DEPENDS "src/win32/*.h" "src/win32/*.c")
 #    # "rsc/advapi32.def"
@@ -190,8 +206,7 @@ if(NP_GOODIES_IS_MAIN)
     set_target_properties(np_clang_goodies_dll_dynamic PROPERTIES RUNTIME_OUTPUT_DIRECTORY "dll_dynamic/")
 
     # Targets > DLLs > Static
-    # FIXME: Doesn't appear to work properly since the updates to Visual Studio...
-    add_library(np_clang_goodies_dll_static SHARED ${src_all} rsc/np_clang_goodies.rc)
+    add_library(np_clang_goodies_dll_static STATIC ${src_all} rsc/np_clang_goodies.rc)
     target_compile_definitions(np_clang_goodies_dll_static PUBLIC NP_GOODIES_EXPORT_ALL)
     set_target_properties(np_clang_goodies_dll_static PROPERTIES OUTPUT_NAME np_clang_goodies)
     set_target_properties(np_clang_goodies_dll_static PROPERTIES MSVC_RUNTIME_LIBRARY MultiThreaded)
@@ -393,8 +408,13 @@ if(NP_GOODIES_BUILD_TESTS)
     #endif()
 
     # Targets > Tests > INI
+    # FIXME: Add wchar version of the test !
     add_executable(test_ini_registration tests/ini/test_ini_registration.c ${src_ini} ${src_test_utils})
     add_test(NAME test_ini_registration COMMAND test_ini_registration)
+
+    add_executable(test_ini_primitives tests/ini/test_ini_primitives.c ${src_ini} ${src_test_utils})
+    add_test(NAME test_ini_primitives COMMAND test_ini_primitives)
+    #target_compile_definitions(test_ini_primitives PUBLIC NP_DEBUG_LOGGING)
 
     # Targets > Tests > Misc
     add_executable(test_platform tests/misc/test_platform.c "tests/assert.h" "src/platform.h")
@@ -418,6 +438,35 @@ if(NP_GOODIES_BUILD_BENCHMARKS)
     endif()
 else()
     message("---> Skipping benchmark targets...")
+endif()
+
+# Commands
+# FIXME: Expose the path as a variable !
+unset(EXECUTABLE_CYGWIN_STRIP CACHE)
+
+find_program(
+        EXECUTABLE_CYGWIN_STRIP
+        NAMES "C:\\cygwin64\\bin\\strip.exe"
+)
+
+if(EXECUTABLE_CYGWIN_STRIP)
+    message("----> Found 'strip.exe', adding 'POST_BUILD' executable stripping step...")
+
+    # https://cmake.org/cmake/help/v2.8.12/cmake.html#command:add_custom_command
+    add_custom_command(
+            TARGET np_clang_goodies_dll_dynamic
+            POST_BUILD
+            COMMAND ${CMAKE_COMMAND}
+            ARGS -E echo "Running 'strip.exe' on '$<TARGET_FILE:np_clang_goodies_dll_dynamic>'"
+    )
+    add_custom_command(
+            TARGET np_clang_goodies_dll_dynamic
+            POST_BUILD
+            COMMAND "C:\\cygwin64\\bin\\strip.exe"
+            ARGS -s "$<TARGET_FILE:np_clang_goodies_dll_dynamic>"
+    )
+else()
+    message("----> Unable to find 'strip.exe' in PATH, final executable won't be stripping !")
 endif()
 
 # End

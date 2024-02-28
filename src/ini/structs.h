@@ -27,12 +27,6 @@ typedef struct ini_options {
 	bool mergeGroups;
 	
 	/**
-	 * Specifies whether simple values with an identical name should override each other.<br>
-	 * This doesn't apply to lists and hashmaps or their keys.
-	 */
-	bool overrideSimpleValues;
-	
-	/**
 	 * Specifies the size power used when initializing hashmaps internally.<br>
 	 * This value only affects newly created hashmaps.
 	 */
