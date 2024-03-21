@@ -233,6 +233,9 @@ if(NP_GOODIES_BUILD_TESTS)
     add_executable(test_args_parsing_basic tests/arguments/test_args_parsing_basic.c ${src_args} ${src_test_utils})
     add_test(NAME test_args_parsing_basic COMMAND test_args_parsing_basic)
 
+    add_executable(test_args_required_children_option tests/arguments/test_args_required_children_option.c ${src_args} ${src_test_utils})
+    add_test(NAME test_args_required_children_option COMMAND test_args_required_children_option)
+
     add_executable(test_args_required_option tests/arguments/test_args_required_option.c ${src_args} ${src_test_utils})
     add_test(NAME test_args_required_option COMMAND test_args_required_option)
 
