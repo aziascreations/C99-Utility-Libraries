@@ -124,6 +124,12 @@
 #endif
 
 
+// Never define `NP_UNICODE` manually !
+#if defined(NP_UNICODE)
+	#error Do not define `NP_UNICODE`, use `UNICODE` or `_UNICODE` instead !
+#endif
+
+
 // Checking if ascii or unicode variants should be macro'ed
 #if defined(UNICODE) || defined(_UNICODE)
 	#define NP_UNICODE

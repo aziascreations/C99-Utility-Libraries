@@ -110,5 +110,5 @@ Untested, will be done soon.
 * `NP_DLL_EXPORT`
 
 ### Unicode detection
-*Only defined if `UNICODE` or `_UNICODE` are defined.*
-* `NP_UNICODE`
+If `UNICODE` or `_UNICODE` are defined, the non-suffixed text-related will have the macro pointing to their unicode
+variant as is expected on Windows platforms.
