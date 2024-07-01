@@ -24,9 +24,9 @@ static const char *text_single_char_trim = "E";
 
 int main(void) {
 	// Preliminary tests
-	assert(text_trim(NULL, ' ') == NULL,
+	assert(text_trimA(NULL, ' ') == NULL,
 		   "Returns NULL if `string` is NULL")
-	assert(text_trim(text_no_trim, '\0') == NULL,
+	assert(text_trimA(text_no_trim, '\0') == NULL,
 		   "Returns NULL if `trimmedChar` is NULL")
 	
 	// Preparing temporary variable.
@@ -34,7 +34,7 @@ int main(void) {
 	
 	
 	// Testing without any trim
-	tmpCopy = text_trim(text_no_trim, '_');
+	tmpCopy = text_trimA(text_no_trim, '_');
 	
 	assert(tmpCopy != NULL, "No trim isn't NULL.")
 	assert(strlen(tmpCopy) == 13, "No trim has `13` chars.")
@@ -52,7 +52,7 @@ int main(void) {
 	
 	
 	// Testing with single char left trim
-	tmpCopy = text_trim(text_left_single_trim, '_');
+	tmpCopy = text_trimA(text_left_single_trim, '_');
 	
 	assert(tmpCopy != NULL, "Left single trim isn't NULL.")
 	assert(strlen(tmpCopy) == 13, "Left single trim has `13` chars.")
@@ -71,7 +71,7 @@ int main(void) {
 	
 	
 	// Testing with multi char left trim
-	tmpCopy = text_trim(text_left_multi_trim, '_');
+	tmpCopy = text_trimA(text_left_multi_trim, '_');
 	
 	assert(tmpCopy != NULL, "Left multi trim isn't NULL.")
 	assert(strlen(tmpCopy) == 13, "Left multi trim has `13` chars.")
@@ -90,7 +90,7 @@ int main(void) {
 	
 	
 	// Testing with single char right trim
-	tmpCopy = text_trim(text_right_single_trim, '_');
+	tmpCopy = text_trimA(text_right_single_trim, '_');
 	
 	assert(tmpCopy != NULL, "Right single trim isn't NULL.")
 	assert(strlen(tmpCopy) == 13, "Right single trim has `13` chars.")
@@ -109,7 +109,7 @@ int main(void) {
 	
 	
 	// Testing with multi char right trim
-	tmpCopy = text_trim(text_right_multi_trim, '_');
+	tmpCopy = text_trimA(text_right_multi_trim, '_');
 	
 	assert(tmpCopy != NULL, "Right multi trim isn't NULL.")
 	assert(strlen(tmpCopy) == 13, "Right multi trim has `13` chars.")
@@ -128,7 +128,7 @@ int main(void) {
 	
 	
 	// Testing with trim on both sides char right trim
-	tmpCopy = text_trim(text_both_trim, '_');
+	tmpCopy = text_trimA(text_both_trim, '_');
 	
 	assert(tmpCopy != NULL, "Dual-side trim isn't NULL.")
 	assert(strlen(tmpCopy) == 13, "Dual-side trim has `13` chars.")
@@ -147,14 +147,14 @@ int main(void) {
 	
 	
 	// Testing edge-cases
-	assert(text_trim(text_empty_trim, '_') == NULL,
+	assert(text_trimA(text_empty_trim, '_') == NULL,
 		   "Trim on non-NULL empty string returned NULL.")
-	assert(text_trim(text_full_trim, '_') == NULL,
+	assert(text_trimA(text_full_trim, '_') == NULL,
 		   "Trim on non-empty string that would be empty after trimming returned NULL.")
 	
 	
 	// Testing edgier-case
-	tmpCopy = text_trim(text_single_char_trim, '_');
+	tmpCopy = text_trimA(text_single_char_trim, '_');
 	assert(tmpCopy != NULL, "Trim with a single non-trimmed character isn't NULL")
 	
 	assert(strlen(tmpCopy) == 1, "Trim with a single non-trimmed character has `1` chars.")

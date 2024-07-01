@@ -27,19 +27,19 @@ int main() {
 	struct my_struct *myData;
 	
 	myData = malloc(sizeof(struct my_struct));
-	myData->nestedString = text_copy("Hello world !");
+	myData->nestedString = text_copyA("Hello world !");
 	dllist_append(myList, myData, NULL);
 	
 	myData = malloc(sizeof(struct my_struct));
-	myData->nestedString = text_copy("Lorem ipsum donor si amet.");
+	myData->nestedString = text_copyA("Lorem ipsum donor si amet.");
 	dllist_append(myList, myData, NULL);
 	
 	myData = malloc(sizeof(struct my_struct));
-	myData->nestedString = text_copy("Test 123");
+	myData->nestedString = text_copyA("Test 123");
 	dllist_append(myList, myData, NULL);
 	
 	myData = malloc(sizeof(struct my_struct));
-	myData->nestedString = text_copy("I'm at the end :)");
+	myData->nestedString = text_copyA("I'm at the end :)");
 	dllist_append(myList, myData, NULL);
 	
 	// Iterating over the list with direct access

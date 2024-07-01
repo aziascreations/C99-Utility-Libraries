@@ -32,11 +32,11 @@
 #define np_args_strlen strlen
 #define np_args_strcmp strcmp
 
-#define np_args_areStringsEqual text_areStringsEqual
-#define np_args_copyString text_copy
-#define np_args_stringStartsWith text_startsWith
-#define np_args_isStringEmpty text_isEmpty
-#define np_args_nextSpaceIndex text_nextSpaceIndex
+#define np_args_areStringsEqual text_areStringsEqualA
+#define np_args_copyString text_copyA
+#define np_args_stringStartsWith text_startsWithA
+#define np_args_isStringEmpty text_isEmptyA
+#define np_args_nextSpaceIndex text_nextSpaceIndexA
 
 #define np_args_error_println error_printlnA
 #define np_args_trace_println trace_printlnA

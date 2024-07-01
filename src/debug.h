@@ -27,6 +27,7 @@
  * @{
  */
 
+// Unicode macros
 #if defined(NP_UNICODE)
 #define debug_print debug_printW
 #define debug_println debug_printlnW

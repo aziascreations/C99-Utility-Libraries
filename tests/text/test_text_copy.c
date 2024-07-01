@@ -13,9 +13,9 @@ static const char *text_01 = "Hello world !";
 
 int main(void) {
 	// Preliminary tests
-	assert(text_copy(NULL) == NULL,
+	assert(text_copyA(NULL) == NULL,
 		   "Returns NULL if `string` is NULL")
-	assert(text_copy_s(NULL, 42) == NULL,
+	assert(text_copyA_s(NULL, 42) == NULL,
 		   "Returns NULL if `string` is NULL and length is positive")
 		   
 	// Preparing temporary variable.
@@ -23,7 +23,7 @@ int main(void) {
 	
 	
 	// Testing with simple function
-	tmpCopy = text_copy(text_01);
+	tmpCopy = text_copyA(text_01);
 	
 	assert(tmpCopy != NULL, "Simple copy isn't NULL.")
 	assert(strlen(tmpCopy) == 13, "Simple copy has `13` chars.")
@@ -41,7 +41,7 @@ int main(void) {
 	
 	
 	// Testing with complex function on full string
-	tmpCopy = text_copy_s(text_01, strlen(text_01));
+	tmpCopy = text_copyA_s(text_01, strlen(text_01));
 	
 	assert(tmpCopy != NULL, "Complex full copy isn't NULL.")
 	assert(strlen(tmpCopy) == 13, "Complex full copy has `13` chars.")
@@ -59,7 +59,7 @@ int main(void) {
 	
 	
 	// Testing with complex function on undersized string
-	tmpCopy = text_copy_s(text_01, strlen(text_01) - 5);
+	tmpCopy = text_copyA_s(text_01, strlen(text_01) - 5);
 	
 	assert(tmpCopy != NULL, "Complex undersized copy isn't NULL.")
 	assert(strlen(tmpCopy) == 8, "Complex undersized copy has `8` chars.")
@@ -78,7 +78,7 @@ int main(void) {
 	
 	
 	// Testing with complex function on undersized string
-	tmpCopy = text_copy_s(text_01, 999);
+	tmpCopy = text_copyA_s(text_01, 999);
 	
 	assert(tmpCopy != NULL, "Complex oversized copy isn't NULL.")
 	assert(strlen(tmpCopy) == 13, "Complex oversized copy has `13` chars.")

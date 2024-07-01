@@ -32,7 +32,7 @@ static const char *text_40 = "Line 1\rLine 2\0Line 3";
 
 int main(void) {
 	// Preliminary tests
-	assert(text_copyLine(NULL, 42, NULL, NULL) == NULL,
+	assert(text_copyLineA(NULL, 42, NULL, NULL) == NULL,
 		   "Returns NULL if `string` is NULL and length is positive")
 		   
 	// Preparing temporary variables.
@@ -46,7 +46,7 @@ int main(void) {
 	{
 		assert(strlen(text_01) == 19, "Text 01: Length is `19` chars.")
 		
-		tmpLine = text_copyLine(text_01, strlen(text_01), &tmpNextLine, &tmpNextLength);
+		tmpLine = text_copyLineA(text_01, strlen(text_01), &tmpNextLine, &tmpNextLength);
 		
 		assert(tmpLine != NULL, "Text 01: Copied line isn't NULL.")
 		assert(strcmp(text_01, tmpLine) == 0, "Text 01: Copied line is the same as the original.")
@@ -71,7 +71,7 @@ int main(void) {
 	
 	// Testing text 01 - Undersized
 	{
-		tmpLine = text_copyLine(text_01, strlen(text_01) - 5, &tmpNextLine, &tmpNextLength);
+		tmpLine = text_copyLineA(text_01, strlen(text_01) - 5, &tmpNextLine, &tmpNextLength);
 
         #ifndef NP_OS_WINDOWS
         assert(memUtils_getSize(tmpLine) >= sizeof(char) * 15, "Text 01 - Undersized: Copied line's memory size is `>=15` chars long.")
@@ -93,7 +93,7 @@ int main(void) {
 	{
 		assert(strlen(text_02) == 0, "Text 02: Length is `0` char.")
 		
-		tmpLine = text_copyLine(text_02, strlen(text_02), &tmpNextLine, &tmpNextLength);
+		tmpLine = text_copyLineA(text_02, strlen(text_02), &tmpNextLine, &tmpNextLength);
 		assert(tmpLine == NULL, "Text 02: Copied line is NULL.")
 		assert(tmpNextLine == NULL, "Text 02: Has no 2nd line.")
 		assert(tmpNextLength == 0, "Text 02: Has zero characters left.")
@@ -104,7 +104,7 @@ int main(void) {
 		//  is empty and has nothing after it and its non-existent non-'\0' line ending.
 		// Another way to see it is that we "trick" it into believing we gave it "\r\0".
 		// This is an edge-case TBH, and it shouldn't happen unless voluntarily provoked.
-		tmpLine = text_copyLine(text_02, strlen(text_02) + 42, &tmpNextLine, &tmpNextLength);
+		tmpLine = text_copyLineA(text_02, strlen(text_02) + 42, &tmpNextLine, &tmpNextLength);
 		assert(tmpLine != NULL, "Text 02: Copied line isn't NULL anymore, its length was faked.")
 		assert(strlen(tmpLine) == 0, "Text 02: Copied line's strlen is `0` chars long.")
 		assert(tmpNextLine == NULL, "Text 02: Has no 2nd line.")
@@ -123,7 +123,7 @@ int main(void) {
 		assert(strlen(text_12) == 10, "Text 12: Length is `10` char.")
 		assert(strlen(text_13) == 10, "Text 13: Length is `10` char.")
 		
-		tmpLine = text_copyLine(text_10, strlen(text_10), &tmpNextLine, &tmpNextLength);
+		tmpLine = text_copyLineA(text_10, strlen(text_10), &tmpNextLine, &tmpNextLength);
         #ifndef NP_OS_WINDOWS
         assert(memUtils_getSize(tmpLine) >= sizeof(char) * 7, "Text 10: Copied line's memory size is `>=7` chars long.")
         #else
@@ -137,7 +137,7 @@ int main(void) {
 		tmpNextLine = NULL;
 		tmpNextLength = 0;
 		
-		tmpLine = text_copyLine(text_11, strlen(text_11), &tmpNextLine, &tmpNextLength);
+		tmpLine = text_copyLineA(text_11, strlen(text_11), &tmpNextLine, &tmpNextLength);
         #ifndef NP_OS_WINDOWS
         assert(memUtils_getSize(tmpLine) >= sizeof(char) * 7, "Text 11: Copied line's memory size is `>=7` chars long.")
         #else
@@ -151,7 +151,7 @@ int main(void) {
 		tmpNextLine = NULL;
 		tmpNextLength = 0;
 		
-		tmpLine = text_copyLine(text_12, strlen(text_12), &tmpNextLine, &tmpNextLength);
+		tmpLine = text_copyLineA(text_12, strlen(text_12), &tmpNextLine, &tmpNextLength);
 		#ifndef NP_OS_WINDOWS
         assert(memUtils_getSize(tmpLine) >= sizeof(char) * 9, "Text 12: Copied line's memory size is `>=9` chars long.")
         #else
@@ -165,7 +165,7 @@ int main(void) {
 		tmpNextLine = NULL;
 		tmpNextLength = 0;
 		
-		tmpLine = text_copyLine(text_13, strlen(text_13), &tmpNextLine, &tmpNextLength);
+		tmpLine = text_copyLineA(text_13, strlen(text_13), &tmpNextLine, &tmpNextLength);
         #ifndef NP_OS_WINDOWS
         assert(memUtils_getSize(tmpLine) >= sizeof(char) * 9, "Text 13: Copied line's memory size is `>=9` chars long.")
         #else
@@ -184,7 +184,7 @@ int main(void) {
 	{
 		assert(strlen(text_14) == 8, "Text 14: Length is `8` chars.")
 		
-		tmpLine = text_copyLine(text_14, strlen(text_14) + 2, &tmpNextLine, &tmpNextLength);
+		tmpLine = text_copyLineA(text_14, strlen(text_14) + 2, &tmpNextLine, &tmpNextLength);
 
         #ifndef NP_OS_WINDOWS
         assert(memUtils_getSize(tmpLine) >= sizeof(char) * 9, "Text 14: Copied line's memory size is `>=9` chars long.")
@@ -206,7 +206,7 @@ int main(void) {
 	{
 		assert(strlen(text_20) == 20, "Text 20: Length is `20` chars.")
 		
-		tmpLine = text_copyLine(text_20, strlen(text_20), &tmpNextLine, &tmpNextLength);
+		tmpLine = text_copyLineA(text_20, strlen(text_20), &tmpNextLine, &tmpNextLength);
 		
 		assert(tmpLine != NULL, "Text 20: Copied line isn't NULL.")
 		assert(strlen(tmpLine) == 6, "Text 20: Copied line's length is `6` chars.")
@@ -216,7 +216,7 @@ int main(void) {
 		free(tmpLine);
 		tmpLine = NULL;
 		
-		tmpLine = text_copyLine(tmpNextLine, strlen(tmpNextLine), &tmpNextLine, &tmpNextLength);
+		tmpLine = text_copyLineA(tmpNextLine, strlen(tmpNextLine), &tmpNextLine, &tmpNextLength);
 		
 		assert(tmpLine != NULL, "Text 20: Copied line isn't NULL.")
 		assert(strlen(tmpLine) == 6, "Text 20: Copied line's length is `6` chars.")
@@ -226,7 +226,7 @@ int main(void) {
 		free(tmpLine);
 		tmpLine = NULL;
 		
-		tmpLine = text_copyLine(tmpNextLine, strlen(tmpNextLine), &tmpNextLine, &tmpNextLength);
+		tmpLine = text_copyLineA(tmpNextLine, strlen(tmpNextLine), &tmpNextLine, &tmpNextLength);
 		
 		assert(tmpLine != NULL, "Text 20: Copied line isn't NULL.")
 		assert(strlen(tmpLine) == 6, "Text 20: Copied line's length is `6` chars.")
@@ -244,7 +244,7 @@ int main(void) {
 	{
 		assert(strlen(text_21) == 20, "Text 21: Length is `20` chars.")
 		
-		tmpLine = text_copyLine(text_21, strlen(text_21), &tmpNextLine, &tmpNextLength);
+		tmpLine = text_copyLineA(text_21, strlen(text_21), &tmpNextLine, &tmpNextLength);
 		
 		assert(tmpLine != NULL, "Text 21: Copied line isn't NULL.")
 		assert(strlen(tmpLine) == 6, "Text 21: Copied line's length is `6` chars.")
@@ -254,7 +254,7 @@ int main(void) {
 		free(tmpLine);
 		tmpLine = NULL;
 		
-		tmpLine = text_copyLine(tmpNextLine, strlen(tmpNextLine), &tmpNextLine, &tmpNextLength);
+		tmpLine = text_copyLineA(tmpNextLine, strlen(tmpNextLine), &tmpNextLine, &tmpNextLength);
 		
 		assert(tmpLine != NULL, "Text 21: Copied line isn't NULL.")
 		assert(strlen(tmpLine) == 6, "Text 21: Copied line's length is `6` chars.")
@@ -264,7 +264,7 @@ int main(void) {
 		free(tmpLine);
 		tmpLine = NULL;
 		
-		tmpLine = text_copyLine(tmpNextLine, strlen(tmpNextLine), &tmpNextLine, &tmpNextLength);
+		tmpLine = text_copyLineA(tmpNextLine, strlen(tmpNextLine), &tmpNextLine, &tmpNextLength);
 		
 		assert(tmpLine != NULL, "Text 21: Copied line isn't NULL.")
 		assert(strlen(tmpLine) == 6, "Text 21: Copied line's length is `6` chars.")
@@ -282,7 +282,7 @@ int main(void) {
 	{
 		assert(strlen(text_22) == 22, "Text 22: Length is `22` chars.")
 		
-		tmpLine = text_copyLine(text_22, strlen(text_22), &tmpNextLine, &tmpNextLength);
+		tmpLine = text_copyLineA(text_22, strlen(text_22), &tmpNextLine, &tmpNextLength);
 		
 		assert(tmpLine != NULL, "Text 22: Copied line isn't NULL.")
 		assert(strlen(tmpLine) == 6, "Text 22: Copied line's length is `6` chars.")
@@ -292,7 +292,7 @@ int main(void) {
 		free(tmpLine);
 		tmpLine = NULL;
 		
-		tmpLine = text_copyLine(tmpNextLine, strlen(tmpNextLine), &tmpNextLine, &tmpNextLength);
+		tmpLine = text_copyLineA(tmpNextLine, strlen(tmpNextLine), &tmpNextLine, &tmpNextLength);
 		
 		assert(tmpLine != NULL, "Text 22: Copied line isn't NULL.")
 		assert(strlen(tmpLine) == 6, "Text 22: Copied line's length is `6` chars.")
@@ -302,7 +302,7 @@ int main(void) {
 		free(tmpLine);
 		tmpLine = NULL;
 		
-		tmpLine = text_copyLine(tmpNextLine, strlen(tmpNextLine), &tmpNextLine, &tmpNextLength);
+		tmpLine = text_copyLineA(tmpNextLine, strlen(tmpNextLine), &tmpNextLine, &tmpNextLength);
 		
 		assert(tmpLine != NULL, "Text 22: Copied line isn't NULL.")
 		assert(strlen(tmpLine) == 6, "Text 22: Copied line's length is `6` chars.")
@@ -320,7 +320,7 @@ int main(void) {
 	{
 		assert(strlen(text_23) == 22, "Text 23: Length is `22` chars.")
 		
-		tmpLine = text_copyLine(text_23, strlen(text_23), &tmpNextLine, &tmpNextLength);
+		tmpLine = text_copyLineA(text_23, strlen(text_23), &tmpNextLine, &tmpNextLength);
 		
 		assert(tmpLine != NULL, "Text 23: Copied line isn't NULL.")
 		assert(strlen(tmpLine) == 6, "Text 23: Copied line's length is `6` chars.")
@@ -330,7 +330,7 @@ int main(void) {
 		free(tmpLine);
 		tmpLine = NULL;
 		
-		tmpLine = text_copyLine(tmpNextLine, strlen(tmpNextLine), &tmpNextLine, &tmpNextLength);
+		tmpLine = text_copyLineA(tmpNextLine, strlen(tmpNextLine), &tmpNextLine, &tmpNextLength);
 		
 		assert(tmpLine != NULL, "Text 23: Copied line isn't NULL.")
 		assert(strlen(tmpLine) == 6, "Text 23: Copied line's length is `6` chars.")
@@ -340,7 +340,7 @@ int main(void) {
 		free(tmpLine);
 		tmpLine = NULL;
 		
-		tmpLine = text_copyLine(tmpNextLine, strlen(tmpNextLine), &tmpNextLine, &tmpNextLength);
+		tmpLine = text_copyLineA(tmpNextLine, strlen(tmpNextLine), &tmpNextLine, &tmpNextLength);
 		
 		assert(tmpLine != NULL, "Text 23: Copied line isn't NULL.")
 		assert(strlen(tmpLine) == 6, "Text 23: Copied line's length is `6` chars.")
@@ -358,7 +358,7 @@ int main(void) {
 	{
 		assert(strlen(text_30) == 14, "Text 30: Length is `14` chars.")
 		
-		tmpLine = text_copyLine(text_30, strlen(text_30), &tmpNextLine, &tmpNextLength);
+		tmpLine = text_copyLineA(text_30, strlen(text_30), &tmpNextLine, &tmpNextLength);
 		
 		assert(tmpLine != NULL, "Text 30: Copied line isn't NULL.")
 		assert(strlen(tmpLine) == 6, "Text 30: Copied line's length is `6` chars.")
@@ -368,7 +368,7 @@ int main(void) {
 		free(tmpLine);
 		tmpLine = NULL;
 		
-		tmpLine = text_copyLine(tmpNextLine, strlen(tmpNextLine), &tmpNextLine, &tmpNextLength);
+		tmpLine = text_copyLineA(tmpNextLine, strlen(tmpNextLine), &tmpNextLine, &tmpNextLength);
 		
 		assert(tmpLine != NULL, "Text 30: Copied line isn't NULL.")
 		assert(strlen(tmpLine) == 0, "Text 30: Copied line's length is `0` chars.")
@@ -378,7 +378,7 @@ int main(void) {
 		free(tmpLine);
 		tmpLine = NULL;
 		
-		tmpLine = text_copyLine(tmpNextLine, strlen(tmpNextLine), &tmpNextLine, &tmpNextLength);
+		tmpLine = text_copyLineA(tmpNextLine, strlen(tmpNextLine), &tmpNextLine, &tmpNextLength);
 		
 		assert(tmpLine != NULL, "Text 30: Copied line isn't NULL.")
 		assert(strlen(tmpLine) == 6, "Text 30: Copied line's length is `6` chars.")
@@ -396,7 +396,7 @@ int main(void) {
 	{
 		assert(strlen(text_31) == 14, "Text 31: Length is `14` chars.")
 		
-		tmpLine = text_copyLine(text_31, strlen(text_31), &tmpNextLine, &tmpNextLength);
+		tmpLine = text_copyLineA(text_31, strlen(text_31), &tmpNextLine, &tmpNextLength);
 		
 		assert(tmpLine != NULL, "Text 31: Copied line isn't NULL.")
 		assert(strlen(tmpLine) == 6, "Text 31: Copied line's length is `6` chars.")
@@ -406,7 +406,7 @@ int main(void) {
 		free(tmpLine);
 		tmpLine = NULL;
 		
-		tmpLine = text_copyLine(tmpNextLine, strlen(tmpNextLine), &tmpNextLine, &tmpNextLength);
+		tmpLine = text_copyLineA(tmpNextLine, strlen(tmpNextLine), &tmpNextLine, &tmpNextLength);
 		
 		assert(tmpLine != NULL, "Text 31: Copied line isn't NULL.")
 		assert(strlen(tmpLine) == 0, "Text 31: Copied line's length is `0` chars.")
@@ -416,7 +416,7 @@ int main(void) {
 		free(tmpLine);
 		tmpLine = NULL;
 		
-		tmpLine = text_copyLine(tmpNextLine, strlen(tmpNextLine), &tmpNextLine, &tmpNextLength);
+		tmpLine = text_copyLineA(tmpNextLine, strlen(tmpNextLine), &tmpNextLine, &tmpNextLength);
 		
 		assert(tmpLine != NULL, "Text 31: Copied line isn't NULL.")
 		assert(strlen(tmpLine) == 6, "Text 31: Copied line's length is `6` chars.")
@@ -434,7 +434,7 @@ int main(void) {
 	{
 		assert(strlen(text_32) == 16, "Text 32: Length is `16` chars.")
 		
-		tmpLine = text_copyLine(text_32, strlen(text_32), &tmpNextLine, &tmpNextLength);
+		tmpLine = text_copyLineA(text_32, strlen(text_32), &tmpNextLine, &tmpNextLength);
 		
 		assert(tmpLine != NULL, "Text 32: Copied line isn't NULL.")
 		assert(strlen(tmpLine) == 6, "Text 32: Copied line's length is `6` chars.")
@@ -444,7 +444,7 @@ int main(void) {
 		free(tmpLine);
 		tmpLine = NULL;
 		
-		tmpLine = text_copyLine(tmpNextLine, strlen(tmpNextLine), &tmpNextLine, &tmpNextLength);
+		tmpLine = text_copyLineA(tmpNextLine, strlen(tmpNextLine), &tmpNextLine, &tmpNextLength);
 		
 		assert(tmpLine != NULL, "Text 32: Copied line isn't NULL.")
 		assert(strlen(tmpLine) == 0, "Text 32: Copied line's length is `0` chars.")
@@ -454,7 +454,7 @@ int main(void) {
 		free(tmpLine);
 		tmpLine = NULL;
 		
-		tmpLine = text_copyLine(tmpNextLine, strlen(tmpNextLine), &tmpNextLine, &tmpNextLength);
+		tmpLine = text_copyLineA(tmpNextLine, strlen(tmpNextLine), &tmpNextLine, &tmpNextLength);
 		
 		assert(tmpLine != NULL, "Text 32: Copied line isn't NULL.")
 		assert(strlen(tmpLine) == 6, "Text 32: Copied line's length is `6` chars.")
@@ -472,7 +472,7 @@ int main(void) {
 	{
 		assert(strlen(text_33) == 16, "Text 33: Length is `16` chars.")
 		
-		tmpLine = text_copyLine(text_33, strlen(text_33), &tmpNextLine, &tmpNextLength);
+		tmpLine = text_copyLineA(text_33, strlen(text_33), &tmpNextLine, &tmpNextLength);
 		
 		assert(tmpLine != NULL, "Text 33: Copied line isn't NULL.")
 		assert(strlen(tmpLine) == 6, "Text 33: Copied line's length is `6` chars.")
@@ -482,7 +482,7 @@ int main(void) {
 		free(tmpLine);
 		tmpLine = NULL;
 		
-		tmpLine = text_copyLine(tmpNextLine, strlen(tmpNextLine), &tmpNextLine, &tmpNextLength);
+		tmpLine = text_copyLineA(tmpNextLine, strlen(tmpNextLine), &tmpNextLine, &tmpNextLength);
 		
 		assert(tmpLine != NULL, "Text 33: Copied line isn't NULL.")
 		assert(strlen(tmpLine) == 0, "Text 33: Copied line's length is `0` chars.")
@@ -492,7 +492,7 @@ int main(void) {
 		free(tmpLine);
 		tmpLine = NULL;
 		
-		tmpLine = text_copyLine(tmpNextLine, strlen(tmpNextLine), &tmpNextLine, &tmpNextLength);
+		tmpLine = text_copyLineA(tmpNextLine, strlen(tmpNextLine), &tmpNextLine, &tmpNextLength);
 		
 		assert(tmpLine != NULL, "Text 33: Copied line isn't NULL.")
 		assert(strlen(tmpLine) == 6, "Text 33: Copied line's length is `6` chars.")
@@ -511,7 +511,7 @@ int main(void) {
 	{
 		assert(strlen(text_40) == 13, "Text 40: Length is `13` chars.")
 		
-		tmpLine = text_copyLine(text_40, strlen(text_40), &tmpNextLine, &tmpNextLength);
+		tmpLine = text_copyLineA(text_40, strlen(text_40), &tmpNextLine, &tmpNextLength);
 		
 		assert(tmpLine != NULL, "Text 40: Copied line isn't NULL.")
 		assert(strlen(tmpLine) == 6, "Text 40: Copied line's length is `6` chars.")
@@ -521,7 +521,7 @@ int main(void) {
 		free(tmpLine);
 		tmpLine = NULL;
 		
-		tmpLine = text_copyLine(tmpNextLine, strlen(tmpNextLine), &tmpNextLine, &tmpNextLength);
+		tmpLine = text_copyLineA(tmpNextLine, strlen(tmpNextLine), &tmpNextLine, &tmpNextLength);
 		
 		assert(tmpLine != NULL, "Text 40: Copied line isn't NULL.")
 		assert(strlen(tmpLine) == 6, "Text 40: Copied line's length is `6` chars.")
