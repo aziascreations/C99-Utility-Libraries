@@ -70,7 +70,7 @@ void ini_free(IniData *ini) {
 
 void ini_freeGroup(IniGroupData *iniGroup) {
 	if(iniGroup != NULL) {
-		trace_println("INI: Freeing group '%s' @%p", iniGroup->name, iniGroup);
+		trace_printlnA("INI: Freeing group '%s' @%p", iniGroup->name, iniGroup);
 		free(iniGroup->name);
 		free(iniGroup);
 	}
@@ -112,19 +112,19 @@ bool ini_deleteGroup(IniData *ini, np_ini_char *groupName) {
 
 IniGroupData *ini_getGroup(IniData *ini, np_ini_char *groupName) {
 	if(ini == NULL || groupName == NULL) {
-		trace_println("INI: Given root and/or name is NULL ! => @%p & @%p", ini, groupName);
+		trace_printlnA("INI: Given root and/or name is NULL ! => @%p & @%p", ini, groupName);
 		return NULL;
 	}
 	
 	if(ini->groups == NULL) {
-		trace_println("INI: Root @%p doesn't have any group !", ini);
+		trace_printlnA("INI: Root @%p doesn't have any group !", ini);
 		return NULL;
 	}
 	
 	size_t groupNameLength = np_ini_strlen(groupName);
 	
 	if(groupNameLength <= 0) {
-		trace_println("INI: Given name's length is 0 !");
+		trace_printlnA("INI: Given name's length is 0 !");
 		return NULL;
 	}
 	
@@ -135,12 +135,12 @@ IniGroupData *ini_getGroup(IniData *ini, np_ini_char *groupName) {
 
 np_ini_char *ini_getPrimitiveReference(IniGroupData *iniGroup, const np_ini_char *primitiveKey) {
 	if(iniGroup == NULL || primitiveKey == NULL) {
-		trace_println("INI: Given group and/or key is NULL ! => @%p & @%p", iniGroup, primitiveKey);
+		trace_printlnA("INI: Given group and/or key is NULL ! => @%p & @%p", iniGroup, primitiveKey);
 		return NULL;
 	}
 	
 	if(iniGroup->primitives == NULL) {
-		trace_println("INI: Group @%p doesn't have any primitives !", iniGroup);
+		trace_printlnA("INI: Group @%p doesn't have any primitives !", iniGroup);
 		return NULL;
 	}
 	
@@ -159,25 +159,33 @@ np_ini_char *ini_getPrimitiveCopy(IniGroupData *iniGroup, const np_ini_char *pri
 	return primitiveData;
 }
 
+// Private function
+void *ini_getList(IniGroupData *ini, np_ini_char *listName) {
+	return NULL;
+}
+
+
+
+
 // Setters
 
 bool ini_setGroup(IniData *ini, IniGroupData *iniGroup) {
 	if(ini == NULL || iniGroup == NULL) {
-		trace_println("INI: Given root and/or group is NULL ! => @%p & @%p", ini, iniGroup);
+		trace_printlnA("INI: Given root and/or group is NULL ! => @%p & @%p", ini, iniGroup);
 		return false;
 	}
 	
 	if(iniGroup->parentIni != NULL) {
-		trace_println("INI: Given group is already registered ! => @%p to @%p", iniGroup, iniGroup->parentIni);
+		trace_printlnA("INI: Given group is already registered ! => @%p to @%p", iniGroup, iniGroup->parentIni);
 		return false;
 	}
 	
 	if(ini->groups == NULL) {
-		trace_println("INI: Creating root's group hashmap => %u", ini->options.hashmapSizePower);
+		trace_printlnA("INI: Creating root's group hashmap => %u", ini->options.hashmapSizePower);
 		ini->groups = (HashMap *) np_ini_hashmapCreate(ini->options.hashmapSizePower);
 		
 		if(ini->groups == NULL) {
-			error_println("INI: Failed to create a hashmap with '%u' as its size power !", ini->options.hashmapSizePower);
+			error_printlnA("INI: Failed to create a hashmap with '%u' as its size power !", ini->options.hashmapSizePower);
 			return false;
 		}
 	}
@@ -188,35 +196,35 @@ bool ini_setGroup(IniData *ini, IniGroupData *iniGroup) {
 		iniGroup->parentIni = ini;
 		return true;
 	} else {
-		trace_println("INI: Couldn't register group due to hashmap-related reasons");
+		trace_printlnA("INI: Couldn't register group due to hashmap-related reasons");
 		return false;
 	}
 }
 
 bool ini_setPrimitive(IniGroupData *iniGroup, const np_ini_char *primitiveKey, const np_ini_char *primitiveValue, bool overwriteAndFree) {
 	if(iniGroup == NULL || primitiveKey == NULL || primitiveValue == NULL) {
-		trace_println("INI: Given group and/or primitive is NULL ! => @%p & @%p & @%p", iniGroup, primitiveKey, primitiveValue);
+		trace_printlnA("INI: Given group and/or primitive is NULL ! => @%p & @%p & @%p", iniGroup, primitiveKey, primitiveValue);
 		return false;
 	}
 	
 	if(iniGroup->parentIni == NULL) {
-		trace_println("INI: Given group has no parent ! => @%p", iniGroup);
+		trace_printlnA("INI: Given group has no parent ! => @%p", iniGroup);
 		return false;
 	}
 	
 	if(iniGroup->primitives == NULL) {
-		trace_println("INI: Creating group's primitive hashmap => %u", iniGroup->parentIni->options.hashmapSizePower);
+		trace_printlnA("INI: Creating group's primitive hashmap => %u", iniGroup->parentIni->options.hashmapSizePower);
 		iniGroup->primitives = (HashMap *) np_ini_hashmapCreate(iniGroup->parentIni->options.hashmapSizePower);
 		
 		if(iniGroup->primitives == NULL) {
-			error_println("INI: Failed to create a hashmap with '%u' as its size power !", iniGroup->parentIni->options.hashmapSizePower);
+			error_printlnA("INI: Failed to create a hashmap with '%u' as its size power !", iniGroup->parentIni->options.hashmapSizePower);
 			return false;
 		}
 	}
 	
 	np_ini_char *primitiveValueCopy = np_ini_copyString(primitiveValue);
 	if(primitiveValueCopy == NULL) {
-		trace_println("INI: Failed to copy primitive data !");
+		trace_printlnA("INI: Failed to copy primitive data !");
 		return false;
 	}
 	
@@ -226,7 +234,7 @@ bool ini_setPrimitive(IniGroupData *iniGroup, const np_ini_char *primitiveKey, c
 									 (overwriteAndFree ? &free : NULL))) {
 		return true;
 	} else {
-		trace_println("INI: Failed to insert primitive data, now freeing copy !");
+		trace_printlnA("INI: Failed to insert primitive data, now freeing copy !");
 		free(primitiveValueCopy);
 	}
 	

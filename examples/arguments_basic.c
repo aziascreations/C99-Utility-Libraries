@@ -108,7 +108,7 @@ int main() {
 	
 	// Cleaning up
 	END_CLEAN_VERB:
-	trace_println("Cleaning verbs and options...");
+	trace_printlnA("Cleaning verbs and options...");
 	args_freeVerb(rootVerb);
 	
 	return errorCode;

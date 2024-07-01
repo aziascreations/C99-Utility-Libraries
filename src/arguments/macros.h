@@ -20,8 +20,8 @@
 #define np_args_isStringEmpty text_isEmptyW
 #define np_args_nextSpaceIndex text_nextSpaceIndexW
 
-#define np_args_error_println error_wprintln
-#define np_args_trace_println trace_wprintln
+#define np_args_error_println error_printlnW
+#define np_args_trace_println trace_printlnW
 
 #else
 
@@ -38,8 +38,8 @@
 #define np_args_isStringEmpty text_isEmpty
 #define np_args_nextSpaceIndex text_nextSpaceIndex
 
-#define np_args_error_println error_println
-#define np_args_trace_println trace_println
+#define np_args_error_println error_printlnA
+#define np_args_trace_println trace_printlnA
 
 #endif
 

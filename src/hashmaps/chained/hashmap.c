@@ -24,7 +24,7 @@
 ChainedHashMap *hashmap_chained_create(uint8_t sizePower) {
 	// The upper limit prevents massive allocations of >1GiB.
 	if(sizePower <= SIZE_MIN_CREATE || sizePower > SIZE_MAX_CREATE) {
-		error_println("Unable to create a chained hashmap with 2^x slots where x is <= 3 or >= 25 !");
+		error_printlnA("Unable to create a chained hashmap with 2^x slots where x is <= 3 or >= 25 !");
 		return NULL;
 	}
 	

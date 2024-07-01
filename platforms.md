@@ -102,3 +102,13 @@ Untested, will be done soon.
 
 ### Unknown ISA
 * `NP_ARCH_UNKNOWN`
+
+
+## Others
+
+### Dynamic library exports
+* `NP_DLL_EXPORT`
+
+### Unicode detection
+*Only defined if `UNICODE` or `_UNICODE` are defined.*
+* `NP_UNICODE`

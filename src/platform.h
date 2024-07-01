@@ -123,6 +123,15 @@
     #define NP_DLL_EXPORT
 #endif
 
+
+// Checking if ascii or unicode variants should be macro'ed
+#if defined(UNICODE) || defined(_UNICODE)
+	#define NP_UNICODE
+#else
+	#undef NP_UNICODE
+#endif
+
+
 /** @} */ // end of group_np_platform
 
 #endif /* !NP_ONCE_C99_GOODIES_PLATFORM */

@@ -11,16 +11,16 @@ int main() {
 	#endif
 	
 	printf("> Trace prints:\n");
-	trace_print("Trace message\n");
-	trace_println("Now with parameters => '%d'+'%d'='%d'", 42, 5, 42 + 5);
+	trace_printA("Trace message\n");
+	trace_printlnA("Now with parameters => '%d'+'%d'='%d'", 42, 5, 42 + 5);
 	
 	printf("> Debug prints:\n");
-	debug_print("Debug message\n");
-	debug_println("Now with a parameter => '%s'", "Howdy :)");
+	debug_printA("Debug message\n");
+	debug_printlnA("Now with a parameter => '%s'", "Howdy :)");
 	
 	printf("> Error prints:\n");
-	error_print("Error message\n");
-	error_println("Now with a parameter => '0x%08lx'", (unsigned long) 3735928559);
+	error_printA("Error message\n");
+	error_printlnA("Now with a parameter => '0x%08lx'", (unsigned long) 3735928559);
 	
 	return 0;
 }
