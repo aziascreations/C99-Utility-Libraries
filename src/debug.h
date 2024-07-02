@@ -29,21 +29,23 @@
 
 // Unicode macros
 #if defined(NP_UNICODE)
-#define debug_print debug_printW
-#define debug_println debug_printlnW
-#define error_print error_printW
-#define error_println error_printlnW
-#define trace_print trace_printW
-#define trace_println trace_printlnW
+	#define debug_print debug_printW
+	#define debug_println debug_printlnW
+	#define error_print error_printW
+	#define error_println error_printlnW
+	#define trace_print trace_printW
+	#define trace_println trace_printlnW
 #else
-#define debug_print debug_printA
-#define debug_println debug_printlnA
-#define error_print error_printA
-#define error_println error_printlnA
-#define trace_print trace_printA
-#define trace_println trace_printlnA
+	#define debug_print debug_printA
+	#define debug_println debug_printlnA
+	#define error_print error_printA
+	#define error_println error_printlnA
+	#define trace_print trace_printA
+	#define trace_println trace_printlnA
 #endif
 
+// TODO: Add a special option to explicitly use the Win32 versions of these functions for UCRT-less linking.
+// Keep this for a future branch that starts off the coming 1.0.0
 
 #ifdef NP_DEBUG_LOGGING
 

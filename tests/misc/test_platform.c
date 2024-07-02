@@ -81,8 +81,13 @@ int main() {
     #endif
     #ifdef NP_STDC_C18
     printf("> C18\n");
-    #endif
-
+	#endif
+	
+	printf("Other Derivatives:\n");
+	#ifdef NP_UNICODE
+		printf("> Unicode macros enabled\n");
+	#endif
+	
     printf("Result:\n");
     #ifdef NP_OS_UNKNOWN
     assert(false, "Unknown OS !")
