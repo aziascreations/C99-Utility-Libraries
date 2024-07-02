@@ -19,29 +19,51 @@
 #define text_areStringsEqualA(string1, string2) (strcmp(string1, string2) == 0)
 #define text_areStringsEqualW(string1, string2) (wcscmp(string1, string2) == 0)
 
+
+// 1-to-1 Macro'ed functions & types
+#define text_strcmpA strcmp
+#define text_strcmpW wcscmp
+
+#define text_strlenA strlen
+#define text_strlenW wcslen
+
+#define text_charA char
+#define text_charW wchar
+
+
 // Unicode macros
 #if defined(NP_UNICODE)
-#define text_areStringsEqual text_areStringsEqualW
-#define text_copy text_copyW
-#define text_copy_s text_copyW_s
-#define text_startsWith text_startsWithW
-#define text_isEmpty text_isEmptyW
-#define text_nextSpaceIndex text_nextSpaceIndexW
-#define text_firstDifferentIndex text_firstDifferentIndexW
-#define text_lastDifferentIndex text_lastDifferentIndexW
-#define text_trim text_trimW
-#define text_copyLine text_copyLineW
+	#define text_areStringsEqual text_areStringsEqualW
+	
+	#define text_strcmp text_strcmpW
+	#define text_strlen text_strlenW
+	#define text_char text_charW
+	
+	#define text_copy text_copyW
+	#define text_copy_s text_copyW_s
+	#define text_startsWith text_startsWithW
+	#define text_isEmpty text_isEmptyW
+	#define text_nextSpaceIndex text_nextSpaceIndexW
+	#define text_firstDifferentIndex text_firstDifferentIndexW
+	#define text_lastDifferentIndex text_lastDifferentIndexW
+	#define text_trim text_trimW
+	#define text_copyLine text_copyLineW
 #else
-#define text_areStringsEqual text_areStringsEqualA
-#define text_copy text_copyA
-#define text_copy_s text_copyA_s
-#define text_startsWith text_startsWithA
-#define text_isEmpty text_isEmptyA
-#define text_nextSpaceIndex text_nextSpaceIndexA
-#define text_firstDifferentIndex text_firstDifferentIndexA
-#define text_lastDifferentIndex text_lastDifferentIndexA
-#define text_trim text_trimA
-#define text_copyLine text_copyLineA
+	#define text_areStringsEqual text_areStringsEqualA
+	
+	#define text_strcmp text_strcmpA
+	#define text_strlen text_strlenA
+	#define text_char text_charA
+	
+	#define text_copy text_copyA
+	#define text_copy_s text_copyA_s
+	#define text_startsWith text_startsWithA
+	#define text_isEmpty text_isEmptyA
+	#define text_nextSpaceIndex text_nextSpaceIndexA
+	#define text_firstDifferentIndex text_firstDifferentIndexA
+	#define text_lastDifferentIndex text_lastDifferentIndexA
+	#define text_trim text_trimA
+	#define text_copyLine text_copyLineA
 #endif
 
 /**

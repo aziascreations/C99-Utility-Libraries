@@ -129,13 +129,22 @@
 	#error Do not define `NP_UNICODE`, use `UNICODE` or `_UNICODE` instead !
 #endif
 
-
 // Checking if ascii or unicode variants should be macro'ed
 #if defined(UNICODE) || defined(_UNICODE)
 	#define NP_UNICODE
 #else
 	#undef NP_UNICODE
 #endif
+
+// Defining the TEXT() macro if not defined by Windows's headers
+#if !defined(TEXT)
+	#if defined(NP_UNICODE)
+		#define TEXT(str) L##str
+	#else
+		#define TEXT(str) str
+	#endif
+#endif
+
 
 
 /** @} */ // end of group_np_platform
