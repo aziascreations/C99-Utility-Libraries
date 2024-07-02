@@ -300,30 +300,25 @@ if(NP_GOODIES_BUILD_TESTS)
     add_executable(test_args_default_option tests/arguments/test_args_default_option.c ${src_args} ${src_test_utils})
     add_test(NAME test_args_default_option COMMAND test_args_default_option)
 
+    # Targets > Tests > Arguments > WChar
     add_executable(test_args_options_wchar tests/arguments/test_options.c ${src_args} ${src_test_utils})
     add_test(NAME test_args_options_wchar COMMAND test_args_options_wchar)
-    target_compile_definitions(test_args_options_wchar PUBLIC NP_GOODIES_ARGUMENTS_USE_WCHAR)
     target_compile_definitions(test_args_options_wchar PUBLIC UNICODE)
 
-    # Targets > Tests > Arguments > WChar
     add_executable(test_verb_registration_wchar tests/arguments/test_verb_registration.c ${src_args} ${src_test_utils})
     add_test(NAME test_verb_registration_wchar COMMAND test_verb_registration_wchar)
-    target_compile_definitions(test_verb_registration_wchar PUBLIC NP_GOODIES_ARGUMENTS_USE_WCHAR)
     target_compile_definitions(test_verb_registration_wchar PUBLIC UNICODE)
 
     add_executable(test_args_parsing_basic_wchar tests/arguments/test_args_parsing_basic.c ${src_args} ${src_test_utils})
     add_test(NAME test_args_parsing_basic_wchar COMMAND test_args_parsing_basic_wchar)
-    target_compile_definitions(test_args_parsing_basic_wchar PUBLIC NP_GOODIES_ARGUMENTS_USE_WCHAR)
     target_compile_definitions(test_args_parsing_basic_wchar PUBLIC UNICODE)
 
     add_executable(test_args_required_option_wchar tests/arguments/test_args_required_option.c ${src_args} ${src_test_utils})
     add_test(NAME test_args_required_option_wchar COMMAND test_args_required_option_wchar)
-    target_compile_definitions(test_args_required_option_wchar PUBLIC NP_GOODIES_ARGUMENTS_USE_WCHAR)
     target_compile_definitions(test_args_required_option_wchar PUBLIC UNICODE)
 
     add_executable(test_args_default_option_wchar tests/arguments/test_args_default_option.c ${src_args} ${src_test_utils})
     add_test(NAME test_args_default_option_wchar COMMAND test_args_default_option_wchar)
-    target_compile_definitions(test_args_default_option_wchar PUBLIC NP_GOODIES_ARGUMENTS_USE_WCHAR)
     target_compile_definitions(test_args_default_option_wchar PUBLIC UNICODE)
 
     # Targets > Tests > Lists

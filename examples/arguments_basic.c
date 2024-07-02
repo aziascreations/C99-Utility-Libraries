@@ -18,22 +18,22 @@ static Option *verbosityLevelOption;
 static Option *inputFilesOption;
 
 bool prepareArguments() {
-	rootVerb = args_createVerb(np_args_L("root"), np_args_L("Test"));
+	rootVerb = args_createVerb(TEXT("root"), TEXT("Test"));
 	
-	versionOption = args_createOption('\0', np_args_L("version"), np_args_L("Prints the version"),
+	versionOption = args_createOption('\0', TEXT("version"), TEXT("Prints the version"),
 									  FLAG_OPTION_NONE);
 	
-	verbosityLevelOption = args_createOption('v', np_args_L("verbose"), np_args_L("Increase the verbosity"),
+	verbosityLevelOption = args_createOption('v', TEXT("verbose"), TEXT("Increase the verbosity"),
 											 FLAG_OPTION_REPEATABLE);
 	
-	inputFilesOption = args_createOption('i', np_args_L("input"), np_args_L("Add a file to the processing queue"),
+	inputFilesOption = args_createOption('i', TEXT("input"), TEXT("Add a file to the processing queue"),
 										 FLAG_OPTION_DEFAULT | FLAG_OPTION_HAS_MULTIPLE_VALUE);
 	
 	// Checking if no error occurred and if we can register all the options.
 	return rootVerb != NULL && versionOption != NULL && verbosityLevelOption != NULL && inputFilesOption != NULL &&
-			args_registerOption(versionOption, rootVerb) &&
-			args_registerOption(verbosityLevelOption, rootVerb) &&
-			args_registerOption(inputFilesOption, rootVerb);
+		   args_registerOption(versionOption, rootVerb) &&
+		   args_registerOption(verbosityLevelOption, rootVerb) &&
+		   args_registerOption(inputFilesOption, rootVerb);
 }
 
 int main() {
@@ -43,16 +43,16 @@ int main() {
 	
 	// Preparing fake launch arguments
 	int argc = 9;
-	np_args_char* argv[] = {
-		np_args_L("example.exe"),      // ???
-		np_args_L("-vvv"),             // Increasing the verbosity by 3
-		np_args_L("--verbose"),        // Increasing the verbosity by 1
-		np_args_L("-i"),               // Adding a file
-		np_args_L("file1.txt"),
-		np_args_L("--"),               // No longer parsing options, only values for `-i,--input`.
-		np_args_L("file2.txt"),
-		np_args_L("--version"),        // Will be interpreted as a filename
-		np_args_L("file3.txt"),
+	text_char *argv[] = {
+			TEXT("example.exe"),  // ???
+			TEXT("-vvv"),         // Increasing the verbosity by 3
+			TEXT("--verbose"),    // Increasing the verbosity by 1
+			TEXT("-i"),           // Adding a file
+			TEXT("file1.txt"),
+			TEXT("--"),           // No longer parsing options, only values for `-i,--input`.
+			TEXT("file2.txt"),
+			TEXT("--version"),    // Will be interpreted as a filename
+			TEXT("file3.txt"),
 	};
 	
 	
@@ -90,12 +90,12 @@ int main() {
 	// And we can iterate on values too
 	if(args_wasOptionUsed(inputFilesOption)) {
 		// We grab the first value
-		np_args_char *currentValue = dllist_selectFirstData(inputFilesOption->arguments);
+		text_char *currentValue = dllist_selectFirstData(inputFilesOption->arguments);
 		
 		while(currentValue != NULL) {
 			// We either print a `char` or `wchar_t` value.
 			#if defined(NP_GOODIES_ARGUMENTS_USE_WCHAR)
-				printf("Value => '%ws'\n", currentValue);
+				printf("Value => '%ls'\n", currentValue);
 			#else
 				printf("Value => '%s'\n", currentValue);
 			#endif

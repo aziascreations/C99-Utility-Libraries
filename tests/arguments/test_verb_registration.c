@@ -10,17 +10,17 @@ int main(void) {
 	printf("> Preparing verbs and options for later tests...\n");
 	Verb* rootVerb = args_createVerb(NULL, NULL);
 	
-	Verb* validSubVerb1 = args_createVerb(np_args_L("create"), NULL);
-	Verb* validSubVerb2 = args_createVerb(np_args_L("delete"), NULL);
+	Verb* validSubVerb1 = args_createVerb(TEXT("create"), NULL);
+	Verb* validSubVerb2 = args_createVerb(TEXT("delete"), NULL);
 	
 	Verb* invalidSubVerb1 = args_createVerb(NULL, NULL);
-	Verb* invalidSubVerb2 = args_createVerb(np_args_L("  "), NULL);
+	Verb* invalidSubVerb2 = args_createVerb(TEXT("  "), NULL);
 	
 	Option* shortOption = args_createOption('a', NULL, NULL, FLAG_OPTION_NONE);
-	Option* longOption = args_createOption('\0', np_args_L("bravo"), NULL, FLAG_OPTION_NONE);
-	Option* mixedOption = args_createOption('c', np_args_L("charlie"), NULL, FLAG_OPTION_NONE);
+	Option* longOption = args_createOption('\0', TEXT("bravo"), NULL, FLAG_OPTION_NONE);
+	Option* mixedOption = args_createOption('c', TEXT("charlie"), NULL, FLAG_OPTION_NONE);
 	
-	Option* recursiveOption = args_createOption('r', np_args_L("recursive"), NULL, FLAG_OPTION_NONE);
+	Option* recursiveOption = args_createOption('r', TEXT("recursive"), NULL, FLAG_OPTION_NONE);
 	
 	/* Verb & registration */
 	printf("> Testing registration failure of invalid verbs...\n");
@@ -45,9 +45,9 @@ int main(void) {
 	assert(validSubVerb2->parentVerb == rootVerb, "Second valid verb's parent verb pointer");
 	
 	printf("> Testing sub-verb getter...\n");
-	assert(args_getSubVerbByName(rootVerb, np_args_L("create")) == validSubVerb1, "Getting 'create' from root");
-	assert(args_getSubVerbByName(rootVerb, np_args_L("delete")) == validSubVerb2, "Getting 'delete' from root");
-	assert(args_getSubVerbByName(rootVerb, np_args_L("error")) == NULL, "Getting 'error' from root, should be NULL");
+	assert(args_getSubVerbByName(rootVerb, TEXT("create")) == validSubVerb1, "Getting 'create' from root");
+	assert(args_getSubVerbByName(rootVerb, TEXT("delete")) == validSubVerb2, "Getting 'delete' from root");
+	assert(args_getSubVerbByName(rootVerb, TEXT("error")) == NULL, "Getting 'error' from root, should be NULL");
 	
 	/* Options in verbs */
 	printf("> Testing option registration in root verb...\n");
@@ -62,9 +62,9 @@ int main(void) {
 	
 	printf("> Testing option getter with valid inputs...\n");
 	assert(args_getOptionByToken(rootVerb, 'a') == shortOption, "Getting short with 'a'");
-	assert(args_getOptionByName(rootVerb, np_args_L("bravo")) == longOption, "Getting long with \"bravo\"");
+	assert(args_getOptionByName(rootVerb, TEXT("bravo")) == longOption, "Getting long with \"bravo\"");
 	assert(args_getOptionByToken(rootVerb, 'c') == mixedOption, "Getting mixed with 'c'");
-	assert(args_getOptionByName(rootVerb, np_args_L("charlie")) == mixedOption, "Getting mixed with \"charlie\"");
+	assert(args_getOptionByName(rootVerb, TEXT("charlie")) == mixedOption, "Getting mixed with \"charlie\"");
 	
 	printf("> Testing option getter with invalid inputs...\n");
 	assert(args_getOptionByToken(rootVerb, 'A') == NULL, "With 'A'");
@@ -73,8 +73,8 @@ int main(void) {
 	assert(args_getOptionByToken(rootVerb, ' ') == NULL, "With ' '");
 	assert(args_getOptionByToken(rootVerb, '\0') == NULL, "With '\0'");
 	assert(args_getOptionByName(rootVerb, NULL) == NULL, "With NULL");
-	assert(args_getOptionByName(rootVerb, np_args_L(" ")) == NULL, "With \" \"");
-	assert(args_getOptionByName(rootVerb, np_args_L(" charlie")) == NULL, "With \" charlie\"  (No hidden trimming)");
+	assert(args_getOptionByName(rootVerb, TEXT(" ")) == NULL, "With \" \"");
+	assert(args_getOptionByName(rootVerb, TEXT(" charlie")) == NULL, "With \" charlie\"  (No hidden trimming)");
 	
 	printf("> Registering some options in sub-verbs...\n");
 	assert(args_registerOption(shortOption, validSubVerb1), "Short option in 'create'");
@@ -86,9 +86,9 @@ int main(void) {
 	assert(args_getOptionByToken(rootVerb, 'r') == recursiveOption, "Recursive option by token in root verb");
 	assert(args_getOptionByToken(validSubVerb1, 'r') == recursiveOption, "Recursive option by token in sub-verb 1");
 	assert(args_getOptionByToken(validSubVerb2, 'r') == recursiveOption, "Recursive option by token in sub-verb 2");
-	assert(args_getOptionByName(rootVerb, np_args_L("recursive")) == recursiveOption, "Recursive option by name in root verb");
-	assert(args_getOptionByName(validSubVerb1, np_args_L("recursive")) == recursiveOption, "Recursive option by name in sub-verb 1");
-	assert(args_getOptionByName(validSubVerb2, np_args_L("recursive")) == recursiveOption, "Recursive option by name in sub-verb 2");
+	assert(args_getOptionByName(rootVerb, TEXT("recursive")) == recursiveOption, "Recursive option by name in root verb");
+	assert(args_getOptionByName(validSubVerb1, TEXT("recursive")) == recursiveOption, "Recursive option by name in sub-verb 1");
+	assert(args_getOptionByName(validSubVerb2, TEXT("recursive")) == recursiveOption, "Recursive option by name in sub-verb 2");
 	
 	// From now on, results will be observed in the fact the tests don't cause segfaults, and via the debugging logs.
 	

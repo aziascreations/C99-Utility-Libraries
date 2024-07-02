@@ -28,7 +28,7 @@
 #define text_strlenW wcslen
 
 #define text_charA char
-#define text_charW wchar
+#define text_charW wchar_t
 
 
 // Unicode macros
