@@ -171,7 +171,7 @@ OptionW *args_createOptionW(wchar_t token, wchar_t *name, wchar_t *description, 
 
 // Cleaners
 
-void args_freeVerbA(VerbA *verb) {
+void args_freeVerb(Verb *verb) {
 	if(verb != NULL) {
 		//np_args_trace_println("Starting to free verb '%s' @0x%p", verb->name, verb);
 		
@@ -200,7 +200,7 @@ void args_freeVerbA(VerbA *verb) {
 
 // FIXME: Check if the args_freeOptionA function is properly called from the "args_freeVerbA" one !!!
 // Big ass memory leak incoming if not
-void args_freeOptionA(OptionA *option) {
+void args_freeOption(Option *option) {
 	if(option != NULL) {
 		//np_args_trace_println("Starting to free option '0d%i':'%s' @0x%p", option->token, option->name, option);
 		

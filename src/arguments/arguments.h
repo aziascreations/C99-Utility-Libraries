@@ -35,10 +35,6 @@
 	#define args_createVerb args_createVerbW
 	#define args_createOption args_createOptionW
 
-	// Cleaners
-	#define args_freeVerb args_freeVerbW
-	#define args_freeOption args_freeOptionW
-
 	// Registers
 	#define args_registerVerb args_registerVerbW
 	#define args_registerOption args_registerOptionW
@@ -62,10 +58,6 @@
 	#define args_createVerb args_createVerbA
 	#define args_createOption args_createOptionA
 
-	// Cleaners
-	#define args_freeVerb args_freeVerbA
-	#define args_freeOption args_freeOptionA
-
 	// Registers
 	#define args_registerVerb args_registerVerbA
 	#define args_registerOption args_registerOptionA
@@ -85,7 +77,6 @@
 	// Parser
 	#define args_parseArguments args_parseArgumentsA
 #endif
-
 
 
 // Creators
@@ -139,9 +130,11 @@ DLL_EXP_ARGS OptionW *args_createOptionW(wchar_t token, wchar_t *name, wchar_t *
  * @param verb The \ref arguments_verb "Verb" that needs to be freed.
  * @note The <code>VerbW</code> structure can also be passed to this function if typecast.
  */
-DLL_EXP_ARGS void args_freeVerbA(VerbA *verb);
+DLL_EXP_ARGS void args_freeVerb(Verb *verb);
 
-#define args_freeVerbW(verb) args_freeVerbA((VerbA *) verb)
+#define args_freeVerbA(verb) args_freeVerb((Verb *) verb)
+
+#define args_freeVerbW(verb) args_freeVerb((Verb *) verb)
 
 /**
  * Frees the memory allocated to a given \ref arguments_option "Option" if it isn't still registered in another
@@ -151,9 +144,11 @@ DLL_EXP_ARGS void args_freeVerbA(VerbA *verb);
  *
  * \see arguments_option::registrationCount
  */
-DLL_EXP_ARGS void args_freeOptionA(OptionA *option);
+DLL_EXP_ARGS void args_freeOption(Option *option);
 
-#define args_freeOptionW(option) args_freeOptionA((OptionA *) option)
+#define args_freeOptionA(option) args_freeOption((Option *) option)
+
+#define args_freeOptionW(option) args_freeOption((Option *) option)
 
 
 // Registers
@@ -238,9 +233,9 @@ DLL_EXP_ARGS VerbW *args_getParentVerbW(VerbW *verb);
  */
 DLL_EXP_ARGS Option *args_getDefaultOption(Verb *verb);
 
-#define args_getDefaultOptionA(verb) ((OptionA*) args_getDefaultOption((VerbA*) verb))
+#define args_getDefaultOptionA(verb) ((OptionA*) args_getDefaultOption((Verb*) verb))
 
-#define args_getDefaultOptionW(verb) ((OptionW*) args_getDefaultOption((VerbA*) verb))
+#define args_getDefaultOptionW(verb) ((OptionW*) args_getDefaultOption((Verb*) verb))
 
 /**
  * Get an \ref arguments_option "Option" from a given \ref arguments_verb "Verb" by searching for it with its
@@ -305,9 +300,9 @@ DLL_EXP_ARGS VerbW *args_getSubVerbByNameW(VerbW *parentVerb, wchar_t *desiredNa
  */
 DLL_EXP_ARGS Option *args_getRelevantDefaultOption(Verb *parentVerb);
 
-#define args_getRelevantDefaultOptionA(parentVerb) ((OptionA*) args_getRelevantDefaultOption((VerbA*) parentVerb))
+#define args_getRelevantDefaultOptionA(parentVerb) ((OptionA*) args_getRelevantDefaultOption((Verb*) parentVerb))
 
-#define args_getRelevantDefaultOptionW(parentVerb) ((OptionW*) args_getRelevantDefaultOption((VerbA*) parentVerb))
+#define args_getRelevantDefaultOptionW(parentVerb) ((OptionW*) args_getRelevantDefaultOption((Verb*) parentVerb))
 
 
 // Misc
