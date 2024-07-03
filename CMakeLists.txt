@@ -353,50 +353,49 @@ if(NP_GOODIES_BUILD_TESTS)
     # Targets > Tests > Text
     add_executable(test_text_copyLine tests/text/test_text_copyLine.c ${src_text} ${src_test_utils})
     add_test(NAME test_text_copyLine COMMAND test_text_copyLine)
-    add_executable(test_text_copyLineW tests/text/test_text_copyLineW.c ${src_text} ${src_test_utils})
+    add_executable(test_text_copyLineW tests/text/test_text_copyLine.c ${src_text} ${src_test_utils})
     add_test(NAME test_text_copyLineW COMMAND test_text_copyLineW)
     target_compile_definitions(test_text_copyLineW PUBLIC UNICODE)
 
     add_executable(test_text_copy tests/text/test_text_copy.c ${src_text} ${src_test_utils})
     add_test(NAME test_text_copy COMMAND test_text_copy)
-    add_executable(test_text_copyW tests/text/test_text_copyW.c ${src_text} ${src_test_utils})
+    add_executable(test_text_copyW tests/text/test_text_copy.c ${src_text} ${src_test_utils})
     add_test(NAME test_text_copyW COMMAND test_text_copyW)
     target_compile_definitions(test_text_copyW PUBLIC UNICODE)
-    #target_compile_definitions(test_text_copyW PUBLIC NP_GOODIES_ADD_C11_OPTIMIZATIONS)
 
     add_executable(test_text_startsWith tests/text/test_text_startsWith.c ${src_text} ${src_test_utils})
     add_test(NAME test_text_startsWith COMMAND test_text_startsWith)
-    add_executable(test_text_startsWithW tests/text/test_text_startsWithW.c ${src_text} ${src_test_utils})
+    add_executable(test_text_startsWithW tests/text/test_text_startsWith.c ${src_text} ${src_test_utils})
     add_test(NAME test_text_startsWithW COMMAND test_text_startsWithW)
     target_compile_definitions(test_text_startsWithW PUBLIC UNICODE)
 
     add_executable(test_text_isEmpty tests/text/test_text_isEmpty.c ${src_text} ${src_test_utils})
     add_test(NAME test_text_isEmpty COMMAND test_text_isEmpty)
-    add_executable(test_text_isEmptyW tests/text/test_text_isEmptyW.c ${src_text} ${src_test_utils})
+    add_executable(test_text_isEmptyW tests/text/test_text_isEmpty.c ${src_text} ${src_test_utils})
     add_test(NAME test_text_isEmptyW COMMAND test_text_isEmptyW)
     target_compile_definitions(test_text_isEmptyW PUBLIC UNICODE)
 
     add_executable(test_text_nextSpaceIndex tests/text/test_text_nextSpaceIndex.c ${src_text} ${src_test_utils})
     add_test(NAME test_text_nextSpaceIndex COMMAND test_text_nextSpaceIndex)
-    add_executable(test_text_nextSpaceIndexW tests/text/test_text_nextSpaceIndexW.c ${src_text} ${src_test_utils})
+    add_executable(test_text_nextSpaceIndexW tests/text/test_text_nextSpaceIndex.c ${src_text} ${src_test_utils})
     add_test(NAME test_text_nextSpaceIndexW COMMAND test_text_nextSpaceIndexW)
     target_compile_definitions(test_text_nextSpaceIndexW PUBLIC UNICODE)
 
     add_executable(test_text_firstDifferentIndex tests/text/test_text_firstDifferentIndex.c ${src_text} ${src_test_utils})
     add_test(NAME test_text_firstDifferentIndex COMMAND test_text_firstDifferentIndex)
-    add_executable(test_text_firstDifferentIndexW tests/text/test_text_firstDifferentIndexW.c ${src_text} ${src_test_utils})
+    add_executable(test_text_firstDifferentIndexW tests/text/test_text_firstDifferentIndex.c ${src_text} ${src_test_utils})
     add_test(NAME test_text_firstDifferentIndexW COMMAND test_text_firstDifferentIndexW)
     target_compile_definitions(test_text_firstDifferentIndexW PUBLIC UNICODE)
 
     add_executable(test_text_lastDifferentIndex tests/text/test_text_lastDifferentIndex.c ${src_text} ${src_test_utils})
     add_test(NAME test_text_lastDifferentIndex COMMAND test_text_firstDifferentIndex)
-    add_executable(test_text_lastDifferentIndexW tests/text/test_text_lastDifferentIndexW.c ${src_text} ${src_test_utils})
+    add_executable(test_text_lastDifferentIndexW tests/text/test_text_lastDifferentIndex.c ${src_text} ${src_test_utils})
     add_test(NAME test_text_lastDifferentIndexW COMMAND test_text_lastDifferentIndexW)
     target_compile_definitions(test_text_lastDifferentIndexW PUBLIC UNICODE)
 
     add_executable(test_text_trim tests/text/test_text_trim.c ${src_text} ${src_test_utils})
     add_test(NAME test_text_trim COMMAND test_text_trim)
-    add_executable(test_text_trimW tests/text/test_text_trimW.c ${src_text} ${src_test_utils})
+    add_executable(test_text_trimW tests/text/test_text_trim.c ${src_text} ${src_test_utils})
     add_test(NAME test_text_trimW COMMAND test_text_trimW)
     target_compile_definitions(test_text_trimW PUBLIC UNICODE)
 
@@ -461,6 +460,7 @@ if(EXECUTABLE_CYGWIN_STRIP)
     message("----> Found 'strip.exe', adding 'POST_BUILD' executable stripping step...")
 
     # https://cmake.org/cmake/help/v2.8.12/cmake.html#command:add_custom_command
+    # FIXME: strip may cause issues on ARM or another specific target, got bit a while ago, can't remember how and why...
     add_custom_command(
             TARGET np_clang_goodies_dll_dynamic
             POST_BUILD
