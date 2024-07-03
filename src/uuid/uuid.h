@@ -22,6 +22,15 @@
 
 #define UUID_CHAR_COUNT (32 + 4)
 
+
+// Unicode macros
+#if defined(NP_UNICODE)
+	#define uuid_toString uuid_toStringW
+#else
+	#define uuid_toString uuid_toStringA
+#endif
+
+
 /**
  * Generates a `char` string representation of a given UUID4.<br>
  *
@@ -31,7 +40,7 @@
  * @return A `char *` string containing the representation of the given UUID.
  * @warning Failure to free the returned string WILL cause memory leaks !
  */
-DLL_EXP_UUID char *uuid_toString(struct uuid *uuid);
+DLL_EXP_UUID char *uuid_toStringA(struct uuid *uuid);
 
 /**
  * Compares the content of 2 UUID buffers.
