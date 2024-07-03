@@ -251,7 +251,7 @@ int args_printOptionW(OptionW *option, short consoleWidth, int newLineSpaceLengt
 	
 	// Printing the actual option details
 	wchar_t *optText = args_getOptionTextW(option, addBrackets, expectedLength);
-	printf("%ws", optText);
+	printf("%ls", optText);
 	
 	free(optText);
 	
@@ -260,7 +260,7 @@ int args_printOptionW(OptionW *option, short consoleWidth, int newLineSpaceLengt
 
 // Public functions
 
-bool args_printHelpText(VerbA *verb, char *programName, short consoleWidth) {
+bool args_printHelpTextA(VerbA *verb, char *programName, short consoleWidth) {
 	if (verb == NULL || programName == NULL) {
 		return false;
 	}
@@ -355,7 +355,7 @@ bool args_printHelpTextW(VerbW *verb, wchar_t *programName, short consoleWidth) 
 	OptionW *currentOption = NULL;
 	
 	// Printing the usage
-	printf("%ws ", programName);
+	printf("%ls ", programName);
 	
 	// TODO: Print the verbs used in the reverse order "exe v1 v2 <...> v3 (options) sub-verbs"
 	
@@ -380,7 +380,7 @@ bool args_printHelpTextW(VerbW *verb, wchar_t *programName, short consoleWidth) 
 		printf("Actions:\n");
 		VerbW *currentSubVerb = dllist_selectFirstData(verb->verbs);
 		while (currentSubVerb != NULL) {
-			printf("%ws ", currentSubVerb->name);
+			printf("%ls ", currentSubVerb->name);
 			currentSubVerb = dllist_selectNextData(verb->verbs);
 			printf("\n");
 		}
