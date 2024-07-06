@@ -193,6 +193,14 @@ file(GLOB_RECURSE src_all CONFIGURE_DEPENDS "src/*.h" "src/*.c")
 
 file(GLOB src_test_utils CONFIGURE_DEPENDS "tests/assert.h" "tests/memutils.c" "tests/memutils.h" "src/platform.h")
 
+# Targets > Debugging Printouts
+if(NP_GOODIES_IS_MAIN)
+    if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+        message("---> Enabling debug logging for 'Debug' builds...")
+        add_compile_definitions(NP_DEBUG_LOGGING)
+    endif()
+endif()
+
 
 # Targets > DLLs
 if(NP_GOODIES_IS_MAIN)
