@@ -2,6 +2,12 @@
 
 #include "../src/debug.h"
 
+// -----------------------------------------------------------------------------
+//  The debug logging macros are automatically enabled if you compile this
+//   example with a "Debug" build type if the library isn't included in
+//   another CMake project !
+// -----------------------------------------------------------------------------
+
 int main() {
 	#if defined(NP_DEBUG_LOGGING)
 		printf("Debug logging is enabled !\n");

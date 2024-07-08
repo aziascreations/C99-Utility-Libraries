@@ -274,6 +274,8 @@ if(NP_GOODIES_BUILD_EXAMPLES)
     add_executable(example_debug_logging_on  examples/debug_logging.c ${src_np_clang_goodies_commons})
     target_compile_definitions(example_debug_logging_on PUBLIC NP_DEBUG_LOGGING)
 
+    add_executable(example_hashmap_chained_basic examples/hashmap_chained_basic.c ${src_hashmap} ${src_hash} ${src_text})
+
     if(WIN32)
         if(NOT CMAKE_C_COMPILER_ID STREQUAL "TinyCC")
             add_executable(example_uuid_win32 examples/uuid_win32.c ${src_uuid})

@@ -39,8 +39,8 @@ int main() {
 	UUID4 *uuid4 = uuid4_generate(&bufferRandomFiller);
 	
 	// Converting the UUID4 to a `char` string.
-	// The `uuid_toWcharString` function can be used to get a `wchar_t` string.
-	char *uuidStr = uuid_toString(uuid4);
+	// The `uuid_toStringW` function can be used to get a `wchar_t` string.
+	char *uuidStr = uuid_toStringA(uuid4);
 	wchar_t *uuidStrW = uuid_toStringW(uuid4);
 	
 	// Printing it out.
