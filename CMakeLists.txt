@@ -450,34 +450,34 @@ endif()
 
 # Commands
 # FIXME: Expose the path as a variable !
-unset(EXECUTABLE_CYGWIN_STRIP CACHE)
+#unset(EXECUTABLE_CYGWIN_STRIP CACHE)
 
-find_program(
-        EXECUTABLE_CYGWIN_STRIP
-        NAMES "C:\\cygwin64\\bin\\strip.exe"
-)
+#find_program(
+#        EXECUTABLE_CYGWIN_STRIP
+#        NAMES "C:\\cygwin64\\bin\\strip.exe"
+#)
 
 # Doesn't work for ARM !!!
-if(EXECUTABLE_CYGWIN_STRIP)
-    message("----> Found 'strip.exe', adding 'POST_BUILD' executable stripping step...")
-
-    # https://cmake.org/cmake/help/v2.8.12/cmake.html#command:add_custom_command
-    # FIXME: strip may cause issues on ARM or another specific target, got bit a while ago, can't remember how and why...
-    add_custom_command(
-            TARGET np_clang_goodies_dll_dynamic
-            POST_BUILD
-            COMMAND ${CMAKE_COMMAND}
-            ARGS -E echo "Running 'strip.exe' on '$<TARGET_FILE:np_clang_goodies_dll_dynamic>'"
-    )
-    add_custom_command(
-            TARGET np_clang_goodies_dll_dynamic
-            POST_BUILD
-            COMMAND "C:\\cygwin64\\bin\\strip.exe"
-            ARGS -s "$<TARGET_FILE:np_clang_goodies_dll_dynamic>"
-    )
-else()
-    message("----> Unable to find 'strip.exe' in PATH, final executable won't be stripping !")
-endif()
+#if(EXECUTABLE_CYGWIN_STRIP)
+#    message("----> Found 'strip.exe', adding 'POST_BUILD' executable stripping step...")
+#
+#    # https://cmake.org/cmake/help/v2.8.12/cmake.html#command:add_custom_command
+#    # FIXME: strip may cause issues on ARM or another specific target, got bit a while ago, can't remember how and why...
+#    add_custom_command(
+#            TARGET np_clang_goodies_dll_dynamic
+#            POST_BUILD
+#            COMMAND ${CMAKE_COMMAND}
+#            ARGS -E echo "Running 'strip.exe' on '$<TARGET_FILE:np_clang_goodies_dll_dynamic>'"
+#    )
+#    add_custom_command(
+#            TARGET np_clang_goodies_dll_dynamic
+#            POST_BUILD
+#            COMMAND "C:\\cygwin64\\bin\\strip.exe"
+#            ARGS -s "$<TARGET_FILE:np_clang_goodies_dll_dynamic>"
+#    )
+#else()
+#    message("----> Unable to find 'strip.exe' in PATH, final executable won't be stripping !")
+#endif()
 
 # End
 message("--> Done :)")
