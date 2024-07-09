@@ -457,6 +457,7 @@ find_program(
         NAMES "C:\\cygwin64\\bin\\strip.exe"
 )
 
+# Doesn't work for ARM !!!
 if(EXECUTABLE_CYGWIN_STRIP)
     message("----> Found 'strip.exe', adding 'POST_BUILD' executable stripping step...")
 
