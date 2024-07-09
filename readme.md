@@ -14,8 +14,8 @@ Small collection of utilities and libraries for C99 that aims to simplify some d
 * ![](docs/images/view_more.png) Other features to come as needed or requested
 
 ## Planned Features
-* More HashMap types & more utilities
-* An INI config parser
+* More HashMap types & hashing/UUID algorithms & more utilities
+<!--* ![](docs/images/settings.png) An INI config utility with *PHP-like* list & dict support-->
 
 
 ## Usage
@@ -84,6 +84,29 @@ The `Include` directive isn't supported yet.<br>
 The included project doesn't detect that it's being included properly like `FetchContent` does.
 
 
+### CMake's `add_subdirectory` command
+The `add_subdirectory` command works by isn't thoroughly tested yet.<br>
+
+Firstly, add this repository as a submodule in your project and checkout to a specific tag or commit:
+```bash
+git submodule add https://github.com/aziascreations/C99-Utility-Libraries.git libs/nibblepoker-c-goodies
+git -C libs/nibblepoker-c-goodies checkout <hash|tag>
+```
+
+Afterward, add the following lines in your *CMakeLists.txt*:
+```cmake
+add_subdirectory(libs/np_clang_goodies)
+
+# This one may not be required, needs more testing.
+file(GLOB_RECURSE src_nibblepoker_c_goodies CONFIGURE_DEPENDS "libs/nibblepoker-c-goodies/src/*.h" "libs/nibblepoker-c-goodies/src/*.c")
+```
+
+Finally, modify you targets to add `${src_nibblepoker_c_goodies}` like so:
+```cmake
+add_executable(my_app src/main.c ${src_nibblepoker_c_goodies} ...)
+```
+
+
 ### CMake Manual Import
 In order to use this library in your projects via a manual import you need to do the following things:
 
@@ -137,7 +160,8 @@ repository for a complete example in a "fully-fledged" Windows application.
   * Basic example of hashing data with CRC32B.
 
 ### HashMaps
-**TODO**
+* [Basic Chained HashMap](examples/hashmap_chained_basic.c)
+  * Basic HashMap usage with strings, CRC32B key hashing and full collision detection.
 
 ### UUID
 * [UUID4 generation](examples/uuid_all.c)

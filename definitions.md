@@ -198,7 +198,7 @@ If defined, every functions related to UUIDv4 are exported.
 ⚠️ Some functions may not be exported if `NP_WIN32` isn't defined.
 
 ## Include Guards
-While `#pragma once` works for most compilers, TCC doesn't support it and needs
+While `#pragma once` works for most compilers, official Win32 TCC builds don't support it and needs
 those include guards.
 
 * `NP_ONCE_C99_GOODIES_ARGUMENTS_MAIN`
