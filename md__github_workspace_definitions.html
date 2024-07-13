@@ -27,7 +27,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign">
-   <div id="projectname">NibblePoker&#39;s Clang Goodies<span id="projectnumber">&#160;0.5.1</span>
+   <div id="projectname">NibblePoker&#39;s Clang Goodies<span id="projectnumber">&#160;1.0.0</span>
    </div>
    <div id="projectbrief">Small collection of utilities and libraries for C in order to simplify some development tasks.</div>
   </td>
@@ -95,7 +95,7 @@ $(document).ready(function(){initNavTree('md__github_workspace_definitions.html'
   <div class="headertitle"><div class="title">Definitions </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="autotoc_md20"></a>
+<div class="textblock"><h1><a class="anchor" id="autotoc_md23"></a>
 Summary</h1>
 <ul>
 <li>Features Toggles<ul>
@@ -105,12 +105,15 @@ Summary</h1>
 <li><code>NP_GOODIES_CRC32_ENABLE_BRANCHLESS</code> ➜</li>
 <li><s><code>NP_GOODIES_LIST_USE_COMMON_DELETER</code></s> <b>TODO</b></li>
 <li><code>NP_GOODIES_UUID_DISABLE_STRUCT_SIZE_CHECK</code> ➜</li>
+<li><s><code>NP_DEBUG_LOGGING</code></s> <b>TODO</b></li>
+<li><s><code>NP_UNICODE</code></s> <b>BIG NO-NO !!!</b></li>
 </ul>
 </li>
 <li>CMake Stuff<ul>
 <li><code>NP_GOODIES_BUILD_BENCHMARKS</code> ➜</li>
 <li><code>NP_GOODIES_BUILD_EXAMPLES</code> ➜</li>
 <li><code>NP_GOODIES_BUILD_TESTS</code> ➜</li>
+<li><s><code>NP_GOODIES_BUILD_WIN32_NODEFAULTLIB</code> ➜</s></li>
 </ul>
 </li>
 <li>Library Exports Toggles *(As a hierarchical list of priority)*<ul>
@@ -141,33 +144,34 @@ Summary</h1>
 </li>
 </ul>
 </li>
+<li>Include Guards</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md21"></a>
+<h1><a class="anchor" id="autotoc_md24"></a>
 Features Toggles</h1>
-<h2><a class="anchor" id="autotoc_md22"></a>
+<h2><a class="anchor" id="autotoc_md25"></a>
 Everything - Add C11 Optimizations</h2>
 <p ><b>Definition:</b> <code>NP_GOODIES_ADD_C11_OPTIMIZATIONS</code></p>
 <p >Enables various optimizations that take advantage of new and safer features provided in the C11 standard.</p>
 <p >If C11 support isn't available or allowed by your compiler, nothing will be changed.</p>
-<h2><a class="anchor" id="autotoc_md23"></a>
+<h2><a class="anchor" id="autotoc_md26"></a>
 Arguments Parser - Use wchar_t instead of char</h2>
 <p ><b>Definition:</b> <code>NP_GOODIES_ARGUMENTS_USE_WCHAR</code></p>
 <p >Changes all signatures and functions in the arguments parser to use <code>wchar_t</code> instead of <code>char</code>.</p>
 <p >Transparent support can be achieved if you use the macros present in <a href="src/arguments/macros.h">arguments/macros.h</a>.</p>
-<h2><a class="anchor" id="autotoc_md24"></a>
+<h2><a class="anchor" id="autotoc_md27"></a>
 CRC32 - Disable lookup table</h2>
 <p ><b>Definition:</b> <code>NP_GOODIES_CRC32_DISABLE_LOOKUP_TABLE</code></p>
 <p >Disables the internal lookup table for CRC32 hashes and forces the functions to calculate everything at runtime.</p>
 <p >This feature shouldn't be disabled unless you intend on saving as much space as possible in the final executable since it slow down calculations drastically.<br  />
  Check the <a class="el" href="md__github_workspace_benchmarks_readme.html">Benchmarks</a> page for more information.</p>
-<h2><a class="anchor" id="autotoc_md25"></a>
+<h2><a class="anchor" id="autotoc_md28"></a>
 CRC32 - Enables branchless logic</h2>
 <p ><b>Definition:</b> <code>NP_GOODIES_CRC32_ENABLE_BRANCHLESS</code></p>
 <p >If enabled, this feature will disable the lookup table and will for the functions to calculate everything at runtime in a branchless way.</p>
 <p >This feature is only intended to be used on platforms that don't have branch predictors.</p>
 <p >The CRC computation is drastically slowed down due to the use of a multiplication in place of the condition.<br  />
  Check the <a class="el" href="md__github_workspace_benchmarks_readme.html">Benchmarks</a> page for more information.</p>
-<h2><a class="anchor" id="autotoc_md26"></a>
+<h2><a class="anchor" id="autotoc_md29"></a>
 UUID Structure size check</h2>
 <p ><b>Definition:</b> <code>NP_GOODIES_UUID_DISABLE_STRUCT_SIZE_CHECK</code></p>
 <p >This feature is a "simple" macro that is used at the top of every function in "[src/uuid/](src/uuid)".<br  />
@@ -175,89 +179,124 @@ UUID Structure size check</h2>
 <p >When compiled, this macro should result in zero code and only exist to cause compiler errors when the size of the <code>uuid</code> structure doesn't match what is expected.</p>
 <p >If defined, the macro will be empty.<br  />
  This shouldn't be done unless you have a very good reason to and don't use and/or export the UUID functions.</p>
-<h1><a class="anchor" id="autotoc_md27"></a>
+<h1><a class="anchor" id="autotoc_md30"></a>
 CMake Stuff</h1>
-<h2><a class="anchor" id="autotoc_md28"></a>
+<h2><a class="anchor" id="autotoc_md31"></a>
 Build benchmarks</h2>
 <p ><b>Definition:</b> <code>NP_GOODIES_BUILD_BENCHMARKS</code></p>
 <p >If defined, the benchmark targets will be added.</p>
-<h2><a class="anchor" id="autotoc_md29"></a>
+<h2><a class="anchor" id="autotoc_md32"></a>
 Build examples</h2>
 <p ><b>Definition:</b> <code>NP_GOODIES_BUILD_EXAMPLES</code></p>
 <p >If defined, the example targets will be added.</p>
-<h2><a class="anchor" id="autotoc_md30"></a>
+<h2><a class="anchor" id="autotoc_md33"></a>
 Build tests</h2>
 <p ><b>Definition:</b> <code>NP_GOODIES_BUILD_TESTS</code></p>
 <p >If defined, the test targets will be added as CTest tests.<br  />
  CTest will also be included in CMake.</p>
-<h1><a class="anchor" id="autotoc_md31"></a>
+<h2><a class="anchor" id="autotoc_md34"></a>
+Build with no default lib</h2>
+<p ><b>Definition:</b> <code>NP_GOODIES_BUILD_WIN32_NODEFAULTLIB</code></p>
+<p >If defined, the <code>/NODEFAULTLIB</code> option will be enabled for Windows targets using the MSVC toolchain.</p>
+<p >This should be used to removed UCRT dependencies and only use MSVCRT and standard libraries.<br  />
+ The intent behind this feature is to enable support for older Windows platforms.</p>
+<p >⚠️ This feature is still being worked on and isn't implemented, finished or tested.</p>
+<h1><a class="anchor" id="autotoc_md35"></a>
 Library Exports Toggles</h1>
 <p >The export toggles work as a hierarchical list of priority, which means that the more important a definition is, the more will get exported regardless of which "lesser" related definitions are present.</p>
-<h2><a class="anchor" id="autotoc_md32"></a>
+<h2><a class="anchor" id="autotoc_md36"></a>
 Everything</h2>
 <p ><b>Definition:</b> <code>NP_GOODIES_EXPORT_ALL</code></p>
 <p >If defined, every possible function is exported.<br  />
  This definition takes precedence over any other <code>NP_GOODIES_EXPORT_*</code> definition.</p>
-<h2><a class="anchor" id="autotoc_md33"></a>
+<h2><a class="anchor" id="autotoc_md37"></a>
 Arguments Parser</h2>
 <p ><b>Definition:</b> <code>NP_GOODIES_EXPORT_ARGUMENTS</code></p>
 <p >If defined, every function in <a href="src/arguments">src/arguments</a> is exported.</p>
 <p >⚠️ The lists and text-related functions will be present in the final executable but may not be exported unless their respective definition is present.</p>
-<h2><a class="anchor" id="autotoc_md34"></a>
+<h2><a class="anchor" id="autotoc_md38"></a>
 Hashing Function - Everything</h2>
 <p ><b>Definition:</b> <code>NP_GOODIES_EXPORT_HASH</code></p>
 <p >If defined, every possible hashing function is exported.<br  />
  This definition takes precedence over any other <code>NP_GOODIES_EXPORT_*</code> definition that pertains to hashing functions.</p>
-<h2><a class="anchor" id="autotoc_md35"></a>
+<h2><a class="anchor" id="autotoc_md39"></a>
 Hashing Function - CRC32</h2>
 <p ><b>Definition:</b> <code>NP_GOODIES_EXPORT_CRC32</code></p>
 <p >If defined, every CRC32-related functions are exported.</p>
 <p >⚠️ The NP_GOODIES_CRC32_DISABLE_LOOKUP_TABLE and NP_GOODIES_CRC32_ENABLE_BRANCHLESS definitions will affect the exported functions.</p>
-<h2><a class="anchor" id="autotoc_md36"></a>
+<h2><a class="anchor" id="autotoc_md40"></a>
 HashMap - Everything</h2>
 <p ><b>Definition:</b> <code>NP_GOODIES_EXPORT_HASHMAP_ALL</code></p>
 <p >If defined, every possible hashmap-related function is exported.<br  />
  This definition takes precedence over any other <code>NP_GOODIES_EXPORT_*</code> definition that pertains to hashmaps.</p>
 <p >⚠️ No hashing function required for proper hashmap operations are included under this definition.</p>
-<h2><a class="anchor" id="autotoc_md37"></a>
+<h2><a class="anchor" id="autotoc_md41"></a>
 HashMap - Chained</h2>
 <p ><b>Definition:</b> <code>NP_GOODIES_EXPORT_HASHMAP_CHAINED</code></p>
 <p >If defined, every functions related to chained hashmaps are exported.</p>
 <p >⚠️ No hashing function required for proper hashmap operations are included under this definition.</p>
-<h2><a class="anchor" id="autotoc_md38"></a>
+<h2><a class="anchor" id="autotoc_md42"></a>
 Lists - Everything</h2>
 <p ><b>Definition:</b> <code>NP_GOODIES_EXPORT_LIST_ALL</code></p>
 <p >If defined, every possible list-related function is exported.<br  />
  This definition takes precedence over any other <code>NP_GOODIES_EXPORT_*</code> definition that pertains to lists.</p>
-<h2><a class="anchor" id="autotoc_md39"></a>
+<h2><a class="anchor" id="autotoc_md43"></a>
 Lists - Single Linked Lists</h2>
 <p ><b>Definition:</b> <code>NP_GOODIES_EXPORT_SLLIST</code></p>
 <p >If defined, every functions related to single linked lists are exported.</p>
-<h2><a class="anchor" id="autotoc_md40"></a>
+<h2><a class="anchor" id="autotoc_md44"></a>
 Lists - Double Linked Lists</h2>
 <p ><b>Definition:</b> <code>NP_GOODIES_EXPORT_DLLIST</code></p>
 <p >If defined, every functions related to double linked lists are exported.</p>
-<h2><a class="anchor" id="autotoc_md41"></a>
+<h2><a class="anchor" id="autotoc_md45"></a>
 UUID - Everything</h2>
 <p ><b>Definition:</b> <code>NP_GOODIES_EXPORT_UUID_ALL</code></p>
 <p >If defined, every possible UUID-related function is exported.<br  />
  This definition takes precedence over any other <code>NP_GOODIES_EXPORT_*</code> definition that pertains to UUIDs.</p>
-<h2><a class="anchor" id="autotoc_md42"></a>
+<h2><a class="anchor" id="autotoc_md46"></a>
 UUID - Version 4</h2>
 <p ><b>Definition:</b> <code>NP_GOODIES_EXPORT_UUID4</code></p>
 <p >If defined, every functions related to UUIDv4 are exported.</p>
-<h2><a class="anchor" id="autotoc_md43"></a>
+<h2><a class="anchor" id="autotoc_md47"></a>
 Text Utilities</h2>
 <p ><b>Definition:</b> <code>NP_GOODIES_EXPORT_TEXT</code></p>
 <p >If defined, every functions related to UUIDv4 are exported.</p>
-<p >⚠️ Some functions may not be exported if <code>NP_WIN32</code> isn't defined. </p>
+<p >⚠️ Some functions may not be exported if <code>NP_WIN32</code> isn't defined.</p>
+<h1><a class="anchor" id="autotoc_md48"></a>
+Include Guards</h1>
+<p >While <code>#pragma once</code> works for most compilers, official Win32 TCC builds don't support it and needs those include guards.</p>
+<ul>
+<li><code>NP_ONCE_C99_GOODIES_ARGUMENTS_MAIN</code></li>
+<li><code>NP_ONCE_C99_GOODIES_ARGUMENTS_ERRORS</code></li>
+<li><code>NP_ONCE_C99_GOODIES_ARGUMENTS_FLAGS</code></li>
+<li><code>NP_ONCE_C99_GOODIES_ARGUMENTS_HELP</code></li>
+<li><s><code>NP_ONCE_C99_GOODIES_ARGUMENTS_MACROS</code></s> (Removed in 1.0.0)</li>
+<li><code>NP_ONCE_C99_GOODIES_ARGUMENTS_STRUCTS</code></li>
+<li><code>NP_ONCE_C99_GOODIES_ARGUMENTS_TYPES</code></li>
+<li><code>NP_ONCE_C99_GOODIES_HASH_CRC32</code></li>
+<li><code>NP_ONCE_C99_GOODIES_HASHMAP_COMMONS_STRUCTS</code></li>
+<li><code>NP_ONCE_C99_GOODIES_HASHMAP_COMMONS_UTILS</code></li>
+<li><code>NP_ONCE_C99_GOODIES_HASHMAP_CHAINED_MAIN</code></li>
+<li><code>NP_ONCE_C99_GOODIES_HASHMAP_CHAINED_STRUCTS</code></li>
+<li><code>NP_ONCE_C99_GOODIES_LLIST_COMMONS</code></li>
+<li><code>NP_ONCE_C99_GOODIES_LLIST_STRUCTS</code></li>
+<li><code>NP_ONCE_C99_GOODIES_LLIST_SINGLE</code></li>
+<li><code>NP_ONCE_C99_GOODIES_LLIST_DOUBLE</code></li>
+<li><code>NP_ONCE_C99_GOODIES_UUID_COMMONS</code></li>
+<li><code>NP_ONCE_C99_GOODIES_UUID_STRUCTS</code></li>
+<li><code>NP_ONCE_C99_GOODIES_UUID_UUID4</code></li>
+<li><code>NP_ONCE_C99_GOODIES_DEBUG</code></li>
+<li><code>NP_ONCE_C99_GOODIES_PLATFORM</code></li>
+<li><code>NP_ONCE_C99_GOODIES_TEXT</code></li>
+<li><code>NP_ONCE_C99_GOODIES_VERSION</code> </li>
+</ul>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Thu Mar 21 2024 21:43:15 for NibblePoker&#39;s Clang Goodies by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Sat Jul 13 2024 14:17:09 for NibblePoker&#39;s Clang Goodies by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>

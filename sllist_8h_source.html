@@ -27,7 +27,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign">
-   <div id="projectname">NibblePoker&#39;s Clang Goodies<span id="projectnumber">&#160;0.5.1</span>
+   <div id="projectname">NibblePoker&#39;s Clang Goodies<span id="projectnumber">&#160;1.0.0</span>
    </div>
    <div id="projectbrief">Small collection of utilities and libraries for C in order to simplify some development tasks.</div>
   </td>
@@ -96,79 +96,82 @@ $(document).ready(function(){initNavTree('sllist_8h_source.html',''); initResiza
 </div><!--header-->
 <div class="contents">
 <a href="sllist_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#pragma once</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;stdbool.h&gt;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;../../platform.h&quot;</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;../structs.h&quot;</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;../commons.h&quot;</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#if defined(NP_GOODIES_EXPORT_SLLIST) || defined(NP_GOODIES_EXPORT_LIST_ALL) || defined(NP_GOODIES_EXPORT_ALL)</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">    #define DLL_EXP_SLLIST NP_DLL_EXPORT</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#else</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">    #define DLL_EXP_SLLIST</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="group__group__sllist.html#gaaf86249e6e18d3afa93c5f9b20d9d117">   37</a></span><span class="preprocessor">#define sllist_create() ((SingleLinkedList *) llist_create())</span></div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>DLL_EXP_SLLIST <a class="code hl_struct" href="structsingle__linked__list__node.html">SingleLinkedListNode</a> *<a class="code hl_function" href="group__group__sllist.html#gaa529df4b4cc77fd24d256d52604e9ee9">sllist_createNode</a>();</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="group__group__sllist.html#ga42f174611ae7cc5cf68145f61019ee1b">   54</a></span><span class="preprocessor">#define sllist_free(list, cb_freeData, cb_freeNode) (llist_free(list, cb_freeData, cb_freeNode))</span></div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="group__group__sllist.html#ga622be934ea115ed510679ac6906c8ac7">   62</a></span><span class="preprocessor">#define sllist_selectFirst(list) ((SingleLinkedListNode *) llist_selectFirst((LinkedList *) list))</span></div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="group__group__sllist.html#ga62d86314f60572eb4edd927c8c2b679b">   70</a></span><span class="preprocessor">#define sllist_selectNext(list) ((SingleLinkedListNode *) llist_selectNext((LinkedList *) list))</span></div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>DLL_EXP_SLLIST <a class="code hl_struct" href="structsingle__linked__list__node.html">SingleLinkedListNode</a> *<a class="code hl_function" href="group__group__sllist.html#ga0e3caaa6be18b48659a810c98baffcf5">sllist_getPrevious</a>(<a class="code hl_struct" href="structsingle__linked__list.html">SingleLinkedList</a> *list);</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>DLL_EXP_SLLIST <span class="keywordtype">void</span> *<a class="code hl_function" href="group__group__sllist.html#gab2e59e83104d6b8ff40c658ec471765f">sllist_getPreviousData</a>(<a class="code hl_struct" href="structsingle__linked__list.html">SingleLinkedList</a> *list);</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>DLL_EXP_SLLIST <a class="code hl_struct" href="structsingle__linked__list__node.html">SingleLinkedListNode</a> *<a class="code hl_function" href="group__group__sllist.html#ga68f9cd3cd4ccb86454516244b1170432">sllist_selectPrevious</a>(<a class="code hl_struct" href="structsingle__linked__list.html">SingleLinkedList</a> *list);</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>DLL_EXP_SLLIST <span class="keywordtype">void</span> *<a class="code hl_function" href="group__group__sllist.html#ga144f251c9f302bcc9d76329aa443fd00">sllist_selectPreviousData</a>(<a class="code hl_struct" href="structsingle__linked__list.html">SingleLinkedList</a> *list);</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno"><a class="line" href="group__group__sllist.html#ga8ad87aeca9db8bfbcb76a92d4c8f21c3">  118</a></span><span class="preprocessor">#define sllist_selectLast(list) ((SingleLinkedListNode *) llist_selectLast((LinkedList *) list))</span></div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span> </div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno"><a class="line" href="group__group__sllist.html#gaa5ec649fed2cf61662d63387e3f667b0">  126</a></span><span class="preprocessor">#define sllist_selectFirstData(list) (llist_selectFirstData((LinkedList *) list))</span></div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span> </div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno"><a class="line" href="group__group__sllist.html#gaf85c6d37713132c9fa8e3d580c40b881">  134</a></span><span class="preprocessor">#define sllist_selectNextData(list) (llist_selectNextData((LinkedList *) list))</span></div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span> </div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno"><a class="line" href="group__group__sllist.html#ga3af7b296812798161f5029117bdef417">  142</a></span><span class="preprocessor">#define sllist_selectLastData(list) (llist_selectLastData((LinkedList *) list))</span></div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span> </div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno"><a class="line" href="group__group__sllist.html#gaba3804e976ecd799e3d6bbfd9b1e54c2">  150</a></span><span class="preprocessor">#define sllist_getByIndex(list, index) ((SingleLinkedListNode *) llist_getByIndex((LinkedList *) list, index))</span></div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span> </div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno"><a class="line" href="group__group__sllist.html#ga6175f992ca5605223c5da2a9d8d0c01a">  158</a></span><span class="preprocessor">#define sllist_selectByIndex(list, index) ((SingleLinkedListNode *) llist_selectByIndex((LinkedList *) list, index))</span></div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span> </div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno"><a class="line" href="group__group__sllist.html#gac6cd72ffb25f6cb2be2c2f80ad0016a7">  166</a></span><span class="preprocessor">#define sllist_getNext(list) ((SingleLinkedListNode *) llist_getNext((LinkedList *) list))</span></div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span> </div>
-<div class="line"><a id="l00174" name="l00174"></a><span class="lineno"><a class="line" href="group__group__sllist.html#ga5977ca3dadf46ccdc8fce5e311e74fbf">  174</a></span><span class="preprocessor">#define sllist_getNextData(list) (llist_getNextData((LinkedList *) list))</span></div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span> </div>
-<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>DLL_EXP_SLLIST <span class="keywordtype">bool</span> <a class="code hl_function" href="group__group__sllist.html#ga909134bb4c9c12762db1b237a16e509e">sllist_prepend</a>(<a class="code hl_struct" href="structsingle__linked__list.html">SingleLinkedList</a> *list, <span class="keywordtype">void</span> *data, <a class="code hl_struct" href="structsingle__linked__list__node.html">SingleLinkedListNode</a> *(*cb_allocNode)());</div>
-<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span> </div>
-<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>DLL_EXP_SLLIST <span class="keywordtype">bool</span> <a class="code hl_function" href="group__group__sllist.html#ga336e8e244809a30eb60c44d9f1b4f7a1">sllist_append</a>(<a class="code hl_struct" href="structsingle__linked__list.html">SingleLinkedList</a> *list, <span class="keywordtype">void</span> *data, <a class="code hl_struct" href="structsingle__linked__list__node.html">SingleLinkedListNode</a> *(*cb_allocNode)());</div>
-<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span> </div>
-<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>DLL_EXP_SLLIST <span class="keywordtype">bool</span> <a class="code hl_function" href="group__group__sllist.html#ga9f212f347c5e102a73b557b3b223b5cb">sllist_insertAfterCurrent</a>(</div>
-<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>        <a class="code hl_struct" href="structsingle__linked__list.html">SingleLinkedList</a> *list,</div>
-<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>        <span class="keywordtype">void</span> *data,</div>
-<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>        <a class="code hl_struct" href="structsingle__linked__list__node.html">SingleLinkedListNode</a> *(*cb_allocNode)());</div>
-<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span> </div>
-<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>DLL_EXP_SLLIST <span class="keywordtype">bool</span> <a class="code hl_function" href="group__group__sllist.html#ga3b0152dedb88d375df7b82d79cf4260b">sllist_deleteFirst</a>(</div>
-<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>        <a class="code hl_struct" href="structsingle__linked__list.html">SingleLinkedList</a> *list,</div>
-<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>        <span class="keywordtype">void</span> (*cb_freeData)(<span class="keywordtype">void</span> *data),</div>
-<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>        <span class="keywordtype">void</span> (*cb_freeNode)(<span class="keywordtype">void</span> *data));</div>
-<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span> </div>
-<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>DLL_EXP_SLLIST <span class="keywordtype">bool</span> <a class="code hl_function" href="group__group__sllist.html#gac3f4715ac98d5180a43191cb000b422d">sllist_deleteCurrent</a>(</div>
-<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>        <a class="code hl_struct" href="structsingle__linked__list.html">SingleLinkedList</a> *list,</div>
-<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>        <span class="keywordtype">void</span> (*cb_freeData)(<span class="keywordtype">void</span> *data),</div>
-<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>        <span class="keywordtype">void</span> (*cb_freeNode)(<span class="keywordtype">void</span> *data));</div>
-<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span> </div>
-<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>DLL_EXP_SLLIST <span class="keywordtype">bool</span> <a class="code hl_function" href="group__group__sllist.html#gab4372f3cc9d57d496a0164e7f18ffac8">sllist_deleteLast</a>(</div>
-<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>        <a class="code hl_struct" href="structsingle__linked__list.html">SingleLinkedList</a> *list,</div>
-<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>        <span class="keywordtype">void</span> (*cb_freeData)(<span class="keywordtype">void</span> *data),</div>
-<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>        <span class="keywordtype">void</span> (*cb_freeNode)(<span class="keywordtype">void</span> *data));</div>
-<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span> <span class="comment">// end of group_sllist</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#if !defined(NP_ONCE_C99_GOODIES_LLIST_SINGLE)</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#define NP_ONCE_C99_GOODIES_LLIST_SINGLE</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;stdbool.h&gt;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;../../platform.h&quot;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;../structs.h&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;../commons.h&quot;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#if defined(NP_GOODIES_EXPORT_SLLIST) || defined(NP_GOODIES_EXPORT_LIST_ALL) || defined(NP_GOODIES_EXPORT_ALL)</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">    #define DLL_EXP_SLLIST NP_DLL_EXPORT</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#else</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">    #define DLL_EXP_SLLIST</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="group__group__sllist.html#gaaf86249e6e18d3afa93c5f9b20d9d117">   38</a></span><span class="preprocessor">#define sllist_create() ((SingleLinkedList *) llist_create())</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>DLL_EXP_SLLIST <a class="code hl_struct" href="structsingle__linked__list__node.html">SingleLinkedListNode</a> *<a class="code hl_function" href="group__group__sllist.html#gaa529df4b4cc77fd24d256d52604e9ee9">sllist_createNode</a>();</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="group__group__sllist.html#ga42f174611ae7cc5cf68145f61019ee1b">   55</a></span><span class="preprocessor">#define sllist_free(list, cb_freeData, cb_freeNode) (llist_free(list, cb_freeData, cb_freeNode))</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="group__group__sllist.html#ga622be934ea115ed510679ac6906c8ac7">   63</a></span><span class="preprocessor">#define sllist_selectFirst(list) ((SingleLinkedListNode *) llist_selectFirst((LinkedList *) list))</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="group__group__sllist.html#ga62d86314f60572eb4edd927c8c2b679b">   71</a></span><span class="preprocessor">#define sllist_selectNext(list) ((SingleLinkedListNode *) llist_selectNext((LinkedList *) list))</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>DLL_EXP_SLLIST <a class="code hl_struct" href="structsingle__linked__list__node.html">SingleLinkedListNode</a> *<a class="code hl_function" href="group__group__sllist.html#ga0e3caaa6be18b48659a810c98baffcf5">sllist_getPrevious</a>(<a class="code hl_struct" href="structsingle__linked__list.html">SingleLinkedList</a> *list);</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>DLL_EXP_SLLIST <span class="keywordtype">void</span> *<a class="code hl_function" href="group__group__sllist.html#gab2e59e83104d6b8ff40c658ec471765f">sllist_getPreviousData</a>(<a class="code hl_struct" href="structsingle__linked__list.html">SingleLinkedList</a> *list);</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>DLL_EXP_SLLIST <a class="code hl_struct" href="structsingle__linked__list__node.html">SingleLinkedListNode</a> *<a class="code hl_function" href="group__group__sllist.html#ga68f9cd3cd4ccb86454516244b1170432">sllist_selectPrevious</a>(<a class="code hl_struct" href="structsingle__linked__list.html">SingleLinkedList</a> *list);</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>DLL_EXP_SLLIST <span class="keywordtype">void</span> *<a class="code hl_function" href="group__group__sllist.html#ga144f251c9f302bcc9d76329aa443fd00">sllist_selectPreviousData</a>(<a class="code hl_struct" href="structsingle__linked__list.html">SingleLinkedList</a> *list);</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno"><a class="line" href="group__group__sllist.html#ga8ad87aeca9db8bfbcb76a92d4c8f21c3">  119</a></span><span class="preprocessor">#define sllist_selectLast(list) ((SingleLinkedListNode *) llist_selectLast((LinkedList *) list))</span></div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span> </div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno"><a class="line" href="group__group__sllist.html#gaa5ec649fed2cf61662d63387e3f667b0">  127</a></span><span class="preprocessor">#define sllist_selectFirstData(list) (llist_selectFirstData((LinkedList *) list))</span></div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span> </div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno"><a class="line" href="group__group__sllist.html#gaf85c6d37713132c9fa8e3d580c40b881">  135</a></span><span class="preprocessor">#define sllist_selectNextData(list) (llist_selectNextData((LinkedList *) list))</span></div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span> </div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno"><a class="line" href="group__group__sllist.html#ga3af7b296812798161f5029117bdef417">  143</a></span><span class="preprocessor">#define sllist_selectLastData(list) (llist_selectLastData((LinkedList *) list))</span></div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span> </div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno"><a class="line" href="group__group__sllist.html#gaba3804e976ecd799e3d6bbfd9b1e54c2">  151</a></span><span class="preprocessor">#define sllist_getByIndex(list, index) ((SingleLinkedListNode *) llist_getByIndex((LinkedList *) list, index))</span></div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span> </div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno"><a class="line" href="group__group__sllist.html#ga6175f992ca5605223c5da2a9d8d0c01a">  159</a></span><span class="preprocessor">#define sllist_selectByIndex(list, index) ((SingleLinkedListNode *) llist_selectByIndex((LinkedList *) list, index))</span></div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span> </div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno"><a class="line" href="group__group__sllist.html#gac6cd72ffb25f6cb2be2c2f80ad0016a7">  167</a></span><span class="preprocessor">#define sllist_getNext(list) ((SingleLinkedListNode *) llist_getNext((LinkedList *) list))</span></div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span> </div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno"><a class="line" href="group__group__sllist.html#ga5977ca3dadf46ccdc8fce5e311e74fbf">  175</a></span><span class="preprocessor">#define sllist_getNextData(list) (llist_getNextData((LinkedList *) list))</span></div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span> </div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>DLL_EXP_SLLIST <span class="keywordtype">bool</span> <a class="code hl_function" href="group__group__sllist.html#ga909134bb4c9c12762db1b237a16e509e">sllist_prepend</a>(<a class="code hl_struct" href="structsingle__linked__list.html">SingleLinkedList</a> *list, <span class="keywordtype">void</span> *data, <a class="code hl_struct" href="structsingle__linked__list__node.html">SingleLinkedListNode</a> *(*cb_allocNode)());</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span> </div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>DLL_EXP_SLLIST <span class="keywordtype">bool</span> <a class="code hl_function" href="group__group__sllist.html#ga336e8e244809a30eb60c44d9f1b4f7a1">sllist_append</a>(<a class="code hl_struct" href="structsingle__linked__list.html">SingleLinkedList</a> *list, <span class="keywordtype">void</span> *data, <a class="code hl_struct" href="structsingle__linked__list__node.html">SingleLinkedListNode</a> *(*cb_allocNode)());</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span> </div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>DLL_EXP_SLLIST <span class="keywordtype">bool</span> <a class="code hl_function" href="group__group__sllist.html#ga9f212f347c5e102a73b557b3b223b5cb">sllist_insertAfterCurrent</a>(</div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>        <a class="code hl_struct" href="structsingle__linked__list.html">SingleLinkedList</a> *list,</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>        <span class="keywordtype">void</span> *data,</div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>        <a class="code hl_struct" href="structsingle__linked__list__node.html">SingleLinkedListNode</a> *(*cb_allocNode)());</div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span> </div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>DLL_EXP_SLLIST <span class="keywordtype">bool</span> <a class="code hl_function" href="group__group__sllist.html#ga3b0152dedb88d375df7b82d79cf4260b">sllist_deleteFirst</a>(</div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>        <a class="code hl_struct" href="structsingle__linked__list.html">SingleLinkedList</a> *list,</div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>        <span class="keywordtype">void</span> (*cb_freeData)(<span class="keywordtype">void</span> *data),</div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>        <span class="keywordtype">void</span> (*cb_freeNode)(<span class="keywordtype">void</span> *data));</div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span> </div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>DLL_EXP_SLLIST <span class="keywordtype">bool</span> <a class="code hl_function" href="group__group__sllist.html#gac3f4715ac98d5180a43191cb000b422d">sllist_deleteCurrent</a>(</div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>        <a class="code hl_struct" href="structsingle__linked__list.html">SingleLinkedList</a> *list,</div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>        <span class="keywordtype">void</span> (*cb_freeData)(<span class="keywordtype">void</span> *data),</div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>        <span class="keywordtype">void</span> (*cb_freeNode)(<span class="keywordtype">void</span> *data));</div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span> </div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>DLL_EXP_SLLIST <span class="keywordtype">bool</span> <a class="code hl_function" href="group__group__sllist.html#gab4372f3cc9d57d496a0164e7f18ffac8">sllist_deleteLast</a>(</div>
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>        <a class="code hl_struct" href="structsingle__linked__list.html">SingleLinkedList</a> *list,</div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>        <span class="keywordtype">void</span> (*cb_freeData)(<span class="keywordtype">void</span> *data),</div>
+<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>        <span class="keywordtype">void</span> (*cb_freeNode)(<span class="keywordtype">void</span> *data));</div>
+<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span> <span class="comment">// end of group_sllist</span></div>
+<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span> </div>
+<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span><span class="preprocessor">#endif </span><span class="comment">/* !NP_ONCE_C99_GOODIES_LLIST_SINGLE */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="agroup__group__sllist_html_ga0e3caaa6be18b48659a810c98baffcf5"><div class="ttname"><a href="group__group__sllist.html#ga0e3caaa6be18b48659a810c98baffcf5">sllist_getPrevious</a></div><div class="ttdeci">DLL_EXP_SLLIST SingleLinkedListNode * sllist_getPrevious(SingleLinkedList *list)</div><div class="ttdef"><b>Definition:</b> sllist.c:11</div></div>
 <div class="ttc" id="agroup__group__sllist_html_ga144f251c9f302bcc9d76329aa443fd00"><div class="ttname"><a href="group__group__sllist.html#ga144f251c9f302bcc9d76329aa443fd00">sllist_selectPreviousData</a></div><div class="ttdeci">DLL_EXP_SLLIST void * sllist_selectPreviousData(SingleLinkedList *list)</div><div class="ttdef"><b>Definition:</b> sllist.c:49</div></div>
 <div class="ttc" id="agroup__group__sllist_html_ga336e8e244809a30eb60c44d9f1b4f7a1"><div class="ttname"><a href="group__group__sllist.html#ga336e8e244809a30eb60c44d9f1b4f7a1">sllist_append</a></div><div class="ttdeci">DLL_EXP_SLLIST bool sllist_append(SingleLinkedList *list, void *data, SingleLinkedListNode *(*cb_allocNode)())</div><div class="ttdef"><b>Definition:</b> sllist.c:86</div></div>
@@ -180,15 +183,15 @@ $(document).ready(function(){initNavTree('sllist_8h_source.html',''); initResiza
 <div class="ttc" id="agroup__group__sllist_html_gab2e59e83104d6b8ff40c658ec471765f"><div class="ttname"><a href="group__group__sllist.html#gab2e59e83104d6b8ff40c658ec471765f">sllist_getPreviousData</a></div><div class="ttdeci">DLL_EXP_SLLIST void * sllist_getPreviousData(SingleLinkedList *list)</div><div class="ttdef"><b>Definition:</b> sllist.c:29</div></div>
 <div class="ttc" id="agroup__group__sllist_html_gab4372f3cc9d57d496a0164e7f18ffac8"><div class="ttname"><a href="group__group__sllist.html#gab4372f3cc9d57d496a0164e7f18ffac8">sllist_deleteLast</a></div><div class="ttdeci">DLL_EXP_SLLIST bool sllist_deleteLast(SingleLinkedList *list, void(*cb_freeData)(void *data), void(*cb_freeNode)(void *data))</div><div class="ttdef"><b>Definition:</b> sllist.c:221</div></div>
 <div class="ttc" id="agroup__group__sllist_html_gac3f4715ac98d5180a43191cb000b422d"><div class="ttname"><a href="group__group__sllist.html#gac3f4715ac98d5180a43191cb000b422d">sllist_deleteCurrent</a></div><div class="ttdeci">DLL_EXP_SLLIST bool sllist_deleteCurrent(SingleLinkedList *list, void(*cb_freeData)(void *data), void(*cb_freeNode)(void *data))</div><div class="ttdef"><b>Definition:</b> sllist.c:176</div></div>
-<div class="ttc" id="astructsingle__linked__list__node_html"><div class="ttname"><a href="structsingle__linked__list__node.html">single_linked_list_node</a></div><div class="ttdef"><b>Definition:</b> lists/structs.h:37</div></div>
-<div class="ttc" id="astructsingle__linked__list_html"><div class="ttname"><a href="structsingle__linked__list.html">single_linked_list</a></div><div class="ttdef"><b>Definition:</b> lists/structs.h:94</div></div>
+<div class="ttc" id="astructsingle__linked__list__node_html"><div class="ttname"><a href="structsingle__linked__list__node.html">single_linked_list_node</a></div><div class="ttdef"><b>Definition:</b> lists/structs.h:38</div></div>
+<div class="ttc" id="astructsingle__linked__list_html"><div class="ttname"><a href="structsingle__linked__list.html">single_linked_list</a></div><div class="ttdef"><b>Definition:</b> lists/structs.h:95</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_cb12f50c2f20327f019ffa7ab4cce39c.html">lists</a></li><li class="navelem"><a class="el" href="dir_e6cf964a358d9a7067020ab4b2bfa809.html">single</a></li><li class="navelem"><a class="el" href="sllist_8h.html">sllist.h</a></li>
-    <li class="footer">Generated on Thu Mar 21 2024 21:43:15 for NibblePoker&#39;s Clang Goodies by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Sat Jul 13 2024 14:17:09 for NibblePoker&#39;s Clang Goodies by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>

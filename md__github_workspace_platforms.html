@@ -27,7 +27,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign">
-   <div id="projectname">NibblePoker&#39;s Clang Goodies<span id="projectnumber">&#160;0.5.1</span>
+   <div id="projectname">NibblePoker&#39;s Clang Goodies<span id="projectnumber">&#160;1.0.0</span>
    </div>
    <div id="projectbrief">Small collection of utilities and libraries for C in order to simplify some development tasks.</div>
   </td>
@@ -101,24 +101,24 @@ $(document).ready(function(){initNavTree('md__github_workspace_platforms.html','
  &#160;&#160;&#160;● <a href="https://sourceforge.net/p/predef/wiki/Architectures/">https://sourceforge.net/p/predef/wiki/Architectures/</a><br  />
  &#160;&#160;&#160;● <a href="https://sourceforge.net/p/predef/wiki/Compilers/">https://sourceforge.net/p/predef/wiki/Compilers/</a><br  />
  &#160;&#160;&#160;● <a href="https://sourceforge.net/p/predef/wiki/OperatingSystems/">https://sourceforge.net/p/predef/wiki/OperatingSystems/</a></p>
-<h1><a class="anchor" id="autotoc_md45"></a>
+<h1><a class="anchor" id="autotoc_md50"></a>
 Compilers</h1>
-<h2><a class="anchor" id="autotoc_md46"></a>
+<h2><a class="anchor" id="autotoc_md51"></a>
 MSVC</h2>
 <p >Tested with MSVC v143 from Visual Studio Community 2022.</p><ul>
 <li><code>NP_COMPILER_MSVC</code></li>
 </ul>
-<h2><a class="anchor" id="autotoc_md47"></a>
+<h2><a class="anchor" id="autotoc_md52"></a>
 CLang</h2>
 <p >Works, but needs more testing.</p><ul>
 <li><code>NP_COMPILER_CLANG</code></li>
 </ul>
-<h2><a class="anchor" id="autotoc_md48"></a>
+<h2><a class="anchor" id="autotoc_md53"></a>
 GCC</h2>
 <p >Works, but needs more testing.</p><ul>
 <li><code>NP_COMPILER_GNUC</code></li>
 </ul>
-<h2><a class="anchor" id="autotoc_md49"></a>
+<h2><a class="anchor" id="autotoc_md54"></a>
 MinGW</h2>
 <ul>
 <li><code>NP_COMPILER_MINGW</code></li>
@@ -126,31 +126,31 @@ MinGW</h2>
 <p >Supersedes:</p><ul>
 <li><code>NP_COMPILER_GNUC</code></li>
 </ul>
-<h2><a class="anchor" id="autotoc_md50"></a>
+<h2><a class="anchor" id="autotoc_md55"></a>
 Tiny C Compiler</h2>
-<p >Tested with <a href="https://wiki.qt.io/Jom">QT's Jom</a> in ReactOS 0.4.14</p><ul>
+<p >Tested with <a href="https://wiki.qt.io/Jom">Qt's Jom</a> in ReactOS 0.4.14, and nmake on Windows 11 22H2</p><ul>
 <li><code>NP_COMPILER_TCC</code></li>
 </ul>
-<h2><a class="anchor" id="autotoc_md51"></a>
+<h2><a class="anchor" id="autotoc_md56"></a>
 Unknown</h2>
 <ul>
 <li><code>NP_COMPILER_UNKNOWN</code></li>
 </ul>
-<h1><a class="anchor" id="autotoc_md52"></a>
+<h1><a class="anchor" id="autotoc_md57"></a>
 Platforms &amp; ISA</h1>
-<h2><a class="anchor" id="autotoc_md53"></a>
+<h2><a class="anchor" id="autotoc_md58"></a>
 Windows x64</h2>
 <p >Tested on Windows 11 22H2 with MSVC.</p><ul>
 <li><code>NP_OS_WINDOWS</code></li>
 <li><code>NP_ARCH_x64</code></li>
 </ul>
-<h2><a class="anchor" id="autotoc_md54"></a>
+<h2><a class="anchor" id="autotoc_md59"></a>
 Windows x86</h2>
-<p >Untested.</p><ul>
+<p >Tested on Windows 11 22H2 with TCC.</p><ul>
 <li><code>NP_OS_WINDOWS</code></li>
 <li><code>NP_ARCH_x86</code></li>
 </ul>
-<h2><a class="anchor" id="autotoc_md55"></a>
+<h2><a class="anchor" id="autotoc_md60"></a>
 Windows ARM64</h2>
 <p >Tested via <code>strings</code> on Windows 11 22H2 with MSVC <code>amd64_arm64</code> target.</p><ul>
 <li><code>NP_OS_WINDOWS</code></li>
@@ -158,7 +158,7 @@ Windows ARM64</h2>
 <li><code>NP_ARCH_ARMv8</code></li>
 <li><code>NP_ARCH_AARCH64</code></li>
 </ul>
-<h2><a class="anchor" id="autotoc_md56"></a>
+<h2><a class="anchor" id="autotoc_md61"></a>
 Windows ARM</h2>
 <p >Tested via <code>strings</code> on Windows 11 22H2 with MSVC <code>amd64_arm</code> target.<br  />
  <b>Doesn't compile properly just yet !</b></p><ul>
@@ -166,28 +166,28 @@ Windows ARM</h2>
 <li><code>NP_ARCH_ARM</code></li>
 <li><code>NP_ARCH_ARM_GENERIC</code></li>
 </ul>
-<h2><a class="anchor" id="autotoc_md57"></a>
+<h2><a class="anchor" id="autotoc_md62"></a>
 Cygwin</h2>
 <p >Tested and returned <code>NP_COMPILER_GNUC</code> as the compiler, needs more testing.</p><ul>
 <li><code>NP_OS_CYGWIN</code></li>
 </ul>
-<h2><a class="anchor" id="autotoc_md58"></a>
+<h2><a class="anchor" id="autotoc_md63"></a>
 ReactOS</h2>
 <p >Tested on ReactOS 0.4.14 x86.</p><ul>
 <li><code>NP_OS_WINDOWS</code> *(May change in the future)*</li>
 <li><code>NP_ARCH_x86</code></li>
 </ul>
-<h2><a class="anchor" id="autotoc_md59"></a>
+<h2><a class="anchor" id="autotoc_md64"></a>
 Linux x64</h2>
 <p >Tested on Kubuntu 23.10 in a VM with GCC &amp; CLang.</p><ul>
 <li><code>NP_OS_UNIX</code></li>
 <li><code>NP_OS_LINUX</code></li>
 <li><code>NP_ARCH_x64</code></li>
 </ul>
-<h2><a class="anchor" id="autotoc_md60"></a>
+<h2><a class="anchor" id="autotoc_md65"></a>
 Linux x86</h2>
 <p >Untested.</p>
-<h2><a class="anchor" id="autotoc_md61"></a>
+<h2><a class="anchor" id="autotoc_md66"></a>
 Linux ARMv8/AArch64/ARM64</h2>
 <p >Tested on NanoPi R4S with Armbian (23.02.2).</p><ul>
 <li><code>NP_OS_UNIX</code></li>
@@ -196,7 +196,7 @@ Linux ARMv8/AArch64/ARM64</h2>
 <li><code>NP_ARCH_ARMv8</code></li>
 <li><code>NP_ARCH_AARCH64</code></li>
 </ul>
-<h2><a class="anchor" id="autotoc_md62"></a>
+<h2><a class="anchor" id="autotoc_md67"></a>
 Linux ARM Generic</h2>
 <p >Untested, will be done soon.</p><ul>
 <li><code>NP_OS_UNIX</code></li>
@@ -204,23 +204,33 @@ Linux ARM Generic</h2>
 <li><code>NP_ARCH_ARM</code></li>
 <li><code>NP_ARCH_ARM_GENERIC</code></li>
 </ul>
-<h2><a class="anchor" id="autotoc_md63"></a>
+<h2><a class="anchor" id="autotoc_md68"></a>
 Unknown OS *(Apple, ...)*</h2>
 <ul>
 <li><code>NP_OS_UNKNOWN</code></li>
 </ul>
-<h2><a class="anchor" id="autotoc_md64"></a>
+<h2><a class="anchor" id="autotoc_md69"></a>
 Unknown ISA</h2>
 <ul>
-<li><code>NP_ARCH_UNKNOWN</code> </li>
+<li><code>NP_ARCH_UNKNOWN</code></li>
 </ul>
+<h1><a class="anchor" id="autotoc_md70"></a>
+Others</h1>
+<h2><a class="anchor" id="autotoc_md71"></a>
+Dynamic library exports</h2>
+<ul>
+<li><code>NP_DLL_EXPORT</code></li>
+</ul>
+<h2><a class="anchor" id="autotoc_md72"></a>
+Unicode detection</h2>
+<p >If <code>UNICODE</code> or <code>_UNICODE</code> are defined, the non-suffixed text-related will have the macro pointing to their unicode variant as is expected on Windows platforms. </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Thu Mar 21 2024 21:43:15 for NibblePoker&#39;s Clang Goodies by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Sat Jul 13 2024 14:17:09 for NibblePoker&#39;s Clang Goodies by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>

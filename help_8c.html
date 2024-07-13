@@ -27,7 +27,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign">
-   <div id="projectname">NibblePoker&#39;s Clang Goodies<span id="projectnumber">&#160;0.5.1</span>
+   <div id="projectname">NibblePoker&#39;s Clang Goodies<span id="projectnumber">&#160;1.0.0</span>
    </div>
    <div id="projectbrief">Small collection of utilities and libraries for C in order to simplify some development tasks.</div>
   </td>
@@ -101,36 +101,51 @@ $(document).ready(function(){initNavTree('help_8c.html',''); initResizable(); })
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a23d8a506bc9430906985698c00a4fbc3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="help_8c.html#a23d8a506bc9430906985698c00a4fbc3">args_getOptionLength</a> (<a class="el" href="arguments_2structs_8h.html#aa32a72dced492864660882173e24c7b9">Option</a> *option, bool addBrackets)</td></tr>
-<tr class="separator:a23d8a506bc9430906985698c00a4fbc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae5d1f2b0678727d1dcbab9a3f9ea0fb9"><td class="memItemLeft" align="right" valign="top">np_args_char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="help_8c.html#ae5d1f2b0678727d1dcbab9a3f9ea0fb9">args_getOptionText</a> (<a class="el" href="arguments_2structs_8h.html#aa32a72dced492864660882173e24c7b9">Option</a> *option, bool addBrackets, int expectedLength)</td></tr>
-<tr class="separator:ae5d1f2b0678727d1dcbab9a3f9ea0fb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab79666a366a912b689ac265c3914ff7d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="help_8c.html#ab79666a366a912b689ac265c3914ff7d">args_printOption</a> (<a class="el" href="arguments_2structs_8h.html#aa32a72dced492864660882173e24c7b9">Option</a> *option, short consoleWidth, int newLineSpaceLength, int currentX, bool addBrackets)</td></tr>
-<tr class="separator:ab79666a366a912b689ac265c3914ff7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab72b6f86165fd2ac8f4c4f8b0837c361"><td class="memItemLeft" align="right" valign="top"><a id="ab72b6f86165fd2ac8f4c4f8b0837c361" name="ab72b6f86165fd2ac8f4c4f8b0837c361"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>args_printHelpText</b> (<a class="el" href="arguments_2structs_8h.html#a4481b8afc45b3ad7ac92bafe3650c102">Verb</a> *verb, np_args_char *programName, short consoleWidth)</td></tr>
-<tr class="separator:ab72b6f86165fd2ac8f4c4f8b0837c361"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92d83564b60ecf56b1c1ca363ff85fae"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="help_8c.html#a92d83564b60ecf56b1c1ca363ff85fae">args_getOptionLengthA</a> (<a class="el" href="arguments_2structs_8h.html#a848c88f38e51de3635d245fe9cda213a">OptionA</a> *option, bool addBrackets)</td></tr>
+<tr class="separator:a92d83564b60ecf56b1c1ca363ff85fae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a490428de87274f19d2bc362731951f5d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="help_8c.html#a490428de87274f19d2bc362731951f5d">args_getOptionLengthW</a> (<a class="el" href="arguments_2structs_8h.html#a9dc1443c892ac699a2fc999ef76f2e14">OptionW</a> *option, bool addBrackets)</td></tr>
+<tr class="separator:a490428de87274f19d2bc362731951f5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e6f14f6b32a8c59d97305b70ab3a51f"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="help_8c.html#a1e6f14f6b32a8c59d97305b70ab3a51f">args_getOptionTextA</a> (<a class="el" href="arguments_2structs_8h.html#a848c88f38e51de3635d245fe9cda213a">OptionA</a> *option, bool addBrackets, int expectedLength)</td></tr>
+<tr class="separator:a1e6f14f6b32a8c59d97305b70ab3a51f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd627dcb97bf1f3ebecbba5c9c1de1d3"><td class="memItemLeft" align="right" valign="top">wchar_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="help_8c.html#acd627dcb97bf1f3ebecbba5c9c1de1d3">args_getOptionTextW</a> (<a class="el" href="arguments_2structs_8h.html#a9dc1443c892ac699a2fc999ef76f2e14">OptionW</a> *option, bool addBrackets, int expectedLength)</td></tr>
+<tr class="separator:acd627dcb97bf1f3ebecbba5c9c1de1d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e5200b4fdd981dacfb1cd5d97178efb"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="help_8c.html#a1e5200b4fdd981dacfb1cd5d97178efb">args_printOptionA</a> (<a class="el" href="arguments_2structs_8h.html#a848c88f38e51de3635d245fe9cda213a">OptionA</a> *option, short consoleWidth, int newLineSpaceLength, int currentX, bool addBrackets)</td></tr>
+<tr class="separator:a1e5200b4fdd981dacfb1cd5d97178efb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89132c582aee9939e70ae47f010b99d3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="help_8c.html#a89132c582aee9939e70ae47f010b99d3">args_printOptionW</a> (<a class="el" href="arguments_2structs_8h.html#a9dc1443c892ac699a2fc999ef76f2e14">OptionW</a> *option, short consoleWidth, int newLineSpaceLength, int currentX, bool addBrackets)</td></tr>
+<tr class="separator:a89132c582aee9939e70ae47f010b99d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1092cd03412ce492df379f438460de9"><td class="memItemLeft" align="right" valign="top"><a id="ae1092cd03412ce492df379f438460de9" name="ae1092cd03412ce492df379f438460de9"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>args_printHelpTextA</b> (<a class="el" href="arguments_2structs_8h.html#abc2c11f0fd6add1fa0a67aa986f266f4">VerbA</a> *verb, char *programName, short consoleWidth)</td></tr>
+<tr class="separator:ae1092cd03412ce492df379f438460de9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae32d1d0ac83774a91ba5efd68213c608"><td class="memItemLeft" align="right" valign="top"><a id="ae32d1d0ac83774a91ba5efd68213c608" name="ae32d1d0ac83774a91ba5efd68213c608"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>args_printHelpTextW</b> (<a class="el" href="arguments_2structs_8h.html#a5f983860d018700a8316eca485a31c53">VerbW</a> *verb, wchar_t *programName, short consoleWidth)</td></tr>
+<tr class="separator:ae32d1d0ac83774a91ba5efd68213c608"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a397e0fc8c6acde7f38903b8edbfcf12f"><td class="memItemLeft" align="right" valign="top"><a id="a397e0fc8c6acde7f38903b8edbfcf12f" name="a397e0fc8c6acde7f38903b8edbfcf12f"></a>
-const np_args_char&#160;</td><td class="memItemRight" valign="bottom"><b>args_str_value</b> [] = np_args_L(&quot;&lt;VALUE&gt;&quot;)</td></tr>
-<tr class="separator:a397e0fc8c6acde7f38903b8edbfcf12f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a68fbd3c4dc4b2e030a6fbcd7a15aea1c"><td class="memItemLeft" align="right" valign="top"><a id="a68fbd3c4dc4b2e030a6fbcd7a15aea1c" name="a68fbd3c4dc4b2e030a6fbcd7a15aea1c"></a>
-const np_args_char&#160;</td><td class="memItemRight" valign="bottom"><b>args_str_values</b> [] = np_args_L(&quot;&lt;VALUE...&gt;&quot;)</td></tr>
-<tr class="separator:a68fbd3c4dc4b2e030a6fbcd7a15aea1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b8ff7b6b4b7141689d653393100ce5d"><td class="memItemLeft" align="right" valign="top"><a id="a8b8ff7b6b4b7141689d653393100ce5d" name="a8b8ff7b6b4b7141689d653393100ce5d"></a>
+const char&#160;</td><td class="memItemRight" valign="bottom"><b>args_str_valueA</b> [] = &quot;&lt;VALUE&gt;&quot;</td></tr>
+<tr class="separator:a8b8ff7b6b4b7141689d653393100ce5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5b3ba4f908767ad32c263a663939456"><td class="memItemLeft" align="right" valign="top"><a id="ad5b3ba4f908767ad32c263a663939456" name="ad5b3ba4f908767ad32c263a663939456"></a>
+const char&#160;</td><td class="memItemRight" valign="bottom"><b>args_str_valuesA</b> [] = &quot;&lt;VALUE...&gt;&quot;</td></tr>
+<tr class="separator:ad5b3ba4f908767ad32c263a663939456"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75a96cc840385bcc12e05bcf3c45874c"><td class="memItemLeft" align="right" valign="top"><a id="a75a96cc840385bcc12e05bcf3c45874c" name="a75a96cc840385bcc12e05bcf3c45874c"></a>
+const wchar_t&#160;</td><td class="memItemRight" valign="bottom"><b>args_str_valueW</b> [] = L&quot;&lt;VALUE&gt;&quot;</td></tr>
+<tr class="separator:a75a96cc840385bcc12e05bcf3c45874c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b8821a5db32bd9b3bf9ebc188e1aef4"><td class="memItemLeft" align="right" valign="top"><a id="a8b8821a5db32bd9b3bf9ebc188e1aef4" name="a8b8821a5db32bd9b3bf9ebc188e1aef4"></a>
+const wchar_t&#160;</td><td class="memItemRight" valign="bottom"><b>args_str_valuesW</b> [] = L&quot;&lt;VALUE...&gt;&quot;</td></tr>
+<tr class="separator:a8b8821a5db32bd9b3bf9ebc188e1aef4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a23d8a506bc9430906985698c00a4fbc3" name="a23d8a506bc9430906985698c00a4fbc3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a23d8a506bc9430906985698c00a4fbc3">&#9670;&#160;</a></span>args_getOptionLength()</h2>
+<a id="a92d83564b60ecf56b1c1ca363ff85fae" name="a92d83564b60ecf56b1c1ca363ff85fae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a92d83564b60ecf56b1c1ca363ff85fae">&#9670;&#160;</a></span>args_getOptionLengthA()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int args_getOptionLength </td>
+          <td class="memname">int args_getOptionLengthA </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="arguments_2structs_8h.html#aa32a72dced492864660882173e24c7b9">Option</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="arguments_2structs_8h.html#a848c88f38e51de3635d245fe9cda213a">OptionA</a> *&#160;</td>
           <td class="paramname"><em>option</em>, </td>
         </tr>
         <tr>
@@ -157,16 +172,52 @@ const np_args_char&#160;</td><td class="memItemRight" valign="bottom"><b>args_st
 
 </div>
 </div>
-<a id="ae5d1f2b0678727d1dcbab9a3f9ea0fb9" name="ae5d1f2b0678727d1dcbab9a3f9ea0fb9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae5d1f2b0678727d1dcbab9a3f9ea0fb9">&#9670;&#160;</a></span>args_getOptionText()</h2>
+<a id="a490428de87274f19d2bc362731951f5d" name="a490428de87274f19d2bc362731951f5d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a490428de87274f19d2bc362731951f5d">&#9670;&#160;</a></span>args_getOptionLengthW()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">np_args_char * args_getOptionText </td>
+          <td class="memname">int args_getOptionLengthW </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="arguments_2structs_8h.html#aa32a72dced492864660882173e24c7b9">Option</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="arguments_2structs_8h.html#a9dc1443c892ac699a2fc999ef76f2e14">OptionW</a> *&#160;</td>
+          <td class="paramname"><em>option</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>addBrackets</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Calculated the length that a printed out option would be. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">option</td><td>The relevant <code>Option</code>. </td></tr>
+    <tr><td class="paramname">addBrackets</td><td>Whether the printed <code>Option</code> should have the brackets and pipe. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The calculated string length. </dd></dl>
+
+</div>
+</div>
+<a id="a1e6f14f6b32a8c59d97305b70ab3a51f" name="a1e6f14f6b32a8c59d97305b70ab3a51f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e6f14f6b32a8c59d97305b70ab3a51f">&#9670;&#160;</a></span>args_getOptionTextA()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char * args_getOptionTextA </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="arguments_2structs_8h.html#a848c88f38e51de3635d245fe9cda213a">OptionA</a> *&#160;</td>
           <td class="paramname"><em>option</em>, </td>
         </tr>
         <tr>
@@ -200,16 +251,116 @@ const np_args_char&#160;</td><td class="memItemRight" valign="bottom"><b>args_st
 
 </div>
 </div>
-<a id="ab79666a366a912b689ac265c3914ff7d" name="ab79666a366a912b689ac265c3914ff7d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab79666a366a912b689ac265c3914ff7d">&#9670;&#160;</a></span>args_printOption()</h2>
+<a id="acd627dcb97bf1f3ebecbba5c9c1de1d3" name="acd627dcb97bf1f3ebecbba5c9c1de1d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acd627dcb97bf1f3ebecbba5c9c1de1d3">&#9670;&#160;</a></span>args_getOptionTextW()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int args_printOption </td>
+          <td class="memname">wchar_t * args_getOptionTextW </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="arguments_2structs_8h.html#aa32a72dced492864660882173e24c7b9">Option</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="arguments_2structs_8h.html#a9dc1443c892ac699a2fc999ef76f2e14">OptionW</a> *&#160;</td>
+          <td class="paramname"><em>option</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>addBrackets</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>expectedLength</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Composes a string for a given option in a buffer of a given length. The given length is assumed to be exact and won't be checked during the composition process. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">option</td><td>The relevant <code>Option</code>. </td></tr>
+    <tr><td class="paramname">addBrackets</td><td>Whether the square or pointy brackets should be included. </td></tr>
+    <tr><td class="paramname">expectedLength</td><td>The expected string length as given by <code>args_getOptionLength</code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The string pointer. </dd></dl>
+
+</div>
+</div>
+<a id="a1e5200b4fdd981dacfb1cd5d97178efb" name="a1e5200b4fdd981dacfb1cd5d97178efb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e5200b4fdd981dacfb1cd5d97178efb">&#9670;&#160;</a></span>args_printOptionA()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int args_printOptionA </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="arguments_2structs_8h.html#a848c88f38e51de3635d245fe9cda213a">OptionA</a> *&#160;</td>
+          <td class="paramname"><em>option</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">short&#160;</td>
+          <td class="paramname"><em>consoleWidth</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>newLineSpaceLength</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>currentX</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>addBrackets</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">option</td><td>The relevant <code>Option</code>. </td></tr>
+    <tr><td class="paramname">consoleWidth</td><td></td></tr>
+    <tr><td class="paramname">programNameLength</td><td></td></tr>
+    <tr><td class="paramname">currentX</td><td></td></tr>
+    <tr><td class="paramname">addBrackets</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The new currentX value. </dd></dl>
+
+</div>
+</div>
+<a id="a89132c582aee9939e70ae47f010b99d3" name="a89132c582aee9939e70ae47f010b99d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a89132c582aee9939e70ae47f010b99d3">&#9670;&#160;</a></span>args_printOptionW()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int args_printOptionW </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="arguments_2structs_8h.html#a9dc1443c892ac699a2fc999ef76f2e14">OptionW</a> *&#160;</td>
           <td class="paramname"><em>option</em>, </td>
         </tr>
         <tr>
@@ -263,7 +414,7 @@ const np_args_char&#160;</td><td class="memItemRight" valign="bottom"><b>args_st
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_a1868fa8ab722e18bbead7323daab1bb.html">arguments</a></li><li class="navelem"><a class="el" href="help_8c.html">help.c</a></li>
-    <li class="footer">Generated on Thu Mar 21 2024 21:43:15 for NibblePoker&#39;s Clang Goodies by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Sat Jul 13 2024 14:17:09 for NibblePoker&#39;s Clang Goodies by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>

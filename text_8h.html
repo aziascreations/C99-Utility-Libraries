@@ -27,7 +27,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign">
-   <div id="projectname">NibblePoker&#39;s Clang Goodies<span id="projectnumber">&#160;0.5.1</span>
+   <div id="projectname">NibblePoker&#39;s Clang Goodies<span id="projectnumber">&#160;1.0.0</span>
    </div>
    <div id="projectbrief">Small collection of utilities and libraries for C in order to simplify some development tasks.</div>
   </td>
@@ -106,51 +106,108 @@ Macros</h2></td></tr>
 <tr class="memitem:a2d99a86d09d69763be609f42034083f8"><td class="memItemLeft" align="right" valign="top"><a id="a2d99a86d09d69763be609f42034083f8" name="a2d99a86d09d69763be609f42034083f8"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>DLL_EXP_TEXT</b></td></tr>
 <tr class="separator:a2d99a86d09d69763be609f42034083f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a72cc0ef81523fb2c6a28b668958800e4"><td class="memItemLeft" align="right" valign="top"><a id="a72cc0ef81523fb2c6a28b668958800e4" name="a72cc0ef81523fb2c6a28b668958800e4"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>text_areStringsEqual</b>(string1,  string2)&#160;&#160;&#160;(strcmp(string1, string2) == 0)</td></tr>
-<tr class="separator:a72cc0ef81523fb2c6a28b668958800e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aecb5908e4f9a7aa40e50c45ee968b795"><td class="memItemLeft" align="right" valign="top"><a id="aecb5908e4f9a7aa40e50c45ee968b795" name="aecb5908e4f9a7aa40e50c45ee968b795"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>text_areStringsEqualA</b>(string1,  string2)&#160;&#160;&#160;(strcmp(string1, string2) == 0)</td></tr>
+<tr class="separator:aecb5908e4f9a7aa40e50c45ee968b795"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8bc592f871a8e682ae6a4a160437ba34"><td class="memItemLeft" align="right" valign="top"><a id="a8bc592f871a8e682ae6a4a160437ba34" name="a8bc592f871a8e682ae6a4a160437ba34"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>text_areStringsEqualW</b>(string1,  string2)&#160;&#160;&#160;(wcscmp(string1, string2) == 0)</td></tr>
 <tr class="separator:a8bc592f871a8e682ae6a4a160437ba34"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64ed7596cd0797521a4dce5d9c7b243b"><td class="memItemLeft" align="right" valign="top"><a id="a64ed7596cd0797521a4dce5d9c7b243b" name="a64ed7596cd0797521a4dce5d9c7b243b"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>text_strcmpA</b>&#160;&#160;&#160;strcmp</td></tr>
+<tr class="separator:a64ed7596cd0797521a4dce5d9c7b243b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d827f0c92bf5097fa7556047f209f44"><td class="memItemLeft" align="right" valign="top"><a id="a4d827f0c92bf5097fa7556047f209f44" name="a4d827f0c92bf5097fa7556047f209f44"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>text_strcmpW</b>&#160;&#160;&#160;wcscmp</td></tr>
+<tr class="separator:a4d827f0c92bf5097fa7556047f209f44"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ab1a0706086307fd6dfa915c342a08e"><td class="memItemLeft" align="right" valign="top"><a id="a6ab1a0706086307fd6dfa915c342a08e" name="a6ab1a0706086307fd6dfa915c342a08e"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>text_strlenA</b>&#160;&#160;&#160;strlen</td></tr>
+<tr class="separator:a6ab1a0706086307fd6dfa915c342a08e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a0ae0b2c86b345cee36a766f988b51b"><td class="memItemLeft" align="right" valign="top"><a id="a8a0ae0b2c86b345cee36a766f988b51b" name="a8a0ae0b2c86b345cee36a766f988b51b"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>text_strlenW</b>&#160;&#160;&#160;wcslen</td></tr>
+<tr class="separator:a8a0ae0b2c86b345cee36a766f988b51b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a442cc6174251415d64338fc9ee152ca9"><td class="memItemLeft" align="right" valign="top"><a id="a442cc6174251415d64338fc9ee152ca9" name="a442cc6174251415d64338fc9ee152ca9"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>text_charA</b>&#160;&#160;&#160;char</td></tr>
+<tr class="separator:a442cc6174251415d64338fc9ee152ca9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1aa7a63e4e793467d08eeb14c369c58b"><td class="memItemLeft" align="right" valign="top"><a id="a1aa7a63e4e793467d08eeb14c369c58b" name="a1aa7a63e4e793467d08eeb14c369c58b"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>text_charW</b>&#160;&#160;&#160;wchar_t</td></tr>
+<tr class="separator:a1aa7a63e4e793467d08eeb14c369c58b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3692b84dc50798e21cfa58ca03ac5eb5"><td class="memItemLeft" align="right" valign="top"><a id="a3692b84dc50798e21cfa58ca03ac5eb5" name="a3692b84dc50798e21cfa58ca03ac5eb5"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>text_areStringsEqual</b>&#160;&#160;&#160;text_areStringsEqualA</td></tr>
+<tr class="separator:a3692b84dc50798e21cfa58ca03ac5eb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab35abb9345406d706fc66a2f9d6add45"><td class="memItemLeft" align="right" valign="top"><a id="ab35abb9345406d706fc66a2f9d6add45" name="ab35abb9345406d706fc66a2f9d6add45"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>text_strcmp</b>&#160;&#160;&#160;text_strcmpA</td></tr>
+<tr class="separator:ab35abb9345406d706fc66a2f9d6add45"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a525532f66d87382214bd707cabe63470"><td class="memItemLeft" align="right" valign="top"><a id="a525532f66d87382214bd707cabe63470" name="a525532f66d87382214bd707cabe63470"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>text_strlen</b>&#160;&#160;&#160;text_strlenA</td></tr>
+<tr class="separator:a525532f66d87382214bd707cabe63470"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abcc7c18c978bda411167d985cd219e2e"><td class="memItemLeft" align="right" valign="top"><a id="abcc7c18c978bda411167d985cd219e2e" name="abcc7c18c978bda411167d985cd219e2e"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>text_char</b>&#160;&#160;&#160;text_charA</td></tr>
+<tr class="separator:abcc7c18c978bda411167d985cd219e2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc68712e23f8786cc71272084b0683e1"><td class="memItemLeft" align="right" valign="top"><a id="afc68712e23f8786cc71272084b0683e1" name="afc68712e23f8786cc71272084b0683e1"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>text_copy</b>&#160;&#160;&#160;<a class="el" href="group__group__nptext.html#gaea3ef2eb8e196017f5c45ed6cf5d7d1f">text_copyA</a></td></tr>
+<tr class="separator:afc68712e23f8786cc71272084b0683e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96891e0dfb72c5afc0f55fcf697ab6bd"><td class="memItemLeft" align="right" valign="top"><a id="a96891e0dfb72c5afc0f55fcf697ab6bd" name="a96891e0dfb72c5afc0f55fcf697ab6bd"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>text_copy_s</b>&#160;&#160;&#160;<a class="el" href="group__group__nptext.html#ga942bae255e0e7e7f3be232a1547bfe03">text_copyA_s</a></td></tr>
+<tr class="separator:a96891e0dfb72c5afc0f55fcf697ab6bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a099867a356291eabd9f7c5a984a9941c"><td class="memItemLeft" align="right" valign="top"><a id="a099867a356291eabd9f7c5a984a9941c" name="a099867a356291eabd9f7c5a984a9941c"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>text_startsWith</b>&#160;&#160;&#160;<a class="el" href="group__group__nptext.html#ga3610e2f701792e05378a82f660c0e783">text_startsWithA</a></td></tr>
+<tr class="separator:a099867a356291eabd9f7c5a984a9941c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9ce880adf55f10f41d7f2849cbb843a"><td class="memItemLeft" align="right" valign="top"><a id="ad9ce880adf55f10f41d7f2849cbb843a" name="ad9ce880adf55f10f41d7f2849cbb843a"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>text_isEmpty</b>&#160;&#160;&#160;<a class="el" href="group__group__nptext.html#ga2dcbbfc44c58d080406663907261421c">text_isEmptyA</a></td></tr>
+<tr class="separator:ad9ce880adf55f10f41d7f2849cbb843a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a59e3f02be3ddf38db40ee9fe97ac6cfb"><td class="memItemLeft" align="right" valign="top"><a id="a59e3f02be3ddf38db40ee9fe97ac6cfb" name="a59e3f02be3ddf38db40ee9fe97ac6cfb"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>text_nextSpaceIndex</b>&#160;&#160;&#160;<a class="el" href="group__group__nptext.html#ga3108b4b6cc392116f8268abb91dad3ba">text_nextSpaceIndexA</a></td></tr>
+<tr class="separator:a59e3f02be3ddf38db40ee9fe97ac6cfb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8bd2f415ccf22513111b880a7da9cae3"><td class="memItemLeft" align="right" valign="top"><a id="a8bd2f415ccf22513111b880a7da9cae3" name="a8bd2f415ccf22513111b880a7da9cae3"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>text_firstDifferentIndex</b>&#160;&#160;&#160;<a class="el" href="group__group__nptext.html#gafee7e764df52c2d69cb5a485aea1006f">text_firstDifferentIndexA</a></td></tr>
+<tr class="separator:a8bd2f415ccf22513111b880a7da9cae3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a288b63d64d8fe6cd677d3dfeb110a8e3"><td class="memItemLeft" align="right" valign="top"><a id="a288b63d64d8fe6cd677d3dfeb110a8e3" name="a288b63d64d8fe6cd677d3dfeb110a8e3"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>text_lastDifferentIndex</b>&#160;&#160;&#160;<a class="el" href="group__group__nptext.html#ga92ae6e44359910d9a8adaf36e74fcdbd">text_lastDifferentIndexA</a></td></tr>
+<tr class="separator:a288b63d64d8fe6cd677d3dfeb110a8e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3df946e5813840866696d705a5000415"><td class="memItemLeft" align="right" valign="top"><a id="a3df946e5813840866696d705a5000415" name="a3df946e5813840866696d705a5000415"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>text_trim</b>&#160;&#160;&#160;<a class="el" href="group__group__nptext.html#ga48b71f242ec50b503fb5fbc99a3ced13">text_trimA</a></td></tr>
+<tr class="separator:a3df946e5813840866696d705a5000415"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af20a9a01ab5a8ecd5ae19651a9778260"><td class="memItemLeft" align="right" valign="top"><a id="af20a9a01ab5a8ecd5ae19651a9778260" name="af20a9a01ab5a8ecd5ae19651a9778260"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>text_copyLine</b>&#160;&#160;&#160;<a class="el" href="group__group__nptext.html#gad925f5f73c9c3bf3dacb911534cbd21e">text_copyLineA</a></td></tr>
+<tr class="separator:af20a9a01ab5a8ecd5ae19651a9778260"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga9849ce5261708cde89064006bca37e16"><td class="memItemLeft" align="right" valign="top">DLL_EXP_TEXT char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__nptext.html#ga9849ce5261708cde89064006bca37e16">text_copy</a> (const char *string)</td></tr>
-<tr class="separator:ga9849ce5261708cde89064006bca37e16"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaba3d35bef49c264a43d7421ac331b3fb"><td class="memItemLeft" align="right" valign="top">DLL_EXP_TEXT char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__nptext.html#gaba3d35bef49c264a43d7421ac331b3fb">text_copy_s</a> (const char *string, size_t maxLength)</td></tr>
-<tr class="separator:gaba3d35bef49c264a43d7421ac331b3fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaea3ef2eb8e196017f5c45ed6cf5d7d1f"><td class="memItemLeft" align="right" valign="top">DLL_EXP_TEXT char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__nptext.html#gaea3ef2eb8e196017f5c45ed6cf5d7d1f">text_copyA</a> (const char *string)</td></tr>
+<tr class="separator:gaea3ef2eb8e196017f5c45ed6cf5d7d1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga942bae255e0e7e7f3be232a1547bfe03"><td class="memItemLeft" align="right" valign="top">DLL_EXP_TEXT char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__nptext.html#ga942bae255e0e7e7f3be232a1547bfe03">text_copyA_s</a> (const char *string, size_t maxLength)</td></tr>
+<tr class="separator:ga942bae255e0e7e7f3be232a1547bfe03"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga789c0c23db4d5e4734f6a9cf4a0b8638"><td class="memItemLeft" align="right" valign="top">DLL_EXP_TEXT wchar_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__nptext.html#ga789c0c23db4d5e4734f6a9cf4a0b8638">text_copyW</a> (const wchar_t *string)</td></tr>
 <tr class="separator:ga789c0c23db4d5e4734f6a9cf4a0b8638"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga34073395361fa67dbe8c2457df5f4182"><td class="memItemLeft" align="right" valign="top">DLL_EXP_TEXT wchar_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__nptext.html#ga34073395361fa67dbe8c2457df5f4182">text_copyW_s</a> (const wchar_t *string, size_t maxLength)</td></tr>
 <tr class="separator:ga34073395361fa67dbe8c2457df5f4182"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gafcb8226e205a446987cf07508ca15cd1"><td class="memItemLeft" align="right" valign="top">DLL_EXP_TEXT bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__nptext.html#gafcb8226e205a446987cf07508ca15cd1">text_startsWith</a> (const char *string, const char *prefix)</td></tr>
-<tr class="separator:gafcb8226e205a446987cf07508ca15cd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3610e2f701792e05378a82f660c0e783"><td class="memItemLeft" align="right" valign="top">DLL_EXP_TEXT bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__nptext.html#ga3610e2f701792e05378a82f660c0e783">text_startsWithA</a> (const char *string, const char *prefix)</td></tr>
+<tr class="separator:ga3610e2f701792e05378a82f660c0e783"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga2e12e8d8eca74d7bb157462bb3972e27"><td class="memItemLeft" align="right" valign="top">DLL_EXP_TEXT bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__nptext.html#ga2e12e8d8eca74d7bb157462bb3972e27">text_startsWithW</a> (const wchar_t *string, const wchar_t *prefix)</td></tr>
 <tr class="separator:ga2e12e8d8eca74d7bb157462bb3972e27"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga15b2e00f2b60bd676d26b0ddffd6552f"><td class="memItemLeft" align="right" valign="top">DLL_EXP_TEXT bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__nptext.html#ga15b2e00f2b60bd676d26b0ddffd6552f">text_isEmpty</a> (const char *string)</td></tr>
-<tr class="separator:ga15b2e00f2b60bd676d26b0ddffd6552f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2dcbbfc44c58d080406663907261421c"><td class="memItemLeft" align="right" valign="top">DLL_EXP_TEXT bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__nptext.html#ga2dcbbfc44c58d080406663907261421c">text_isEmptyA</a> (const char *string)</td></tr>
+<tr class="separator:ga2dcbbfc44c58d080406663907261421c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga5b2029cd63be69d49d569d5b9da7e63f"><td class="memItemLeft" align="right" valign="top">DLL_EXP_TEXT bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__nptext.html#ga5b2029cd63be69d49d569d5b9da7e63f">text_isEmptyW</a> (const wchar_t *string)</td></tr>
 <tr class="separator:ga5b2029cd63be69d49d569d5b9da7e63f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaedf63a2088fb8d73cd954ed1d4bfa7ec"><td class="memItemLeft" align="right" valign="top">DLL_EXP_TEXT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__nptext.html#gaedf63a2088fb8d73cd954ed1d4bfa7ec">text_nextSpaceIndex</a> (const char *string, int startIndex)</td></tr>
-<tr class="separator:gaedf63a2088fb8d73cd954ed1d4bfa7ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3108b4b6cc392116f8268abb91dad3ba"><td class="memItemLeft" align="right" valign="top">DLL_EXP_TEXT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__nptext.html#ga3108b4b6cc392116f8268abb91dad3ba">text_nextSpaceIndexA</a> (const char *string, int startIndex)</td></tr>
+<tr class="separator:ga3108b4b6cc392116f8268abb91dad3ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga7fb25539d989383c641a180b347a249b"><td class="memItemLeft" align="right" valign="top">DLL_EXP_TEXT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__nptext.html#ga7fb25539d989383c641a180b347a249b">text_nextSpaceIndexW</a> (const wchar_t *string, int startIndex)</td></tr>
 <tr class="separator:ga7fb25539d989383c641a180b347a249b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga961154b236b57a648c65556b1f642212"><td class="memItemLeft" align="right" valign="top">DLL_EXP_TEXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__nptext.html#ga961154b236b57a648c65556b1f642212">text_firstDifferentIndex</a> (const char *string, char excludedChar)</td></tr>
-<tr class="separator:ga961154b236b57a648c65556b1f642212"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gafee7e764df52c2d69cb5a485aea1006f"><td class="memItemLeft" align="right" valign="top">DLL_EXP_TEXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__nptext.html#gafee7e764df52c2d69cb5a485aea1006f">text_firstDifferentIndexA</a> (const char *string, char excludedChar)</td></tr>
+<tr class="separator:gafee7e764df52c2d69cb5a485aea1006f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaa31daba2c31224249307b87b042288df"><td class="memItemLeft" align="right" valign="top">DLL_EXP_TEXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__nptext.html#gaa31daba2c31224249307b87b042288df">text_firstDifferentIndexW</a> (const wchar_t *string, wchar_t excludedChar)</td></tr>
 <tr class="separator:gaa31daba2c31224249307b87b042288df"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gadf5433d356e2aef35aef7186fb352698"><td class="memItemLeft" align="right" valign="top">DLL_EXP_TEXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__nptext.html#gadf5433d356e2aef35aef7186fb352698">text_lastDifferentIndexW</a> (const wchar_t *string, wchar_t excludedChar)</td></tr>
 <tr class="separator:gadf5433d356e2aef35aef7186fb352698"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa5972279965ab4985f7fed894f15823b"><td class="memItemLeft" align="right" valign="top">DLL_EXP_TEXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__nptext.html#gaa5972279965ab4985f7fed894f15823b">text_lastDifferentIndex</a> (const char *string, char excludedChar)</td></tr>
-<tr class="separator:gaa5972279965ab4985f7fed894f15823b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga11ed3f4c7420f718c0755374fbdac752"><td class="memItemLeft" align="right" valign="top">DLL_EXP_TEXT char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__nptext.html#ga11ed3f4c7420f718c0755374fbdac752">text_trim</a> (const char *string, char trimmedChar)</td></tr>
-<tr class="separator:ga11ed3f4c7420f718c0755374fbdac752"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga92ae6e44359910d9a8adaf36e74fcdbd"><td class="memItemLeft" align="right" valign="top">DLL_EXP_TEXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__nptext.html#ga92ae6e44359910d9a8adaf36e74fcdbd">text_lastDifferentIndexA</a> (const char *string, char excludedChar)</td></tr>
+<tr class="separator:ga92ae6e44359910d9a8adaf36e74fcdbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga48b71f242ec50b503fb5fbc99a3ced13"><td class="memItemLeft" align="right" valign="top">DLL_EXP_TEXT char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__nptext.html#ga48b71f242ec50b503fb5fbc99a3ced13">text_trimA</a> (const char *string, char trimmedChar)</td></tr>
+<tr class="separator:ga48b71f242ec50b503fb5fbc99a3ced13"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga22495474ef0d6cf280ebde59b9b0b296"><td class="memItemLeft" align="right" valign="top">DLL_EXP_TEXT wchar_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__nptext.html#ga22495474ef0d6cf280ebde59b9b0b296">text_trimW</a> (const wchar_t *string, wchar_t trimmedChar)</td></tr>
 <tr class="separator:ga22495474ef0d6cf280ebde59b9b0b296"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga3f143e33653718693e095c2cf7cd25d2"><td class="memItemLeft" align="right" valign="top">DLL_EXP_TEXT wchar_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__nptext.html#ga3f143e33653718693e095c2cf7cd25d2">text_charToWChar</a> (const char *originalString)</td></tr>
 <tr class="separator:ga3f143e33653718693e095c2cf7cd25d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac7a8ab001fe7dc51e89f16c447f89b19"><td class="memItemLeft" align="right" valign="top">DLL_EXP_TEXT char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__nptext.html#gac7a8ab001fe7dc51e89f16c447f89b19">text_copyLine</a> (const char *string, size_t stringLength, char **nextLine, size_t *nextLineMaxLength)</td></tr>
-<tr class="separator:gac7a8ab001fe7dc51e89f16c447f89b19"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad925f5f73c9c3bf3dacb911534cbd21e"><td class="memItemLeft" align="right" valign="top">DLL_EXP_TEXT char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__nptext.html#gad925f5f73c9c3bf3dacb911534cbd21e">text_copyLineA</a> (const char *string, size_t stringLength, char **nextLine, size_t *nextLineMaxLength)</td></tr>
+<tr class="separator:gad925f5f73c9c3bf3dacb911534cbd21e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga29b1afe340b45c4831a808b0d4bf6b9f"><td class="memItemLeft" align="right" valign="top">DLL_EXP_TEXT wchar_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__nptext.html#ga29b1afe340b45c4831a808b0d4bf6b9f">text_copyLineW</a> (const wchar_t *string, size_t stringLength, wchar_t **nextLine, size_t *nextLineMaxLength)</td></tr>
 <tr class="separator:ga29b1afe340b45c4831a808b0d4bf6b9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -160,7 +217,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="text_8h.html">text.h</a></li>
-    <li class="footer">Generated on Thu Mar 21 2024 21:43:15 for NibblePoker&#39;s Clang Goodies by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Sat Jul 13 2024 14:17:09 for NibblePoker&#39;s Clang Goodies by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>

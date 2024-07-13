@@ -6,7 +6,6 @@ var dir_a1868fa8ab722e18bbead7323daab1bb =
     [ "flags.h", "flags_8h.html", "flags_8h" ],
     [ "help.c", "help_8c.html", "help_8c" ],
     [ "help.h", "help_8h.html", null ],
-    [ "macros.h", "macros_8h.html", null ],
     [ "arguments/structs.h", "arguments_2structs_8h.html", "arguments_2structs_8h" ],
     [ "types.h", "types_8h.html", null ]
 ];

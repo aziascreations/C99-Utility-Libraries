@@ -27,7 +27,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign">
-   <div id="projectname">NibblePoker&#39;s Clang Goodies<span id="projectnumber">&#160;0.5.1</span>
+   <div id="projectname">NibblePoker&#39;s Clang Goodies<span id="projectnumber">&#160;1.0.0</span>
    </div>
    <div id="projectbrief">Small collection of utilities and libraries for C in order to simplify some development tasks.</div>
   </td>
@@ -95,7 +95,7 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
   <div class="headertitle"><div class="title">NibblePoker's Clang Goodies </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p ><a class="anchor" id="md__github_workspace_readme"></a>Small collection of utilities and libraries for C in order to simplify some development tasks.</p>
+<div class="textblock"><p ><a class="anchor" id="md__github_workspace_readme"></a>Small collection of utilities and libraries for C99 that aims to simplify some development tasks.</p>
 <h1><a class="anchor" id="autotoc_md1"></a>
 Features</h1>
 <ul>
@@ -104,24 +104,32 @@ Features</h1>
 <li><img src="docs/images/captcha.png" alt="" class="inline"/> Basic chained HashMaps</li>
 <li><img src="docs/images/text.png" alt="" class="inline"/> Various string utilities</li>
 <li><img src="docs/images/bug.png" alt="" class="inline"/> Toggleable debugging output functions</li>
-<li><img src="docs/images/module.png" alt="" class="inline"/> Complete, macro-able <code>WCHAR</code> support</li>
+<li><img src="docs/images/module.png" alt="" class="inline"/> Completely macro-able <code>char</code>↔<code>wchar_t</code> support</li>
 <li><img src="docs/images/plus.png" alt="" class="inline"/> Small extras like UUID4, CRC32B &amp; platform detection</li>
-<li><img src="docs/images/linux.png" alt="" class="inline"/> Supports <a class="el" href="md__github_workspace_platforms.html">a variety of OS, CPU ISA &amp; Compilers</a></li>
+<li><img src="docs/images/linux.png" alt="" class="inline"/> Supports <a class="el" href="md__github_workspace_platforms.html">a wide variety of OS, CPU ISA &amp; Compilers</a></li>
 <li><img src="docs/images/view_more.png" alt="" class="inline"/> Other features to come as needed or requested</li>
 </ul>
 <h1><a class="anchor" id="autotoc_md2"></a>
 Planned Features</h1>
 <ul>
-<li>More HashMap types &amp; more utilities</li>
-<li>Platform-agnostic with some optional improvements on a per-OS and opt-in basis.</li>
-<li>Optional assembly-level optimisations for some procedures.</li>
-<li>Support for ReactOS &amp; TCC</li>
-<li>An INI config parser (<img src="docs/images/settings.png" alt="" class="inline"/>)</li>
+<li>More HashMap types &amp; hashing/UUID algorithms &amp; more utilities</li>
 </ul>
 <h1><a class="anchor" id="autotoc_md3"></a>
 Usage</h1>
-<p ><b>TODO: Add reminder to check the <a class="el" href="md__github_workspace_definitions.html">Definitions</a> page.</b></p>
 <h2><a class="anchor" id="autotoc_md4"></a>
+Preamble</h2>
+<p ><b>Requirements:</b><br  />
+ &#160;&#160;● CMake 3.13+<br  />
+ &#160;&#160;● <a href="https://wiki.qt.io/Jom">Qt's Jom</a>&#160;&#160;*(ReactOS only, replaces nmake)*</p>
+<p ><b>Supported OS:</b><br  />
+ &#160;&#160;Windows, Cygwin, Linux &amp; ReactOS</p>
+<p ><b>Supported Compilers:</b><br  />
+ &#160;&#160;MSVC, CLang, GCC, MinGW &amp; TinyCC</p>
+<p ><b>Supported CPU architectures:</b><br  />
+ &#160;&#160;x86, x64, <s>ARM</s> &amp; ARM64</p>
+<p ><img src="docs/images/info.png" alt="" class="inline"/> Check <a class="el" href="md__github_workspace_platforms.html">platforms.md</a> for more info on the platform detector.<br  />
+ <img src="docs/images/settings.png" alt="" class="inline"/> Check <a class="el" href="md__github_workspace_definitions.html">definitions.md</a> for a complete listing of the configuration definitions.</p>
+<h2><a class="anchor" id="autotoc_md5"></a>
 CMake's FetchContent</h2>
 <p >Firstly, insert the following lines into your <code>CMakeLists.txt</code>: </p><div class="fragment"><div class="line"># Including the `FetchContent` directives.</div>
 <div class="line">include(FetchContent)</div>
@@ -153,10 +161,22 @@ CMake's FetchContent</h2>
 <div class="line"> </div>
 <div class="line"># Optional per-target config</div>
 <div class="line">target_compile_definitions(MyApp PUBLIC NP_DEBUG_LOGGING)  # Enables debugging and optional error logging.</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md5"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md6"></a>
 CMake's Include</h2>
-<p ><b>TODO: Find a way to make this work properly, doesn't detect that its imported !</b></p>
-<h2><a class="anchor" id="autotoc_md6"></a>
+<p >The <code>Include</code> directive isn't supported yet.<br  />
+ The included project doesn't detect that it's being included properly like <code>FetchContent</code> does.</p>
+<h2><a class="anchor" id="autotoc_md7"></a>
+CMake's &lt;tt&gt;add_subdirectory&lt;/tt&gt; command</h2>
+<p >The <code>add_subdirectory</code> command works by isn't thoroughly tested yet.<br  />
+</p>
+<p >Firstly, add this repository as a submodule in your project and checkout to a specific tag or commit: </p><div class="fragment"><div class="line">git submodule add https://github.com/aziascreations/C99-Utility-Libraries.git libs/nibblepoker-c-goodies</div>
+<div class="line">git -C libs/nibblepoker-c-goodies checkout &lt;hash|tag&gt;</div>
+</div><!-- fragment --><p >Afterward, add the following lines in your <em>CMakeLists.txt</em>: </p><div class="fragment"><div class="line">add_subdirectory(libs/np_clang_goodies)</div>
+<div class="line"> </div>
+<div class="line"># This one may not be required, needs more testing.</div>
+<div class="line">file(GLOB_RECURSE src_nibblepoker_c_goodies CONFIGURE_DEPENDS &quot;libs/nibblepoker-c-goodies/src/*.h&quot; &quot;libs/nibblepoker-c-goodies/src/*.c&quot;)</div>
+</div><!-- fragment --><p >Finally, modify you targets to add <code>${src_nibblepoker_c_goodies}</code> like so: </p><div class="fragment"><div class="line">add_executable(my_app src/main.c ${src_nibblepoker_c_goodies} ...)</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md8"></a>
 CMake Manual Import</h2>
 <p >In order to use this library in your projects via a manual import you need to do the following things:</p>
 <p >Firstly, add this repository as a submodule in your project and checkout to a specific tag or commit: </p><div class="fragment"><div class="line">git submodule add https://github.com/aziascreations/C99-Utility-Libraries.git libs/nibblepoker-c-goodies</div>
@@ -166,14 +186,27 @@ CMake Manual Import</h2>
 <div class="line">    CONFIGURE_DEPENDS &quot;libs/nibblepoker-c-goodies/src/*.h&quot; &quot;libs/nibblepoker-c-goodies/src/*.c&quot;</div>
 <div class="line">)</div>
 </div><!-- fragment --><p >Finally, modify you targets to add <code>${src_nibblepoker_c_goodies}</code> like so: </p><div class="fragment"><div class="line">add_executable(my_app src/main.c ${src_nibblepoker_c_goodies} ...)</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md7"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md9"></a>
 Examples</h1>
 <p >Some examples that demonstrate how to use most of the functions this library provides can be found in the <a href="examples/">examples/</a> folder.</p>
 <p >Alternatively, you can also check the <a href="https://github.com/aziascreations/C99-Win32-Wifi-Utility">aziascreations/C99-Win32-Wifi-Utility</a> repository for a complete example in a "fully-fledged" Windows application.</p>
-<h2><a class="anchor" id="autotoc_md8"></a>
+<h2><a class="anchor" id="autotoc_md10"></a>
 Launch arguments</h2>
-<p ><b>TODO</b></p>
-<h2><a class="anchor" id="autotoc_md9"></a>
+<ul>
+<li><a href="examples/arguments_basic.c">Basic usage with <code>char</code> &amp; <code>wchar_t</code> support</a><ul>
+<li>Define <code>NP_GOODIES_ARGUMENTS_USE_WCHAR</code> to support <code>wchar_t</code> instead of <code>char</code>.</li>
+</ul>
+</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md11"></a>
+Debugging Utilities</h2>
+<ul>
+<li><a href="examples/debug_logging.c">Complete usage</a><ul>
+<li>You may need to define <code>NP_DEBUG_LOGGING</code> to enable the special prints.</li>
+</ul>
+</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md12"></a>
 Double Linked Lists</h2>
 <ul>
 <li><a href="examples/dllist_basic.c">Basic operations</a><ul>
@@ -193,7 +226,7 @@ Double Linked Lists</h2>
 </ul>
 </li>
 </ul>
-<h2><a class="anchor" id="autotoc_md10"></a>
+<h2><a class="anchor" id="autotoc_md13"></a>
 Hashing</h2>
 <ul>
 <li><a href="examples/crc32.c">CRC32B hashing</a><ul>
@@ -201,10 +234,15 @@ Hashing</h2>
 </ul>
 </li>
 </ul>
-<h2><a class="anchor" id="autotoc_md11"></a>
+<h2><a class="anchor" id="autotoc_md14"></a>
 HashMaps</h2>
-<p ><b>TODO</b></p>
-<h2><a class="anchor" id="autotoc_md12"></a>
+<ul>
+<li><a href="examples/hashmap_chained_basic.c">Basic Chained HashMap</a><ul>
+<li>Basic HashMap usage with strings, CRC32B key hashing and full collision detection.</li>
+</ul>
+</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md15"></a>
 UUID</h2>
 <ul>
 <li><a href="examples/uuid_all.c">UUID4 generation</a><ul>
@@ -216,17 +254,17 @@ UUID</h2>
 </ul>
 </li>
 </ul>
-<h2><a class="anchor" id="autotoc_md13"></a>
+<h2><a class="anchor" id="autotoc_md16"></a>
 Text</h2>
 <p ><b>TODO</b></p>
-<h1><a class="anchor" id="autotoc_md14"></a>
+<h1><a class="anchor" id="autotoc_md17"></a>
 Documentation</h1>
-<h2><a class="anchor" id="autotoc_md15"></a>
+<h2><a class="anchor" id="autotoc_md18"></a>
 Viewing</h2>
 <p >You can consult the documentation at the following URL:<br  />
  &#160;&#160;&#160;&#160;<a href="https://aziascreations.github.io/C99-Utility-Libraries/">https://aziascreations.github.io/C99-Utility-Libraries/</a></p>
 <p >It is automatically updated when a commit is pushed onto the <code>master</code> branch.</p>
-<h2><a class="anchor" id="autotoc_md16"></a>
+<h2><a class="anchor" id="autotoc_md19"></a>
 Building</h2>
 <p >If you want to build the documentation, you need to do the following things:</p><ul>
 <li>Install <a href="https://www.doxygen.nl/">Doxygen</a> on your system.</li>
@@ -234,11 +272,11 @@ Building</h2>
 <li>Run the <a href="https://github.com/aziascreations/C99-Utility-Libraries/blob/master/make-doc.bat">make-doc.bat</a> script.</li>
 <li>Go into <code>docs/html</code> and open the <code>index.html</code> file.</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md17"></a>
+<h1><a class="anchor" id="autotoc_md20"></a>
 Benchmarks</h1>
 <p >This project provides a couple of benchmarks in order to justify some of the design choices I made.</p>
 <p >Please refer to the <a class="el" href="md__github_workspace_benchmarks_readme.html">Benchmarks</a> page for more information.</p>
-<h1><a class="anchor" id="autotoc_md18"></a>
+<h1><a class="anchor" id="autotoc_md21"></a>
 Licenses</h1>
 <p >This project is dual-licensed under the following open-source licenses.<br  />
  You can choose the one that best suits your needs:</p><ol type="1">
@@ -251,14 +289,14 @@ Licenses</h1>
 </ol>
 <p >Keep in mind, the <a href="https://github.com/jothepro/doxygen-awesome-css">doxygen-awesome-css</a> submodule repository uses an <a href="https://github.com/jothepro/doxygen-awesome-css/blob/main/LICENSE">MIT license</a>.<br  />
  You can either not clone it or fork the project and remove it to be 100% safe if you use the <code>CC0 1.0</code> license.<br  />
- The documentation will still build without it, but it will have a "worse"-looking UI. </p>
+ The documentation will still build without it, but it will have a "worse-looking" UI. </p>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Thu Mar 21 2024 21:43:15 for NibblePoker&#39;s Clang Goodies by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Sat Jul 13 2024 14:17:09 for NibblePoker&#39;s Clang Goodies by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>

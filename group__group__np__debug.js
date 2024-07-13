@@ -1,15 +1,15 @@
 var group__group__np__debug =
 [
-    [ "debug_print", "group__group__np__debug.html#ga7377cc956f5c81538f0fbf0a0492a539", null ],
-    [ "debug_println", "group__group__np__debug.html#ga014f8c02786d28a89fcf69968e48e53d", null ],
-    [ "error_print", "group__group__np__debug.html#ga643ff41c124640eb217b60421f40aa05", null ],
-    [ "error_println", "group__group__np__debug.html#ga066ff324eb29d6acd5a34608027a3c07", null ],
-    [ "trace_print", "group__group__np__debug.html#ga254c6f187e0baab6826269de3e8bd67b", null ],
-    [ "trace_println", "group__group__np__debug.html#ga4ff61f331adb16d92909b963e719757e", null ],
-    [ "debug_wprint", "group__group__np__debug.html#ga09be7852306e3c9cf78e9165e4b25ad5", null ],
-    [ "debug_wprintln", "group__group__np__debug.html#ga883ee594c36a5981aa71bfde259d6ff3", null ],
-    [ "error_wprint", "group__group__np__debug.html#ga43c50294caa7288f8555e17398b343cb", null ],
-    [ "error_wprintln", "group__group__np__debug.html#ga810335d86506dc7c93352d2214438695", null ],
-    [ "trace_wprint", "group__group__np__debug.html#ga65340467a6cbd21924f708beb230cf6b", null ],
-    [ "trace_wprintln", "group__group__np__debug.html#gade9e1a809a2cc70fbdd94508895dd902", null ]
+    [ "debug_printA", "group__group__np__debug.html#ga1b13b62c17592c8b22dc450f9b1fc3bd", null ],
+    [ "debug_printlnA", "group__group__np__debug.html#gab3ce7f031d1f42d448d8877386055a22", null ],
+    [ "error_printA", "group__group__np__debug.html#ga00a9d2f58090a0f7a9dd15570d63ba84", null ],
+    [ "error_printlnA", "group__group__np__debug.html#gacdd1747070937b1956df84785da150e3", null ],
+    [ "trace_printA", "group__group__np__debug.html#ga1ef2a17b8dad789ba23129480952d7ee", null ],
+    [ "trace_printlnA", "group__group__np__debug.html#ga1066982ca1fecea3dca3899768c0418f", null ],
+    [ "debug_printW", "group__group__np__debug.html#ga7feec172bcaf96a9dd41585d66494b61", null ],
+    [ "debug_printlnW", "group__group__np__debug.html#gaa1471137bb1ce6c438a0e84150be7f0b", null ],
+    [ "error_printW", "group__group__np__debug.html#ga9fc5be59dad2062143c1d78397b834fa", null ],
+    [ "error_printlnW", "group__group__np__debug.html#ga01ba0f9ff16f34cd50826e6120454d62", null ],
+    [ "trace_printW", "group__group__np__debug.html#ga370b3966644b71970155aecb74822ac3", null ],
+    [ "trace_printlnW", "group__group__np__debug.html#ga4dea1f2ff0e5ccdf7c1129cdb503f17c", null ]
 ];

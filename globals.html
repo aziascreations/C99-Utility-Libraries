@@ -27,7 +27,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign">
-   <div id="projectname">NibblePoker&#39;s Clang Goodies<span id="projectnumber">&#160;0.5.1</span>
+   <div id="projectname">NibblePoker&#39;s Clang Goodies<span id="projectnumber">&#160;1.0.0</span>
    </div>
    <div id="projectbrief">Small collection of utilities and libraries for C in order to simplify some development tasks.</div>
   </td>
@@ -95,33 +95,49 @@ $(document).ready(function(){initNavTree('globals.html',''); initResizable(); })
 <div class="textblock">Here is a list of all documented functions, variables, defines, enums, and typedefs with links to the documentation:</div>
 
 <h3><a id="index_a" name="index_a"></a>- a -</h3><ul>
-<li>args_addValueToOption()&#160;:&#160;<a class="el" href="group__arguments.html#gaa5f8226cb47b255c3a931942e692dae5">arguments.h</a>, <a class="el" href="group__arguments.html#gaa5f8226cb47b255c3a931942e692dae5">arguments.c</a></li>
-<li>args_createOption()&#160;:&#160;<a class="el" href="group__arguments.html#gac6ad712f91a4bc7027ff9ae2044268d9">arguments.h</a>, <a class="el" href="group__arguments.html#gac6ad712f91a4bc7027ff9ae2044268d9">arguments.c</a></li>
-<li>args_createVerb()&#160;:&#160;<a class="el" href="group__arguments.html#ga41472fb8e2d4fdb4ee86e77a3716addf">arguments.c</a>, <a class="el" href="group__arguments.html#ga41472fb8e2d4fdb4ee86e77a3716addf">arguments.h</a></li>
+<li>args_addValueToOptionA()&#160;:&#160;<a class="el" href="group__arguments.html#ga9ec184f675791a6615152feff929bf40">arguments.h</a>, <a class="el" href="group__arguments.html#ga9ec184f675791a6615152feff929bf40">arguments.c</a></li>
+<li>args_addValueToOptionW()&#160;:&#160;<a class="el" href="group__arguments.html#gaabc7a4f66679d14cc5fe4c058a807ccb">arguments.h</a>, <a class="el" href="group__arguments.html#gaabc7a4f66679d14cc5fe4c058a807ccb">arguments.c</a></li>
+<li>args_createOptionA()&#160;:&#160;<a class="el" href="group__arguments.html#ga6268ec539e2350a872e72c6381894dcd">arguments.c</a>, <a class="el" href="group__arguments.html#ga6268ec539e2350a872e72c6381894dcd">arguments.h</a></li>
+<li>args_createOptionW()&#160;:&#160;<a class="el" href="group__arguments.html#ga16a2fe8045cdfb4fdfa2360e62be93a3">arguments.c</a>, <a class="el" href="group__arguments.html#ga16a2fe8045cdfb4fdfa2360e62be93a3">arguments.h</a></li>
+<li>args_createVerbA()&#160;:&#160;<a class="el" href="group__arguments.html#ga64e1ac0885c3ac1f9b747df9e9f9d6ce">arguments.c</a>, <a class="el" href="group__arguments.html#ga64e1ac0885c3ac1f9b747df9e9f9d6ce">arguments.h</a></li>
+<li>args_createVerbW()&#160;:&#160;<a class="el" href="group__arguments.html#gab1d41ef72ff49442efd8a0f1473273ca">arguments.c</a>, <a class="el" href="group__arguments.html#gab1d41ef72ff49442efd8a0f1473273ca">arguments.h</a></li>
 <li>args_freeOption()&#160;:&#160;<a class="el" href="group__arguments.html#ga8064b380f7a20225a98750a6856c07fb">arguments.c</a>, <a class="el" href="group__arguments.html#ga8064b380f7a20225a98750a6856c07fb">arguments.h</a></li>
 <li>args_freeVerb()&#160;:&#160;<a class="el" href="group__arguments.html#gad255e281a0d0b09244e1a28522577776">arguments.c</a>, <a class="el" href="group__arguments.html#gad255e281a0d0b09244e1a28522577776">arguments.h</a></li>
-<li>args_getDefaultOption()&#160;:&#160;<a class="el" href="group__arguments.html#ga58d207f517a4087895fa927e5446e1b9">arguments.c</a>, <a class="el" href="group__arguments.html#ga58d207f517a4087895fa927e5446e1b9">arguments.h</a></li>
-<li>args_getOptionByName()&#160;:&#160;<a class="el" href="group__arguments.html#gaa3b0c6d3c8e6d02877ad76433d035555">arguments.c</a>, <a class="el" href="group__arguments.html#gaa3b0c6d3c8e6d02877ad76433d035555">arguments.h</a></li>
-<li>args_getOptionByToken()&#160;:&#160;<a class="el" href="group__arguments.html#gab01a45d4e23c38ba5d337f35972a05ef">arguments.c</a>, <a class="el" href="group__arguments.html#gab01a45d4e23c38ba5d337f35972a05ef">arguments.h</a></li>
-<li>args_getOptionLength()&#160;:&#160;<a class="el" href="help_8c.html#a23d8a506bc9430906985698c00a4fbc3">help.c</a></li>
-<li>args_getOptionText()&#160;:&#160;<a class="el" href="help_8c.html#ae5d1f2b0678727d1dcbab9a3f9ea0fb9">help.c</a></li>
-<li>args_getParentVerb()&#160;:&#160;<a class="el" href="group__arguments.html#ga5e81a5906d2cd178653eb7dbd9574186">arguments.c</a>, <a class="el" href="group__arguments.html#ga5e81a5906d2cd178653eb7dbd9574186">arguments.h</a></li>
+<li>args_getDefaultOption()&#160;:&#160;<a class="el" href="group__arguments.html#ga58d207f517a4087895fa927e5446e1b9">arguments.h</a>, <a class="el" href="group__arguments.html#ga58d207f517a4087895fa927e5446e1b9">arguments.c</a></li>
+<li>args_getOptionByNameA()&#160;:&#160;<a class="el" href="group__arguments.html#ga2291003c78856ad0e7730d0615a78adb">arguments.c</a>, <a class="el" href="group__arguments.html#ga2291003c78856ad0e7730d0615a78adb">arguments.h</a></li>
+<li>args_getOptionByNameW()&#160;:&#160;<a class="el" href="group__arguments.html#ga0a2e0bcefcae662a76867043e32094f3">arguments.c</a>, <a class="el" href="group__arguments.html#ga0a2e0bcefcae662a76867043e32094f3">arguments.h</a></li>
+<li>args_getOptionByTokenA()&#160;:&#160;<a class="el" href="group__arguments.html#ga2befb89122d7286168c764b95512ee6c">arguments.c</a>, <a class="el" href="group__arguments.html#ga2befb89122d7286168c764b95512ee6c">arguments.h</a></li>
+<li>args_getOptionByTokenW()&#160;:&#160;<a class="el" href="group__arguments.html#ga1c2f97fee41772942beb91cf501874b9">arguments.c</a>, <a class="el" href="group__arguments.html#ga1c2f97fee41772942beb91cf501874b9">arguments.h</a></li>
+<li>args_getOptionLengthA()&#160;:&#160;<a class="el" href="help_8c.html#a92d83564b60ecf56b1c1ca363ff85fae">help.c</a></li>
+<li>args_getOptionLengthW()&#160;:&#160;<a class="el" href="help_8c.html#a490428de87274f19d2bc362731951f5d">help.c</a></li>
+<li>args_getOptionTextA()&#160;:&#160;<a class="el" href="help_8c.html#a1e6f14f6b32a8c59d97305b70ab3a51f">help.c</a></li>
+<li>args_getOptionTextW()&#160;:&#160;<a class="el" href="help_8c.html#acd627dcb97bf1f3ebecbba5c9c1de1d3">help.c</a></li>
+<li>args_getParentVerbA()&#160;:&#160;<a class="el" href="group__arguments.html#gacea934822bb604d81f8e94042bc4e882">arguments.c</a>, <a class="el" href="group__arguments.html#gacea934822bb604d81f8e94042bc4e882">arguments.h</a></li>
+<li>args_getParentVerbW()&#160;:&#160;<a class="el" href="group__arguments.html#ga44196e070617ec5131f34e1e8b8a6b79">arguments.h</a>, <a class="el" href="group__arguments.html#ga44196e070617ec5131f34e1e8b8a6b79">arguments.c</a></li>
 <li>args_getRelevantDefaultOption()&#160;:&#160;<a class="el" href="group__arguments.html#ga152e8a949c8f082641b2b79b6c709833">arguments.c</a>, <a class="el" href="group__arguments.html#ga152e8a949c8f082641b2b79b6c709833">arguments.h</a></li>
-<li>args_getSubVerbByName()&#160;:&#160;<a class="el" href="group__arguments.html#ga23c32d8b08a67221318ee87109086bc5">arguments.c</a>, <a class="el" href="group__arguments.html#ga23c32d8b08a67221318ee87109086bc5">arguments.h</a></li>
-<li>args_isOptionAlreadyRegistered()&#160;:&#160;<a class="el" href="group__arguments.html#gaae3e319f94024693ba76917c80dd0ae5">arguments.c</a>, <a class="el" href="group__arguments.html#gaae3e319f94024693ba76917c80dd0ae5">arguments.h</a></li>
-<li>args_isVerbAlreadyRegistered()&#160;:&#160;<a class="el" href="group__arguments.html#ga0b41734ecd068e33aee62c4ad8df27e4">arguments.c</a>, <a class="el" href="group__arguments.html#ga0b41734ecd068e33aee62c4ad8df27e4">arguments.h</a></li>
-<li>args_parseArguments()&#160;:&#160;<a class="el" href="group__arguments.html#gaaee14d4d9c4ee0230701e2e8bdc17b80">arguments.c</a>, <a class="el" href="group__arguments.html#gaaee14d4d9c4ee0230701e2e8bdc17b80">arguments.h</a></li>
-<li>args_printOption()&#160;:&#160;<a class="el" href="help_8c.html#ab79666a366a912b689ac265c3914ff7d">help.c</a></li>
-<li>args_registerOption()&#160;:&#160;<a class="el" href="group__arguments.html#gaca7dde29ea9201a35e03af41ce31a791">arguments.c</a>, <a class="el" href="group__arguments.html#gaca7dde29ea9201a35e03af41ce31a791">arguments.h</a></li>
-<li>args_registerOptionRecursively()&#160;:&#160;<a class="el" href="group__arguments.html#gab5ec926cb7fb7569ba177445b43df2cf">arguments.c</a>, <a class="el" href="group__arguments.html#gab5ec926cb7fb7569ba177445b43df2cf">arguments.h</a></li>
-<li>args_registerVerb()&#160;:&#160;<a class="el" href="group__arguments.html#ga8bc414c393d7697a1d10463a10ee2dee">arguments.c</a>, <a class="el" href="group__arguments.html#ga8bc414c393d7697a1d10463a10ee2dee">arguments.h</a></li>
+<li>args_getSubVerbByNameA()&#160;:&#160;<a class="el" href="group__arguments.html#gab706b776080faaeb05262a3ed9138589">arguments.c</a>, <a class="el" href="group__arguments.html#gab706b776080faaeb05262a3ed9138589">arguments.h</a></li>
+<li>args_getSubVerbByNameW()&#160;:&#160;<a class="el" href="group__arguments.html#ga62bf7ce7b163a6ad5b3d031cbb8bd963">arguments.c</a>, <a class="el" href="group__arguments.html#ga62bf7ce7b163a6ad5b3d031cbb8bd963">arguments.h</a></li>
+<li>args_isOptionAlreadyRegisteredA()&#160;:&#160;<a class="el" href="group__arguments.html#gaf6c17b96f54f3753c3721eccd91dc712">arguments.c</a>, <a class="el" href="group__arguments.html#gaf6c17b96f54f3753c3721eccd91dc712">arguments.h</a></li>
+<li>args_isOptionAlreadyRegisteredW()&#160;:&#160;<a class="el" href="group__arguments.html#ga0f90df68507aa805eeb423276aaab6e5">arguments.c</a>, <a class="el" href="group__arguments.html#ga0f90df68507aa805eeb423276aaab6e5">arguments.h</a></li>
+<li>args_isVerbAlreadyRegisteredA()&#160;:&#160;<a class="el" href="group__arguments.html#gabdbfd321339fc1238c0d273993167f6b">arguments.c</a>, <a class="el" href="group__arguments.html#gabdbfd321339fc1238c0d273993167f6b">arguments.h</a></li>
+<li>args_isVerbAlreadyRegisteredW()&#160;:&#160;<a class="el" href="group__arguments.html#ga52fac659b01f67e7ba840184ca72ea6a">arguments.c</a>, <a class="el" href="group__arguments.html#ga52fac659b01f67e7ba840184ca72ea6a">arguments.h</a></li>
+<li>args_parseArgumentsA()&#160;:&#160;<a class="el" href="group__arguments.html#ga83dd56433f5ee02564fee1e8aecfaeec">arguments.h</a>, <a class="el" href="group__arguments.html#ga83dd56433f5ee02564fee1e8aecfaeec">arguments.c</a></li>
+<li>args_parseArgumentsW()&#160;:&#160;<a class="el" href="group__arguments.html#ga448c2ec36479043d0f51d6941ce74435">arguments.c</a>, <a class="el" href="group__arguments.html#ga448c2ec36479043d0f51d6941ce74435">arguments.h</a></li>
+<li>args_printOptionA()&#160;:&#160;<a class="el" href="help_8c.html#a1e5200b4fdd981dacfb1cd5d97178efb">help.c</a></li>
+<li>args_printOptionW()&#160;:&#160;<a class="el" href="help_8c.html#a89132c582aee9939e70ae47f010b99d3">help.c</a></li>
+<li>args_registerOptionA()&#160;:&#160;<a class="el" href="group__arguments.html#ga51a1cb8f8220b4bed95cef4032136766">arguments.c</a>, <a class="el" href="group__arguments.html#ga51a1cb8f8220b4bed95cef4032136766">arguments.h</a></li>
+<li>args_registerOptionRecursivelyA()&#160;:&#160;<a class="el" href="group__arguments.html#ga76260244b95e795fc4ad87b4b8682833">arguments.h</a>, <a class="el" href="group__arguments.html#ga76260244b95e795fc4ad87b4b8682833">arguments.c</a></li>
+<li>args_registerOptionRecursivelyW()&#160;:&#160;<a class="el" href="group__arguments.html#ga2c90980eb90d955f6b341b11cdcc2244">arguments.c</a>, <a class="el" href="group__arguments.html#ga2c90980eb90d955f6b341b11cdcc2244">arguments.h</a></li>
+<li>args_registerOptionW()&#160;:&#160;<a class="el" href="group__arguments.html#ga9bd73ae88c21638fc0bcd321346128e3">arguments.c</a>, <a class="el" href="group__arguments.html#ga9bd73ae88c21638fc0bcd321346128e3">arguments.h</a></li>
+<li>args_registerVerbA()&#160;:&#160;<a class="el" href="group__arguments.html#gaeda99b73bd91cabda63fc17af8aee663">arguments.c</a>, <a class="el" href="group__arguments.html#gaeda99b73bd91cabda63fc17af8aee663">arguments.h</a></li>
+<li>args_registerVerbW()&#160;:&#160;<a class="el" href="group__arguments.html#gaa76114ce983ec1cddd2776efca711170">arguments.c</a>, <a class="el" href="group__arguments.html#gaa76114ce983ec1cddd2776efca711170">arguments.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Thu Mar 21 2024 21:43:15 for NibblePoker&#39;s Clang Goodies by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Sat Jul 13 2024 14:17:09 for NibblePoker&#39;s Clang Goodies by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>

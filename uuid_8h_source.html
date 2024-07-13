@@ -27,7 +27,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign">
-   <div id="projectname">NibblePoker&#39;s Clang Goodies<span id="projectnumber">&#160;0.5.1</span>
+   <div id="projectname">NibblePoker&#39;s Clang Goodies<span id="projectnumber">&#160;1.0.0</span>
    </div>
    <div id="projectbrief">Small collection of utilities and libraries for C in order to simplify some development tasks.</div>
   </td>
@@ -96,35 +96,47 @@ $(document).ready(function(){initNavTree('uuid_8h_source.html',''); initResizabl
 </div><!--header-->
 <div class="contents">
 <a href="uuid_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#pragma once</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;string.h&gt;</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;wchar.h&gt;</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;../platform.h&quot;</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;<a class="code" href="uuid_2structs_8h.html">./structs.h</a>&quot;</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#if defined(NP_GOODIES_EXPORT_UUID) || defined(NP_GOODIES_EXPORT_UUID_ALL) || defined(NP_GOODIES_EXPORT_ALL)</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">    #define DLL_EXP_UUID NP_DLL_EXPORT</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#else</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">    #define DLL_EXP_UUID</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#define UUID_BYTE_LENGTH 16</span></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#define UUID_CHAR_COUNT (32 + 4)</span></div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>DLL_EXP_UUID <span class="keywordtype">char</span> *<a class="code hl_function" href="group__group__uuid.html#ga859f8385aebbeb391232e67aa09deb67">uuid_toString</a>(<span class="keyword">struct</span> <a class="code hl_struct" href="structuuid.html">uuid</a> *<a class="code hl_struct" href="structuuid.html">uuid</a>);</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="uuid_8h.html#af9deebc19c7cbf1bfd58fdbf9c17f354">   43</a></span><span class="preprocessor">#define uuid_compare(uuid_a, uuid_b) (memcmp(uuid_a, uuid_b, sizeof(struct uuid)))</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#if !defined(NP_ONCE_C99_GOODIES_UUID_COMMONS)</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#define NP_ONCE_C99_GOODIES_UUID_COMMONS</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;string.h&gt;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;wchar.h&gt;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;../platform.h&quot;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;<a class="code" href="uuid_2structs_8h.html">./structs.h</a>&quot;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#if defined(NP_GOODIES_EXPORT_UUID) || defined(NP_GOODIES_EXPORT_UUID_ALL) || defined(NP_GOODIES_EXPORT_ALL)</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">    #define DLL_EXP_UUID NP_DLL_EXPORT</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#else</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">    #define DLL_EXP_UUID</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#define UUID_BYTE_LENGTH 16</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#define UUID_CHAR_COUNT (32 + 4)</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="comment">// Unicode macros</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#if defined(NP_UNICODE)</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">    #define uuid_toString uuid_toStringW</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">#else</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="preprocessor">    #define uuid_toString uuid_toStringA</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>DLL_EXP_UUID <span class="keywordtype">char</span> *<a class="code hl_function" href="group__group__uuid.html#gabfccb7075be9e8854ea06b0b1c8acea9">uuid_toStringA</a>(<span class="keyword">struct</span> <a class="code hl_struct" href="structuuid.html">uuid</a> *<a class="code hl_struct" href="structuuid.html">uuid</a>);</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>DLL_EXP_UUID <span class="keywordtype">wchar_t</span> *<a class="code hl_function" href="group__group__uuid.html#ga4b291aaf5cf3e488c76000766796d572">uuid_toStringW</a>(<span class="keyword">struct</span> <a class="code hl_struct" href="structuuid.html">uuid</a> *<a class="code hl_struct" href="structuuid.html">uuid</a>);</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="uuid_8h.html#af9deebc19c7cbf1bfd58fdbf9c17f354">   53</a></span><span class="preprocessor">#define uuid_compare(uuid_a, uuid_b) (memcmp(uuid_a, uuid_b, sizeof(struct uuid)))</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>DLL_EXP_UUID <span class="keywordtype">wchar_t</span> *<a class="code hl_function" href="group__group__uuid.html#ga4b291aaf5cf3e488c76000766796d572">uuid_toStringW</a>(<span class="keyword">struct</span> <a class="code hl_struct" href="structuuid.html">uuid</a> *<a class="code hl_struct" href="structuuid.html">uuid</a>);</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="preprocessor">#endif </span><span class="comment">/* !NP_ONCE_C99_GOODIES_UUID_COMMONS */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="agroup__group__uuid_html_ga4b291aaf5cf3e488c76000766796d572"><div class="ttname"><a href="group__group__uuid.html#ga4b291aaf5cf3e488c76000766796d572">uuid_toStringW</a></div><div class="ttdeci">DLL_EXP_UUID wchar_t * uuid_toStringW(struct uuid *uuid)</div><div class="ttdef"><b>Definition:</b> uuid.c:69</div></div>
-<div class="ttc" id="agroup__group__uuid_html_ga859f8385aebbeb391232e67aa09deb67"><div class="ttname"><a href="group__group__uuid.html#ga859f8385aebbeb391232e67aa09deb67">uuid_toString</a></div><div class="ttdeci">DLL_EXP_UUID char * uuid_toString(struct uuid *uuid)</div><div class="ttdef"><b>Definition:</b> uuid.c:38</div></div>
-<div class="ttc" id="astructuuid_html"><div class="ttname"><a href="structuuid.html">uuid</a></div><div class="ttdef"><b>Definition:</b> uuid/structs.h:21</div></div>
+<div class="ttc" id="agroup__group__uuid_html_gabfccb7075be9e8854ea06b0b1c8acea9"><div class="ttname"><a href="group__group__uuid.html#gabfccb7075be9e8854ea06b0b1c8acea9">uuid_toStringA</a></div><div class="ttdeci">DLL_EXP_UUID char * uuid_toStringA(struct uuid *uuid)</div><div class="ttdef"><b>Definition:</b> uuid.c:38</div></div>
+<div class="ttc" id="astructuuid_html"><div class="ttname"><a href="structuuid.html">uuid</a></div><div class="ttdef"><b>Definition:</b> uuid/structs.h:22</div></div>
 <div class="ttc" id="auuid_2structs_8h_html"><div class="ttname"><a href="uuid_2structs_8h.html">structs.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -132,7 +144,7 @@ $(document).ready(function(){initNavTree('uuid_8h_source.html',''); initResizabl
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_7b7cd5aab2b2f3062d7eb7d46dfadcfe.html">uuid</a></li><li class="navelem"><a class="el" href="uuid_8h.html">uuid.h</a></li>
-    <li class="footer">Generated on Thu Mar 21 2024 21:43:15 for NibblePoker&#39;s Clang Goodies by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Sat Jul 13 2024 14:17:09 for NibblePoker&#39;s Clang Goodies by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>

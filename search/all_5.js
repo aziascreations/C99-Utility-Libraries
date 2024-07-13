@@ -10,6 +10,6 @@ var searchData=
   ['flag_5foption_5frepeatable_7',['FLAG_OPTION_REPEATABLE',['../group__arguments.html#ggaa649471cd3d4c37f9074a59733d42da0ab09438cab1ffb5864deb098cf8bb15ff',1,'flags.h']]],
   ['flag_5foption_5frequired_8',['FLAG_OPTION_REQUIRED',['../group__arguments.html#ggaa649471cd3d4c37f9074a59733d42da0a12a748c6cbe37e57d562caad475958c4',1,'flags.h']]],
   ['flag_5foption_5fstops_5fparsing_9',['FLAG_OPTION_STOPS_PARSING',['../group__arguments.html#ggaa649471cd3d4c37f9074a59733d42da0ad5a31da56fe54713af191ad652e9ab64',1,'flags.h']]],
-  ['flags_10',['flags',['../structarguments__option.html#a0d7458e36c31c2eb2c768142db571a9d',1,'arguments_option']]],
+  ['flags_10',['flags',['../structarguments__option__a.html#a71cde9e39610ea9036a612aa98584c89',1,'arguments_option_a::flags()'],['../structarguments__option__w.html#ada36b60a26cf3901556aa54b6a190117',1,'arguments_option_w::flags()']]],
   ['flags_2eh_11',['flags.h',['../flags_8h.html',1,'']]]
 ];

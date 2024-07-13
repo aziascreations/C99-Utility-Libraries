@@ -1,9 +1,7 @@
 var searchData=
 [
-  ['name_0',['name',['../structarguments__option.html#ad70af0ff5bb0f9ce3fc9b1c3940cbca0',1,'arguments_option::name()'],['../structarguments__verb.html#a476f60edf46962f507597d58d9d439f7',1,'arguments_verb::name()']]],
-  ['next_1',['next',['../structhashmap__chained__bucket.html#a383313fea61318352491107aa446a118',1,'hashmap_chained_bucket::next()'],['../structsingle__linked__list__node.html#ae39bb500a984113d37efed65379f82b0',1,'single_linked_list_node::next()'],['../structdouble__linked__list__node.html#aca4c3bd4fc8650326b4850dcbeca274f',1,'double_linked_list_node::next()']]],
-  ['nibblepoker_27s_20clang_20goodies_2',['NibblePoker&apos;s Clang Goodies',['../index.html',1,'']]],
-  ['node_5fdword1_3',['node_dword1',['../structuuid.html#a96e1f987f10ccda0e0ff1fa00da1b608',1,'uuid']]],
-  ['node_5fdword2_4',['node_dword2',['../structuuid.html#a832449f60e57d1c38bfd20037bee3010',1,'uuid']]],
-  ['node_5fdword3_5',['node_dword3',['../structuuid.html#ad0907a19191b7b59549b97d3a4ce164b',1,'uuid']]]
+  ['occurrences_0',['occurrences',['../structarguments__option__a.html#a7d304f827e7b936910b56136a2d22d02',1,'arguments_option_a::occurrences()'],['../structarguments__option__w.html#af6f2d3f62f075b31d84dcead6b2712b0',1,'arguments_option_w::occurrences()']]],
+  ['optiona_1',['OptionA',['../arguments_2structs_8h.html#a848c88f38e51de3635d245fe9cda213a',1,'structs.h']]],
+  ['options_2',['options',['../structarguments__verb__a.html#ada6506fdfb5d7333da4a4ae13d380ef1',1,'arguments_verb_a::options()'],['../structarguments__verb__w.html#aa863a9a2f7ff7769134bc5a4ac1b2cdd',1,'arguments_verb_w::options()']]],
+  ['optionw_3',['OptionW',['../arguments_2structs_8h.html#a9dc1443c892ac699a2fc999ef76f2e14',1,'structs.h']]]
 ];

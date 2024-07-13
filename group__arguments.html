@@ -27,7 +27,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign">
-   <div id="projectname">NibblePoker&#39;s Clang Goodies<span id="projectnumber">&#160;0.5.1</span>
+   <div id="projectname">NibblePoker&#39;s Clang Goodies<span id="projectnumber">&#160;1.0.0</span>
    </div>
    <div id="projectbrief">Small collection of utilities and libraries for C in order to simplify some development tasks.</div>
   </td>
@@ -123,7 +123,7 @@ Enumerations</h2></td></tr>
 &#160;&#160;<a class="el" href="group__arguments.html#gga8db04c5bff185ed40154146a665b8cdfaebba5ef2e99f82bccb03bf88adb40e5d">ERROR_ARGUMENTS_THIS_SHOULD_NOT_TRIGGER</a> = 50
 <br />
  }</td></tr>
-<tr class="memdesc:ga8db04c5bff185ed40154146a665b8cdf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Errors returned by the <a class="el" href="group__arguments.html#gaaee14d4d9c4ee0230701e2e8bdc17b80">args_parseArguments</a> function.  <a href="group__arguments.html#ga8db04c5bff185ed40154146a665b8cdf">More...</a><br /></td></tr>
+<tr class="memdesc:ga8db04c5bff185ed40154146a665b8cdf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Errors returned by the args_parseArguments function.  <a href="group__arguments.html#ga8db04c5bff185ed40154146a665b8cdf">More...</a><br /></td></tr>
 <tr class="separator:ga8db04c5bff185ed40154146a665b8cdf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaa649471cd3d4c37f9074a59733d42da0"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arguments.html#gaa649471cd3d4c37f9074a59733d42da0">EOptionFlags</a> { <br />
 &#160;&#160;<a class="el" href="group__arguments.html#ggaa649471cd3d4c37f9074a59733d42da0a131e2ffb9ec12aac41e94f4ca7109837">FLAG_OPTION_NONE</a> = 0b00000000
@@ -145,54 +145,80 @@ Enumerations</h2></td></tr>
 &#160;&#160;<a class="el" href="group__arguments.html#ggaa649471cd3d4c37f9074a59733d42da0ab2c9e850e260d0d364a253941ceb824a">FLAG_OPTION_ALLOW_VERBS_AFTER</a> = 0b01000000
 <br />
  }</td></tr>
-<tr class="memdesc:gaa649471cd3d4c37f9074a59733d42da0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Feature flags used when creating <a class="el" href="structarguments__option.html">Options</a>.  <a href="group__arguments.html#gaa649471cd3d4c37f9074a59733d42da0">More...</a><br /></td></tr>
+<tr class="memdesc:gaa649471cd3d4c37f9074a59733d42da0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Feature flags used when creating Options.  <a href="group__arguments.html#gaa649471cd3d4c37f9074a59733d42da0">More...</a><br /></td></tr>
 <tr class="separator:gaa649471cd3d4c37f9074a59733d42da0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga41472fb8e2d4fdb4ee86e77a3716addf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="arguments_2structs_8h.html#a4481b8afc45b3ad7ac92bafe3650c102">Verb</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arguments.html#ga41472fb8e2d4fdb4ee86e77a3716addf">args_createVerb</a> (np_args_char *verb, np_args_char *description)</td></tr>
-<tr class="separator:ga41472fb8e2d4fdb4ee86e77a3716addf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac6ad712f91a4bc7027ff9ae2044268d9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="arguments_2structs_8h.html#aa32a72dced492864660882173e24c7b9">Option</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arguments.html#gac6ad712f91a4bc7027ff9ae2044268d9">args_createOption</a> (np_args_char token, np_args_char *name, np_args_char *description, OptionFlags flags)</td></tr>
-<tr class="separator:gac6ad712f91a4bc7027ff9ae2044268d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad255e281a0d0b09244e1a28522577776"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arguments.html#gad255e281a0d0b09244e1a28522577776">args_freeVerb</a> (<a class="el" href="arguments_2structs_8h.html#a4481b8afc45b3ad7ac92bafe3650c102">Verb</a> *verb)</td></tr>
+<tr class="memitem:ga64e1ac0885c3ac1f9b747df9e9f9d6ce"><td class="memItemLeft" align="right" valign="top"><a class="el" href="arguments_2structs_8h.html#abc2c11f0fd6add1fa0a67aa986f266f4">VerbA</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arguments.html#ga64e1ac0885c3ac1f9b747df9e9f9d6ce">args_createVerbA</a> (char *verb, char *description)</td></tr>
+<tr class="separator:ga64e1ac0885c3ac1f9b747df9e9f9d6ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab1d41ef72ff49442efd8a0f1473273ca"><td class="memItemLeft" align="right" valign="top"><a class="el" href="arguments_2structs_8h.html#a5f983860d018700a8316eca485a31c53">VerbW</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arguments.html#gab1d41ef72ff49442efd8a0f1473273ca">args_createVerbW</a> (wchar_t *verb, wchar_t *description)</td></tr>
+<tr class="separator:gab1d41ef72ff49442efd8a0f1473273ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6268ec539e2350a872e72c6381894dcd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="arguments_2structs_8h.html#a848c88f38e51de3635d245fe9cda213a">OptionA</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arguments.html#ga6268ec539e2350a872e72c6381894dcd">args_createOptionA</a> (char token, char *name, char *description, OptionFlags flags)</td></tr>
+<tr class="separator:ga6268ec539e2350a872e72c6381894dcd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga16a2fe8045cdfb4fdfa2360e62be93a3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="arguments_2structs_8h.html#a9dc1443c892ac699a2fc999ef76f2e14">OptionW</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arguments.html#ga16a2fe8045cdfb4fdfa2360e62be93a3">args_createOptionW</a> (wchar_t token, wchar_t *name, wchar_t *description, OptionFlags flags)</td></tr>
+<tr class="separator:ga16a2fe8045cdfb4fdfa2360e62be93a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad255e281a0d0b09244e1a28522577776"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arguments.html#gad255e281a0d0b09244e1a28522577776">args_freeVerb</a> (Verb *verb)</td></tr>
 <tr class="separator:gad255e281a0d0b09244e1a28522577776"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga8064b380f7a20225a98750a6856c07fb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arguments.html#ga8064b380f7a20225a98750a6856c07fb">args_freeOption</a> (<a class="el" href="arguments_2structs_8h.html#aa32a72dced492864660882173e24c7b9">Option</a> *option)</td></tr>
+<tr class="memitem:ga8064b380f7a20225a98750a6856c07fb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arguments.html#ga8064b380f7a20225a98750a6856c07fb">args_freeOption</a> (Option *option)</td></tr>
 <tr class="separator:ga8064b380f7a20225a98750a6856c07fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga8bc414c393d7697a1d10463a10ee2dee"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arguments.html#ga8bc414c393d7697a1d10463a10ee2dee">args_registerVerb</a> (<a class="el" href="arguments_2structs_8h.html#a4481b8afc45b3ad7ac92bafe3650c102">Verb</a> *registeredVerb, <a class="el" href="arguments_2structs_8h.html#a4481b8afc45b3ad7ac92bafe3650c102">Verb</a> *parentVerb)</td></tr>
-<tr class="separator:ga8bc414c393d7697a1d10463a10ee2dee"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaca7dde29ea9201a35e03af41ce31a791"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arguments.html#gaca7dde29ea9201a35e03af41ce31a791">args_registerOption</a> (<a class="el" href="arguments_2structs_8h.html#aa32a72dced492864660882173e24c7b9">Option</a> *registeredOption, <a class="el" href="arguments_2structs_8h.html#a4481b8afc45b3ad7ac92bafe3650c102">Verb</a> *parentVerb)</td></tr>
-<tr class="separator:gaca7dde29ea9201a35e03af41ce31a791"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab5ec926cb7fb7569ba177445b43df2cf"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arguments.html#gab5ec926cb7fb7569ba177445b43df2cf">args_registerOptionRecursively</a> (<a class="el" href="arguments_2structs_8h.html#aa32a72dced492864660882173e24c7b9">Option</a> *registeredOption, <a class="el" href="arguments_2structs_8h.html#a4481b8afc45b3ad7ac92bafe3650c102">Verb</a> *rootVerb)</td></tr>
-<tr class="separator:gab5ec926cb7fb7569ba177445b43df2cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga5e81a5906d2cd178653eb7dbd9574186"><td class="memItemLeft" align="right" valign="top"><a class="el" href="arguments_2structs_8h.html#a4481b8afc45b3ad7ac92bafe3650c102">Verb</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arguments.html#ga5e81a5906d2cd178653eb7dbd9574186">args_getParentVerb</a> (<a class="el" href="arguments_2structs_8h.html#a4481b8afc45b3ad7ac92bafe3650c102">Verb</a> *verb)</td></tr>
-<tr class="separator:ga5e81a5906d2cd178653eb7dbd9574186"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga58d207f517a4087895fa927e5446e1b9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="arguments_2structs_8h.html#aa32a72dced492864660882173e24c7b9">Option</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arguments.html#ga58d207f517a4087895fa927e5446e1b9">args_getDefaultOption</a> (<a class="el" href="arguments_2structs_8h.html#a4481b8afc45b3ad7ac92bafe3650c102">Verb</a> *verb)</td></tr>
+<tr class="memitem:gaeda99b73bd91cabda63fc17af8aee663"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arguments.html#gaeda99b73bd91cabda63fc17af8aee663">args_registerVerbA</a> (<a class="el" href="arguments_2structs_8h.html#abc2c11f0fd6add1fa0a67aa986f266f4">VerbA</a> *registeredVerb, <a class="el" href="arguments_2structs_8h.html#abc2c11f0fd6add1fa0a67aa986f266f4">VerbA</a> *parentVerb)</td></tr>
+<tr class="separator:gaeda99b73bd91cabda63fc17af8aee663"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa76114ce983ec1cddd2776efca711170"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arguments.html#gaa76114ce983ec1cddd2776efca711170">args_registerVerbW</a> (<a class="el" href="arguments_2structs_8h.html#a5f983860d018700a8316eca485a31c53">VerbW</a> *registeredVerb, <a class="el" href="arguments_2structs_8h.html#a5f983860d018700a8316eca485a31c53">VerbW</a> *parentVerb)</td></tr>
+<tr class="separator:gaa76114ce983ec1cddd2776efca711170"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga51a1cb8f8220b4bed95cef4032136766"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arguments.html#ga51a1cb8f8220b4bed95cef4032136766">args_registerOptionA</a> (<a class="el" href="arguments_2structs_8h.html#a848c88f38e51de3635d245fe9cda213a">OptionA</a> *registeredOption, <a class="el" href="arguments_2structs_8h.html#abc2c11f0fd6add1fa0a67aa986f266f4">VerbA</a> *parentVerb)</td></tr>
+<tr class="separator:ga51a1cb8f8220b4bed95cef4032136766"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9bd73ae88c21638fc0bcd321346128e3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arguments.html#ga9bd73ae88c21638fc0bcd321346128e3">args_registerOptionW</a> (<a class="el" href="arguments_2structs_8h.html#a9dc1443c892ac699a2fc999ef76f2e14">OptionW</a> *registeredOption, <a class="el" href="arguments_2structs_8h.html#a5f983860d018700a8316eca485a31c53">VerbW</a> *parentVerb)</td></tr>
+<tr class="separator:ga9bd73ae88c21638fc0bcd321346128e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga76260244b95e795fc4ad87b4b8682833"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arguments.html#ga76260244b95e795fc4ad87b4b8682833">args_registerOptionRecursivelyA</a> (<a class="el" href="arguments_2structs_8h.html#a848c88f38e51de3635d245fe9cda213a">OptionA</a> *registeredOption, <a class="el" href="arguments_2structs_8h.html#abc2c11f0fd6add1fa0a67aa986f266f4">VerbA</a> *rootVerb)</td></tr>
+<tr class="separator:ga76260244b95e795fc4ad87b4b8682833"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2c90980eb90d955f6b341b11cdcc2244"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arguments.html#ga2c90980eb90d955f6b341b11cdcc2244">args_registerOptionRecursivelyW</a> (<a class="el" href="arguments_2structs_8h.html#a9dc1443c892ac699a2fc999ef76f2e14">OptionW</a> *registeredOption, <a class="el" href="arguments_2structs_8h.html#a5f983860d018700a8316eca485a31c53">VerbW</a> *rootVerb)</td></tr>
+<tr class="separator:ga2c90980eb90d955f6b341b11cdcc2244"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gacea934822bb604d81f8e94042bc4e882"><td class="memItemLeft" align="right" valign="top"><a class="el" href="arguments_2structs_8h.html#abc2c11f0fd6add1fa0a67aa986f266f4">VerbA</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arguments.html#gacea934822bb604d81f8e94042bc4e882">args_getParentVerbA</a> (<a class="el" href="arguments_2structs_8h.html#abc2c11f0fd6add1fa0a67aa986f266f4">VerbA</a> *verb)</td></tr>
+<tr class="separator:gacea934822bb604d81f8e94042bc4e882"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga44196e070617ec5131f34e1e8b8a6b79"><td class="memItemLeft" align="right" valign="top"><a class="el" href="arguments_2structs_8h.html#a5f983860d018700a8316eca485a31c53">VerbW</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arguments.html#ga44196e070617ec5131f34e1e8b8a6b79">args_getParentVerbW</a> (<a class="el" href="arguments_2structs_8h.html#a5f983860d018700a8316eca485a31c53">VerbW</a> *verb)</td></tr>
+<tr class="separator:ga44196e070617ec5131f34e1e8b8a6b79"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga58d207f517a4087895fa927e5446e1b9"><td class="memItemLeft" align="right" valign="top">Option *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arguments.html#ga58d207f517a4087895fa927e5446e1b9">args_getDefaultOption</a> (Verb *verb)</td></tr>
 <tr class="separator:ga58d207f517a4087895fa927e5446e1b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab01a45d4e23c38ba5d337f35972a05ef"><td class="memItemLeft" align="right" valign="top"><a class="el" href="arguments_2structs_8h.html#aa32a72dced492864660882173e24c7b9">Option</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arguments.html#gab01a45d4e23c38ba5d337f35972a05ef">args_getOptionByToken</a> (<a class="el" href="arguments_2structs_8h.html#a4481b8afc45b3ad7ac92bafe3650c102">Verb</a> *verb, np_args_char desiredToken)</td></tr>
-<tr class="separator:gab01a45d4e23c38ba5d337f35972a05ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa3b0c6d3c8e6d02877ad76433d035555"><td class="memItemLeft" align="right" valign="top"><a class="el" href="arguments_2structs_8h.html#aa32a72dced492864660882173e24c7b9">Option</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arguments.html#gaa3b0c6d3c8e6d02877ad76433d035555">args_getOptionByName</a> (<a class="el" href="arguments_2structs_8h.html#a4481b8afc45b3ad7ac92bafe3650c102">Verb</a> *verb, np_args_char *desiredName)</td></tr>
-<tr class="separator:gaa3b0c6d3c8e6d02877ad76433d035555"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga23c32d8b08a67221318ee87109086bc5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="arguments_2structs_8h.html#a4481b8afc45b3ad7ac92bafe3650c102">Verb</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arguments.html#ga23c32d8b08a67221318ee87109086bc5">args_getSubVerbByName</a> (<a class="el" href="arguments_2structs_8h.html#a4481b8afc45b3ad7ac92bafe3650c102">Verb</a> *parentVerb, np_args_char *desiredName)</td></tr>
-<tr class="separator:ga23c32d8b08a67221318ee87109086bc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga152e8a949c8f082641b2b79b6c709833"><td class="memItemLeft" align="right" valign="top"><a class="el" href="arguments_2structs_8h.html#aa32a72dced492864660882173e24c7b9">Option</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arguments.html#ga152e8a949c8f082641b2b79b6c709833">args_getRelevantDefaultOption</a> (<a class="el" href="arguments_2structs_8h.html#a4481b8afc45b3ad7ac92bafe3650c102">Verb</a> *parentVerb)</td></tr>
+<tr class="memitem:ga2befb89122d7286168c764b95512ee6c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="arguments_2structs_8h.html#a848c88f38e51de3635d245fe9cda213a">OptionA</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arguments.html#ga2befb89122d7286168c764b95512ee6c">args_getOptionByTokenA</a> (<a class="el" href="arguments_2structs_8h.html#abc2c11f0fd6add1fa0a67aa986f266f4">VerbA</a> *verb, char desiredToken)</td></tr>
+<tr class="separator:ga2befb89122d7286168c764b95512ee6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1c2f97fee41772942beb91cf501874b9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="arguments_2structs_8h.html#a9dc1443c892ac699a2fc999ef76f2e14">OptionW</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arguments.html#ga1c2f97fee41772942beb91cf501874b9">args_getOptionByTokenW</a> (<a class="el" href="arguments_2structs_8h.html#a5f983860d018700a8316eca485a31c53">VerbW</a> *verb, wchar_t desiredToken)</td></tr>
+<tr class="separator:ga1c2f97fee41772942beb91cf501874b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2291003c78856ad0e7730d0615a78adb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="arguments_2structs_8h.html#a848c88f38e51de3635d245fe9cda213a">OptionA</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arguments.html#ga2291003c78856ad0e7730d0615a78adb">args_getOptionByNameA</a> (<a class="el" href="arguments_2structs_8h.html#abc2c11f0fd6add1fa0a67aa986f266f4">VerbA</a> *verb, char *desiredName)</td></tr>
+<tr class="separator:ga2291003c78856ad0e7730d0615a78adb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0a2e0bcefcae662a76867043e32094f3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="arguments_2structs_8h.html#a9dc1443c892ac699a2fc999ef76f2e14">OptionW</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arguments.html#ga0a2e0bcefcae662a76867043e32094f3">args_getOptionByNameW</a> (<a class="el" href="arguments_2structs_8h.html#a5f983860d018700a8316eca485a31c53">VerbW</a> *verb, wchar_t *desiredName)</td></tr>
+<tr class="separator:ga0a2e0bcefcae662a76867043e32094f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab706b776080faaeb05262a3ed9138589"><td class="memItemLeft" align="right" valign="top"><a class="el" href="arguments_2structs_8h.html#abc2c11f0fd6add1fa0a67aa986f266f4">VerbA</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arguments.html#gab706b776080faaeb05262a3ed9138589">args_getSubVerbByNameA</a> (<a class="el" href="arguments_2structs_8h.html#abc2c11f0fd6add1fa0a67aa986f266f4">VerbA</a> *parentVerb, char *desiredName)</td></tr>
+<tr class="separator:gab706b776080faaeb05262a3ed9138589"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga62bf7ce7b163a6ad5b3d031cbb8bd963"><td class="memItemLeft" align="right" valign="top"><a class="el" href="arguments_2structs_8h.html#a5f983860d018700a8316eca485a31c53">VerbW</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arguments.html#ga62bf7ce7b163a6ad5b3d031cbb8bd963">args_getSubVerbByNameW</a> (<a class="el" href="arguments_2structs_8h.html#a5f983860d018700a8316eca485a31c53">VerbW</a> *parentVerb, wchar_t *desiredName)</td></tr>
+<tr class="separator:ga62bf7ce7b163a6ad5b3d031cbb8bd963"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga152e8a949c8f082641b2b79b6c709833"><td class="memItemLeft" align="right" valign="top">Option *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arguments.html#ga152e8a949c8f082641b2b79b6c709833">args_getRelevantDefaultOption</a> (Verb *parentVerb)</td></tr>
 <tr class="separator:ga152e8a949c8f082641b2b79b6c709833"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa5f8226cb47b255c3a931942e692dae5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arguments.html#gaa5f8226cb47b255c3a931942e692dae5">args_addValueToOption</a> (<a class="el" href="arguments_2structs_8h.html#aa32a72dced492864660882173e24c7b9">Option</a> *option, np_args_char *addedValue)</td></tr>
-<tr class="separator:gaa5f8226cb47b255c3a931942e692dae5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga0b41734ecd068e33aee62c4ad8df27e4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arguments.html#ga0b41734ecd068e33aee62c4ad8df27e4">args_isVerbAlreadyRegistered</a> (<a class="el" href="arguments_2structs_8h.html#a4481b8afc45b3ad7ac92bafe3650c102">Verb</a> *subVerb, <a class="el" href="arguments_2structs_8h.html#a4481b8afc45b3ad7ac92bafe3650c102">Verb</a> *parentVerb)</td></tr>
-<tr class="separator:ga0b41734ecd068e33aee62c4ad8df27e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaae3e319f94024693ba76917c80dd0ae5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arguments.html#gaae3e319f94024693ba76917c80dd0ae5">args_isOptionAlreadyRegistered</a> (<a class="el" href="arguments_2structs_8h.html#aa32a72dced492864660882173e24c7b9">Option</a> *option, <a class="el" href="arguments_2structs_8h.html#a4481b8afc45b3ad7ac92bafe3650c102">Verb</a> *parentVerb)</td></tr>
-<tr class="separator:gaae3e319f94024693ba76917c80dd0ae5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaaee14d4d9c4ee0230701e2e8bdc17b80"><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="group__arguments.html#ga8db04c5bff185ed40154146a665b8cdf">EArgumentParserErrors</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arguments.html#gaaee14d4d9c4ee0230701e2e8bdc17b80">args_parseArguments</a> (<a class="el" href="arguments_2structs_8h.html#a4481b8afc45b3ad7ac92bafe3650c102">Verb</a> *rootVerb, np_args_char *arguments[], int startIndex, int endIndex, <a class="el" href="arguments_2structs_8h.html#a4481b8afc45b3ad7ac92bafe3650c102">Verb</a> **pRelevantVerb)</td></tr>
-<tr class="separator:gaaee14d4d9c4ee0230701e2e8bdc17b80"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9ec184f675791a6615152feff929bf40"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arguments.html#ga9ec184f675791a6615152feff929bf40">args_addValueToOptionA</a> (<a class="el" href="arguments_2structs_8h.html#a848c88f38e51de3635d245fe9cda213a">OptionA</a> *option, char *addedValue)</td></tr>
+<tr class="separator:ga9ec184f675791a6615152feff929bf40"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaabc7a4f66679d14cc5fe4c058a807ccb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arguments.html#gaabc7a4f66679d14cc5fe4c058a807ccb">args_addValueToOptionW</a> (<a class="el" href="arguments_2structs_8h.html#a9dc1443c892ac699a2fc999ef76f2e14">OptionW</a> *option, wchar_t *addedValue)</td></tr>
+<tr class="separator:gaabc7a4f66679d14cc5fe4c058a807ccb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabdbfd321339fc1238c0d273993167f6b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arguments.html#gabdbfd321339fc1238c0d273993167f6b">args_isVerbAlreadyRegisteredA</a> (<a class="el" href="arguments_2structs_8h.html#abc2c11f0fd6add1fa0a67aa986f266f4">VerbA</a> *subVerb, <a class="el" href="arguments_2structs_8h.html#abc2c11f0fd6add1fa0a67aa986f266f4">VerbA</a> *parentVerb)</td></tr>
+<tr class="separator:gabdbfd321339fc1238c0d273993167f6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga52fac659b01f67e7ba840184ca72ea6a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arguments.html#ga52fac659b01f67e7ba840184ca72ea6a">args_isVerbAlreadyRegisteredW</a> (<a class="el" href="arguments_2structs_8h.html#a5f983860d018700a8316eca485a31c53">VerbW</a> *subVerb, <a class="el" href="arguments_2structs_8h.html#a5f983860d018700a8316eca485a31c53">VerbW</a> *parentVerb)</td></tr>
+<tr class="separator:ga52fac659b01f67e7ba840184ca72ea6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf6c17b96f54f3753c3721eccd91dc712"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arguments.html#gaf6c17b96f54f3753c3721eccd91dc712">args_isOptionAlreadyRegisteredA</a> (<a class="el" href="arguments_2structs_8h.html#a848c88f38e51de3635d245fe9cda213a">OptionA</a> *option, <a class="el" href="arguments_2structs_8h.html#abc2c11f0fd6add1fa0a67aa986f266f4">VerbA</a> *parentVerb)</td></tr>
+<tr class="separator:gaf6c17b96f54f3753c3721eccd91dc712"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0f90df68507aa805eeb423276aaab6e5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arguments.html#ga0f90df68507aa805eeb423276aaab6e5">args_isOptionAlreadyRegisteredW</a> (<a class="el" href="arguments_2structs_8h.html#a9dc1443c892ac699a2fc999ef76f2e14">OptionW</a> *option, <a class="el" href="arguments_2structs_8h.html#a5f983860d018700a8316eca485a31c53">VerbW</a> *parentVerb)</td></tr>
+<tr class="separator:ga0f90df68507aa805eeb423276aaab6e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga83dd56433f5ee02564fee1e8aecfaeec"><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="group__arguments.html#ga8db04c5bff185ed40154146a665b8cdf">EArgumentParserErrors</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arguments.html#ga83dd56433f5ee02564fee1e8aecfaeec">args_parseArgumentsA</a> (<a class="el" href="arguments_2structs_8h.html#abc2c11f0fd6add1fa0a67aa986f266f4">VerbA</a> *rootVerb, char *arguments[], int startIndex, int endIndex, <a class="el" href="arguments_2structs_8h.html#abc2c11f0fd6add1fa0a67aa986f266f4">VerbA</a> **pRelevantVerb)</td></tr>
+<tr class="separator:ga83dd56433f5ee02564fee1e8aecfaeec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga448c2ec36479043d0f51d6941ce74435"><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="group__arguments.html#ga8db04c5bff185ed40154146a665b8cdf">EArgumentParserErrors</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__arguments.html#ga448c2ec36479043d0f51d6941ce74435">args_parseArgumentsW</a> (<a class="el" href="arguments_2structs_8h.html#a5f983860d018700a8316eca485a31c53">VerbW</a> *rootVerb, wchar_t *arguments[], int startIndex, int endIndex, <a class="el" href="arguments_2structs_8h.html#a5f983860d018700a8316eca485a31c53">VerbW</a> **pRelevantVerb)</td></tr>
+<tr class="separator:ga448c2ec36479043d0f51d6941ce74435"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p >TODO: Simple module description</p>
 <p ><b>Warning:</b><br  />
- Any reference to a <em>sub-verb</em> actually refers to a regular <a class="el" href="structarguments__verb.html">Verb</a> which can be considered as the another verb's children.</p>
+ Any reference to a <em>sub-verb</em> actually refers to a regular Verb which can be considered as the another verb's children.</p>
 <p >Any reference to <code>np_args_char</code> can be the equivalent of <code>char</code> or <code>wchar_t</code> depending on 2 compiler constants.<br  />
  These constants, <code>NP_WIN32</code> and <code>NP_ARGS_WCHAR</code>, if both used, will make all functions and structures in this module use <code>wchar_t</code> strings instead of <code>char</code> ones.<br  />
  This features allows you to easily handle unicode characters and emojis in launch arguments on Windows platforms.</p>
-<p >These macro-ed types and functions are defined in <a class="el" href="macros_8h.html">arguments/macros.h</a>.<br  />
+<p >These macro-ed types and functions are defined in arguments/macros.h.<br  />
  This header also defines a bunch of macros for string-related operations done in this module.<br  />
  They shouldn't be used outside of it !</p>
 <p >If you want an example of this feature on a Windows app, you should check <a href="https://github.com/aziascreations/C99-Win32-Wifi-Utility">aziascreations/C99-Win32-Wifi-Utility</a> on GitHub. </p>
@@ -209,11 +235,11 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Errors returned by the <a class="el" href="group__arguments.html#gaaee14d4d9c4ee0230701e2e8bdc17b80">args_parseArguments</a> function. </p>
+<p>Errors returned by the args_parseArguments function. </p>
 <p ><b>Warning:</b><br  />
  Any function or variables that will hold one of this enum's member should be typed as <code>ArgumentParserError</code> or <code>uint8_t</code> !<br  />
  The custom <code>ArgumentParserError</code> type is defined in <a class="el" href="types_8h.html">arguments/types.h</a>.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="group__arguments.html#gaaee14d4d9c4ee0230701e2e8bdc17b80">args_parseArguments</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd>args_parseArguments </dd></dl>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="gga8db04c5bff185ed40154146a665b8cdfae65278ef5f440849d69a890acc9461a1" name="gga8db04c5bff185ed40154146a665b8cdfae65278ef5f440849d69a890acc9461a1"></a>ERROR_ARGUMENTS_NONE&#160;</td><td class="fielddoc"><p >Indicates that the parser encountered no error. </p>
 </td></tr>
@@ -221,18 +247,18 @@ Functions</h2></td></tr>
 </td></tr>
 <tr><td class="fieldname"><a id="gga8db04c5bff185ed40154146a665b8cdfa3c213242424f75ccd18f804b8bcc69b9" name="gga8db04c5bff185ed40154146a665b8cdfa3c213242424f75ccd18f804b8bcc69b9"></a>ERROR_ARGUMENTS_UNKNOWN_OPTION&#160;</td><td class="fielddoc"><p >Indicates that an unknown option was given as a launch argument. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="gga8db04c5bff185ed40154146a665b8cdfaff4ff50025372b6b1f53d2e57381fa5b" name="gga8db04c5bff185ed40154146a665b8cdfaff4ff50025372b6b1f53d2e57381fa5b"></a>ERROR_ARGUMENTS_NO_DEFAULT_FOUND&#160;</td><td class="fielddoc"><p >Indicates that a default <a class="el" href="structarguments__option.html">Option</a> with the <code>FLAG_OPTION_DEFAULT</code> flag was needed but couldn't be found in the current <a class="el" href="structarguments__verb.html">Verb</a>.<br  />
+<tr><td class="fieldname"><a id="gga8db04c5bff185ed40154146a665b8cdfaff4ff50025372b6b1f53d2e57381fa5b" name="gga8db04c5bff185ed40154146a665b8cdfaff4ff50025372b6b1f53d2e57381fa5b"></a>ERROR_ARGUMENTS_NO_DEFAULT_FOUND&#160;</td><td class="fielddoc"><p >Indicates that a default Option with the <code>FLAG_OPTION_DEFAULT</code> flag was needed but couldn't be found in the current Verb.<br  />
  This error is likely caused by improperly formatted launch arguments. </p>
 </td></tr>
 <tr><td class="fieldname"><a id="gga8db04c5bff185ed40154146a665b8cdfae3ced8cd0805aa77843944aad6d55bc1" name="gga8db04c5bff185ed40154146a665b8cdfae3ced8cd0805aa77843944aad6d55bc1"></a>ERROR_ARGUMENTS_DUAL_END_OF_OPTIONS&#160;</td><td class="fielddoc"><p >Indicates that the <code>--</code> token was encountered more than once. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="gga8db04c5bff185ed40154146a665b8cdfa4c77c783f52981989c2532c19cdc9054" name="gga8db04c5bff185ed40154146a665b8cdfa4c77c783f52981989c2532c19cdc9054"></a>ERROR_ARGUMENTS_SINGLE_OPTION_REUSED&#160;</td><td class="fielddoc"><p >Indicates that an <a class="el" href="structarguments__option.html">Option</a> without the <code>OPTION_FLAG_REPEATABLE</code> flag was found more than once in the launch arguments. </p>
+<tr><td class="fieldname"><a id="gga8db04c5bff185ed40154146a665b8cdfa4c77c783f52981989c2532c19cdc9054" name="gga8db04c5bff185ed40154146a665b8cdfa4c77c783f52981989c2532c19cdc9054"></a>ERROR_ARGUMENTS_SINGLE_OPTION_REUSED&#160;</td><td class="fielddoc"><p >Indicates that an Option without the <code>OPTION_FLAG_REPEATABLE</code> flag was found more than once in the launch arguments. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="gga8db04c5bff185ed40154146a665b8cdfa47a06b9dbc5bb8a4f6bb88b51b0f0710" name="gga8db04c5bff185ed40154146a665b8cdfa47a06b9dbc5bb8a4f6bb88b51b0f0710"></a>ERROR_ARGUMENTS_NO_ARGUMENTS_LEFT&#160;</td><td class="fielddoc"><p >Indicates that an <a class="el" href="structarguments__option.html">Option</a> that required a value couldn't be parsed since the parser reached the end of the parsable launch arguments. </p>
+<tr><td class="fieldname"><a id="gga8db04c5bff185ed40154146a665b8cdfa47a06b9dbc5bb8a4f6bb88b51b0f0710" name="gga8db04c5bff185ed40154146a665b8cdfa47a06b9dbc5bb8a4f6bb88b51b0f0710"></a>ERROR_ARGUMENTS_NO_ARGUMENTS_LEFT&#160;</td><td class="fielddoc"><p >Indicates that an Option that required a value couldn't be parsed since the parser reached the end of the parsable launch arguments. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="gga8db04c5bff185ed40154146a665b8cdfaac4bec5fd4014f09a327277bccb8ce7f" name="gga8db04c5bff185ed40154146a665b8cdfaac4bec5fd4014f09a327277bccb8ce7f"></a>ERROR_ARGUMENTS_REQUIRED_OPTION_UNUSED&#160;</td><td class="fielddoc"><p >Indicates that an option with the <a class="el" href="group__arguments.html#ggaa649471cd3d4c37f9074a59733d42da0a12a748c6cbe37e57d562caad475958c4">FLAG_OPTION_REQUIRED</a> flag wasn't given when ont of its parent <a class="el" href="structarguments__verb.html">Verb</a> was used. </p>
+<tr><td class="fieldname"><a id="gga8db04c5bff185ed40154146a665b8cdfaac4bec5fd4014f09a327277bccb8ce7f" name="gga8db04c5bff185ed40154146a665b8cdfaac4bec5fd4014f09a327277bccb8ce7f"></a>ERROR_ARGUMENTS_REQUIRED_OPTION_UNUSED&#160;</td><td class="fielddoc"><p >Indicates that an option with the <a class="el" href="group__arguments.html#ggaa649471cd3d4c37f9074a59733d42da0a12a748c6cbe37e57d562caad475958c4">FLAG_OPTION_REQUIRED</a> flag wasn't given when ont of its parent Verb was used. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="gga8db04c5bff185ed40154146a665b8cdfa80b456be38d6b7e38dce54f904770642" name="gga8db04c5bff185ed40154146a665b8cdfa80b456be38d6b7e38dce54f904770642"></a>ERROR_ARGUMENTS_OPTION_HAS_VALUE_AND_MORE_SHORTS&#160;</td><td class="fielddoc"><p >Indicates that an <a class="el" href="structarguments__option.html">Option</a> that requires a value was given as its token in a multi-token group but wasn't located at the end of said group. </p>
+<tr><td class="fieldname"><a id="gga8db04c5bff185ed40154146a665b8cdfa80b456be38d6b7e38dce54f904770642" name="gga8db04c5bff185ed40154146a665b8cdfa80b456be38d6b7e38dce54f904770642"></a>ERROR_ARGUMENTS_OPTION_HAS_VALUE_AND_MORE_SHORTS&#160;</td><td class="fielddoc"><p >Indicates that an Option that requires a value was given as its token in a multi-token group but wasn't located at the end of said group. </p>
 </td></tr>
 <tr><td class="fieldname"><a id="gga8db04c5bff185ed40154146a665b8cdfaebba5ef2e99f82bccb03bf88adb40e5d" name="gga8db04c5bff185ed40154146a665b8cdfaebba5ef2e99f82bccb03bf88adb40e5d"></a>ERROR_ARGUMENTS_THIS_SHOULD_NOT_TRIGGER&#160;</td><td class="fielddoc"><p >Special error that should never be returned.<br  />
  It is used in duplicated checks which should never fail if the one in which this is present is reached. </p>
@@ -253,34 +279,34 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Feature flags used when creating <a class="el" href="structarguments__option.html">Options</a>. </p>
+<p>Feature flags used when creating Options. </p>
 <p ><b>Warning:</b><br  />
  Any function or variables that will hold one of this enum's member should be typed as <code>OptionFlags</code> or <code>uint8_t</code> !<br  />
  The custom <code>OptionFlags</code> type is defined in <a class="el" href="types_8h.html">arguments/types.h</a>.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="group__arguments.html#gac6ad712f91a4bc7027ff9ae2044268d9">args_createOption</a> </dd>
+<dl class="section see"><dt>See also</dt><dd>args_createOption </dd>
 <dd>
-<a class="el" href="structarguments__option.html#a0d7458e36c31c2eb2c768142db571a9d">arguments_option::flags</a> </dd></dl>
+arguments_option::flags </dd></dl>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ggaa649471cd3d4c37f9074a59733d42da0a131e2ffb9ec12aac41e94f4ca7109837" name="ggaa649471cd3d4c37f9074a59733d42da0a131e2ffb9ec12aac41e94f4ca7109837"></a>FLAG_OPTION_NONE&#160;</td><td class="fielddoc"><p >Used by default to indicate that the <a class="el" href="structarguments__option.html">Option</a> has no special features. </p>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ggaa649471cd3d4c37f9074a59733d42da0a131e2ffb9ec12aac41e94f4ca7109837" name="ggaa649471cd3d4c37f9074a59733d42da0a131e2ffb9ec12aac41e94f4ca7109837"></a>FLAG_OPTION_NONE&#160;</td><td class="fielddoc"><p >Used by default to indicate that the Option has no special features. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ggaa649471cd3d4c37f9074a59733d42da0a80f32661788828a617a8920d1afb98c5" name="ggaa649471cd3d4c37f9074a59733d42da0a80f32661788828a617a8920d1afb98c5"></a>FLAG_OPTION_DEFAULT&#160;</td><td class="fielddoc"><p >Indicates that an <a class="el" href="structarguments__option.html">Option</a> should be a default one, meaning that it can be used without using the short and long argument.<br  />
+<tr><td class="fieldname"><a id="ggaa649471cd3d4c37f9074a59733d42da0a80f32661788828a617a8920d1afb98c5" name="ggaa649471cd3d4c37f9074a59733d42da0a80f32661788828a617a8920d1afb98c5"></a>FLAG_OPTION_DEFAULT&#160;</td><td class="fielddoc"><p >Indicates that an Option should be a default one, meaning that it can be used without using the short and long argument.<br  />
  Its usage will be automatically detected in the parser. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ggaa649471cd3d4c37f9074a59733d42da0aaccc263578709d6f625eebac822be815" name="ggaa649471cd3d4c37f9074a59733d42da0aaccc263578709d6f625eebac822be815"></a>FLAG_OPTION_HAS_VALUE&#160;</td><td class="fielddoc"><p >Indicates that an <a class="el" href="structarguments__option.html">Option</a> can have at least one value. </p>
+<tr><td class="fieldname"><a id="ggaa649471cd3d4c37f9074a59733d42da0aaccc263578709d6f625eebac822be815" name="ggaa649471cd3d4c37f9074a59733d42da0aaccc263578709d6f625eebac822be815"></a>FLAG_OPTION_HAS_VALUE&#160;</td><td class="fielddoc"><p >Indicates that an Option can have at least one value. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ggaa649471cd3d4c37f9074a59733d42da0ab09438cab1ffb5864deb098cf8bb15ff" name="ggaa649471cd3d4c37f9074a59733d42da0ab09438cab1ffb5864deb098cf8bb15ff"></a>FLAG_OPTION_REPEATABLE&#160;</td><td class="fielddoc"><p >Indicates that an <a class="el" href="structarguments__option.html">Option</a> can be used multiple time with or without a value.<br  />
- The usage count can be found in <a class="el" href="structarguments__option.html#abe18f03312feae68d08205cdf980abfc">arguments_option::occurrences</a>. </p>
+<tr><td class="fieldname"><a id="ggaa649471cd3d4c37f9074a59733d42da0ab09438cab1ffb5864deb098cf8bb15ff" name="ggaa649471cd3d4c37f9074a59733d42da0ab09438cab1ffb5864deb098cf8bb15ff"></a>FLAG_OPTION_REPEATABLE&#160;</td><td class="fielddoc"><p >Indicates that an Option can be used multiple time with or without a value.<br  />
+ The usage count can be found in arguments_option::occurrences. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ggaa649471cd3d4c37f9074a59733d42da0ad78a063cae5d8cb850746b7de34fd99f" name="ggaa649471cd3d4c37f9074a59733d42da0ad78a063cae5d8cb850746b7de34fd99f"></a>FLAG_OPTION_HAS_MULTIPLE_VALUE&#160;</td><td class="fielddoc"><p >Indicates that an <a class="el" href="structarguments__option.html">Option</a> can have one or more value(s). </p>
+<tr><td class="fieldname"><a id="ggaa649471cd3d4c37f9074a59733d42da0ad78a063cae5d8cb850746b7de34fd99f" name="ggaa649471cd3d4c37f9074a59733d42da0ad78a063cae5d8cb850746b7de34fd99f"></a>FLAG_OPTION_HAS_MULTIPLE_VALUE&#160;</td><td class="fielddoc"><p >Indicates that an Option can have one or more value(s). </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ggaa649471cd3d4c37f9074a59733d42da0a83e1177b6b2999febb0283e628ad7f03" name="ggaa649471cd3d4c37f9074a59733d42da0a83e1177b6b2999febb0283e628ad7f03"></a>FLAG_OPTION_HIDDEN&#160;</td><td class="fielddoc"><p >Indicates that an <a class="el" href="structarguments__option.html">Option</a> shouldn't be shown in the help text. </p>
+<tr><td class="fieldname"><a id="ggaa649471cd3d4c37f9074a59733d42da0a83e1177b6b2999febb0283e628ad7f03" name="ggaa649471cd3d4c37f9074a59733d42da0a83e1177b6b2999febb0283e628ad7f03"></a>FLAG_OPTION_HIDDEN&#160;</td><td class="fielddoc"><p >Indicates that an Option shouldn't be shown in the help text. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ggaa649471cd3d4c37f9074a59733d42da0a12a748c6cbe37e57d562caad475958c4" name="ggaa649471cd3d4c37f9074a59733d42da0a12a748c6cbe37e57d562caad475958c4"></a>FLAG_OPTION_REQUIRED&#160;</td><td class="fielddoc"><p >Indicates that an <a class="el" href="structarguments__option.html">Option</a> must be used in a used verb <a class="el" href="structarguments__verb.html">Verb</a>. </p>
+<tr><td class="fieldname"><a id="ggaa649471cd3d4c37f9074a59733d42da0a12a748c6cbe37e57d562caad475958c4" name="ggaa649471cd3d4c37f9074a59733d42da0a12a748c6cbe37e57d562caad475958c4"></a>FLAG_OPTION_REQUIRED&#160;</td><td class="fielddoc"><p >Indicates that an Option must be used in a used verb Verb. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ggaa649471cd3d4c37f9074a59733d42da0ad5a31da56fe54713af191ad652e9ab64" name="ggaa649471cd3d4c37f9074a59733d42da0ad5a31da56fe54713af191ad652e9ab64"></a>FLAG_OPTION_STOPS_PARSING&#160;</td><td class="fielddoc"><p >Indicates that an <a class="el" href="structarguments__option.html">Option</a> must stop the parsing process as soon as it has been parsed. </p>
+<tr><td class="fieldname"><a id="ggaa649471cd3d4c37f9074a59733d42da0ad5a31da56fe54713af191ad652e9ab64" name="ggaa649471cd3d4c37f9074a59733d42da0ad5a31da56fe54713af191ad652e9ab64"></a>FLAG_OPTION_STOPS_PARSING&#160;</td><td class="fielddoc"><p >Indicates that an Option must stop the parsing process as soon as it has been parsed. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ggaa649471cd3d4c37f9074a59733d42da0ab2c9e850e260d0d364a253941ceb824a" name="ggaa649471cd3d4c37f9074a59733d42da0ab2c9e850e260d0d364a253941ceb824a"></a>FLAG_OPTION_ALLOW_VERBS_AFTER&#160;</td><td class="fielddoc"><p >Indicates that an <a class="el" href="structarguments__option.html">Option</a> will not prevent further verbs from being parsed when encountered.<br  />
- Usage of this flag required some forethought if the <a class="el" href="structarguments__option.html">Option</a> uses the <a class="el" href="group__arguments.html#ggaa649471cd3d4c37f9074a59733d42da0a80f32661788828a617a8920d1afb98c5">FLAG_OPTION_DEFAULT</a> flag since its values may be interpreted as a verb and cause all kinds of errors.<br  />
+<tr><td class="fieldname"><a id="ggaa649471cd3d4c37f9074a59733d42da0ab2c9e850e260d0d364a253941ceb824a" name="ggaa649471cd3d4c37f9074a59733d42da0ab2c9e850e260d0d364a253941ceb824a"></a>FLAG_OPTION_ALLOW_VERBS_AFTER&#160;</td><td class="fielddoc"><p >Indicates that an Option will not prevent further verbs from being parsed when encountered.<br  />
+ Usage of this flag required some forethought if the Option uses the <a class="el" href="group__arguments.html#ggaa649471cd3d4c37f9074a59733d42da0a80f32661788828a617a8920d1afb98c5">FLAG_OPTION_DEFAULT</a> flag since its values may be interpreted as a verb and cause all kinds of errors.<br  />
  A "better" alternative would be to only use the <a class="el" href="group__arguments.html#ggaa649471cd3d4c37f9074a59733d42da0a12a748c6cbe37e57d562caad475958c4">FLAG_OPTION_REQUIRED</a> flag if the value is needed, which will force the user to explicitly use the option's name or token. </p>
 </td></tr>
 </table>
@@ -288,22 +314,22 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="ga41472fb8e2d4fdb4ee86e77a3716addf" name="ga41472fb8e2d4fdb4ee86e77a3716addf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga41472fb8e2d4fdb4ee86e77a3716addf">&#9670;&#160;</a></span>args_createVerb()</h2>
+<a id="ga64e1ac0885c3ac1f9b747df9e9f9d6ce" name="ga64e1ac0885c3ac1f9b747df9e9f9d6ce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga64e1ac0885c3ac1f9b747df9e9f9d6ce">&#9670;&#160;</a></span>args_createVerbA()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="arguments_2structs_8h.html#a4481b8afc45b3ad7ac92bafe3650c102">Verb</a> * args_createVerb </td>
+          <td class="memname"><a class="el" href="arguments_2structs_8h.html#abc2c11f0fd6add1fa0a67aa986f266f4">VerbA</a> * args_createVerbA </td>
           <td>(</td>
-          <td class="paramtype">np_args_char *&#160;</td>
+          <td class="paramtype">char *&#160;</td>
           <td class="paramname"><em>verb</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">np_args_char *&#160;</td>
+          <td class="paramtype">char *&#160;</td>
           <td class="paramname"><em>description</em>&#160;</td>
         </tr>
         <tr>
@@ -313,39 +339,75 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >Creates a <a class="el" href="structarguments__verb.html">Verb</a> with no parent. </p><dl class="params"><dt>Parameters</dt><dd>
+<p >Creates a Verb with no parent. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">verb</td><td>Name used when searching for sub-verbs, leave as <code>""</code> or <code>NULL</code> for root verbs. </td></tr>
     <tr><td class="paramname">description</td><td>Description shown in the help text. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The new <a class="el" href="structarguments__verb.html">Verb</a>'s pointer, or <code>NULL</code> if an error occurred. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The new Verb's pointer, or <code>NULL</code> if an error occurred. </dd></dl>
 
 </div>
 </div>
-<a id="gac6ad712f91a4bc7027ff9ae2044268d9" name="gac6ad712f91a4bc7027ff9ae2044268d9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gac6ad712f91a4bc7027ff9ae2044268d9">&#9670;&#160;</a></span>args_createOption()</h2>
+<a id="gab1d41ef72ff49442efd8a0f1473273ca" name="gab1d41ef72ff49442efd8a0f1473273ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gab1d41ef72ff49442efd8a0f1473273ca">&#9670;&#160;</a></span>args_createVerbW()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="arguments_2structs_8h.html#aa32a72dced492864660882173e24c7b9">Option</a> * args_createOption </td>
+          <td class="memname"><a class="el" href="arguments_2structs_8h.html#a5f983860d018700a8316eca485a31c53">VerbW</a> * args_createVerbW </td>
           <td>(</td>
-          <td class="paramtype">np_args_char&#160;</td>
+          <td class="paramtype">wchar_t *&#160;</td>
+          <td class="paramname"><em>verb</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">wchar_t *&#160;</td>
+          <td class="paramname"><em>description</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Creates a Verb with no parent. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">verb</td><td>Name used when searching for sub-verbs, leave as <code>L""</code> or <code>NULL</code> for root verbs. </td></tr>
+    <tr><td class="paramname">description</td><td>Description shown in the help text. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The new Verb's pointer, or <code>NULL</code> if an error occurred. </dd></dl>
+
+</div>
+</div>
+<a id="ga6268ec539e2350a872e72c6381894dcd" name="ga6268ec539e2350a872e72c6381894dcd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga6268ec539e2350a872e72c6381894dcd">&#9670;&#160;</a></span>args_createOptionA()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="arguments_2structs_8h.html#a848c88f38e51de3635d245fe9cda213a">OptionA</a> * args_createOptionA </td>
+          <td>(</td>
+          <td class="paramtype">char&#160;</td>
           <td class="paramname"><em>token</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">np_args_char *&#160;</td>
+          <td class="paramtype">char *&#160;</td>
           <td class="paramname"><em>name</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">np_args_char *&#160;</td>
+          <td class="paramtype">char *&#160;</td>
           <td class="paramname"><em>description</em>, </td>
         </tr>
         <tr>
@@ -361,7 +423,7 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >Creates an <a class="el" href="structarguments__option.html">Option</a> with the given attributes. </p><dl class="params"><dt>Parameters</dt><dd>
+<p >Creates an Option with the given attributes. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">token</td><td>Token used when searching for the option with short options, or <code>\0</code> if no token is desired. </td></tr>
     <tr><td class="paramname">name</td><td>Name used when searching for the option, leave as <code>""</code> or <code>NULL</code> if not desired. </td></tr>
@@ -370,7 +432,58 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The new <a class="el" href="structarguments__option.html">Option</a>'s pointer, or <code>NULL</code> if an error occurred.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The new Option's pointer, or <code>NULL</code> if an error occurred.</dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="group__arguments.html#gaa649471cd3d4c37f9074a59733d42da0" title="Feature flags used when creating Options.">EOptionFlags</a> </dd></dl>
+
+</div>
+</div>
+<a id="ga16a2fe8045cdfb4fdfa2360e62be93a3" name="ga16a2fe8045cdfb4fdfa2360e62be93a3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga16a2fe8045cdfb4fdfa2360e62be93a3">&#9670;&#160;</a></span>args_createOptionW()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="arguments_2structs_8h.html#a9dc1443c892ac699a2fc999ef76f2e14">OptionW</a> * args_createOptionW </td>
+          <td>(</td>
+          <td class="paramtype">wchar_t&#160;</td>
+          <td class="paramname"><em>token</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">wchar_t *&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">wchar_t *&#160;</td>
+          <td class="paramname"><em>description</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">OptionFlags&#160;</td>
+          <td class="paramname"><em>flags</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Creates an Option with the given attributes. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">token</td><td>Token used when searching for the option with short options, or <code>\0</code> if no token is desired. </td></tr>
+    <tr><td class="paramname">name</td><td>Name used when searching for the option, leave as <code>L""</code> or <code>NULL</code> if not desired. </td></tr>
+    <tr><td class="paramname">description</td><td>Description shown in the help text. </td></tr>
+    <tr><td class="paramname">flags</td><td><a class="el" href="group__arguments.html#gaa649471cd3d4c37f9074a59733d42da0">Option flags</a> used to enable some specific features. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The new Option's pointer, or <code>NULL</code> if an error occurred.</dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="group__arguments.html#gaa649471cd3d4c37f9074a59733d42da0" title="Feature flags used when creating Options.">EOptionFlags</a> </dd></dl>
 
 </div>
@@ -384,18 +497,19 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void args_freeVerb </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="arguments_2structs_8h.html#a4481b8afc45b3ad7ac92bafe3650c102">Verb</a> *&#160;</td>
+          <td class="paramtype">Verb *&#160;</td>
           <td class="paramname"><em>verb</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >Frees the memory allocated to a given <a class="el" href="structarguments__verb.html">Verb</a> and all of it's registered sub-<a class="el" href="structarguments__verb.html">Verb</a> and their <a class="el" href="structarguments__option.html">Option</a> in a recursive manner. </p><dl class="params"><dt>Parameters</dt><dd>
+<p >Frees the memory allocated to a given Verb and all of it's registered sub-Verb and their Option in a recursive manner. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">verb</td><td>The <a class="el" href="structarguments__verb.html">Verb</a> that needs to be freed. </td></tr>
+    <tr><td class="paramname">verb</td><td>The Verb that needs to be freed. </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section note"><dt>Note</dt><dd>The <code>VerbW</code> structure can also be passed to this function if typecast. </dd></dl>
 
 </div>
 </div>
@@ -408,38 +522,39 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void args_freeOption </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="arguments_2structs_8h.html#aa32a72dced492864660882173e24c7b9">Option</a> *&#160;</td>
+          <td class="paramtype">Option *&#160;</td>
           <td class="paramname"><em>option</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >Frees the memory allocated to a given <a class="el" href="structarguments__option.html">Option</a> if it isn't still registered in another <a class="el" href="structarguments__verb.html">Verb</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+<p >Frees the memory allocated to a given Option if it isn't still registered in another Verb. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">option</td><td>The <a class="el" href="structarguments__option.html">Option</a> that needs to be freed.</td></tr>
+    <tr><td class="paramname">option</td><td>The Option that needs to be freed. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="structarguments__option.html#a6e8236133b6c1b2fcd4eeb167f82a428">arguments_option::registrationCount</a> </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>The <code>OptionW</code> structure can also be passed to this function if typecast.</dd></dl>
+<dl class="section see"><dt>See also</dt><dd>arguments_option::registrationCount </dd></dl>
 
 </div>
 </div>
-<a id="ga8bc414c393d7697a1d10463a10ee2dee" name="ga8bc414c393d7697a1d10463a10ee2dee"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga8bc414c393d7697a1d10463a10ee2dee">&#9670;&#160;</a></span>args_registerVerb()</h2>
+<a id="gaeda99b73bd91cabda63fc17af8aee663" name="gaeda99b73bd91cabda63fc17af8aee663"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaeda99b73bd91cabda63fc17af8aee663">&#9670;&#160;</a></span>args_registerVerbA()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool args_registerVerb </td>
+          <td class="memname">bool args_registerVerbA </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="arguments_2structs_8h.html#a4481b8afc45b3ad7ac92bafe3650c102">Verb</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="arguments_2structs_8h.html#abc2c11f0fd6add1fa0a67aa986f266f4">VerbA</a> *&#160;</td>
           <td class="paramname"><em>registeredVerb</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="arguments_2structs_8h.html#a4481b8afc45b3ad7ac92bafe3650c102">Verb</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="arguments_2structs_8h.html#abc2c11f0fd6add1fa0a67aa986f266f4">VerbA</a> *&#160;</td>
           <td class="paramname"><em>parentVerb</em>&#160;</td>
         </tr>
         <tr>
@@ -449,10 +564,10 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >Registers a <a class="el" href="structarguments__verb.html">Verb</a> into another one as a sub-<a class="el" href="structarguments__verb.html">Verb</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+<p >Registers a Verb into another one as a sub-Verb. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">registeredVerb</td><td>The sub-<a class="el" href="structarguments__verb.html">Verb</a>. </td></tr>
-    <tr><td class="paramname">parentVerb</td><td>The parent <a class="el" href="structarguments__verb.html">Verb</a> into which the other one is registered. </td></tr>
+    <tr><td class="paramname">registeredVerb</td><td>The sub-Verb. </td></tr>
+    <tr><td class="paramname">parentVerb</td><td>The parent Verb into which the other one is registered. </td></tr>
   </table>
   </dd>
 </dl>
@@ -460,22 +575,22 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="gaca7dde29ea9201a35e03af41ce31a791" name="gaca7dde29ea9201a35e03af41ce31a791"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaca7dde29ea9201a35e03af41ce31a791">&#9670;&#160;</a></span>args_registerOption()</h2>
+<a id="gaa76114ce983ec1cddd2776efca711170" name="gaa76114ce983ec1cddd2776efca711170"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaa76114ce983ec1cddd2776efca711170">&#9670;&#160;</a></span>args_registerVerbW()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool args_registerOption </td>
+          <td class="memname">bool args_registerVerbW </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="arguments_2structs_8h.html#aa32a72dced492864660882173e24c7b9">Option</a> *&#160;</td>
-          <td class="paramname"><em>registeredOption</em>, </td>
+          <td class="paramtype"><a class="el" href="arguments_2structs_8h.html#a5f983860d018700a8316eca485a31c53">VerbW</a> *&#160;</td>
+          <td class="paramname"><em>registeredVerb</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="arguments_2structs_8h.html#a4481b8afc45b3ad7ac92bafe3650c102">Verb</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="arguments_2structs_8h.html#a5f983860d018700a8316eca485a31c53">VerbW</a> *&#160;</td>
           <td class="paramname"><em>parentVerb</em>&#160;</td>
         </tr>
         <tr>
@@ -485,10 +600,46 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >Registers an <a class="el" href="structarguments__option.html">Option</a> in a given <a class="el" href="structarguments__verb.html">Verb</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+<p >Registers a Verb into another one as a sub-Verb. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">registeredOption</td><td>The registered <a class="el" href="structarguments__option.html">Option</a>. </td></tr>
-    <tr><td class="paramname">parentVerb</td><td>The <a class="el" href="structarguments__verb.html">Verb</a> into which the <a class="el" href="structarguments__option.html">Option</a> is being registered. </td></tr>
+    <tr><td class="paramname">registeredVerb</td><td>The sub-Verb. </td></tr>
+    <tr><td class="paramname">parentVerb</td><td>The parent Verb into which the other one is registered. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if it was registered, <code>false</code> otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="ga51a1cb8f8220b4bed95cef4032136766" name="ga51a1cb8f8220b4bed95cef4032136766"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga51a1cb8f8220b4bed95cef4032136766">&#9670;&#160;</a></span>args_registerOptionA()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool args_registerOptionA </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="arguments_2structs_8h.html#a848c88f38e51de3635d245fe9cda213a">OptionA</a> *&#160;</td>
+          <td class="paramname"><em>registeredOption</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="arguments_2structs_8h.html#abc2c11f0fd6add1fa0a67aa986f266f4">VerbA</a> *&#160;</td>
+          <td class="paramname"><em>parentVerb</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Registers an Option in a given Verb. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">registeredOption</td><td>The registered Option. </td></tr>
+    <tr><td class="paramname">parentVerb</td><td>The Verb into which the Option is being registered. </td></tr>
   </table>
   </dd>
 </dl>
@@ -496,22 +647,58 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="gab5ec926cb7fb7569ba177445b43df2cf" name="gab5ec926cb7fb7569ba177445b43df2cf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gab5ec926cb7fb7569ba177445b43df2cf">&#9670;&#160;</a></span>args_registerOptionRecursively()</h2>
+<a id="ga9bd73ae88c21638fc0bcd321346128e3" name="ga9bd73ae88c21638fc0bcd321346128e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga9bd73ae88c21638fc0bcd321346128e3">&#9670;&#160;</a></span>args_registerOptionW()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool args_registerOptionRecursively </td>
+          <td class="memname">bool args_registerOptionW </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="arguments_2structs_8h.html#aa32a72dced492864660882173e24c7b9">Option</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="arguments_2structs_8h.html#a9dc1443c892ac699a2fc999ef76f2e14">OptionW</a> *&#160;</td>
           <td class="paramname"><em>registeredOption</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="arguments_2structs_8h.html#a4481b8afc45b3ad7ac92bafe3650c102">Verb</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="arguments_2structs_8h.html#a5f983860d018700a8316eca485a31c53">VerbW</a> *&#160;</td>
+          <td class="paramname"><em>parentVerb</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Registers an Option in a given Verb. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">registeredOption</td><td>The registered Option. </td></tr>
+    <tr><td class="paramname">parentVerb</td><td>The Verb into which the Option is being registered. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if it was registered and not already registered into it, <code>false</code> otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="ga76260244b95e795fc4ad87b4b8682833" name="ga76260244b95e795fc4ad87b4b8682833"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga76260244b95e795fc4ad87b4b8682833">&#9670;&#160;</a></span>args_registerOptionRecursivelyA()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool args_registerOptionRecursivelyA </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="arguments_2structs_8h.html#a848c88f38e51de3635d245fe9cda213a">OptionA</a> *&#160;</td>
+          <td class="paramname"><em>registeredOption</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="arguments_2structs_8h.html#abc2c11f0fd6add1fa0a67aa986f266f4">VerbA</a> *&#160;</td>
           <td class="paramname"><em>rootVerb</em>&#160;</td>
         </tr>
         <tr>
@@ -521,40 +708,102 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >Registers an <a class="el" href="structarguments__option.html">Option</a> in a given <a class="el" href="structarguments__verb.html">Verb</a> and all of its sub-<a class="el" href="structarguments__verb.html">Verb</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+<p >Registers an Option in a given Verb and all of its sub-Verb. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">registeredOption</td><td>The registered <a class="el" href="structarguments__option.html">Option</a>. </td></tr>
-    <tr><td class="paramname">rootVerb</td><td>The <a class="el" href="structarguments__verb.html">Verb</a> into which the <a class="el" href="structarguments__option.html">Option</a> is being registered. </td></tr>
+    <tr><td class="paramname">registeredOption</td><td>The registered Option. </td></tr>
+    <tr><td class="paramname">rootVerb</td><td>The Verb into which the Option is being registered. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd><code>true</code> if it was registered and not already registered in any affected <a class="el" href="structarguments__verb.html">Verb</a>, <code>false</code> otherwise.</dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="group__arguments.html#gaca7dde29ea9201a35e03af41ce31a791">args_registerOption</a> </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if it was registered and not already registered in any affected Verb, <code>false</code> otherwise.</dd></dl>
+<dl class="section see"><dt>See also</dt><dd>args_registerOption </dd></dl>
 
 </div>
 </div>
-<a id="ga5e81a5906d2cd178653eb7dbd9574186" name="ga5e81a5906d2cd178653eb7dbd9574186"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga5e81a5906d2cd178653eb7dbd9574186">&#9670;&#160;</a></span>args_getParentVerb()</h2>
+<a id="ga2c90980eb90d955f6b341b11cdcc2244" name="ga2c90980eb90d955f6b341b11cdcc2244"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga2c90980eb90d955f6b341b11cdcc2244">&#9670;&#160;</a></span>args_registerOptionRecursivelyW()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="arguments_2structs_8h.html#a4481b8afc45b3ad7ac92bafe3650c102">Verb</a> * args_getParentVerb </td>
+          <td class="memname">bool args_registerOptionRecursivelyW </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="arguments_2structs_8h.html#a4481b8afc45b3ad7ac92bafe3650c102">Verb</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="arguments_2structs_8h.html#a9dc1443c892ac699a2fc999ef76f2e14">OptionW</a> *&#160;</td>
+          <td class="paramname"><em>registeredOption</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="arguments_2structs_8h.html#a5f983860d018700a8316eca485a31c53">VerbW</a> *&#160;</td>
+          <td class="paramname"><em>rootVerb</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Registers an Option in a given Verb and all of its sub-Verb. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">registeredOption</td><td>The registered Option. </td></tr>
+    <tr><td class="paramname">rootVerb</td><td>The Verb into which the Option is being registered. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if it was registered and not already registered in any affected Verb, <code>false</code> otherwise.</dd></dl>
+<dl class="section see"><dt>See also</dt><dd>args_registerOption </dd></dl>
+
+</div>
+</div>
+<a id="gacea934822bb604d81f8e94042bc4e882" name="gacea934822bb604d81f8e94042bc4e882"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gacea934822bb604d81f8e94042bc4e882">&#9670;&#160;</a></span>args_getParentVerbA()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="arguments_2structs_8h.html#abc2c11f0fd6add1fa0a67aa986f266f4">VerbA</a> * args_getParentVerbA </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="arguments_2structs_8h.html#abc2c11f0fd6add1fa0a67aa986f266f4">VerbA</a> *&#160;</td>
           <td class="paramname"><em>verb</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >Get the parent <a class="el" href="structarguments__verb.html">Verb</a> of a given one. </p><dl class="params"><dt>Parameters</dt><dd>
+<p >Get the parent Verb of a given one. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">verb</td><td>The <a class="el" href="structarguments__verb.html">Verb</a> whose parent need to be retrieved. </td></tr>
+    <tr><td class="paramname">verb</td><td>The Verb whose parent need to be retrieved. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The parent <a class="el" href="structarguments__verb.html">Verb</a> if it is present, <code>NULL</code> otherwise. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The parent Verb if it is present, <code>NULL</code> otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="ga44196e070617ec5131f34e1e8b8a6b79" name="ga44196e070617ec5131f34e1e8b8a6b79"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga44196e070617ec5131f34e1e8b8a6b79">&#9670;&#160;</a></span>args_getParentVerbW()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="arguments_2structs_8h.html#a5f983860d018700a8316eca485a31c53">VerbW</a> * args_getParentVerbW </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="arguments_2structs_8h.html#a5f983860d018700a8316eca485a31c53">VerbW</a> *&#160;</td>
+          <td class="paramname"><em>verb</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Get the parent Verb of a given one. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">verb</td><td>The Verb whose parent need to be retrieved. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The parent Verb if it is present, <code>NULL</code> otherwise. </dd></dl>
 
 </div>
 </div>
@@ -565,40 +814,40 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="arguments_2structs_8h.html#aa32a72dced492864660882173e24c7b9">Option</a> * args_getDefaultOption </td>
+          <td class="memname">Option * args_getDefaultOption </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="arguments_2structs_8h.html#a4481b8afc45b3ad7ac92bafe3650c102">Verb</a> *&#160;</td>
+          <td class="paramtype">Verb *&#160;</td>
           <td class="paramname"><em>verb</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >Get the <a class="el" href="structarguments__option.html">Option</a> with the <a class="el" href="group__arguments.html#ggaa649471cd3d4c37f9074a59733d42da0a80f32661788828a617a8920d1afb98c5">FLAG_OPTION_DEFAULT</a> flag from a given <a class="el" href="structarguments__verb.html">Verb</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+<p >Get the Option with the <a class="el" href="group__arguments.html#ggaa649471cd3d4c37f9074a59733d42da0a80f32661788828a617a8920d1afb98c5">FLAG_OPTION_DEFAULT</a> flag from a given Verb. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">verb</td><td>The <a class="el" href="structarguments__verb.html">Verb</a> whose options will be sifted through. </td></tr>
+    <tr><td class="paramname">verb</td><td>The Verb whose options will be sifted through. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The default <a class="el" href="structarguments__option.html">Option</a> if found, <code>NULL</code> otherwise. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The default Option if found, <code>NULL</code> otherwise. </dd></dl>
 
 </div>
 </div>
-<a id="gab01a45d4e23c38ba5d337f35972a05ef" name="gab01a45d4e23c38ba5d337f35972a05ef"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gab01a45d4e23c38ba5d337f35972a05ef">&#9670;&#160;</a></span>args_getOptionByToken()</h2>
+<a id="ga2befb89122d7286168c764b95512ee6c" name="ga2befb89122d7286168c764b95512ee6c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga2befb89122d7286168c764b95512ee6c">&#9670;&#160;</a></span>args_getOptionByTokenA()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="arguments_2structs_8h.html#aa32a72dced492864660882173e24c7b9">Option</a> * args_getOptionByToken </td>
+          <td class="memname"><a class="el" href="arguments_2structs_8h.html#a848c88f38e51de3635d245fe9cda213a">OptionA</a> * args_getOptionByTokenA </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="arguments_2structs_8h.html#a4481b8afc45b3ad7ac92bafe3650c102">Verb</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="arguments_2structs_8h.html#abc2c11f0fd6add1fa0a67aa986f266f4">VerbA</a> *&#160;</td>
           <td class="paramname"><em>verb</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">np_args_char&#160;</td>
+          <td class="paramtype">char&#160;</td>
           <td class="paramname"><em>desiredToken</em>&#160;</td>
         </tr>
         <tr>
@@ -608,34 +857,34 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >Get an <a class="el" href="structarguments__option.html">Option</a> from a given <a class="el" href="structarguments__verb.html">Verb</a> by searching for it with its <a class="el" href="structarguments__option.html#aff8fd35d59d85ee4b34203114869deec">token</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+<p >Get an Option from a given Verb by searching for it with its token. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">verb</td><td>The <a class="el" href="structarguments__verb.html">Verb</a> whose options will be sifted through. </td></tr>
-    <tr><td class="paramname">desiredToken</td><td>The desired <a class="el" href="structarguments__option.html">Option</a>'s <em>token</em>. </td></tr>
+    <tr><td class="paramname">verb</td><td>The Verb whose options will be sifted through. </td></tr>
+    <tr><td class="paramname">desiredToken</td><td>The desired Option's <em>token</em>. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The relevant <a class="el" href="structarguments__option.html">Option</a> if found, <code>NULL</code> otherwise. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The relevant Option if found, <code>NULL</code> otherwise. </dd></dl>
 
 </div>
 </div>
-<a id="gaa3b0c6d3c8e6d02877ad76433d035555" name="gaa3b0c6d3c8e6d02877ad76433d035555"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaa3b0c6d3c8e6d02877ad76433d035555">&#9670;&#160;</a></span>args_getOptionByName()</h2>
+<a id="ga1c2f97fee41772942beb91cf501874b9" name="ga1c2f97fee41772942beb91cf501874b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga1c2f97fee41772942beb91cf501874b9">&#9670;&#160;</a></span>args_getOptionByTokenW()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="arguments_2structs_8h.html#aa32a72dced492864660882173e24c7b9">Option</a> * args_getOptionByName </td>
+          <td class="memname"><a class="el" href="arguments_2structs_8h.html#a9dc1443c892ac699a2fc999ef76f2e14">OptionW</a> * args_getOptionByTokenW </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="arguments_2structs_8h.html#a4481b8afc45b3ad7ac92bafe3650c102">Verb</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="arguments_2structs_8h.html#a5f983860d018700a8316eca485a31c53">VerbW</a> *&#160;</td>
           <td class="paramname"><em>verb</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">np_args_char *&#160;</td>
-          <td class="paramname"><em>desiredName</em>&#160;</td>
+          <td class="paramtype">wchar_t&#160;</td>
+          <td class="paramname"><em>desiredToken</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -644,33 +893,33 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >Get an <a class="el" href="structarguments__option.html">Option</a> from a given <a class="el" href="structarguments__verb.html">Verb</a> by searching for it with its <a class="el" href="structarguments__option.html#ad70af0ff5bb0f9ce3fc9b1c3940cbca0">name</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+<p >Get an Option from a given Verb by searching for it with its token. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">verb</td><td>The <a class="el" href="structarguments__verb.html">Verb</a> whose options will be sifted through. </td></tr>
-    <tr><td class="paramname">desiredName</td><td>The desired <a class="el" href="structarguments__option.html">Option</a>'s <em>name</em>. </td></tr>
+    <tr><td class="paramname">verb</td><td>The Verb whose options will be sifted through. </td></tr>
+    <tr><td class="paramname">desiredToken</td><td>The desired Option's <em>token</em>. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The relevant <a class="el" href="structarguments__option.html">Option</a> if found, <code>NULL</code> otherwise. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The relevant Option if found, <code>NULL</code> otherwise. </dd></dl>
 
 </div>
 </div>
-<a id="ga23c32d8b08a67221318ee87109086bc5" name="ga23c32d8b08a67221318ee87109086bc5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga23c32d8b08a67221318ee87109086bc5">&#9670;&#160;</a></span>args_getSubVerbByName()</h2>
+<a id="ga2291003c78856ad0e7730d0615a78adb" name="ga2291003c78856ad0e7730d0615a78adb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga2291003c78856ad0e7730d0615a78adb">&#9670;&#160;</a></span>args_getOptionByNameA()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="arguments_2structs_8h.html#a4481b8afc45b3ad7ac92bafe3650c102">Verb</a> * args_getSubVerbByName </td>
+          <td class="memname"><a class="el" href="arguments_2structs_8h.html#a848c88f38e51de3635d245fe9cda213a">OptionA</a> * args_getOptionByNameA </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="arguments_2structs_8h.html#a4481b8afc45b3ad7ac92bafe3650c102">Verb</a> *&#160;</td>
-          <td class="paramname"><em>parentVerb</em>, </td>
+          <td class="paramtype"><a class="el" href="arguments_2structs_8h.html#abc2c11f0fd6add1fa0a67aa986f266f4">VerbA</a> *&#160;</td>
+          <td class="paramname"><em>verb</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">np_args_char *&#160;</td>
+          <td class="paramtype">char *&#160;</td>
           <td class="paramname"><em>desiredName</em>&#160;</td>
         </tr>
         <tr>
@@ -680,14 +929,122 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >Get a sub-<a class="el" href="structarguments__verb.html">Verb</a> from a given <a class="el" href="structarguments__verb.html">Verb</a> by searching for it with its <a class="el" href="structarguments__verb.html#a476f60edf46962f507597d58d9d439f7">name</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+<p >Get an Option from a given Verb by searching for it with its name. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">parentVerb</td><td>The <a class="el" href="structarguments__verb.html">Verb</a> whose sub-<a class="el" href="structarguments__verb.html">Verb</a> will be sifted through. </td></tr>
-    <tr><td class="paramname">desiredName</td><td>The desired sub-<a class="el" href="structarguments__verb.html">Verb</a>'s <em>name</em>. </td></tr>
+    <tr><td class="paramname">verb</td><td>The Verb whose options will be sifted through. </td></tr>
+    <tr><td class="paramname">desiredName</td><td>The desired Option's <em>name</em>. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>relevant <a class="el" href="structarguments__verb.html">Verb</a> if found, <code>NULL</code> otherwise. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The relevant Option if found, <code>NULL</code> otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="ga0a2e0bcefcae662a76867043e32094f3" name="ga0a2e0bcefcae662a76867043e32094f3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga0a2e0bcefcae662a76867043e32094f3">&#9670;&#160;</a></span>args_getOptionByNameW()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="arguments_2structs_8h.html#a9dc1443c892ac699a2fc999ef76f2e14">OptionW</a> * args_getOptionByNameW </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="arguments_2structs_8h.html#a5f983860d018700a8316eca485a31c53">VerbW</a> *&#160;</td>
+          <td class="paramname"><em>verb</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">wchar_t *&#160;</td>
+          <td class="paramname"><em>desiredName</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Get an Option from a given Verb by searching for it with its name. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">verb</td><td>The Verb whose options will be sifted through. </td></tr>
+    <tr><td class="paramname">desiredName</td><td>The desired Option's <em>name</em>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The relevant Option if found, <code>NULL</code> otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="gab706b776080faaeb05262a3ed9138589" name="gab706b776080faaeb05262a3ed9138589"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gab706b776080faaeb05262a3ed9138589">&#9670;&#160;</a></span>args_getSubVerbByNameA()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="arguments_2structs_8h.html#abc2c11f0fd6add1fa0a67aa986f266f4">VerbA</a> * args_getSubVerbByNameA </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="arguments_2structs_8h.html#abc2c11f0fd6add1fa0a67aa986f266f4">VerbA</a> *&#160;</td>
+          <td class="paramname"><em>parentVerb</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>desiredName</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Get a sub-Verb from a given Verb by searching for it with its name. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">parentVerb</td><td>The Verb whose sub-Verb will be sifted through. </td></tr>
+    <tr><td class="paramname">desiredName</td><td>The desired sub-Verb's <em>name</em>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>relevant Verb if found, <code>NULL</code> otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="ga62bf7ce7b163a6ad5b3d031cbb8bd963" name="ga62bf7ce7b163a6ad5b3d031cbb8bd963"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga62bf7ce7b163a6ad5b3d031cbb8bd963">&#9670;&#160;</a></span>args_getSubVerbByNameW()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="arguments_2structs_8h.html#a5f983860d018700a8316eca485a31c53">VerbW</a> * args_getSubVerbByNameW </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="arguments_2structs_8h.html#a5f983860d018700a8316eca485a31c53">VerbW</a> *&#160;</td>
+          <td class="paramname"><em>parentVerb</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">wchar_t *&#160;</td>
+          <td class="paramname"><em>desiredName</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Get a sub-Verb from a given Verb by searching for it with its name. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">parentVerb</td><td>The Verb whose sub-Verb will be sifted through. </td></tr>
+    <tr><td class="paramname">desiredName</td><td>The desired sub-Verb's <em>name</em>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>relevant Verb if found, <code>NULL</code> otherwise. </dd></dl>
 
 </div>
 </div>
@@ -698,41 +1055,41 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="arguments_2structs_8h.html#aa32a72dced492864660882173e24c7b9">Option</a> * args_getRelevantDefaultOption </td>
+          <td class="memname">Option * args_getRelevantDefaultOption </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="arguments_2structs_8h.html#a4481b8afc45b3ad7ac92bafe3650c102">Verb</a> *&#160;</td>
+          <td class="paramtype">Verb *&#160;</td>
           <td class="paramname"><em>parentVerb</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >Attempts to grab the default <a class="el" href="structarguments__option.html">Option</a> that should be used as one during the parsing process based on whether it has been used before.<br  />
- It will ignore any default <a class="el" href="structarguments__option.html">Option</a> that was and can only be used once. </p><dl class="params"><dt>Parameters</dt><dd>
+<p >Attempts to grab the default Option that should be used as one during the parsing process based on whether it has been used before.<br  />
+ It will ignore any default Option that was and can only be used once. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">parentVerb</td><td>The <a class="el" href="structarguments__verb.html">Verb</a> whose options will be sifted through. </td></tr>
+    <tr><td class="paramname">parentVerb</td><td>The Verb whose options will be sifted through. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The relevant <a class="el" href="structarguments__option.html">Option</a> if found, <code>NULL</code> otherwise. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The relevant Option if found, <code>NULL</code> otherwise. </dd></dl>
 
 </div>
 </div>
-<a id="gaa5f8226cb47b255c3a931942e692dae5" name="gaa5f8226cb47b255c3a931942e692dae5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaa5f8226cb47b255c3a931942e692dae5">&#9670;&#160;</a></span>args_addValueToOption()</h2>
+<a id="ga9ec184f675791a6615152feff929bf40" name="ga9ec184f675791a6615152feff929bf40"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga9ec184f675791a6615152feff929bf40">&#9670;&#160;</a></span>args_addValueToOptionA()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool args_addValueToOption </td>
+          <td class="memname">bool args_addValueToOptionA </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="arguments_2structs_8h.html#aa32a72dced492864660882173e24c7b9">Option</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="arguments_2structs_8h.html#a848c88f38e51de3635d245fe9cda213a">OptionA</a> *&#160;</td>
           <td class="paramname"><em>option</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">np_args_char *&#160;</td>
+          <td class="paramtype">char *&#160;</td>
           <td class="paramname"><em>addedValue</em>&#160;</td>
         </tr>
         <tr>
@@ -742,11 +1099,11 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >Adds a value to an <a class="el" href="structarguments__option.html">Option</a>.<br  />
- This function is and should only be used by <a class="el" href="group__arguments.html#gaaee14d4d9c4ee0230701e2e8bdc17b80">args_parseArguments</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+<p >Adds a value to an Option.<br  />
+ This function is and should only be used by args_parseArguments. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">option</td><td>The relevant <a class="el" href="structarguments__option.html">Option</a> </td></tr>
-    <tr><td class="paramname">addedValue</td><td>The value to be appended to the given <a class="el" href="structarguments__option.html">Option</a>'s values. </td></tr>
+    <tr><td class="paramname">option</td><td>The relevant Option </td></tr>
+    <tr><td class="paramname">addedValue</td><td>The value to be appended to the given Option's values. </td></tr>
   </table>
   </dd>
 </dl>
@@ -754,58 +1111,59 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ga0b41734ecd068e33aee62c4ad8df27e4" name="ga0b41734ecd068e33aee62c4ad8df27e4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga0b41734ecd068e33aee62c4ad8df27e4">&#9670;&#160;</a></span>args_isVerbAlreadyRegistered()</h2>
+<a id="gaabc7a4f66679d14cc5fe4c058a807ccb" name="gaabc7a4f66679d14cc5fe4c058a807ccb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaabc7a4f66679d14cc5fe4c058a807ccb">&#9670;&#160;</a></span>args_addValueToOptionW()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool args_isVerbAlreadyRegistered </td>
+          <td class="memname">bool args_addValueToOptionW </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="arguments_2structs_8h.html#a4481b8afc45b3ad7ac92bafe3650c102">Verb</a> *&#160;</td>
-          <td class="paramname"><em>subVerb</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="arguments_2structs_8h.html#a4481b8afc45b3ad7ac92bafe3650c102">Verb</a> *&#160;</td>
-          <td class="paramname"><em>parentVerb</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p >Checks if a <a class="el" href="structarguments__verb.html">Verb</a> is registered as a sub-<a class="el" href="structarguments__verb.html">Verb</a> in another <a class="el" href="structarguments__verb.html">Verb</a>. </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">subVerb</td><td>The <a class="el" href="structarguments__verb.html">Verb</a> whose presence in <code>parentVerb</code> will be checked. </td></tr>
-    <tr><td class="paramname">parentVerb</td><td>The <a class="el" href="structarguments__verb.html">Verb</a> that may contain <code>subVerb</code>. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd><code>true</code> if it is registered into it, <code>false</code> otherwise. </dd></dl>
-
-</div>
-</div>
-<a id="gaae3e319f94024693ba76917c80dd0ae5" name="gaae3e319f94024693ba76917c80dd0ae5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaae3e319f94024693ba76917c80dd0ae5">&#9670;&#160;</a></span>args_isOptionAlreadyRegistered()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool args_isOptionAlreadyRegistered </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="arguments_2structs_8h.html#aa32a72dced492864660882173e24c7b9">Option</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="arguments_2structs_8h.html#a9dc1443c892ac699a2fc999ef76f2e14">OptionW</a> *&#160;</td>
           <td class="paramname"><em>option</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="arguments_2structs_8h.html#a4481b8afc45b3ad7ac92bafe3650c102">Verb</a> *&#160;</td>
+          <td class="paramtype">wchar_t *&#160;</td>
+          <td class="paramname"><em>addedValue</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Adds a value to an Option.<br  />
+ This function is and should only be used by args_parseArguments. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">option</td><td>The relevant Option </td></tr>
+    <tr><td class="paramname">addedValue</td><td>The value to be appended to the given Option's values. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if the value was added, <code>false</code> otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="gabdbfd321339fc1238c0d273993167f6b" name="gabdbfd321339fc1238c0d273993167f6b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gabdbfd321339fc1238c0d273993167f6b">&#9670;&#160;</a></span>args_isVerbAlreadyRegisteredA()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool args_isVerbAlreadyRegisteredA </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="arguments_2structs_8h.html#abc2c11f0fd6add1fa0a67aa986f266f4">VerbA</a> *&#160;</td>
+          <td class="paramname"><em>subVerb</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="arguments_2structs_8h.html#abc2c11f0fd6add1fa0a67aa986f266f4">VerbA</a> *&#160;</td>
           <td class="paramname"><em>parentVerb</em>&#160;</td>
         </tr>
         <tr>
@@ -815,10 +1173,10 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >Checks if an <a class="el" href="structarguments__option.html">Option</a> is registered in the given <a class="el" href="structarguments__verb.html">Verb</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+<p >Checks if a Verb is registered as a sub-Verb in another Verb. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">option</td><td>The <a class="el" href="structarguments__option.html">Option</a> whose presence in <code>parentVerb</code> will be checked. </td></tr>
-    <tr><td class="paramname">parentVerb</td><td>The <a class="el" href="structarguments__verb.html">Verb</a> that may contain <code>option</code>. </td></tr>
+    <tr><td class="paramname">subVerb</td><td>The Verb whose presence in <code>parentVerb</code> will be checked. </td></tr>
+    <tr><td class="paramname">parentVerb</td><td>The Verb that may contain <code>subVerb</code>. </td></tr>
   </table>
   </dd>
 </dl>
@@ -826,22 +1184,130 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="gaaee14d4d9c4ee0230701e2e8bdc17b80" name="gaaee14d4d9c4ee0230701e2e8bdc17b80"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaaee14d4d9c4ee0230701e2e8bdc17b80">&#9670;&#160;</a></span>args_parseArguments()</h2>
+<a id="ga52fac659b01f67e7ba840184ca72ea6a" name="ga52fac659b01f67e7ba840184ca72ea6a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga52fac659b01f67e7ba840184ca72ea6a">&#9670;&#160;</a></span>args_isVerbAlreadyRegisteredW()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">enum <a class="el" href="group__arguments.html#ga8db04c5bff185ed40154146a665b8cdf">EArgumentParserErrors</a> args_parseArguments </td>
+          <td class="memname">bool args_isVerbAlreadyRegisteredW </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="arguments_2structs_8h.html#a4481b8afc45b3ad7ac92bafe3650c102">Verb</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="arguments_2structs_8h.html#a5f983860d018700a8316eca485a31c53">VerbW</a> *&#160;</td>
+          <td class="paramname"><em>subVerb</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="arguments_2structs_8h.html#a5f983860d018700a8316eca485a31c53">VerbW</a> *&#160;</td>
+          <td class="paramname"><em>parentVerb</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Checks if a Verb is registered as a sub-Verb in another Verb. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">subVerb</td><td>The Verb whose presence in <code>parentVerb</code> will be checked. </td></tr>
+    <tr><td class="paramname">parentVerb</td><td>The Verb that may contain <code>subVerb</code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if it is registered into it, <code>false</code> otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="gaf6c17b96f54f3753c3721eccd91dc712" name="gaf6c17b96f54f3753c3721eccd91dc712"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaf6c17b96f54f3753c3721eccd91dc712">&#9670;&#160;</a></span>args_isOptionAlreadyRegisteredA()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool args_isOptionAlreadyRegisteredA </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="arguments_2structs_8h.html#a848c88f38e51de3635d245fe9cda213a">OptionA</a> *&#160;</td>
+          <td class="paramname"><em>option</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="arguments_2structs_8h.html#abc2c11f0fd6add1fa0a67aa986f266f4">VerbA</a> *&#160;</td>
+          <td class="paramname"><em>parentVerb</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Checks if an Option is registered in the given Verb. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">option</td><td>The Option whose presence in <code>parentVerb</code> will be checked. </td></tr>
+    <tr><td class="paramname">parentVerb</td><td>The Verb that may contain <code>option</code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if it is registered into it, <code>false</code> otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="ga0f90df68507aa805eeb423276aaab6e5" name="ga0f90df68507aa805eeb423276aaab6e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga0f90df68507aa805eeb423276aaab6e5">&#9670;&#160;</a></span>args_isOptionAlreadyRegisteredW()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool args_isOptionAlreadyRegisteredW </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="arguments_2structs_8h.html#a9dc1443c892ac699a2fc999ef76f2e14">OptionW</a> *&#160;</td>
+          <td class="paramname"><em>option</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="arguments_2structs_8h.html#a5f983860d018700a8316eca485a31c53">VerbW</a> *&#160;</td>
+          <td class="paramname"><em>parentVerb</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Checks if an Option is registered in the given Verb. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">option</td><td>The Option whose presence in <code>parentVerb</code> will be checked. </td></tr>
+    <tr><td class="paramname">parentVerb</td><td>The Verb that may contain <code>option</code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if it is registered into it, <code>false</code> otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="ga83dd56433f5ee02564fee1e8aecfaeec" name="ga83dd56433f5ee02564fee1e8aecfaeec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga83dd56433f5ee02564fee1e8aecfaeec">&#9670;&#160;</a></span>args_parseArgumentsA()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="group__arguments.html#ga8db04c5bff185ed40154146a665b8cdf">EArgumentParserErrors</a> args_parseArgumentsA </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="arguments_2structs_8h.html#abc2c11f0fd6add1fa0a67aa986f266f4">VerbA</a> *&#160;</td>
           <td class="paramname"><em>rootVerb</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">np_args_char *&#160;</td>
+          <td class="paramtype">char *&#160;</td>
           <td class="paramname"><em>arguments</em>[], </td>
         </tr>
         <tr>
@@ -859,7 +1325,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="arguments_2structs_8h.html#a4481b8afc45b3ad7ac92bafe3650c102">Verb</a> **&#160;</td>
+          <td class="paramtype"><a class="el" href="arguments_2structs_8h.html#abc2c11f0fd6add1fa0a67aa986f266f4">VerbA</a> **&#160;</td>
           <td class="paramname"><em>pRelevantVerb</em>&#160;</td>
         </tr>
         <tr>
@@ -869,14 +1335,73 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >Parses launch arguments following a given <a class="el" href="structarguments__verb.html">Verb</a> and all its members until the end is reached or an error occurs.<br  />
+<p >Parses launch arguments following a given Verb and all its members until the end is reached or an error occurs.<br  />
  In the event of a failure, the entire <code>rootVerb</code> should be considered as tainted and not used in any subsequent task that doesn't involve it being freed from memory. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">rootVerb</td><td>The root verb from which the parsing process will start. </td></tr>
     <tr><td class="paramname">arguments</td><td>Array of strings to be parsed as the launch arguments. </td></tr>
     <tr><td class="paramname">startIndex</td><td>The index from which parsing will take place in the given <code>arguments</code> array. </td></tr>
     <tr><td class="paramname">endIndex</td><td>The index at which parsing will stop in the given <code>arguments</code> array. </td></tr>
-    <tr><td class="paramname">pRelevantVerb</td><td>A nullable pointer to a <a class="el" href="structarguments__verb.html">Verb</a> pointer used as the return value which will point to the last used verb. </td></tr>
+    <tr><td class="paramname">pRelevantVerb</td><td>A nullable pointer to a Verb pointer used as the return value which will point to the last used verb. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>An <a class="el" href="group__arguments.html#ga8db04c5bff185ed40154146a665b8cdf">error code</a> indicating how the parsing process went and which error may have occurred.</dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="group__arguments.html#ga8db04c5bff185ed40154146a665b8cdf" title="Errors returned by the args_parseArguments function.">EArgumentParserErrors</a> </dd></dl>
+
+</div>
+</div>
+<a id="ga448c2ec36479043d0f51d6941ce74435" name="ga448c2ec36479043d0f51d6941ce74435"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga448c2ec36479043d0f51d6941ce74435">&#9670;&#160;</a></span>args_parseArgumentsW()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="group__arguments.html#ga8db04c5bff185ed40154146a665b8cdf">EArgumentParserErrors</a> args_parseArgumentsW </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="arguments_2structs_8h.html#a5f983860d018700a8316eca485a31c53">VerbW</a> *&#160;</td>
+          <td class="paramname"><em>rootVerb</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">wchar_t *&#160;</td>
+          <td class="paramname"><em>arguments</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>startIndex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>endIndex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="arguments_2structs_8h.html#a5f983860d018700a8316eca485a31c53">VerbW</a> **&#160;</td>
+          <td class="paramname"><em>pRelevantVerb</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Parses launch arguments following a given Verb and all its members until the end is reached or an error occurs.<br  />
+ In the event of a failure, the entire <code>rootVerb</code> should be considered as tainted and not used in any subsequent task that doesn't involve it being freed from memory. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rootVerb</td><td>The root verb from which the parsing process will start. </td></tr>
+    <tr><td class="paramname">arguments</td><td>Array of strings to be parsed as the launch arguments. </td></tr>
+    <tr><td class="paramname">startIndex</td><td>The index from which parsing will take place in the given <code>arguments</code> array. </td></tr>
+    <tr><td class="paramname">endIndex</td><td>The index at which parsing will stop in the given <code>arguments</code> array. </td></tr>
+    <tr><td class="paramname">pRelevantVerb</td><td>A nullable pointer to a Verb pointer used as the return value which will point to the last used verb. </td></tr>
   </table>
   </dd>
 </dl>
@@ -890,7 +1415,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Thu Mar 21 2024 21:43:15 for NibblePoker&#39;s Clang Goodies by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Sat Jul 13 2024 14:17:09 for NibblePoker&#39;s Clang Goodies by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>

@@ -27,7 +27,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign">
-   <div id="projectname">NibblePoker&#39;s Clang Goodies<span id="projectnumber">&#160;0.5.1</span>
+   <div id="projectname">NibblePoker&#39;s Clang Goodies<span id="projectnumber">&#160;1.0.0</span>
    </div>
    <div id="projectbrief">Small collection of utilities and libraries for C in order to simplify some development tasks.</div>
   </td>
@@ -96,80 +96,83 @@ $(document).ready(function(){initNavTree('dllist_8h_source.html',''); initResiza
 </div><!--header-->
 <div class="contents">
 <a href="dllist_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#pragma once</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;malloc.h&gt;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;stdbool.h&gt;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;../../platform.h&quot;</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;../structs.h&quot;</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;../commons.h&quot;</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#if defined(NP_GOODIES_EXPORT_DLLIST) || defined(NP_GOODIES_EXPORT_LIST_ALL) || defined(NP_GOODIES_EXPORT_ALL)</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">    #define DLL_EXP_DLLIST NP_DLL_EXPORT</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#else</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">    #define DLL_EXP_DLLIST</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="group__group__dllist.html#ga6d2289722ba0a939e5c37df886068ad3">   38</a></span><span class="preprocessor">#define dllist_create() ((DoubleLinkedList *) llist_create())</span></div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>DLL_EXP_DLLIST <a class="code hl_struct" href="structdouble__linked__list__node.html">DoubleLinkedListNode</a> *<a class="code hl_function" href="group__group__dllist.html#ga50cb2b22bde855d4954a1340a4199934">dllist_createNode</a>();</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="group__group__dllist.html#gad59e95b2dcfde9508a23470d262fd4d1">   55</a></span><span class="preprocessor">#define dllist_free(list, cb_freeData, cb_freeNode) (llist_free((LinkedList *) list, cb_freeData, cb_freeNode))</span></div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="group__group__dllist.html#gad4f3f73c28ef1ae1faab53ef41c3ca3e">   63</a></span><span class="preprocessor">#define dllist_selectFirst(list) ((DoubleLinkedListNode *) llist_selectFirst((LinkedList *) list))</span></div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="group__group__dllist.html#ga5a74be4e15d7fbdbd86f24ad13faadf8">   71</a></span><span class="preprocessor">#define dllist_selectNext(list) ((DoubleLinkedListNode *) llist_selectNext((LinkedList *) list))</span></div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>DLL_EXP_DLLIST <a class="code hl_struct" href="structdouble__linked__list__node.html">DoubleLinkedListNode</a> *<a class="code hl_function" href="group__group__dllist.html#ga6d67cd0e7fde5baf1da2626e13ddf094">dllist_getPrevious</a>(<a class="code hl_struct" href="structdouble__linked__list.html">DoubleLinkedList</a> *list);</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>DLL_EXP_DLLIST <span class="keywordtype">void</span> *<a class="code hl_function" href="group__group__dllist.html#ga6070c5d3f05e554705be7636c2f2417d">dllist_getPreviousData</a>(<a class="code hl_struct" href="structdouble__linked__list.html">DoubleLinkedList</a> *list);</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>DLL_EXP_DLLIST <a class="code hl_struct" href="structdouble__linked__list__node.html">DoubleLinkedListNode</a> *<a class="code hl_function" href="group__group__dllist.html#gaed3f34b2282265fce268d25a7145f8c6">dllist_selectPrevious</a>(<a class="code hl_struct" href="structdouble__linked__list.html">DoubleLinkedList</a> *list);</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>DLL_EXP_DLLIST <span class="keywordtype">void</span> *<a class="code hl_function" href="group__group__dllist.html#ga8dc03d191616a63231823174229ff169">dllist_selectPreviousData</a>(<a class="code hl_struct" href="structdouble__linked__list.html">DoubleLinkedList</a> *list);</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno"><a class="line" href="group__group__dllist.html#ga4603df3106a41f932201cd6224fceed4">  111</a></span><span class="preprocessor">#define dllist_selectLast(list) ((DoubleLinkedListNode *) llist_selectLast((LinkedList *) list))</span></div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno"><a class="line" href="group__group__dllist.html#gab7fd354278dd5aa43a909eaa2f5bb65f">  119</a></span><span class="preprocessor">#define dllist_selectFirstData(list) (llist_selectFirstData((LinkedList *) list))</span></div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span> </div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno"><a class="line" href="group__group__dllist.html#ga61e99c9d4a5a325dc624917e74a9f1c5">  127</a></span><span class="preprocessor">#define dllist_selectNextData(list) (llist_selectNextData((LinkedList *) list))</span></div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span> </div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno"><a class="line" href="group__group__dllist.html#gaf0e9ea9f678b2c1d6604142a2845d615">  135</a></span><span class="preprocessor">#define dllist_selectLastData(list) (llist_selectLastData((LinkedList *) list))</span></div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span> </div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno"><a class="line" href="group__group__dllist.html#ga0987dc5cff75f880e056b514c36a069e">  143</a></span><span class="preprocessor">#define dllist_getNext(list) ((DoubleLinkedListNode *) llist_getNext((LinkedList *) list))</span></div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span> </div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno"><a class="line" href="group__group__dllist.html#gaa522cabbd89d23d96d09805f707133a4">  151</a></span><span class="preprocessor">#define dllist_getNextData(list) (llist_getNextData((LinkedList *) list))</span></div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span> </div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno"><a class="line" href="group__group__dllist.html#ga8c32da986a1175e79a5d4b899b4bc75a">  159</a></span><span class="preprocessor">#define dllist_getByIndex(list, index) ((DoubleLinkedListNode *) llist_getByIndex((LinkedList *) list, index))</span></div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span> </div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno"><a class="line" href="group__group__dllist.html#gac4049cb19450a567ea6368f80dd0f356">  167</a></span><span class="preprocessor">#define dllist_selectByIndex(list, index) ((DoubleLinkedListNode *) llist_selectByIndex((LinkedList *) list, index))</span></div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span> </div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>DLL_EXP_DLLIST <span class="keywordtype">bool</span> <a class="code hl_function" href="group__group__dllist.html#gaa8ba7df15ae3b243023e19d954739820">dllist_prepend</a>(<a class="code hl_struct" href="structdouble__linked__list.html">DoubleLinkedList</a> *list, <span class="keywordtype">void</span> *data, <a class="code hl_struct" href="structdouble__linked__list__node.html">DoubleLinkedListNode</a> *(*cb_allocNode)());</div>
-<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span> </div>
-<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>DLL_EXP_DLLIST <span class="keywordtype">bool</span> <a class="code hl_function" href="group__group__dllist.html#ga0e4bf76ee9e840db8c947584285a5885">dllist_append</a>(<a class="code hl_struct" href="structdouble__linked__list.html">DoubleLinkedList</a> *list, <span class="keywordtype">void</span> *data, <a class="code hl_struct" href="structdouble__linked__list__node.html">DoubleLinkedListNode</a> *(*cb_allocNode)());</div>
-<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span> </div>
-<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>DLL_EXP_DLLIST <span class="keywordtype">bool</span> <a class="code hl_function" href="group__group__dllist.html#ga98a3027c2a7b5c7d4720962c9cd2d84e">dllist_insertAfterCurrent</a>(</div>
-<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>        <a class="code hl_struct" href="structdouble__linked__list.html">DoubleLinkedList</a> *list,</div>
-<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>        <span class="keywordtype">void</span> *data,</div>
-<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>        <a class="code hl_struct" href="structdouble__linked__list__node.html">DoubleLinkedListNode</a> *(*cb_allocNode)());</div>
-<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span> </div>
-<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>DLL_EXP_DLLIST <span class="keywordtype">bool</span> <a class="code hl_function" href="group__group__dllist.html#ga5d5a158cd89db5d5aad267a8579546fe">dllist_deleteFirst</a>(</div>
-<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>        <a class="code hl_struct" href="structdouble__linked__list.html">DoubleLinkedList</a> *list,</div>
-<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>        <span class="keywordtype">void</span> (*cb_freeData)(<span class="keywordtype">void</span> *data),</div>
-<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>        <span class="keywordtype">void</span> (*cb_freeNode)(<span class="keywordtype">void</span> *data));</div>
-<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span> </div>
-<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span><span class="keywordtype">bool</span> <a class="code hl_function" href="group__group__dllist.html#ga6953218ca413fb08fbec840b2e1ea6c4">dllist_deleteCurrent</a>(</div>
-<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>        <a class="code hl_struct" href="structdouble__linked__list.html">DoubleLinkedList</a> *list,</div>
-<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>        <span class="keywordtype">void</span> (*cb_freeData)(<span class="keywordtype">void</span> *data),</div>
-<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>        <span class="keywordtype">void</span> (*cb_freeNode)(<span class="keywordtype">void</span> *data));</div>
-<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span> </div>
-<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>DLL_EXP_DLLIST <span class="keywordtype">bool</span> <a class="code hl_function" href="group__group__dllist.html#ga5fcb0b34dbeaebdf0e0faa6f7cf79fcb">dllist_deleteLast</a>(</div>
-<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>        <a class="code hl_struct" href="structdouble__linked__list.html">DoubleLinkedList</a> *list,</div>
-<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>        <span class="keywordtype">void</span> (*cb_freeData)(<span class="keywordtype">void</span> *data),</div>
-<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>        <span class="keywordtype">void</span> (*cb_freeNode)(<span class="keywordtype">void</span> *data));</div>
-<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span> <span class="comment">// end of group_dllist</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#if !defined(NP_ONCE_C99_GOODIES_LLIST_DOUBLE)</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#define NP_ONCE_C99_GOODIES_LLIST_DOUBLE</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;malloc.h&gt;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;stdbool.h&gt;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;../../platform.h&quot;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;../structs.h&quot;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;../commons.h&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#if defined(NP_GOODIES_EXPORT_DLLIST) || defined(NP_GOODIES_EXPORT_LIST_ALL) || defined(NP_GOODIES_EXPORT_ALL)</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">    #define DLL_EXP_DLLIST NP_DLL_EXPORT</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#else</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">    #define DLL_EXP_DLLIST</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="group__group__dllist.html#ga6d2289722ba0a939e5c37df886068ad3">   39</a></span><span class="preprocessor">#define dllist_create() ((DoubleLinkedList *) llist_create())</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>DLL_EXP_DLLIST <a class="code hl_struct" href="structdouble__linked__list__node.html">DoubleLinkedListNode</a> *<a class="code hl_function" href="group__group__dllist.html#ga50cb2b22bde855d4954a1340a4199934">dllist_createNode</a>();</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="group__group__dllist.html#gad59e95b2dcfde9508a23470d262fd4d1">   56</a></span><span class="preprocessor">#define dllist_free(list, cb_freeData, cb_freeNode) (llist_free((LinkedList *) list, cb_freeData, cb_freeNode))</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="group__group__dllist.html#gad4f3f73c28ef1ae1faab53ef41c3ca3e">   64</a></span><span class="preprocessor">#define dllist_selectFirst(list) ((DoubleLinkedListNode *) llist_selectFirst((LinkedList *) list))</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno"><a class="line" href="group__group__dllist.html#ga5a74be4e15d7fbdbd86f24ad13faadf8">   72</a></span><span class="preprocessor">#define dllist_selectNext(list) ((DoubleLinkedListNode *) llist_selectNext((LinkedList *) list))</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>DLL_EXP_DLLIST <a class="code hl_struct" href="structdouble__linked__list__node.html">DoubleLinkedListNode</a> *<a class="code hl_function" href="group__group__dllist.html#ga6d67cd0e7fde5baf1da2626e13ddf094">dllist_getPrevious</a>(<a class="code hl_struct" href="structdouble__linked__list.html">DoubleLinkedList</a> *list);</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>DLL_EXP_DLLIST <span class="keywordtype">void</span> *<a class="code hl_function" href="group__group__dllist.html#ga6070c5d3f05e554705be7636c2f2417d">dllist_getPreviousData</a>(<a class="code hl_struct" href="structdouble__linked__list.html">DoubleLinkedList</a> *list);</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>DLL_EXP_DLLIST <a class="code hl_struct" href="structdouble__linked__list__node.html">DoubleLinkedListNode</a> *<a class="code hl_function" href="group__group__dllist.html#gaed3f34b2282265fce268d25a7145f8c6">dllist_selectPrevious</a>(<a class="code hl_struct" href="structdouble__linked__list.html">DoubleLinkedList</a> *list);</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>DLL_EXP_DLLIST <span class="keywordtype">void</span> *<a class="code hl_function" href="group__group__dllist.html#ga8dc03d191616a63231823174229ff169">dllist_selectPreviousData</a>(<a class="code hl_struct" href="structdouble__linked__list.html">DoubleLinkedList</a> *list);</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> </div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno"><a class="line" href="group__group__dllist.html#ga4603df3106a41f932201cd6224fceed4">  112</a></span><span class="preprocessor">#define dllist_selectLast(list) ((DoubleLinkedListNode *) llist_selectLast((LinkedList *) list))</span></div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span> </div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno"><a class="line" href="group__group__dllist.html#gab7fd354278dd5aa43a909eaa2f5bb65f">  120</a></span><span class="preprocessor">#define dllist_selectFirstData(list) (llist_selectFirstData((LinkedList *) list))</span></div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span> </div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno"><a class="line" href="group__group__dllist.html#ga61e99c9d4a5a325dc624917e74a9f1c5">  128</a></span><span class="preprocessor">#define dllist_selectNextData(list) (llist_selectNextData((LinkedList *) list))</span></div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span> </div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno"><a class="line" href="group__group__dllist.html#gaf0e9ea9f678b2c1d6604142a2845d615">  136</a></span><span class="preprocessor">#define dllist_selectLastData(list) (llist_selectLastData((LinkedList *) list))</span></div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span> </div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno"><a class="line" href="group__group__dllist.html#ga0987dc5cff75f880e056b514c36a069e">  144</a></span><span class="preprocessor">#define dllist_getNext(list) ((DoubleLinkedListNode *) llist_getNext((LinkedList *) list))</span></div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span> </div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno"><a class="line" href="group__group__dllist.html#gaa522cabbd89d23d96d09805f707133a4">  152</a></span><span class="preprocessor">#define dllist_getNextData(list) (llist_getNextData((LinkedList *) list))</span></div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span> </div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno"><a class="line" href="group__group__dllist.html#ga8c32da986a1175e79a5d4b899b4bc75a">  160</a></span><span class="preprocessor">#define dllist_getByIndex(list, index) ((DoubleLinkedListNode *) llist_getByIndex((LinkedList *) list, index))</span></div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span> </div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno"><a class="line" href="group__group__dllist.html#gac4049cb19450a567ea6368f80dd0f356">  168</a></span><span class="preprocessor">#define dllist_selectByIndex(list, index) ((DoubleLinkedListNode *) llist_selectByIndex((LinkedList *) list, index))</span></div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span> </div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>DLL_EXP_DLLIST <span class="keywordtype">bool</span> <a class="code hl_function" href="group__group__dllist.html#gaa8ba7df15ae3b243023e19d954739820">dllist_prepend</a>(<a class="code hl_struct" href="structdouble__linked__list.html">DoubleLinkedList</a> *list, <span class="keywordtype">void</span> *data, <a class="code hl_struct" href="structdouble__linked__list__node.html">DoubleLinkedListNode</a> *(*cb_allocNode)());</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span> </div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>DLL_EXP_DLLIST <span class="keywordtype">bool</span> <a class="code hl_function" href="group__group__dllist.html#ga0e4bf76ee9e840db8c947584285a5885">dllist_append</a>(<a class="code hl_struct" href="structdouble__linked__list.html">DoubleLinkedList</a> *list, <span class="keywordtype">void</span> *data, <a class="code hl_struct" href="structdouble__linked__list__node.html">DoubleLinkedListNode</a> *(*cb_allocNode)());</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span> </div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>DLL_EXP_DLLIST <span class="keywordtype">bool</span> <a class="code hl_function" href="group__group__dllist.html#ga98a3027c2a7b5c7d4720962c9cd2d84e">dllist_insertAfterCurrent</a>(</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>        <a class="code hl_struct" href="structdouble__linked__list.html">DoubleLinkedList</a> *list,</div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>        <span class="keywordtype">void</span> *data,</div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>        <a class="code hl_struct" href="structdouble__linked__list__node.html">DoubleLinkedListNode</a> *(*cb_allocNode)());</div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span> </div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>DLL_EXP_DLLIST <span class="keywordtype">bool</span> <a class="code hl_function" href="group__group__dllist.html#ga5d5a158cd89db5d5aad267a8579546fe">dllist_deleteFirst</a>(</div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>        <a class="code hl_struct" href="structdouble__linked__list.html">DoubleLinkedList</a> *list,</div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>        <span class="keywordtype">void</span> (*cb_freeData)(<span class="keywordtype">void</span> *data),</div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>        <span class="keywordtype">void</span> (*cb_freeNode)(<span class="keywordtype">void</span> *data));</div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span> </div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span><span class="keywordtype">bool</span> <a class="code hl_function" href="group__group__dllist.html#ga6953218ca413fb08fbec840b2e1ea6c4">dllist_deleteCurrent</a>(</div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>        <a class="code hl_struct" href="structdouble__linked__list.html">DoubleLinkedList</a> *list,</div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>        <span class="keywordtype">void</span> (*cb_freeData)(<span class="keywordtype">void</span> *data),</div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>        <span class="keywordtype">void</span> (*cb_freeNode)(<span class="keywordtype">void</span> *data));</div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span> </div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>DLL_EXP_DLLIST <span class="keywordtype">bool</span> <a class="code hl_function" href="group__group__dllist.html#ga5fcb0b34dbeaebdf0e0faa6f7cf79fcb">dllist_deleteLast</a>(</div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>        <a class="code hl_struct" href="structdouble__linked__list.html">DoubleLinkedList</a> *list,</div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>        <span class="keywordtype">void</span> (*cb_freeData)(<span class="keywordtype">void</span> *data),</div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>        <span class="keywordtype">void</span> (*cb_freeNode)(<span class="keywordtype">void</span> *data));</div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span> <span class="comment">// end of group_dllist</span></div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span> </div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span><span class="preprocessor">#endif </span><span class="comment">/* !NP_ONCE_C99_GOODIES_LLIST_DOUBLE */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="agroup__group__dllist_html_ga0e4bf76ee9e840db8c947584285a5885"><div class="ttname"><a href="group__group__dllist.html#ga0e4bf76ee9e840db8c947584285a5885">dllist_append</a></div><div class="ttdeci">DLL_EXP_DLLIST bool dllist_append(DoubleLinkedList *list, void *data, DoubleLinkedListNode *(*cb_allocNode)())</div><div class="ttdef"><b>Definition:</b> dllist.c:74</div></div>
 <div class="ttc" id="agroup__group__dllist_html_ga50cb2b22bde855d4954a1340a4199934"><div class="ttname"><a href="group__group__dllist.html#ga50cb2b22bde855d4954a1340a4199934">dllist_createNode</a></div><div class="ttdeci">DLL_EXP_DLLIST DoubleLinkedListNode * dllist_createNode()</div><div class="ttdef"><b>Definition:</b> dllist.c:5</div></div>
 <div class="ttc" id="agroup__group__dllist_html_ga5d5a158cd89db5d5aad267a8579546fe"><div class="ttname"><a href="group__group__dllist.html#ga5d5a158cd89db5d5aad267a8579546fe">dllist_deleteFirst</a></div><div class="ttdeci">DLL_EXP_DLLIST bool dllist_deleteFirst(DoubleLinkedList *list, void(*cb_freeData)(void *data), void(*cb_freeNode)(void *data))</div><div class="ttdef"><b>Definition:</b> dllist.c:138</div></div>
@@ -181,15 +184,15 @@ $(document).ready(function(){initNavTree('dllist_8h_source.html',''); initResiza
 <div class="ttc" id="agroup__group__dllist_html_ga98a3027c2a7b5c7d4720962c9cd2d84e"><div class="ttname"><a href="group__group__dllist.html#ga98a3027c2a7b5c7d4720962c9cd2d84e">dllist_insertAfterCurrent</a></div><div class="ttdeci">DLL_EXP_DLLIST bool dllist_insertAfterCurrent(DoubleLinkedList *list, void *data, DoubleLinkedListNode *(*cb_allocNode)())</div><div class="ttdef"><b>Definition:</b> dllist.c:106</div></div>
 <div class="ttc" id="agroup__group__dllist_html_gaa8ba7df15ae3b243023e19d954739820"><div class="ttname"><a href="group__group__dllist.html#gaa8ba7df15ae3b243023e19d954739820">dllist_prepend</a></div><div class="ttdeci">DLL_EXP_DLLIST bool dllist_prepend(DoubleLinkedList *list, void *data, DoubleLinkedListNode *(*cb_allocNode)())</div><div class="ttdef"><b>Definition:</b> dllist.c:42</div></div>
 <div class="ttc" id="agroup__group__dllist_html_gaed3f34b2282265fce268d25a7145f8c6"><div class="ttname"><a href="group__group__dllist.html#gaed3f34b2282265fce268d25a7145f8c6">dllist_selectPrevious</a></div><div class="ttdeci">DLL_EXP_DLLIST DoubleLinkedListNode * dllist_selectPrevious(DoubleLinkedList *list)</div><div class="ttdef"><b>Definition:</b> dllist.c:25</div></div>
-<div class="ttc" id="astructdouble__linked__list__node_html"><div class="ttname"><a href="structdouble__linked__list__node.html">double_linked_list_node</a></div><div class="ttdef"><b>Definition:</b> lists/structs.h:62</div></div>
-<div class="ttc" id="astructdouble__linked__list_html"><div class="ttname"><a href="structdouble__linked__list.html">double_linked_list</a></div><div class="ttdef"><b>Definition:</b> lists/structs.h:140</div></div>
+<div class="ttc" id="astructdouble__linked__list__node_html"><div class="ttname"><a href="structdouble__linked__list__node.html">double_linked_list_node</a></div><div class="ttdef"><b>Definition:</b> lists/structs.h:63</div></div>
+<div class="ttc" id="astructdouble__linked__list_html"><div class="ttname"><a href="structdouble__linked__list.html">double_linked_list</a></div><div class="ttdef"><b>Definition:</b> lists/structs.h:141</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_cb12f50c2f20327f019ffa7ab4cce39c.html">lists</a></li><li class="navelem"><a class="el" href="dir_99a8bddff21b13fe862acc9055d44f55.html">double</a></li><li class="navelem"><a class="el" href="dllist_8h.html">dllist.h</a></li>
-    <li class="footer">Generated on Thu Mar 21 2024 21:43:15 for NibblePoker&#39;s Clang Goodies by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Sat Jul 13 2024 14:17:09 for NibblePoker&#39;s Clang Goodies by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>

@@ -27,7 +27,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign">
-   <div id="projectname">NibblePoker&#39;s Clang Goodies<span id="projectnumber">&#160;0.5.1</span>
+   <div id="projectname">NibblePoker&#39;s Clang Goodies<span id="projectnumber">&#160;1.0.0</span>
    </div>
    <div id="projectbrief">Small collection of utilities and libraries for C in order to simplify some development tasks.</div>
   </td>
@@ -97,47 +97,50 @@ $(document).ready(function(){initNavTree('hashmap_8h_source.html',''); initResiz
 <div class="contents">
 <a href="hashmap_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#pragma once</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;stdbool.h&gt;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;../../platform.h&quot;</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;<a class="code" href="uuid_2structs_8h.html">structs.h</a>&quot;</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;../structs.h&quot;</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#if defined(NP_GOODIES_EXPORT_HASHMAP_CHAINED) || defined(NP_GOODIES_EXPORT_HASHMAP_ALL) || defined(NP_GOODIES_EXPORT_ALL)</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">    #define DLL_EXP_CHAINED_HASHMAP NP_DLL_EXPORT</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#else</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">    #define DLL_EXP_CHAINED_HASHMAP</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>DLL_EXP_CHAINED_HASHMAP <a class="code hl_struct" href="structhashmap__chained.html">ChainedHashMap</a> *<a class="code hl_function" href="group__group__hashmap__chained.html#ga3c463ecc6d698b082a90ae81e91396d2">hashmap_chained_create</a>(uint8_t sizePower);</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>DLL_EXP_CHAINED_HASHMAP <span class="keywordtype">void</span> *<a class="code hl_function" href="group__group__hashmap__chained.html#ga02b0fe8431fd12a503eb69d7a6c4fc7a">hashmap_chained_getByHash</a>(<a class="code hl_struct" href="structhashmap__chained.html">ChainedHashMap</a> *hashMap, uint64_t hash);</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>DLL_EXP_CHAINED_HASHMAP <span class="keywordtype">bool</span> <a class="code hl_function" href="group__group__hashmap__chained.html#ga37936bb5dedf4e8e4826a425af1b6dec">hashmap_chained_overwriteByHash</a>(</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        <a class="code hl_struct" href="structhashmap__chained.html">ChainedHashMap</a> *hashMap,</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        <span class="keywordtype">void</span>* data,</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        uint64_t hash,</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        <span class="keywordtype">void</span> (*cb_freeData)(<span class="keywordtype">void</span> *data));</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="group__group__hashmap__chained.html#gaadfc8959711f4bd5f69ea4868fa6ec8c">   77</a></span><span class="preprocessor">#define hashmap_chained_setByHash(hashMap, data, hash) (hashmap_chained_overwriteByHash(hashMap, data, hash, NULL))</span></div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>DLL_EXP_CHAINED_HASHMAP <span class="keywordtype">bool</span> <a class="code hl_function" href="group__group__hashmap__chained.html#ga70d577a9f171f07da2c60aa8b7c72283">hashmap_chained_deleteByHash</a>(</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        <a class="code hl_struct" href="structhashmap__chained.html">ChainedHashMap</a> *hashMap,</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        uint64_t hash,</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        <span class="keywordtype">void</span> (*cb_freeData)(<span class="keywordtype">void</span> *data));</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>DLL_EXP_CHAINED_HASHMAP <span class="keywordtype">void</span> <a class="code hl_function" href="group__group__hashmap__chained.html#gaeb9c22cfcd9a8c791fdb15dbb38b3c91">hashmap_chained_free</a>(<a class="code hl_struct" href="structhashmap__chained.html">ChainedHashMap</a> *hashMap, <span class="keywordtype">void</span> (*cb_freeData)(<span class="keywordtype">void</span> *data));</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> <span class="comment">// end of group_hashmap_chained</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#if !defined(NP_ONCE_C99_GOODIES_HASHMAP_CHAINED_MAIN)</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#define NP_ONCE_C99_GOODIES_HASHMAP_CHAINED_MAIN</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;stdbool.h&gt;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;../../platform.h&quot;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;<a class="code" href="uuid_2structs_8h.html">structs.h</a>&quot;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;../structs.h&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#if defined(NP_GOODIES_EXPORT_HASHMAP_CHAINED) || defined(NP_GOODIES_EXPORT_HASHMAP_ALL) || defined(NP_GOODIES_EXPORT_ALL)</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">    #define DLL_EXP_CHAINED_HASHMAP NP_DLL_EXPORT</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#else</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">    #define DLL_EXP_CHAINED_HASHMAP</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>DLL_EXP_CHAINED_HASHMAP <a class="code hl_struct" href="structhashmap__chained.html">ChainedHashMap</a> *<a class="code hl_function" href="group__group__hashmap__chained.html#ga3c463ecc6d698b082a90ae81e91396d2">hashmap_chained_create</a>(uint8_t sizePower);</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>DLL_EXP_CHAINED_HASHMAP <span class="keywordtype">void</span> *<a class="code hl_function" href="group__group__hashmap__chained.html#ga02b0fe8431fd12a503eb69d7a6c4fc7a">hashmap_chained_getByHash</a>(<a class="code hl_struct" href="structhashmap__chained.html">ChainedHashMap</a> *hashMap, uint64_t hash);</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>DLL_EXP_CHAINED_HASHMAP <span class="keywordtype">bool</span> <a class="code hl_function" href="group__group__hashmap__chained.html#ga37936bb5dedf4e8e4826a425af1b6dec">hashmap_chained_overwriteByHash</a>(</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        <a class="code hl_struct" href="structhashmap__chained.html">ChainedHashMap</a> *hashMap,</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        <span class="keywordtype">void</span>* data,</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        uint64_t hash,</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        <span class="keywordtype">void</span> (*cb_freeData)(<span class="keywordtype">void</span> *data));</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="group__group__hashmap__chained.html#gaadfc8959711f4bd5f69ea4868fa6ec8c">   78</a></span><span class="preprocessor">#define hashmap_chained_setByHash(hashMap, data, hash) (hashmap_chained_overwriteByHash(hashMap, data, hash, NULL))</span></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>DLL_EXP_CHAINED_HASHMAP <span class="keywordtype">bool</span> <a class="code hl_function" href="group__group__hashmap__chained.html#ga70d577a9f171f07da2c60aa8b7c72283">hashmap_chained_deleteByHash</a>(</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        <a class="code hl_struct" href="structhashmap__chained.html">ChainedHashMap</a> *hashMap,</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        uint64_t hash,</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        <span class="keywordtype">void</span> (*cb_freeData)(<span class="keywordtype">void</span> *data));</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>DLL_EXP_CHAINED_HASHMAP <span class="keywordtype">void</span> <a class="code hl_function" href="group__group__hashmap__chained.html#gaeb9c22cfcd9a8c791fdb15dbb38b3c91">hashmap_chained_free</a>(<a class="code hl_struct" href="structhashmap__chained.html">ChainedHashMap</a> *hashMap, <span class="keywordtype">void</span> (*cb_freeData)(<span class="keywordtype">void</span> *data));</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> <span class="comment">// end of group_hashmap_chained</span></div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span><span class="preprocessor">#endif </span><span class="comment">/* !NP_ONCE_C99_GOODIES_HASHMAP_CHAINED_MAIN */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="agroup__group__hashmap__chained_html_ga02b0fe8431fd12a503eb69d7a6c4fc7a"><div class="ttname"><a href="group__group__hashmap__chained.html#ga02b0fe8431fd12a503eb69d7a6c4fc7a">hashmap_chained_getByHash</a></div><div class="ttdeci">DLL_EXP_CHAINED_HASHMAP void * hashmap_chained_getByHash(ChainedHashMap *hashMap, uint64_t hash)</div><div class="ttdef"><b>Definition:</b> hashmap.c:49</div></div>
 <div class="ttc" id="agroup__group__hashmap__chained_html_ga37936bb5dedf4e8e4826a425af1b6dec"><div class="ttname"><a href="group__group__hashmap__chained.html#ga37936bb5dedf4e8e4826a425af1b6dec">hashmap_chained_overwriteByHash</a></div><div class="ttdeci">DLL_EXP_CHAINED_HASHMAP bool hashmap_chained_overwriteByHash(ChainedHashMap *hashMap, void *data, uint64_t hash, void(*cb_freeData)(void *data))</div><div class="ttdef"><b>Definition:</b> hashmap.c:64</div></div>
 <div class="ttc" id="agroup__group__hashmap__chained_html_ga3c463ecc6d698b082a90ae81e91396d2"><div class="ttname"><a href="group__group__hashmap__chained.html#ga3c463ecc6d698b082a90ae81e91396d2">hashmap_chained_create</a></div><div class="ttdeci">DLL_EXP_CHAINED_HASHMAP ChainedHashMap * hashmap_chained_create(uint8_t sizePower)</div><div class="ttdef"><b>Definition:</b> hashmap.c:24</div></div>
 <div class="ttc" id="agroup__group__hashmap__chained_html_ga70d577a9f171f07da2c60aa8b7c72283"><div class="ttname"><a href="group__group__hashmap__chained.html#ga70d577a9f171f07da2c60aa8b7c72283">hashmap_chained_deleteByHash</a></div><div class="ttdeci">DLL_EXP_CHAINED_HASHMAP bool hashmap_chained_deleteByHash(ChainedHashMap *hashMap, uint64_t hash, void(*cb_freeData)(void *data))</div><div class="ttdef"><b>Definition:</b> hashmap.c:112</div></div>
 <div class="ttc" id="agroup__group__hashmap__chained_html_gaeb9c22cfcd9a8c791fdb15dbb38b3c91"><div class="ttname"><a href="group__group__hashmap__chained.html#gaeb9c22cfcd9a8c791fdb15dbb38b3c91">hashmap_chained_free</a></div><div class="ttdeci">DLL_EXP_CHAINED_HASHMAP void hashmap_chained_free(ChainedHashMap *hashMap, void(*cb_freeData)(void *data))</div><div class="ttdef"><b>Definition:</b> hashmap.c:151</div></div>
-<div class="ttc" id="astructhashmap__chained_html"><div class="ttname"><a href="structhashmap__chained.html">hashmap_chained</a></div><div class="ttdef"><b>Definition:</b> hashmaps/chained/structs.h:47</div></div>
+<div class="ttc" id="astructhashmap__chained_html"><div class="ttname"><a href="structhashmap__chained.html">hashmap_chained</a></div><div class="ttdef"><b>Definition:</b> hashmaps/chained/structs.h:48</div></div>
 <div class="ttc" id="auuid_2structs_8h_html"><div class="ttname"><a href="uuid_2structs_8h.html">structs.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -145,7 +148,7 @@ $(document).ready(function(){initNavTree('hashmap_8h_source.html',''); initResiz
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_80e2eb35fc378721aa52059cc5643a6b.html">hashmaps</a></li><li class="navelem"><a class="el" href="dir_5ce372709e90b2a12c0fbaee7dc9a064.html">chained</a></li><li class="navelem"><a class="el" href="hashmap_8h.html">hashmap.h</a></li>
-    <li class="footer">Generated on Thu Mar 21 2024 21:43:15 for NibblePoker&#39;s Clang Goodies by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Sat Jul 13 2024 14:17:09 for NibblePoker&#39;s Clang Goodies by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>

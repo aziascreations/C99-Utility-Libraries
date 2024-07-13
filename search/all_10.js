@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['verb_0',['Verb',['../arguments_2structs_8h.html#a4481b8afc45b3ad7ac92bafe3650c102',1,'structs.h']]],
-  ['verbs_1',['verbs',['../structarguments__verb.html#a75419bfec7a6fdefb7c7d93252cd01b9',1,'arguments_verb']]],
-  ['version_2eh_2',['version.h',['../version_8h.html',1,'']]]
+  ['wasused_0',['wasUsed',['../structarguments__verb__a.html#a0149ab262433535ebaa5ea04ff4868d7',1,'arguments_verb_a::wasUsed()'],['../structarguments__verb__w.html#a82d0677fb2355006af335864d87478fd',1,'arguments_verb_w::wasUsed()']]]
 ];

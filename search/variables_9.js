@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['occurrences_0',['occurrences',['../structarguments__option.html#abe18f03312feae68d08205cdf980abfc',1,'arguments_option']]],
-  ['options_1',['options',['../structarguments__verb.html#a22c000dd3177b5260c4428f8c7289853',1,'arguments_verb']]]
+  ['occurrences_0',['occurrences',['../structarguments__option__a.html#a7d304f827e7b936910b56136a2d22d02',1,'arguments_option_a::occurrences()'],['../structarguments__option__w.html#af6f2d3f62f075b31d84dcead6b2712b0',1,'arguments_option_w::occurrences()']]],
+  ['options_1',['options',['../structarguments__verb__a.html#ada6506fdfb5d7333da4a4ae13d380ef1',1,'arguments_verb_a::options()'],['../structarguments__verb__w.html#aa863a9a2f7ff7769134bc5a4ac1b2cdd',1,'arguments_verb_w::options()']]]
 ];

@@ -13,9 +13,9 @@ var searchData=
   ['error_5farguments_5fsingle_5foption_5freused_10',['ERROR_ARGUMENTS_SINGLE_OPTION_REUSED',['../group__arguments.html#gga8db04c5bff185ed40154146a665b8cdfa4c77c783f52981989c2532c19cdc9054',1,'errors.h']]],
   ['error_5farguments_5fthis_5fshould_5fnot_5ftrigger_11',['ERROR_ARGUMENTS_THIS_SHOULD_NOT_TRIGGER',['../group__arguments.html#gga8db04c5bff185ed40154146a665b8cdfaebba5ef2e99f82bccb03bf88adb40e5d',1,'errors.h']]],
   ['error_5farguments_5funknown_5foption_12',['ERROR_ARGUMENTS_UNKNOWN_OPTION',['../group__arguments.html#gga8db04c5bff185ed40154146a665b8cdfa3c213242424f75ccd18f804b8bcc69b9',1,'errors.h']]],
-  ['error_5fprint_13',['error_print',['../group__group__np__debug.html#ga643ff41c124640eb217b60421f40aa05',1,'debug.h']]],
-  ['error_5fprintln_14',['error_println',['../group__group__np__debug.html#ga066ff324eb29d6acd5a34608027a3c07',1,'debug.h']]],
-  ['error_5fwprint_15',['error_wprint',['../group__group__np__debug.html#ga43c50294caa7288f8555e17398b343cb',1,'debug.h']]],
-  ['error_5fwprintln_16',['error_wprintln',['../group__group__np__debug.html#ga810335d86506dc7c93352d2214438695',1,'debug.h']]],
+  ['error_5fprinta_13',['error_printA',['../group__group__np__debug.html#ga00a9d2f58090a0f7a9dd15570d63ba84',1,'debug.h']]],
+  ['error_5fprintlna_14',['error_printlnA',['../group__group__np__debug.html#gacdd1747070937b1956df84785da150e3',1,'debug.h']]],
+  ['error_5fprintlnw_15',['error_printlnW',['../group__group__np__debug.html#ga01ba0f9ff16f34cd50826e6120454d62',1,'debug.h']]],
+  ['error_5fprintw_16',['error_printW',['../group__group__np__debug.html#ga9fc5be59dad2062143c1d78397b834fa',1,'debug.h']]],
   ['errors_2eh_17',['errors.h',['../errors_8h.html',1,'']]]
 ];
