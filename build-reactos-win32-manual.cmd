@@ -1,11 +1,14 @@
 @echo off
-setlocal enabledelayedexpansion
 
 :: Going into the script's directory
 pushd %~dp0
 
 :: Preparing TCC
 set TCC="..\.bin\tcc.exe"
+
+:: Preparing 'windres'
+set PATH=%PATH%;C:\cygwin64\bin
+set WINDRES="windres.exe"
 
 :: Removing old build folders
 echo.
@@ -24,6 +27,10 @@ mkdir lib
 
 echo ^> Copying '.def' files...
 copy ..\rsc\*.def lib\ > nul
+echo.
+
+echo ^> Compiling '.rc' file...
+%WINDRES% -i "../rsc/np_clang_goodies.rc" -o "np_clang_goodies.res"
 echo.
 
 :: TODO: Automate this
@@ -60,6 +67,7 @@ echo.
 
 echo ^> Moving final test executables...
 %TCC% -m64 -o test_platform_x64.exe -std=c99 -x c ../tests/misc/test_platform.c
+%TCC% -m64 -o example_arguments_basic.exe -std=c99 -x c ../examples/arguments_basic.c %NP_C99_GOODIES_C_FILES%
 %TCC% -m64 -o bm_crc32_implementations_x64.exe -std=c99 -x c ../benchmarks/bm_crc32_implementations.c
 :: The 'uuid_win32_x64' still crashes, the callback might be broken :/
 %TCC% -m64 -Llib -lcrypt32 -lnp_clang_goodies -o uuid_win32_x64.exe -std=c99 -x c ../examples/uuid_win32.c
@@ -72,5 +80,4 @@ popd
 
 :: Letting the user check the logs
 echo.
-endlocal
 pause

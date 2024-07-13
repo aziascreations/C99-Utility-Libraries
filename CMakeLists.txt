@@ -45,12 +45,14 @@ include(CMakeDependentOption)
 option(NP_GOODIES_BUILD_EXAMPLES "Build the examples." OFF)
 option(NP_GOODIES_BUILD_TESTS "Build the tests." OFF)
 option(NP_GOODIES_BUILD_BENCHMARKS "Build the benchmarks." OFF)
+option(NP_GOODIES_BUILD_WIN32_NODEFAULTLIB "Adds the 'NODEFAULTLIB' option for MSVC." OFF)
 
 if(NP_GOODIES_IS_MAIN)
     message("----> Non-imported context autoconfig")
     set(NP_GOODIES_BUILD_EXAMPLES ON CACHE BOOL "" FORCE)
     set(NP_GOODIES_BUILD_TESTS ON CACHE BOOL "" FORCE)
     set(NP_GOODIES_BUILD_BENCHMARKS ON CACHE BOOL "" FORCE)
+    set(NP_GOODIES_BUILD_WIN32_NODEFAULTLIB OFF CACHE BOOL "")
 endif()
 
 
@@ -102,6 +104,11 @@ if(NP_GOODIES_IS_MAIN)
         # /RELEASE -> Enables link-time code generation/optimizations.
         set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /LTCG")
         # No real size difference seen.
+
+        if(NP_GOODIES_BUILD_WIN32_NODEFAULTLIB)
+            message("----> Adding the '/NODEFAULTLIB' flag...")
+            set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /NODEFAULTLIB")
+        endif()
     endif()
 
     if(MINGW)
