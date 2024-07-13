@@ -20,16 +20,16 @@ int main(void) {
 	args_registerVerb(subVerb, rootVerb);
 	
 	int invalidLaunchArgumentsLen = 2;
-	np_args_char *invalidLaunchArguments[] = {
-			np_args_L("sub"),
-			np_args_L("-b"),
+	text_char *invalidLaunchArguments[] = {
+			TEXT("sub"),
+			TEXT("-b"),
 	};
 	
 	int validLaunchArgumentsLen = 3;
-	np_args_char *validLaunchArguments[] = {
-			np_args_L("-a"),
-			np_args_L("sub"),
-			np_args_L("-b"),
+	text_char *validLaunchArguments[] = {
+			TEXT("-a"),
+			TEXT("sub"),
+			TEXT("-b"),
 	};
 	
 	printf("> Running parser with missing root's required option...\n");

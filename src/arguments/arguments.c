@@ -898,7 +898,7 @@ enum EArgumentParserErrors args_parseArgumentsA(VerbA *rootVerb, char *arguments
 			tempReqOption = (OptionA *) dllist_selectNextData(tempReqVerb->options);
 		}
 		
-		tempReqVerb = currentVerb->parentVerb;
+		tempReqVerb = tempReqVerb->parentVerb;
 	}
 	
 	// Returning the last used verb if possible.
