@@ -333,6 +333,10 @@ if(NP_GOODIES_BUILD_TESTS)
     add_test(NAME test_args_parsing_basic_wchar COMMAND test_args_parsing_basic_wchar)
     target_compile_definitions(test_args_parsing_basic_wchar PUBLIC UNICODE)
 
+    add_executable(test_args_required_children_option_wchar tests/arguments/test_args_required_children_option.c ${src_args} ${src_test_utils})
+    add_test(NAME test_args_required_children_option_wchar COMMAND test_args_required_children_option)
+    target_compile_definitions(test_args_required_children_option_wchar PUBLIC UNICODE)
+
     add_executable(test_args_required_option_wchar tests/arguments/test_args_required_option.c ${src_args} ${src_test_utils})
     add_test(NAME test_args_required_option_wchar COMMAND test_args_required_option_wchar)
     target_compile_definitions(test_args_required_option_wchar PUBLIC UNICODE)
