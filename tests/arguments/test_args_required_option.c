@@ -17,9 +17,9 @@ int main(void) {
 	args_registerOption(secondRequiredOption, rootVerb);
 	
 	int launchArgumentsLen = 2;
-	np_args_char *launchArguments[] = {
-			np_args_L("-a"),
-			np_args_L("-b"),
+	text_char *launchArguments[] = {
+			TEXT("-a"),
+			TEXT("-b"),
 	};
 	
 	printf("> Running parser with one missing required option...\n");

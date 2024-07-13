@@ -20,7 +20,14 @@ docs/latex
 *.pdn
 *.bkp
 extra/words_dictionary.json
+trash/
+_*.txt
 
 # Unfinished stuff
 CONTRIBUTING.md
-conventions.md
+trash/conventions.md
+trash/build-quick-strip.cmd
+src/array/
+
+# TCC
+.bin/

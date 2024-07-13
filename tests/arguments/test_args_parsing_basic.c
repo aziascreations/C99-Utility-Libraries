@@ -11,20 +11,20 @@ int main(void) {
 	Verb* rootVerb = args_createVerb(NULL, NULL);
 	
 	Option* shortToggleOption = args_createOption('a', NULL, NULL, FLAG_OPTION_NONE);
-	Option* longToggleOption = args_createOption('\0', np_args_L("bravo"), NULL, FLAG_OPTION_NONE);
+	Option* longToggleOption = args_createOption('\0', TEXT("bravo"), NULL, FLAG_OPTION_NONE);
 	
-	Option* mixedRepeatOption = args_createOption('c', np_args_L("charlie"), NULL, FLAG_OPTION_REPEATABLE);
+	Option* mixedRepeatOption = args_createOption('c', TEXT("charlie"), NULL, FLAG_OPTION_REPEATABLE);
 	
 	args_registerOption(shortToggleOption, rootVerb);
 	args_registerOption(longToggleOption, rootVerb);
 	args_registerOption(mixedRepeatOption, rootVerb);
 	
 	int launchArgumentsLen = 4;
-	np_args_char *launchArguments[] = {
-			np_args_L("-ac"),
-			np_args_L("--bravo"),
-			np_args_L("--charlie"),
-			np_args_L("-c")  // Will be ignored due to endIndex passed to `args_parseArguments`.
+	text_char *launchArguments[] = {
+			TEXT("-ac"),
+			TEXT("--bravo"),
+			TEXT("--charlie"),
+			TEXT("-c")  // Will be ignored due to endIndex passed to `args_parseArguments`.
 	};
 	
 	printf("> Running parser...\n");

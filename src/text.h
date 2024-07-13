@@ -1,6 +1,7 @@
 /** @file */
 
-#pragma once
+#if !defined(NP_ONCE_C99_GOODIES_TEXT)
+#define NP_ONCE_C99_GOODIES_TEXT
 
 #include "platform.h"
 
@@ -14,8 +15,56 @@
 	#define DLL_EXP_TEXT
 #endif
 
-#define text_areStringsEqual(string1, string2) (strcmp(string1, string2) == 0)
+// Generic macros
+#define text_areStringsEqualA(string1, string2) (strcmp(string1, string2) == 0)
 #define text_areStringsEqualW(string1, string2) (wcscmp(string1, string2) == 0)
+
+
+// 1-to-1 Macro'ed functions & types
+#define text_strcmpA strcmp
+#define text_strcmpW wcscmp
+
+#define text_strlenA strlen
+#define text_strlenW wcslen
+
+#define text_charA char
+#define text_charW wchar_t
+
+
+// Unicode macros
+#if defined(NP_UNICODE)
+	#define text_areStringsEqual text_areStringsEqualW
+	
+	#define text_strcmp text_strcmpW
+	#define text_strlen text_strlenW
+	#define text_char text_charW
+	
+	#define text_copy text_copyW
+	#define text_copy_s text_copyW_s
+	#define text_startsWith text_startsWithW
+	#define text_isEmpty text_isEmptyW
+	#define text_nextSpaceIndex text_nextSpaceIndexW
+	#define text_firstDifferentIndex text_firstDifferentIndexW
+	#define text_lastDifferentIndex text_lastDifferentIndexW
+	#define text_trim text_trimW
+	#define text_copyLine text_copyLineW
+#else
+	#define text_areStringsEqual text_areStringsEqualA
+	
+	#define text_strcmp text_strcmpA
+	#define text_strlen text_strlenA
+	#define text_char text_charA
+	
+	#define text_copy text_copyA
+	#define text_copy_s text_copyA_s
+	#define text_startsWith text_startsWithA
+	#define text_isEmpty text_isEmptyA
+	#define text_nextSpaceIndex text_nextSpaceIndexA
+	#define text_firstDifferentIndex text_firstDifferentIndexA
+	#define text_lastDifferentIndex text_lastDifferentIndexA
+	#define text_trim text_trimA
+	#define text_copyLine text_copyLineA
+#endif
 
 /**
  * Copies the given string into a new buffer and returns said buffer as-is.
@@ -23,7 +72,7 @@
  * @return The copied string's pointer, or `NULL` if an error occurred.
  * @warning Failure to free the returned string WILL cause memory leaks !
  */
-DLL_EXP_TEXT char *text_copy(const char *string);
+DLL_EXP_TEXT char *text_copyA(const char *string);
 
 /**
  * Copies the given string into a new buffer and returns said buffer as-is.
@@ -32,7 +81,7 @@ DLL_EXP_TEXT char *text_copy(const char *string);
  * @return The copied string's pointer, or `NULL` if an error occurred.
  * @warning Failure to free the returned string WILL cause memory leaks !
  */
-DLL_EXP_TEXT char *text_copy_s(const char *string, size_t maxLength);
+DLL_EXP_TEXT char *text_copyA_s(const char *string, size_t maxLength);
 
 /**
  * Copies the given string into a new buffer and returns said buffer as-is.
@@ -57,7 +106,7 @@ DLL_EXP_TEXT wchar_t *text_copyW_s(const wchar_t *string, size_t maxLength);
  * @param prefix The prefix to be searched for in \a string.
  * @return `true` if the string starts with the given prefix, `false` otherwise.
  */
-DLL_EXP_TEXT bool text_startsWith(const char *string, const char *prefix);
+DLL_EXP_TEXT bool text_startsWithA(const char *string, const char *prefix);
 
 /**
  * Checks if a given \a string starts with a given \a prefix.
@@ -72,7 +121,7 @@ DLL_EXP_TEXT bool text_startsWithW(const wchar_t *string, const wchar_t *prefix)
  * @param string The string to be checked.
  * @return `true` if the string is empty, `false` otherwise.
  */
-DLL_EXP_TEXT bool text_isEmpty(const char *string);
+DLL_EXP_TEXT bool text_isEmptyA(const char *string);
 
 /**
  * Checks if the given \a string is `NULL`, empty or filled with spaces.
@@ -87,7 +136,7 @@ DLL_EXP_TEXT bool text_isEmptyW(const wchar_t *string);
  * @param startIndex The index at which the search will start in the given \a string.
  * @return The index at which the next space will be located if found, or the string's end index.
  */
-DLL_EXP_TEXT int text_nextSpaceIndex(const char *string, int startIndex);
+DLL_EXP_TEXT int text_nextSpaceIndexA(const char *string, int startIndex);
 
 /**
  * Finds the next space in a given string and returns its index.
@@ -103,7 +152,7 @@ DLL_EXP_TEXT int text_nextSpaceIndexW(const wchar_t *string, int startIndex);
  * @param excludedChar The character that should be skipped over.
  * @return The first non-excluded char's index, or `0` if the string or excluded char is NULL.
  */
-DLL_EXP_TEXT size_t text_firstDifferentIndex(const char *string, char excludedChar);
+DLL_EXP_TEXT size_t text_firstDifferentIndexA(const char *string, char excludedChar);
 
 /**
  * Finds the first non-excluded char in a string and returns its index.
@@ -135,7 +184,7 @@ DLL_EXP_TEXT size_t text_lastDifferentIndexW(const wchar_t *string, wchar_t excl
  * @warning The returned value points at the character BEFORE the last ignored one.<br>
  *          You should assume the next character is either ignored or a '\0'.
  */
-DLL_EXP_TEXT size_t text_lastDifferentIndex(const char *string, char excludedChar);
+DLL_EXP_TEXT size_t text_lastDifferentIndexA(const char *string, char excludedChar);
 
 /**
  * Trims the given character from a string's left and right side.<br>
@@ -146,7 +195,7 @@ DLL_EXP_TEXT size_t text_lastDifferentIndex(const char *string, char excludedCha
  *         Or `NULL` is the string or character were NULL, or if the resulting string would have been empty.
  * @warning Failure to free the returned string WILL cause memory leaks !
  */
-DLL_EXP_TEXT char *text_trim(const char *string, char trimmedChar);
+DLL_EXP_TEXT char *text_trimA(const char *string, char trimmedChar);
 
 /**
  * Trims the given character from a string's left and right side.<br>
@@ -182,7 +231,7 @@ DLL_EXP_TEXT wchar_t *text_charToWChar(const char *originalString);
  * @return The copied line's pointer, or `NULL` if an error occurred or no line could be found.
  * @warning Failure to free the returned string WILL cause memory leaks !
  */
-DLL_EXP_TEXT char *text_copyLine(
+DLL_EXP_TEXT char *text_copyLineA(
 		const char *string,
 		size_t stringLength,
 		char **nextLine,
@@ -208,3 +257,5 @@ DLL_EXP_TEXT wchar_t *text_copyLineW(
 		size_t stringLength,
 		wchar_t **nextLine,
 		size_t *nextLineMaxLength);
+
+#endif /* !NP_ONCE_C99_GOODIES_TEXT */

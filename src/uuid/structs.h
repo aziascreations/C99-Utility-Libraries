@@ -1,6 +1,7 @@
 /** @file */
 
-#pragma once
+#if !defined(NP_ONCE_C99_GOODIES_UUID_STRUCTS)
+#define NP_ONCE_C99_GOODIES_UUID_STRUCTS
 
 #include <stdint.h>
 
@@ -67,3 +68,5 @@ typedef struct uuid UUID4;
 #else
 #define NP_GOODIES_UUID_CHECK_STRUCT_SIZE(condition)
 #endif
+
+#endif /* !NP_ONCE_C99_GOODIES_UUID_STRUCTS */

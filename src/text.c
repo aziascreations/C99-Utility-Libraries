@@ -18,7 +18,7 @@
 //#include <stdio.h>
 //#include <stdint.h>
 
-char *text_copy(const char *string) {
+char *text_copyA(const char *string) {
 	// Safety check
 	if(string == NULL) {
 		return NULL;
@@ -35,7 +35,7 @@ char *text_copy(const char *string) {
 	return newString;
 }
 
-char *text_copy_s(const char *string, size_t maxLength) {
+char *text_copyA_s(const char *string, size_t maxLength) {
 	if(string == NULL || maxLength <= 0) {
 		return NULL;
 	}
@@ -119,7 +119,7 @@ wchar_t *text_copyW_s(const wchar_t *string, size_t maxLength) {
 	return newString;
 }
 
-bool text_startsWith(const char *string, const char *prefix) {
+bool text_startsWithA(const char *string, const char *prefix) {
 	if(string == NULL || prefix == NULL) {
 		return false;
 	}
@@ -147,7 +147,7 @@ bool text_startsWithW(const wchar_t *string, const wchar_t *prefix) {
 	return memcmp(string, prefix, prefixLength * sizeof(wchar_t)) == 0;
 }
 
-bool text_isEmpty(const char *string) {
+bool text_isEmptyA(const char *string) {
 	if(string != NULL) {
 		size_t len = strlen(string);
 		
@@ -175,7 +175,7 @@ bool text_isEmptyW(const wchar_t *string) {
 	return true;
 }
 
-int text_nextSpaceIndex(const char *string, int startIndex) {
+int text_nextSpaceIndexA(const char *string, int startIndex) {
 	if(string == NULL) {
 		return 0;
 	}
@@ -241,7 +241,7 @@ size_t text_internal_firstDifferentIndexW(const wchar_t *string, wchar_t exclude
 	return 0;
 }
 
-size_t text_firstDifferentIndex(const char *string, char excludedChar) {
+size_t text_firstDifferentIndexA(const char *string, char excludedChar) {
 	if(string != NULL) {
 		return text_internal_firstDifferentIndex(string, excludedChar, strlen(string));
 	} else {
@@ -289,7 +289,7 @@ size_t text_internal_lastDifferentIndexW(const wchar_t *string, wchar_t excluded
 	return 0;
 }
 
-size_t text_lastDifferentIndex(const char *string, char excludedChar) {
+size_t text_lastDifferentIndexA(const char *string, char excludedChar) {
 	if(string != NULL) {
 		return text_internal_lastDifferentIndex(string, excludedChar, strlen(string));
 	} else {
@@ -305,7 +305,7 @@ size_t text_lastDifferentIndexW(const wchar_t *string, wchar_t excludedChar) {
 	}
 }
 
-char *text_trim(const char *string, char trimmedChar) {
+char *text_trimA(const char *string, char trimmedChar) {
 	if(string == NULL || trimmedChar == '\0') {
 		return NULL;
 	}
@@ -389,7 +389,7 @@ wchar_t *text_charToWChar(const char *originalString) {
 	return returnedString;
 }
 
-char *text_copyLine(const char *string, size_t stringLength, char **nextLine, size_t *nextLineMaxLength) {
+char *text_copyLineA(const char *string, size_t stringLength, char **nextLine, size_t *nextLineMaxLength) {
 	if(string == NULL || stringLength <= 0) {
 		// Setting the return values to NULL/0 to prevent infinite loops.
 		if(nextLine != NULL) {

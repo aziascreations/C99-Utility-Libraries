@@ -1,6 +1,7 @@
 /** @file */
 
-#pragma once
+#if !defined(NP_ONCE_C99_GOODIES_ARGUMENTS_ERRORS)
+#define NP_ONCE_C99_GOODIES_ARGUMENTS_ERRORS
 
 #include "./types.h"
 
@@ -84,3 +85,5 @@ enum EArgumentParserErrors {
 };
 
 /** @} */ // end of arguments
+
+#endif /* !NP_ONCE_C99_GOODIES_ARGUMENTS_ERRORS */

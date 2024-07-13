@@ -8,10 +8,10 @@ int main() {
 	DoubleLinkedList *myList = dllist_create();
 	
 	// Adding some data.
-	dllist_append(myList, text_copy("Hello world !"), NULL);
-	dllist_append(myList, text_copy("Lorem ipsum donor si amet."), NULL);
-	dllist_append(myList, text_copy("Test 123"), NULL);
-	dllist_append(myList, text_copy("I'm at the end :)"), NULL);
+	dllist_append(myList, text_copyA("Hello world !"), NULL);
+	dllist_append(myList, text_copyA("Lorem ipsum donor si amet."), NULL);
+	dllist_append(myList, text_copyA("Test 123"), NULL);
+	dllist_append(myList, text_copyA("I'm at the end :)"), NULL);
 	
 	// Testing functions specific to double linked lists.
 	printf("Using `dllist_selectPrevious`:\n");

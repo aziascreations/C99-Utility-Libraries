@@ -1,6 +1,7 @@
 /** @file */
 
-#pragma once
+#if !defined(NP_ONCE_C99_GOODIES_PLATFORM)
+#define NP_ONCE_C99_GOODIES_PLATFORM
 
 /** @defgroup group_np_platform Platforms detection
  *
@@ -112,7 +113,9 @@
 
 
 // Setting the OS-specific library export macro
-#if defined(NP_OS_WINDOWS) || defined(NP_OS_CYGWIN)
+#if defined(NP_OS_WINDOWS) && defined(NP_COMPILER_TCC)
+	#define NP_DLL_EXPORT __attribute__((dllexport))
+#elif defined(NP_OS_WINDOWS) || defined(NP_OS_CYGWIN)
     #define NP_DLL_EXPORT __declspec(dllexport)
 #elif defined(NP_OS_LINUX) || defined(NP_OS_UNIX)
     #define NP_DLL_EXPORT __attribute__((visibility("default")))
@@ -120,4 +123,30 @@
     #define NP_DLL_EXPORT
 #endif
 
+
+// Never define `NP_UNICODE` manually !
+#if defined(NP_UNICODE)
+	#error Do not define `NP_UNICODE`, use `UNICODE` or `_UNICODE` instead !
+#endif
+
+// Checking if ascii or unicode variants should be macro'ed
+#if defined(UNICODE) || defined(_UNICODE)
+	#define NP_UNICODE
+#else
+	#undef NP_UNICODE
+#endif
+
+// Defining the TEXT() macro if not defined by Windows's headers
+#if !defined(TEXT)
+	#if defined(NP_UNICODE)
+		#define TEXT(str) L##str
+	#else
+		#define TEXT(str) str
+	#endif
+#endif
+
+
+
 /** @} */ // end of group_np_platform
+
+#endif /* !NP_ONCE_C99_GOODIES_PLATFORM */

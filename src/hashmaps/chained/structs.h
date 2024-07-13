@@ -1,6 +1,7 @@
 /// @file structs.h
 
-#pragma once
+#if !defined(NP_ONCE_C99_GOODIES_HASHMAP_CHAINED_STRUCTS)
+#define NP_ONCE_C99_GOODIES_HASHMAP_CHAINED_STRUCTS
 
 #include <stddef.h>
 #include <stdint.h>
@@ -80,3 +81,5 @@ struct hashmap_chained {
 };
 
 /** @} */ // end of group_hashmap_chained
+
+#endif /* !NP_ONCE_C99_GOODIES_HASHMAP_CHAINED_STRUCTS */

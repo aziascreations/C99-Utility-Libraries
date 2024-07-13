@@ -1,6 +1,7 @@
 /** @file */
 
-#pragma once
+#if !defined(NP_ONCE_C99_GOODIES_LLIST_DOUBLE)
+#define NP_ONCE_C99_GOODIES_LLIST_DOUBLE
 
 #include <malloc.h>
 #include <stdbool.h>
@@ -250,3 +251,5 @@ DLL_EXP_DLLIST bool dllist_deleteLast(
 		void (*cb_freeNode)(void *data));
 
 /** @} */ // end of group_dllist
+
+#endif /* !NP_ONCE_C99_GOODIES_LLIST_DOUBLE */

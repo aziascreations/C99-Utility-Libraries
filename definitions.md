@@ -8,10 +8,13 @@
   * `NP_GOODIES_CRC32_ENABLE_BRANCHLESS` [➜](#crc32---enables-branchless-logic)
   * <s>`NP_GOODIES_LIST_USE_COMMON_DELETER`</s> **TODO**
   * `NP_GOODIES_UUID_DISABLE_STRUCT_SIZE_CHECK` [➜](#uuid-structure-size-check)
+  * <s>`NP_DEBUG_LOGGING`</s> **TODO**
+  * <s>`NP_UNICODE`</s> **BIG NO-NO !!!**
 * [CMake Stuff](#cmake-stuff)
   * `NP_GOODIES_BUILD_BENCHMARKS` [➜](#build-benchmarks)
   * `NP_GOODIES_BUILD_EXAMPLES` [➜](#build-examples)
   * `NP_GOODIES_BUILD_TESTS` [➜](#build-tests)
+  * <s>`NP_GOODIES_BUILD_WIN32_NODEFAULTLIB` [➜](#build-with-no-default-lib)</s>
 * [Library Exports Toggles](#library-exports-toggles) *(As a hierarchical list of priority)*
   * `NP_GOODIES_EXPORT_ALL` [➜](#everything)
     * `NP_GOODIES_EXPORT_ARGUMENTS` [➜](#arguments-parser)
@@ -28,7 +31,7 @@
       * <s>`NP_GOODIES_EXPORT_UUID6`</s> **TODO**
       * <s>`NP_GOODIES_EXPORT_UUID7`</s> **TODO**
     * `NP_GOODIES_EXPORT_TEXT` [➜](#text-utilities)
-
+* [Include Guards](#include-guards)
 
 ## Features Toggles
 
@@ -102,6 +105,15 @@ If defined, the example targets will be added.
 If defined, the test targets will be added as CTest tests.<br>
 CTest will also be included in CMake.
 
+### Build with no default lib
+**Definition:** `NP_GOODIES_BUILD_WIN32_NODEFAULTLIB`
+
+If defined, the `/NODEFAULTLIB` option will be enabled for Windows targets using the MSVC toolchain.
+
+This should be used to removed UCRT dependencies and only use MSVCRT and standard libraries.<br>
+The intent behind this feature is to enable support for older Windows platforms.
+
+⚠️ This feature is still being worked on and isn't implemented, finished or tested.
 
 ## Library Exports Toggles
 The export toggles work as a hierarchical list of priority, which means that the more important a
@@ -194,3 +206,36 @@ If defined, every functions related to UUIDv4 are exported.
 If defined, every functions related to UUIDv4 are exported.
 
 ⚠️ Some functions may not be exported if `NP_WIN32` isn't defined.
+
+## Include Guards
+While `#pragma once` works for most compilers, official Win32 TCC builds don't support it and needs
+those include guards.
+
+* `NP_ONCE_C99_GOODIES_ARGUMENTS_MAIN`
+* `NP_ONCE_C99_GOODIES_ARGUMENTS_ERRORS`
+* `NP_ONCE_C99_GOODIES_ARGUMENTS_FLAGS`
+* `NP_ONCE_C99_GOODIES_ARGUMENTS_HELP`
+* <s>`NP_ONCE_C99_GOODIES_ARGUMENTS_MACROS`</s> (Removed in 1.0.0)
+* `NP_ONCE_C99_GOODIES_ARGUMENTS_STRUCTS`
+* `NP_ONCE_C99_GOODIES_ARGUMENTS_TYPES`
+
+* `NP_ONCE_C99_GOODIES_HASH_CRC32`
+
+* `NP_ONCE_C99_GOODIES_HASHMAP_COMMONS_STRUCTS`
+* `NP_ONCE_C99_GOODIES_HASHMAP_COMMONS_UTILS`
+* `NP_ONCE_C99_GOODIES_HASHMAP_CHAINED_MAIN`
+* `NP_ONCE_C99_GOODIES_HASHMAP_CHAINED_STRUCTS`
+
+* `NP_ONCE_C99_GOODIES_LLIST_COMMONS`
+* `NP_ONCE_C99_GOODIES_LLIST_STRUCTS`
+* `NP_ONCE_C99_GOODIES_LLIST_SINGLE`
+* `NP_ONCE_C99_GOODIES_LLIST_DOUBLE`
+
+* `NP_ONCE_C99_GOODIES_UUID_COMMONS`
+* `NP_ONCE_C99_GOODIES_UUID_STRUCTS`
+* `NP_ONCE_C99_GOODIES_UUID_UUID4`
+
+* `NP_ONCE_C99_GOODIES_DEBUG`
+* `NP_ONCE_C99_GOODIES_PLATFORM`
+* `NP_ONCE_C99_GOODIES_TEXT`
+* `NP_ONCE_C99_GOODIES_VERSION`
