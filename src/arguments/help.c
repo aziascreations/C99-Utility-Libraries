@@ -4,6 +4,12 @@
 
 #include "../text.h"
 
+// Dirty hack to get MSVCRT support in the final DLL
+#if defined(NP_GOODIES_BUILD_WIN32_NODEFAULTLIB) && defined(NP_OS_WINDOWS)
+#define printf _cprintf
+#endif
+
+
 // Private constants
 
 //const int np_args_value_name_len = 5;  // Refers to "VALUE" to make changing that later easier.

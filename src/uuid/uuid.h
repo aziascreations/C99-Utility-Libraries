@@ -4,9 +4,9 @@
 #define NP_ONCE_C99_GOODIES_UUID_COMMONS
 
 #include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
-#include <wchar.h>
+//#include <stdio.h>
+//#include <string.h>
+//#include <wchar.h>
 
 #include "../platform.h"
 

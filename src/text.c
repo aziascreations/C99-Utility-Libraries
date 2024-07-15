@@ -18,6 +18,11 @@
 //#include <stdio.h>
 //#include <stdint.h>
 
+// Dirty hack to get MSVCRT support in the final DLL
+//#if defined(NP_GOODIES_BUILD_WIN32_NODEFAULTLIB)
+//#define printf _cprintf
+//#endif
+
 char *text_copyA(const char *string) {
 	// Safety check
 	if(string == NULL) {

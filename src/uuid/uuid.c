@@ -35,6 +35,18 @@
  *  @{
  */
 
+// Dirty hack to get MSVCRT support in the final DLL
+#if defined(NP_GOODIES_BUILD_WIN32_NODEFAULTLIB) && defined(NP_OS_WINDOWS)
+#define printf _cprintf
+#undef sprintf
+__declspec(dllimport) int sprintf (char *__stream, const char *__format, ...);
+__declspec(dllimport) int swprintf(wchar_t* const _Buffer, size_t const _BufferCount, wchar_t const* const _Format, ...);
+//#define swprintf _cprintf
+#else
+#include <stdio.h>
+#endif
+
+
 char *uuid_toStringA(UUID4 *uuid) {
 	// C99-compatible compile-time check for the UUID4 structure's size.
 	NP_GOODIES_UUID_CHECK_STRUCT_SIZE(sizeof(UUID4) != UUID_BYTE_LENGTH);
