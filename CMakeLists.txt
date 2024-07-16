@@ -230,8 +230,10 @@ if(NP_GOODIES_IS_MAIN)
     set_target_properties(np_clang_goodies_dll_static PROPERTIES RUNTIME_OUTPUT_DIRECTORY "dll_static/")
 
     # Targets > Dummy > MSVCRT Headers
-    file(GLOB_RECURSE src_msvcrt_dummy CONFIGURE_DEPENDS "msvcrt/main.cmakesilencer.c" "msvcrt/src/*.h" "msvcrt/src/*.c")
-    add_library(np_clang_goodies_msvcrt_dummy STATIC ${src_msvcrt_dummy})
+    if(WIN32)
+        file(GLOB_RECURSE src_msvcrt_dummy CONFIGURE_DEPENDS "msvcrt/main.cmakesilencer.c" "msvcrt/src/*.h" "msvcrt/src/*.c")
+        add_library(np_clang_goodies_msvcrt_dummy STATIC ${src_msvcrt_dummy})
+    endif()
 else()
     # Targets > DLLs > External Project
     add_library(lib_np_clang_goodies SHARED ${src_all} ./rsc/np_clang_goodies.rc)
@@ -286,6 +288,10 @@ if(NP_GOODIES_BUILD_EXAMPLES)
     target_compile_definitions(example_debug_logging_on PUBLIC NP_DEBUG_LOGGING)
 
     add_executable(example_hashmap_chained_basic examples/hashmap_chained_basic.c ${src_hashmap} ${src_hash} ${src_text})
+
+    add_executable(example_text_unicode_off examples/text_unicode_macro.c ${src_text} ${src_np_clang_goodies_commons})
+    add_executable(example_text_unicode_on examples/text_unicode_macro.c ${src_text} ${src_np_clang_goodies_commons})
+    target_compile_definitions(example_text_unicode_on PUBLIC UNICODE)
 
     if(WIN32)
         if(NOT CMAKE_C_COMPILER_ID STREQUAL "TinyCC")

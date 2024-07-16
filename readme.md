@@ -140,7 +140,7 @@ repository for a complete example in a "fully-fledged" Windows application.
 
 ### Launch arguments
 * [Basic usage with `char` & `wchar_t` support](examples/arguments_basic.c)
-  * Define `NP_GOODIES_ARGUMENTS_USE_WCHAR` to support `wchar_t` instead of `char`.
+  * Define `UNICODE` to support `wchar_t` instead of `char`.  *(Same as Win32API definition)*
 
 ### Debugging Utilities
 * [Complete usage](examples/debug_logging.c)
@@ -171,7 +171,8 @@ repository for a complete example in a "fully-fledged" Windows application.
   * Safe RNG setup with Win32APIs & UUID4 generation.
 
 ### Text
-**TODO**
+* [Basic Unicode macro usage](examples/text_unicode_macro.c)
+  * Basic usage of macro-ed functions that points to their 'A' & 'W' variants.
 
 
 ## Documentation
