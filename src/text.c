@@ -10,7 +10,7 @@
 #include <ctype.h>
 #include <errno.h>
 #include <stdlib.h>
-#include <wctype.h>
+//#include <wctype.h>  // TODO: Check if it causes swprintf redefiniton errors for MSVCRT !
 
 #include "text.h"
 

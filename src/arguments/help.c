@@ -2,12 +2,9 @@
 
 #include "help.h"
 
-#include "../text.h"
+#include <stdio.h>
 
-// Dirty hack to get MSVCRT support in the final DLL
-#if defined(NP_GOODIES_BUILD_WIN32_NODEFAULTLIB) && defined(NP_OS_WINDOWS)
-#define printf _cprintf
-#endif
+#include "../text.h"
 
 
 // Private constants

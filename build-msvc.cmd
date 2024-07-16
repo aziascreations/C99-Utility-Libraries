@@ -1,111 +1,97 @@
 @echo off
-setlocal enabledelayedexpansion
+setlocal
 
-:: Preparing some variables
+echo NibblePoker's C99 Goodies MSVC Build
+echo ========================================
+
+:: You can edit these variables to fit your environment and desired build
+set BUILD_DIR=%~dp0\build-msvc
+set VCVARS_ROOT=C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build
+
+set FLAGS_CC=/nologo /Ot /Gy /Oy /TC /GS- /Gs9999999 /MD
+set FLAGS_LINK=/nologo /MANIFEST:EMBED
+
+set FLAGS_MSVCRT_CC=%FLAGS_CC%
+set FLAGS_MSVCRT_LINK=%FLAGS_LINK%
+
+:: Stuff you don't have to touch
+set BENCHMARK_DIR=%~dp0\benchmarks
+set EXAMPLES_DIR=%~dp0\examples
+set SRC_DIR=%~dp0\src
+set RSC_DIR=%~dp0\rsc
+set MSVCRT_DIR=%~dp0\msvcrt\src
+
+:: Checking the to make sure you ain't running of a VS console
+echo Checking the PATH
+where /q cl
+IF NOT ERRORLEVEL 1 (
+    echo Found 'cl.exe' in your PATH !
+    echo Use a command prompt with a clean PATH !
+    goto end
+)
+where /q link
+IF NOT ERRORLEVEL 1 (
+    echo Found 'link.exe' in your PATH !
+    echo Use a command prompt with a clean PATH !
+    goto end
+)
+where /q rc
+IF NOT ERRORLEVEL 1 (
+    echo Found 'rc.exe' in your PATH !
+    echo Use a command prompt with a clean PATH !
+    goto end
+)
+echo ^> The PATH appears to be clean
+
+:: Preparing the build folder
+echo Preparing build directory
+rmdir /Q /S %BUILD_DIR% 2> nul > nul
+mkdir %BUILD_DIR%
+echo ^> Created '%BUILD_DIR%' !
 echo.
-echo Preparing MSVC
-echo --------------
 
-set NP_MSVC_LOCATION=D:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\
-if exist "%NP_MSVC_LOCATION%" (
-	echo ^> Location: "%NP_MSVC_LOCATION%"
-) else (
-	echo ^> Cannot find it in : "%NP_MSVC_LOCATION%"
-	goto end
-)
 
-if exist "%NP_MSVC_LOCATION%\vcvars64.bat" (
-	set NP_MSVC_x64="D:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat"
-	echo ^> Found the x64 script.
-) else (
-	echo ^> Unable to find x64 script !
-)
+:: Calling the building script with distinct variable contexts
+:build-x64-ucrt
+echo C99 Goodies - x64 UCRT Build
+echo ========================================
+call build-msvc-internal.cmd "%VCVARS_ROOT%\vcvars64.bat" "%BUILD_DIR%\x64-ucrt" "%SRC_DIR%" ^
+                             "%BENCHMARK_DIR%" "%EXAMPLES_DIR%" "%RSC_DIR%" ^
+                             "%FLAGS_CC%" ^
+                             "%FLAGS_LINK%"
+echo.
 
-if exist "%NP_MSVC_LOCATION%\vcvarsamd64_x86.bat" (
-	set NP_MSVC_x86="D:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvarsamd64_x86.bat"
-	echo ^> Found the amd64_x86 script.
-) else (
-	echo ^> Unable to find amd64_x86 script !
-)
+:build-x64-msvcrt
+::/DNP_GOODIES_BUILD_WIN32_NODEFAULTLIB
+echo C99 Goodies - x64 MSVCRT Build
+echo ========================================
+call build-msvc-internal.cmd "%VCVARS_ROOT%\vcvars64.bat" "%BUILD_DIR%\x64-msvcrt" "%SRC_DIR%" ^
+                             "%BENCHMARK_DIR%" "%EXAMPLES_DIR%" "%RSC_DIR%" ^
+                             "%FLAGS_MSVCRT_CC% /external:W4 /external:I ""%MSVCRT_DIR%""" ^
+                             "%FLAGS_MSVCRT_LINK% /NODEFAULTLIB user32.lib kernel32.lib ^"%RSC_DIR%\libs\x64\msvcrt.lib^""
+echo.
 
-:: Doesn't work properly yet !
-::if exist "%NP_MSVC_LOCATION%\vcvarsamd64_arm.bat" (
-::	set NP_MSVC_arm="D:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvarsamd64_arm.bat"
-::	echo ^> Found the amd64_arm script.
-::) else (
-::	echo ^> Unable to find amd64_arm script !
-::)
+:build-x86-ucrt
+echo C99 Goodies - x86 UCRT Build
+echo ========================================
+call build-msvc-internal.cmd "%VCVARS_ROOT%\vcvars32.bat" "%BUILD_DIR%\x86-ucrt" "%SRC_DIR%" ^
+                             "%BENCHMARK_DIR%" "%EXAMPLES_DIR%" "%RSC_DIR%" ^
+                             "%FLAGS_CC%" ^
+                             "%FLAGS_LINK%"
+echo.
 
-if exist "%NP_MSVC_LOCATION%\vcvarsamd64_arm64.bat" (
-	set NP_MSVC_arm64="D:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvarsamd64_arm64.bat"
-	echo ^> Found the amd64_arm64 script.
-) else (
-	echo ^> Unable to find amd64_arm64 script !
-)
+:build-x86-msvcrt
+echo C99 Goodies - x86 MSVCRT Build
+echo ========================================
+call build-msvc-internal.cmd "%VCVARS_ROOT%\vcvars32.bat" "%BUILD_DIR%\x86-msvcrt" "%SRC_DIR%" ^
+                             "%BENCHMARK_DIR%" "%EXAMPLES_DIR%" "%RSC_DIR%" ^
+                             "%FLAGS_MSVCRT_CC% /external:W4 /external:I ""%MSVCRT_DIR%""" ^
+                             "%FLAGS_MSVCRT_LINK% /NODEFAULTLIB user32.lib kernel32.lib ^"%RSC_DIR%\libs\x86\msvcrt.lib^""
+echo.
 
-:: Going into the script's directory
-pushd %~dp0
-rmdir cmake-build-win32-msvc-x64 /s /q 2> nul
-rmdir cmake-build-win32-msvc-x86 /s /q 2> nul
-rmdir cmake-build-win32-msvc-arm /s /q 2> nul
-rmdir cmake-build-win32-msvc-arm64 /s /q 2> nul
 
-:: Doing x64 build
-if defined NP_MSVC_x64 (
-	echo.
-	echo Building x64 target
-	echo -------------------
-	mkdir cmake-build-win32-msvc-x64
-	call %NP_MSVC_x64%
-	cd cmake-build-win32-msvc-x64
-	cmake ..
-	cmake --build . --config Release
-	cd..
-)
-
-:: Doing x86 build
-if defined NP_MSVC_x86 (
-	echo.
-	echo Building x86 target
-	echo -------------------
-	mkdir cmake-build-win32-msvc-x86
-	call %NP_MSVC_x86%
-	cd cmake-build-win32-msvc-x86
-	cmake ..
-	cmake --build . --config Release
-	cd..
-)
-
-:: Doing ARM build
-if defined NP_MSVC_arm (
-	echo.
-	echo Building arm target
-	echo -------------------
-	mkdir cmake-build-win32-msvc-arm
-	call %NP_MSVC_arm%
-	cd cmake-build-win32-msvc-arm
-	cmake ..
-	cmake --build . --config Release
-	cd..
-)
-
-:: Doing ARM64 build
-if defined NP_MSVC_arm64 (
-	echo.
-	echo Building arm64 target
-	echo -------------------
-	mkdir cmake-build-win32-msvc-arm64
-	call %NP_MSVC_arm64%
-	cd cmake-build-win32-msvc-arm64
-	cmake ..
-	cmake --build . --config Release
-	cd..
-)
-
-:: Going back to the original directory
-popd
 
 :: Letting the user check the logs
 :end
-echo.
+endlocal
 pause

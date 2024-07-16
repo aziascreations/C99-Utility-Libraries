@@ -11,10 +11,20 @@ cmake*/
 docs/html
 docs/latex
 
+# Temp
+rsc/libs/
+
+# Build Artifacts
+*.exe
+*.dll
+*.so
+*.a
+*.o
+*.lib
+*.exp
+
 # PureBasic stuff
 *.pb.cfg
-*.exe
-*.so
 
 # Misc.
 *.pdn

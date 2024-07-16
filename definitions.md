@@ -14,7 +14,7 @@
   * `NP_GOODIES_BUILD_BENCHMARKS` [➜](#build-benchmarks)
   * `NP_GOODIES_BUILD_EXAMPLES` [➜](#build-examples)
   * `NP_GOODIES_BUILD_TESTS` [➜](#build-tests)
-  * <s>`NP_GOODIES_BUILD_WIN32_NODEFAULTLIB` [➜](#build-with-no-default-lib)</s>
+  * <s>`NP_GOODIES_BUILD_WIN32_NODEFAULTLIB` [➜](#build-with-no-default-lib)</s> **Obsolete**
 * [Library Exports Toggles](#library-exports-toggles) *(As a hierarchical list of priority)*
   * `NP_GOODIES_EXPORT_ALL` [➜](#everything)
     * `NP_GOODIES_EXPORT_ARGUMENTS` [➜](#arguments-parser)

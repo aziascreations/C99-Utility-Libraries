@@ -24,11 +24,11 @@
 
 
 // Unicode macros
-#if defined(NP_UNICODE)
-	#define uuid_toString uuid_toStringW
-#else
-	#define uuid_toString uuid_toStringA
-#endif
+//#if defined(NP_UNICODE)
+//	#define uuid_toString uuid_toStringW
+//#else
+//	#define uuid_toString uuid_toStringA
+//#endif
 
 
 /**

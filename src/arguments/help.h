@@ -3,8 +3,6 @@
 #if !defined(NP_ONCE_C99_GOODIES_ARGUMENTS_HELP)
 #define NP_ONCE_C99_GOODIES_ARGUMENTS_HELP
 
-#include <stdio.h>
-
 #include "./flags.h"
 #include "./structs.h"
 

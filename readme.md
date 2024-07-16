@@ -11,6 +11,7 @@ Small collection of utilities and libraries for C99 that aims to simplify some d
 * ![](docs/images/module.png) Completely macro-able `char`↔`wchar_t` support
 * ![](docs/images/plus.png) Small extras like UUID4, CRC32B & platform detection
 * ![](docs/images/linux.png) Supports [a wide variety of OS, CPU ISA & Compilers](platforms.md)
+* ![](docs/images/windows_95.png) Support for both MSVCRT & UCRT on Windows platforms
 * ![](docs/images/view_more.png) Other features to come as needed or requested
 
 ## Planned Features
@@ -205,6 +206,10 @@ You can choose the one that best suits your needs:
    &nbsp;&nbsp;● Do whatever you want with it.<br>
    &nbsp;&nbsp;● No credit, mentions or anything else is needed.<br>
    &nbsp;&nbsp;● Just have fun programming :)
+
+Please note that the small icons in [docs/images](docs/images) are licensed by
+[Icons8](https://icons8.com/) under their own [license](https://intercom.help/icons8-7fb7577e8170/en/articles/5534926-universal-multimedia-license-agreement-for-icons8).<br>
+This shouldn't be an issue for the final artifacts since these assets are never included in them.
 
 Keep in mind, the [doxygen-awesome-css](https://github.com/jothepro/doxygen-awesome-css) submodule repository uses an
 [MIT license](https://github.com/jothepro/doxygen-awesome-css/blob/main/LICENSE).<br>

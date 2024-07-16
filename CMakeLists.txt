@@ -228,6 +228,10 @@ if(NP_GOODIES_IS_MAIN)
     set_target_properties(np_clang_goodies_dll_static PROPERTIES ARCHIVE_OUTPUT_DIRECTORY "dll_static/")
     set_target_properties(np_clang_goodies_dll_static PROPERTIES LIBRARY_OUTPUT_DIRECTORY "dll_static/")
     set_target_properties(np_clang_goodies_dll_static PROPERTIES RUNTIME_OUTPUT_DIRECTORY "dll_static/")
+
+    # Targets > Dummy > MSVCRT Headers
+    file(GLOB_RECURSE src_msvcrt_dummy CONFIGURE_DEPENDS "msvcrt/main.cmakesilencer.c" "msvcrt/src/*.h" "msvcrt/src/*.c")
+    add_library(np_clang_goodies_msvcrt_dummy STATIC ${src_msvcrt_dummy})
 else()
     # Targets > DLLs > External Project
     add_library(lib_np_clang_goodies SHARED ${src_all} ./rsc/np_clang_goodies.rc)
