@@ -6,7 +6,7 @@
 #include <stdlib.h>
 //#include <stdio.h>
 //#include <string.h>
-//#include <wchar.h>
+#include <wchar.h>  // Required for GCC !
 
 #include "../platform.h"
 
