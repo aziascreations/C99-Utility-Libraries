@@ -3,6 +3,7 @@
 #include "uuid.h"
 
 #include <stdio.h>
+#include <wctype.h>  // Required for GCC !
 
 /** @defgroup group_uuid UUID
  *

@@ -10,7 +10,7 @@
 #include <ctype.h>
 #include <errno.h>
 #include <stdlib.h>
-#include <wctype.h>
+#include <wctype.h>  // Required for GCC !
 
 #include "text.h"
 
