@@ -14,7 +14,6 @@
   * `NP_GOODIES_BUILD_BENCHMARKS` [➜](#build-benchmarks)
   * `NP_GOODIES_BUILD_EXAMPLES` [➜](#build-examples)
   * `NP_GOODIES_BUILD_TESTS` [➜](#build-tests)
-  * <s>`NP_GOODIES_BUILD_WIN32_NODEFAULTLIB` [➜](#build-with-no-default-lib)</s> **Obsolete**
 * [Library Exports Toggles](#library-exports-toggles) *(As a hierarchical list of priority)*
   * `NP_GOODIES_EXPORT_ALL` [➜](#everything)
     * `NP_GOODIES_EXPORT_ARGUMENTS` [➜](#arguments-parser)
@@ -105,6 +104,7 @@ If defined, the example targets will be added.
 If defined, the test targets will be added as CTest tests.<br>
 CTest will also be included in CMake.
 
+<!--
 ### Build with no default lib
 **Definition:** `NP_GOODIES_BUILD_WIN32_NODEFAULTLIB`
 
@@ -114,6 +114,7 @@ This should be used to removed UCRT dependencies and only use MSVCRT and standar
 The intent behind this feature is to enable support for older Windows platforms.
 
 ⚠️ This feature is still being worked on and isn't implemented, finished or tested.
+-->
 
 ## Library Exports Toggles
 The export toggles work as a hierarchical list of priority, which means that the more important a

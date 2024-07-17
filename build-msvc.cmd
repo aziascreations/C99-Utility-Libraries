@@ -4,6 +4,7 @@ setlocal
 echo NibblePoker's C99 Goodies MSVC Build
 echo ========================================
 
+
 :: You can edit these variables to fit your environment and desired build
 set BUILD_DIR=%~dp0\build-msvc
 set VCVARS_ROOT=C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build
@@ -14,12 +15,14 @@ set FLAGS_LINK=/nologo /MANIFEST:EMBED
 set FLAGS_MSVCRT_CC=%FLAGS_CC%
 set FLAGS_MSVCRT_LINK=%FLAGS_LINK%
 
+
 :: Stuff you don't have to touch
 set BENCHMARK_DIR=%~dp0\benchmarks
 set EXAMPLES_DIR=%~dp0\examples
 set SRC_DIR=%~dp0\src
 set RSC_DIR=%~dp0\rsc
 set MSVCRT_DIR=%~dp0\msvcrt\src
+
 
 :: Checking the to make sure you ain't running of a VS console
 echo Checking the PATH
@@ -42,6 +45,7 @@ IF NOT ERRORLEVEL 1 (
     goto end
 )
 echo ^> The PATH appears to be clean
+
 
 :: Preparing the build folder
 echo Preparing build directory
@@ -88,7 +92,6 @@ call build-msvc-internal.cmd "%VCVARS_ROOT%\vcvars32.bat" "%BUILD_DIR%\x86-msvcr
                              "%FLAGS_MSVCRT_CC% /external:W4 /external:I ""%MSVCRT_DIR%""" ^
                              "%FLAGS_MSVCRT_LINK% /NODEFAULTLIB user32.lib kernel32.lib ^"%RSC_DIR%\libs\x86\msvcrt.lib^""
 echo.
-
 
 
 :: Letting the user check the logs

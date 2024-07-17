@@ -11,9 +11,6 @@ cmake*/
 docs/html
 docs/latex
 
-# Temp
-rsc/libs/
-
 # Build Artifacts
 *.exe
 *.dll
@@ -22,6 +19,10 @@ rsc/libs/
 *.o
 *.lib
 *.exp
+
+# MSVCRT Stuff
+*.7z
+path.txt
 
 # PureBasic stuff
 *.pb.cfg
