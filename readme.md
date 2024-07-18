@@ -9,7 +9,7 @@ Small collection of utilities and libraries for C99 that aims to simplify some d
 * ![](docs/images/text.png) Various string utilities
 * ![](docs/images/bug.png) Toggleable debugging output functions
 * ![](docs/images/module.png) Completely macro-able `char`↔`wchar_t` support
-* ![](docs/images/plus.png) Small extras like UUID4, CRC32B & platform detection
+* ![](docs/images/plus.png) Small extras like UUID4, CRC32B & compile-time platform detection
 * ![](docs/images/linux.png) Supports [a wide variety of OS, CPU ISA & Compilers](platforms.md)
 * ![](docs/images/windows_95.png) Support for both MSVCRT & UCRT on Windows platforms
 * ![](docs/images/view_more.png) Other features to come as needed or requested
@@ -23,7 +23,7 @@ Small collection of utilities and libraries for C99 that aims to simplify some d
 
 ### Preamble
 **Requirements:**<br>
-&nbsp;&nbsp;● CMake 3.13+<br>
+&nbsp;&nbsp;● CMake 3.13+&nbsp;&nbsp;*(Only if you use CMake for building)*<br>
 &nbsp;&nbsp;● [Qt's Jom](https://wiki.qt.io/Jom)&nbsp;&nbsp;*(ReactOS only, replaces nmake)*
 
 **Supported OS:**<br>
@@ -38,6 +38,10 @@ Small collection of utilities and libraries for C99 that aims to simplify some d
 ![](docs/images/info.png) Check [platforms.md](platforms.md) for more info on the platform detector.<br>
 ![](docs/images/settings.png) Check [definitions.md](definitions.md) for a complete listing of the configuration definitions.
 
+### MSVCRT Setup & Support
+Please read [msvcrt/readme.md](msvcrt/readme.md) if you intend on targeting MSVCRT
+instead of UCRT on Win32 platforms as it requires you to set some things up properly
+beforehand.
 
 ### CMake's FetchContent
 
