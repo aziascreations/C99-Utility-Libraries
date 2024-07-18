@@ -3,6 +3,12 @@
 #include <stdlib.h>
 #include <time.h>
 
+// Helps fix issues with missing symbol in MSVCRT builds
+// Source: https://stackoverflow.com/a/1583220
+#if defined(_WIN32) || defined(_WIN64)
+	int _fltused = 0;
+#endif
+
 // Doing 100M tests
 #define TEST_COUNT 100000000
 

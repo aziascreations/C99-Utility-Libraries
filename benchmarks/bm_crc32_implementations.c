@@ -4,6 +4,11 @@
 #include <string.h>
 #include <time.h>
 
+// Helps fix issues with missing symbol in MSVCRT builds
+// Source: https://stackoverflow.com/a/1583220
+#if defined(_WIN32) || defined(_WIN64)
+	int _fltused = 0;
+#endif
 
 #define assert(expression, name) \
 if(expression) {printf("> \033[32mPASS\033[0m -> %s\n", name);} else {printf("> \033[31mFAIL\033[0m -> %s\n", name); return 1;}
