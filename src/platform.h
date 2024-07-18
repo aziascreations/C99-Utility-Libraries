@@ -139,9 +139,9 @@
 // Defining the TEXT() macro if not defined by Windows's headers
 #if !defined(TEXT)
 	#if defined(NP_UNICODE)
-		#define TEXT(str) L##str
+		#define NP_TEXT(str) L##str
 	#else
-		#define TEXT(str) str
+		#define NP_TEXT(str) str
 	#endif
 #endif
 

@@ -23,12 +23,12 @@ int main(void) {
 	
 	int launchArgumentsLen = 6;
 	text_char *launchArguments[] = {
-			TEXT("one"),
-			TEXT("two"),
-			TEXT("three"),
-			TEXT("--"), // From now on, all entries are values
-			TEXT("-c"),
-			TEXT("four"),
+			NP_TEXT("one"),
+			NP_TEXT("two"),
+			NP_TEXT("three"),
+			NP_TEXT("--"), // From now on, all entries are values
+			NP_TEXT("-c"),
+			NP_TEXT("four"),
 	};
 	
 	printf("> Running parser...\n");
@@ -48,19 +48,19 @@ int main(void) {
 	// FIXME: The test description is wrong due to copy-pasting !
 	printf("> Checking assigned values and their order...\n");
 	assert(
-			text_areStringsEqual(dllist_selectFirstData(defaultOption1->arguments), TEXT("one")),
+			text_areStringsEqual(dllist_selectFirstData(defaultOption1->arguments), NP_TEXT("one")),
 			"Option '-a' at index 0");
 	assert(
-			text_areStringsEqual(dllist_selectFirstData(defaultOption2->arguments), TEXT("two")),
+			text_areStringsEqual(dllist_selectFirstData(defaultOption2->arguments), NP_TEXT("two")),
 			"Option '-b' at index 0");
 	assert(
-			text_areStringsEqual(dllist_selectNextData(defaultOption2->arguments), TEXT("three")),
+			text_areStringsEqual(dllist_selectNextData(defaultOption2->arguments), NP_TEXT("three")),
 			"Option '-b' at index 1");
 	assert(
-			text_areStringsEqual(dllist_selectNextData(defaultOption2->arguments), TEXT("-c")),
+			text_areStringsEqual(dllist_selectNextData(defaultOption2->arguments), NP_TEXT("-c")),
 			"Option '-b' at index 2");
 	assert(
-			text_areStringsEqual(dllist_selectNextData(defaultOption2->arguments), TEXT("four")),
+			text_areStringsEqual(dllist_selectNextData(defaultOption2->arguments), NP_TEXT("four")),
 			"Option '-b' at index 3");
 	
 	printf("> Freeing root verb, its sub-verbs and all related options...  (Check out logs and for segfault)\n");

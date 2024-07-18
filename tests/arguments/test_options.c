@@ -6,11 +6,11 @@
 
 int main(void) {
 	printf("Testing 'options behaviour'...\n");
-	Option* testedOption = args_createOption('a', TEXT("alice"), TEXT(""), FLAG_OPTION_NONE);
+	Option* testedOption = args_createOption('a', NP_TEXT("alice"), NP_TEXT(""), FLAG_OPTION_NONE);
 	
 	assert(testedOption != NULL, "Allocation");
 	
-	text_char* valueAdded = TEXT("abc123");
+	text_char* valueAdded = NP_TEXT("abc123");
 	
 	assert(testedOption->arguments->size == 0, "Value count before adding");
 	assert(args_addValueToOption(testedOption, valueAdded), "Adding value");

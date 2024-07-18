@@ -8,19 +8,19 @@
 
 #include "../../src/text.h"
 
-static const text_char *text_no_trim = TEXT("Hello world !");
+static const text_char *text_no_trim = NP_TEXT("Hello world !");
 
-static const text_char *text_left_single_trim = TEXT("_Hello world !");
-static const text_char *text_left_multi_trim = TEXT("___Hello world !");
+static const text_char *text_left_single_trim = NP_TEXT("_Hello world !");
+static const text_char *text_left_multi_trim = NP_TEXT("___Hello world !");
 
-static const text_char *text_right_single_trim = TEXT("Hello world !_");
-static const text_char *text_right_multi_trim = TEXT("Hello world !___");
+static const text_char *text_right_single_trim = NP_TEXT("Hello world !_");
+static const text_char *text_right_multi_trim = NP_TEXT("Hello world !___");
 
-static const text_char *text_both_trim = TEXT("____Hello world !__");
+static const text_char *text_both_trim = NP_TEXT("____Hello world !__");
 
-static const text_char *text_empty_trim = TEXT("");
-static const text_char *text_full_trim = TEXT("_______");
-static const text_char *text_single_char_trim = TEXT("E");
+static const text_char *text_empty_trim = NP_TEXT("");
+static const text_char *text_full_trim = NP_TEXT("_______");
+static const text_char *text_single_char_trim = NP_TEXT("E");
 
 int main(void) {
 	// Preliminary tests

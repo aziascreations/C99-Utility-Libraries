@@ -18,15 +18,15 @@ static Option *verbosityLevelOption;
 static Option *inputFilesOption;
 
 bool prepareArguments() {
-	rootVerb = args_createVerb(TEXT("root"), TEXT("Test"));
+	rootVerb = args_createVerb(NP_TEXT("root"), NP_TEXT("Test"));
 	
-	versionOption = args_createOption('\0', TEXT("version"), TEXT("Prints the version"),
+	versionOption = args_createOption('\0', NP_TEXT("version"), NP_TEXT("Prints the version"),
 									  FLAG_OPTION_NONE);
 	
-	verbosityLevelOption = args_createOption('v', TEXT("verbose"), TEXT("Increase the verbosity"),
+	verbosityLevelOption = args_createOption('v', NP_TEXT("verbose"), NP_TEXT("Increase the verbosity"),
 											 FLAG_OPTION_REPEATABLE);
 	
-	inputFilesOption = args_createOption('i', TEXT("input"), TEXT("Add a file to the processing queue"),
+	inputFilesOption = args_createOption('i', NP_TEXT("input"), NP_TEXT("Add a file to the processing queue"),
 										 FLAG_OPTION_DEFAULT | FLAG_OPTION_HAS_MULTIPLE_VALUE);
 	
 	// Checking if no error occurred and if we can register all the options.
@@ -44,15 +44,15 @@ int main() {
 	// Preparing fake launch arguments
 	int argc = 9;
 	text_char *argv[] = {
-			TEXT("example.exe"),  // ???
-			TEXT("-vvv"),         // Increasing the verbosity by 3
-			TEXT("--verbose"),    // Increasing the verbosity by 1
-			TEXT("-i"),           // Adding a file
-			TEXT("file1.txt"),
-			TEXT("--"),           // No longer parsing options, only values for `-i,--input`.
-			TEXT("file2.txt"),
-			TEXT("--version"),    // Will be interpreted as a filename
-			TEXT("file3.txt"),
+			NP_TEXT("example.exe"),  // ???
+			NP_TEXT("-vvv"),         // Increasing the verbosity by 3
+			NP_TEXT("--verbose"),    // Increasing the verbosity by 1
+			NP_TEXT("-i"),           // Adding a file
+			NP_TEXT("file1.txt"),
+			NP_TEXT("--"),           // No longer parsing options, only values for `-i,--input`.
+			NP_TEXT("file2.txt"),
+			NP_TEXT("--version"),    // Will be interpreted as a filename
+			NP_TEXT("file3.txt"),
 	};
 	
 	

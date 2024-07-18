@@ -8,7 +8,7 @@
 
 #include "../../src/text.h"
 
-static const text_char *text_01 = TEXT("Hello world !");
+static const text_char *text_01 = NP_TEXT("Hello world !");
 
 int main(void) {
 	// Preliminary tests
@@ -62,7 +62,7 @@ int main(void) {
 	assert(tmpCopy != NULL, "Complex undersized copy isn't NULL.")
 	assert(text_strlen(tmpCopy) == 8, "Complex undersized copy has `8` chars.")
 	assert(text_strcmp(text_01, tmpCopy) != 0, "Complex undersized copy isn't the same as the original.")
-	assert(text_strcmp(TEXT("Hello wo"), tmpCopy) == 0, "Complex undersized copy is the expected subset of the original.")
+	assert(text_strcmp(NP_TEXT("Hello wo"), tmpCopy) == 0, "Complex undersized copy is the expected subset of the original.")
 	assert(text_01 != tmpCopy, "Complex undersized copy doesn't point to the original.")
 
 	#ifndef NP_OS_WINDOWS

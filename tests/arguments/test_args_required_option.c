@@ -18,8 +18,8 @@ int main(void) {
 	
 	int launchArgumentsLen = 2;
 	text_char *launchArguments[] = {
-			TEXT("-a"),
-			TEXT("-b"),
+			NP_TEXT("-a"),
+			NP_TEXT("-b"),
 	};
 	
 	printf("> Running parser with one missing required option...\n");

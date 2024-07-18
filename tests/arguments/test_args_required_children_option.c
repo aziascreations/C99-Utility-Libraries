@@ -9,7 +9,7 @@ int main(void) {
 	
 	printf("> Preparing verbs and options for later tests...\n");
 	Verb* rootVerb = args_createVerb(NULL, NULL);
-	Verb* subVerb = args_createVerb("sub", NULL);
+	Verb* subVerb = args_createVerb(NP_TEXT("sub"), NULL);
 	
 	Option* rootRequiredOption = args_createOption('a', NULL, NULL, FLAG_OPTION_REQUIRED | FLAG_OPTION_ALLOW_VERBS_AFTER);
 	Option* subRequiredOption = args_createOption('b', NULL, NULL, FLAG_OPTION_REQUIRED);
@@ -21,15 +21,15 @@ int main(void) {
 	
 	int invalidLaunchArgumentsLen = 2;
 	text_char *invalidLaunchArguments[] = {
-			TEXT("sub"),
-			TEXT("-b"),
+			NP_TEXT("sub"),
+			NP_TEXT("-b"),
 	};
 	
 	int validLaunchArgumentsLen = 3;
 	text_char *validLaunchArguments[] = {
-			TEXT("-a"),
-			TEXT("sub"),
-			TEXT("-b"),
+			NP_TEXT("-a"),
+			NP_TEXT("sub"),
+			NP_TEXT("-b"),
 	};
 	
 	printf("> Running parser with missing root's required option...\n");

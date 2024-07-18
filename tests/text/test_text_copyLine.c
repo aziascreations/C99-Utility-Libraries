@@ -9,26 +9,26 @@
 #include "../../src/text.h"
 
 // Test strings
-static const text_char *text_01 = TEXT("Regular simple line");
-static const text_char *text_02 = TEXT("");
+static const text_char *text_01 = NP_TEXT("Regular simple line");
+static const text_char *text_02 = NP_TEXT("");
 
-static const text_char *text_10 = TEXT("CR end\r");
-static const text_char *text_11 = TEXT("LF end\n");
-static const text_char *text_12 = TEXT("CRLF end\r\n");
-static const text_char *text_13 = TEXT("LFCR end\n\r");
-static const text_char *text_14 = TEXT("NULL end\0\0");  // Adding 2 '\0' to be sure extra sure we have more than 1.
+static const text_char *text_10 = NP_TEXT("CR end\r");
+static const text_char *text_11 = NP_TEXT("LF end\n");
+static const text_char *text_12 = NP_TEXT("CRLF end\r\n");
+static const text_char *text_13 = NP_TEXT("LFCR end\n\r");
+static const text_char *text_14 = NP_TEXT("NULL end\0\0");  // Adding 2 '\0' to be sure extra sure we have more than 1.
 
-static const text_char *text_20 = TEXT("Line 1\rLine 2\rLine 3");
-static const text_char *text_21 = TEXT("Line 1\nLine 2\nLine 3");
-static const text_char *text_22 = TEXT("Line 1\r\nLine 2\r\nLine 3");
-static const text_char *text_23 = TEXT("Line 1\n\rLine 2\n\rLine 3");
+static const text_char *text_20 = NP_TEXT("Line 1\rLine 2\rLine 3");
+static const text_char *text_21 = NP_TEXT("Line 1\nLine 2\nLine 3");
+static const text_char *text_22 = NP_TEXT("Line 1\r\nLine 2\r\nLine 3");
+static const text_char *text_23 = NP_TEXT("Line 1\n\rLine 2\n\rLine 3");
 
-static const text_char *text_30 = TEXT("Line 1\r\rLine 3");
-static const text_char *text_31 = TEXT("Line 1\n\nLine 3");
-static const text_char *text_32 = TEXT("Line 1\r\n\r\nLine 3");
-static const text_char *text_33 = TEXT("Line 1\n\r\n\rLine 3");
+static const text_char *text_30 = NP_TEXT("Line 1\r\rLine 3");
+static const text_char *text_31 = NP_TEXT("Line 1\n\nLine 3");
+static const text_char *text_32 = NP_TEXT("Line 1\r\n\r\nLine 3");
+static const text_char *text_33 = NP_TEXT("Line 1\n\r\n\rLine 3");
 
-static const text_char *text_40 = TEXT("Line 1\rLine 2\0Line 3");
+static const text_char *text_40 = NP_TEXT("Line 1\rLine 2\0Line 3");
 
 int main(void) {
 	// Preliminary tests
@@ -210,7 +210,7 @@ int main(void) {
 		
 		assert(tmpLine != NULL, "Text 20: Copied line isn't NULL.")
 		assert(text_strlen(tmpLine) == 6, "Text 20: Copied line's length is `6` chars.")
-		assert(text_strcmp(tmpLine, TEXT("Line 1")) == 0, "Text 20: Copied line #1 only contains line #1.")
+		assert(text_strcmp(tmpLine, NP_TEXT("Line 1")) == 0, "Text 20: Copied line #1 only contains line #1.")
 		assert(tmpNextLine != NULL, "Text 20: Next line isn't NULL.")
 		
 		free(tmpLine);
@@ -220,7 +220,7 @@ int main(void) {
 		
 		assert(tmpLine != NULL, "Text 20: Copied line isn't NULL.")
 		assert(text_strlen(tmpLine) == 6, "Text 20: Copied line's length is `6` chars.")
-		assert(text_strcmp(tmpLine, TEXT("Line 2")) == 0, "Text 20: Copied line #2 only contains line #2.")
+		assert(text_strcmp(tmpLine, NP_TEXT("Line 2")) == 0, "Text 20: Copied line #2 only contains line #2.")
 		assert(tmpNextLine != NULL, "Text 20: Next line isn't NULL.")
 		
 		free(tmpLine);
@@ -230,7 +230,7 @@ int main(void) {
 		
 		assert(tmpLine != NULL, "Text 20: Copied line isn't NULL.")
 		assert(text_strlen(tmpLine) == 6, "Text 20: Copied line's length is `6` chars.")
-		assert(text_strcmp(tmpLine, TEXT("Line 3")) == 0, "Text 20: Copied line #2 only contains line #2.")
+		assert(text_strcmp(tmpLine, NP_TEXT("Line 3")) == 0, "Text 20: Copied line #2 only contains line #2.")
 		assert(tmpNextLine == NULL, "Text 20: Next line is NULL.")
 		
 		free(tmpLine);
@@ -248,7 +248,7 @@ int main(void) {
 		
 		assert(tmpLine != NULL, "Text 21: Copied line isn't NULL.")
 		assert(text_strlen(tmpLine) == 6, "Text 21: Copied line's length is `6` chars.")
-		assert(text_strcmp(tmpLine, TEXT("Line 1")) == 0, "Text 21: Copied line #1 only contains line #1.")
+		assert(text_strcmp(tmpLine, NP_TEXT("Line 1")) == 0, "Text 21: Copied line #1 only contains line #1.")
 		assert(tmpNextLine != NULL, "Text 21: Next line isn't NULL.")
 		
 		free(tmpLine);
@@ -258,7 +258,7 @@ int main(void) {
 		
 		assert(tmpLine != NULL, "Text 21: Copied line isn't NULL.")
 		assert(text_strlen(tmpLine) == 6, "Text 21: Copied line's length is `6` chars.")
-		assert(text_strcmp(tmpLine, TEXT("Line 2")) == 0, "Text 21: Copied line #2 only contains line #2.")
+		assert(text_strcmp(tmpLine, NP_TEXT("Line 2")) == 0, "Text 21: Copied line #2 only contains line #2.")
 		assert(tmpNextLine != NULL, "Text 21: Next line isn't NULL.")
 		
 		free(tmpLine);
@@ -268,7 +268,7 @@ int main(void) {
 		
 		assert(tmpLine != NULL, "Text 21: Copied line isn't NULL.")
 		assert(text_strlen(tmpLine) == 6, "Text 21: Copied line's length is `6` chars.")
-		assert(text_strcmp(tmpLine, TEXT("Line 3")) == 0, "Text 21: Copied line #2 only contains line #2.")
+		assert(text_strcmp(tmpLine, NP_TEXT("Line 3")) == 0, "Text 21: Copied line #2 only contains line #2.")
 		assert(tmpNextLine == NULL, "Text 21: Next line is NULL.")
 		
 		free(tmpLine);
@@ -286,7 +286,7 @@ int main(void) {
 		
 		assert(tmpLine != NULL, "Text 22: Copied line isn't NULL.")
 		assert(text_strlen(tmpLine) == 6, "Text 22: Copied line's length is `6` chars.")
-		assert(text_strcmp(tmpLine, TEXT("Line 1")) == 0, "Text 22: Copied line #1 only contains line #1.")
+		assert(text_strcmp(tmpLine, NP_TEXT("Line 1")) == 0, "Text 22: Copied line #1 only contains line #1.")
 		assert(tmpNextLine != NULL, "Text 22: Next line isn't NULL.")
 		
 		free(tmpLine);
@@ -296,7 +296,7 @@ int main(void) {
 		
 		assert(tmpLine != NULL, "Text 22: Copied line isn't NULL.")
 		assert(text_strlen(tmpLine) == 6, "Text 22: Copied line's length is `6` chars.")
-		assert(text_strcmp(tmpLine, TEXT("Line 2")) == 0, "Text 22: Copied line #2 only contains line #2.")
+		assert(text_strcmp(tmpLine, NP_TEXT("Line 2")) == 0, "Text 22: Copied line #2 only contains line #2.")
 		assert(tmpNextLine != NULL, "Text 22: Next line isn't NULL.")
 		
 		free(tmpLine);
@@ -306,7 +306,7 @@ int main(void) {
 		
 		assert(tmpLine != NULL, "Text 22: Copied line isn't NULL.")
 		assert(text_strlen(tmpLine) == 6, "Text 22: Copied line's length is `6` chars.")
-		assert(text_strcmp(tmpLine, TEXT("Line 3")) == 0, "Text 22: Copied line #2 only contains line #2.")
+		assert(text_strcmp(tmpLine, NP_TEXT("Line 3")) == 0, "Text 22: Copied line #2 only contains line #2.")
 		assert(tmpNextLine == NULL, "Text 22: Next line is NULL.")
 		
 		free(tmpLine);
@@ -324,7 +324,7 @@ int main(void) {
 		
 		assert(tmpLine != NULL, "Text 23: Copied line isn't NULL.")
 		assert(text_strlen(tmpLine) == 6, "Text 23: Copied line's length is `6` chars.")
-		assert(text_strcmp(tmpLine, TEXT("Line 1")) == 0, "Text 23: Copied line #1 only contains line #1.")
+		assert(text_strcmp(tmpLine, NP_TEXT("Line 1")) == 0, "Text 23: Copied line #1 only contains line #1.")
 		assert(tmpNextLine != NULL, "Text 23: Next line isn't NULL.")
 		
 		free(tmpLine);
@@ -334,7 +334,7 @@ int main(void) {
 		
 		assert(tmpLine != NULL, "Text 23: Copied line isn't NULL.")
 		assert(text_strlen(tmpLine) == 6, "Text 23: Copied line's length is `6` chars.")
-		assert(text_strcmp(tmpLine, TEXT("Line 2")) == 0, "Text 23: Copied line #2 only contains line #2.")
+		assert(text_strcmp(tmpLine, NP_TEXT("Line 2")) == 0, "Text 23: Copied line #2 only contains line #2.")
 		assert(tmpNextLine != NULL, "Text 23: Next line isn't NULL.")
 		
 		free(tmpLine);
@@ -344,7 +344,7 @@ int main(void) {
 		
 		assert(tmpLine != NULL, "Text 23: Copied line isn't NULL.")
 		assert(text_strlen(tmpLine) == 6, "Text 23: Copied line's length is `6` chars.")
-		assert(text_strcmp(tmpLine, TEXT("Line 3")) == 0, "Text 23: Copied line #2 only contains line #2.")
+		assert(text_strcmp(tmpLine, NP_TEXT("Line 3")) == 0, "Text 23: Copied line #2 only contains line #2.")
 		assert(tmpNextLine == NULL, "Text 23: Next line is NULL.")
 		
 		free(tmpLine);
@@ -362,7 +362,7 @@ int main(void) {
 		
 		assert(tmpLine != NULL, "Text 30: Copied line isn't NULL.")
 		assert(text_strlen(tmpLine) == 6, "Text 30: Copied line's length is `6` chars.")
-		assert(text_strcmp(tmpLine, TEXT("Line 1")) == 0, "Text 30: Copied line #1 only contains line #1.")
+		assert(text_strcmp(tmpLine, NP_TEXT("Line 1")) == 0, "Text 30: Copied line #1 only contains line #1.")
 		assert(tmpNextLine != NULL, "Text 30: Next line isn't NULL.")
 		
 		free(tmpLine);
@@ -372,7 +372,7 @@ int main(void) {
 		
 		assert(tmpLine != NULL, "Text 30: Copied line isn't NULL.")
 		assert(text_strlen(tmpLine) == 0, "Text 30: Copied line's length is `0` chars.")
-		assert(text_strcmp(tmpLine, TEXT("")) == 0, "Text 30: Copied line #2 only contains line #2.")
+		assert(text_strcmp(tmpLine, NP_TEXT("")) == 0, "Text 30: Copied line #2 only contains line #2.")
 		assert(tmpNextLine != NULL, "Text 30: Next line isn't NULL.")
 		
 		free(tmpLine);
@@ -382,7 +382,7 @@ int main(void) {
 		
 		assert(tmpLine != NULL, "Text 30: Copied line isn't NULL.")
 		assert(text_strlen(tmpLine) == 6, "Text 30: Copied line's length is `6` chars.")
-		assert(text_strcmp(tmpLine, TEXT("Line 3")) == 0, "Text 30: Copied line #2 only contains line #2.")
+		assert(text_strcmp(tmpLine, NP_TEXT("Line 3")) == 0, "Text 30: Copied line #2 only contains line #2.")
 		assert(tmpNextLine == NULL, "Text 30: Next line is NULL.")
 		
 		free(tmpLine);
@@ -400,7 +400,7 @@ int main(void) {
 		
 		assert(tmpLine != NULL, "Text 31: Copied line isn't NULL.")
 		assert(text_strlen(tmpLine) == 6, "Text 31: Copied line's length is `6` chars.")
-		assert(text_strcmp(tmpLine, TEXT("Line 1")) == 0, "Text 31: Copied line #1 only contains line #1.")
+		assert(text_strcmp(tmpLine, NP_TEXT("Line 1")) == 0, "Text 31: Copied line #1 only contains line #1.")
 		assert(tmpNextLine != NULL, "Text 31: Next line isn't NULL.")
 		
 		free(tmpLine);
@@ -410,7 +410,7 @@ int main(void) {
 		
 		assert(tmpLine != NULL, "Text 31: Copied line isn't NULL.")
 		assert(text_strlen(tmpLine) == 0, "Text 31: Copied line's length is `0` chars.")
-		assert(text_strcmp(tmpLine, TEXT("")) == 0, "Text 31: Copied line #2 only contains line #2.")
+		assert(text_strcmp(tmpLine, NP_TEXT("")) == 0, "Text 31: Copied line #2 only contains line #2.")
 		assert(tmpNextLine != NULL, "Text 31: Next line isn't NULL.")
 		
 		free(tmpLine);
@@ -420,7 +420,7 @@ int main(void) {
 		
 		assert(tmpLine != NULL, "Text 31: Copied line isn't NULL.")
 		assert(text_strlen(tmpLine) == 6, "Text 31: Copied line's length is `6` chars.")
-		assert(text_strcmp(tmpLine, TEXT("Line 3")) == 0, "Text 31: Copied line #2 only contains line #2.")
+		assert(text_strcmp(tmpLine, NP_TEXT("Line 3")) == 0, "Text 31: Copied line #2 only contains line #2.")
 		assert(tmpNextLine == NULL, "Text 31: Next line is NULL.")
 		
 		free(tmpLine);
@@ -438,7 +438,7 @@ int main(void) {
 		
 		assert(tmpLine != NULL, "Text 32: Copied line isn't NULL.")
 		assert(text_strlen(tmpLine) == 6, "Text 32: Copied line's length is `6` chars.")
-		assert(text_strcmp(tmpLine, TEXT("Line 1")) == 0, "Text 32: Copied line #1 only contains line #1.")
+		assert(text_strcmp(tmpLine, NP_TEXT("Line 1")) == 0, "Text 32: Copied line #1 only contains line #1.")
 		assert(tmpNextLine != NULL, "Text 32: Next line isn't NULL.")
 		
 		free(tmpLine);
@@ -448,7 +448,7 @@ int main(void) {
 		
 		assert(tmpLine != NULL, "Text 32: Copied line isn't NULL.")
 		assert(text_strlen(tmpLine) == 0, "Text 32: Copied line's length is `0` chars.")
-		assert(text_strcmp(tmpLine, TEXT("")) == 0, "Text 32: Copied line #2 only contains line #2.")
+		assert(text_strcmp(tmpLine, NP_TEXT("")) == 0, "Text 32: Copied line #2 only contains line #2.")
 		assert(tmpNextLine != NULL, "Text 32: Next line isn't NULL.")
 		
 		free(tmpLine);
@@ -458,7 +458,7 @@ int main(void) {
 		
 		assert(tmpLine != NULL, "Text 32: Copied line isn't NULL.")
 		assert(text_strlen(tmpLine) == 6, "Text 32: Copied line's length is `6` chars.")
-		assert(text_strcmp(tmpLine, TEXT("Line 3")) == 0, "Text 32: Copied line #2 only contains line #2.")
+		assert(text_strcmp(tmpLine, NP_TEXT("Line 3")) == 0, "Text 32: Copied line #2 only contains line #2.")
 		assert(tmpNextLine == NULL, "Text 32: Next line is NULL.")
 		
 		free(tmpLine);
@@ -476,7 +476,7 @@ int main(void) {
 		
 		assert(tmpLine != NULL, "Text 33: Copied line isn't NULL.")
 		assert(text_strlen(tmpLine) == 6, "Text 33: Copied line's length is `6` chars.")
-		assert(text_strcmp(tmpLine, TEXT("Line 1")) == 0, "Text 33: Copied line #1 only contains line #1.")
+		assert(text_strcmp(tmpLine, NP_TEXT("Line 1")) == 0, "Text 33: Copied line #1 only contains line #1.")
 		assert(tmpNextLine != NULL, "Text 33: Next line isn't NULL.")
 		
 		free(tmpLine);
@@ -486,7 +486,7 @@ int main(void) {
 		
 		assert(tmpLine != NULL, "Text 33: Copied line isn't NULL.")
 		assert(text_strlen(tmpLine) == 0, "Text 33: Copied line's length is `0` chars.")
-		assert(text_strcmp(tmpLine, TEXT("")) == 0, "Text 33: Copied line #2 only contains line #2.")
+		assert(text_strcmp(tmpLine, NP_TEXT("")) == 0, "Text 33: Copied line #2 only contains line #2.")
 		assert(tmpNextLine != NULL, "Text 33: Next line isn't NULL.")
 		
 		free(tmpLine);
@@ -496,7 +496,7 @@ int main(void) {
 		
 		assert(tmpLine != NULL, "Text 33: Copied line isn't NULL.")
 		assert(text_strlen(tmpLine) == 6, "Text 33: Copied line's length is `6` chars.")
-		assert(text_strcmp(tmpLine, TEXT("Line 3")) == 0, "Text 33: Copied line #2 only contains line #2.")
+		assert(text_strcmp(tmpLine, NP_TEXT("Line 3")) == 0, "Text 33: Copied line #2 only contains line #2.")
 		assert(tmpNextLine == NULL, "Text 33: Next line is NULL.")
 		
 		free(tmpLine);
@@ -515,7 +515,7 @@ int main(void) {
 		
 		assert(tmpLine != NULL, "Text 40: Copied line isn't NULL.")
 		assert(text_strlen(tmpLine) == 6, "Text 40: Copied line's length is `6` chars.")
-		assert(text_strcmp(tmpLine, TEXT("Line 1")) == 0, "Text 40: Copied line #1 only contains line #1.")
+		assert(text_strcmp(tmpLine, NP_TEXT("Line 1")) == 0, "Text 40: Copied line #1 only contains line #1.")
 		assert(tmpNextLine != NULL, "Text 40: Next line isn't NULL.")
 		
 		free(tmpLine);
@@ -525,7 +525,7 @@ int main(void) {
 		
 		assert(tmpLine != NULL, "Text 40: Copied line isn't NULL.")
 		assert(text_strlen(tmpLine) == 6, "Text 40: Copied line's length is `6` chars.")
-		assert(text_strcmp(tmpLine, TEXT("Line 2")) == 0, "Text 40: Copied line #2 only contains line #2.")
+		assert(text_strcmp(tmpLine, NP_TEXT("Line 2")) == 0, "Text 40: Copied line #2 only contains line #2.")
 		assert(tmpNextLine == NULL, "Text 40: Next line is NULL.")
 		
 		free(tmpLine);
