@@ -21,7 +21,8 @@ set BENCHMARK_DIR=%~dp0\benchmarks
 set EXAMPLES_DIR=%~dp0\examples
 set SRC_DIR=%~dp0\src
 set RSC_DIR=%~dp0\rsc
-set MSVCRT_DIR=%~dp0\msvcrt\src
+set MSVCRT_HEADER_DIR=%~dp0\msvcrt\headers
+set MSVCRT_LIB_DIR=%~dp0\msvcrt\libs
 
 
 :: Checking the to make sure you ain't running of a VS console
@@ -62,6 +63,7 @@ echo ========================================
 call build-msvc-internal.cmd "%VCVARS_ROOT%\vcvars64.bat" "%BUILD_DIR%\x64-ucrt" "%SRC_DIR%" ^
                              "%BENCHMARK_DIR%" "%EXAMPLES_DIR%" "%RSC_DIR%" ^
                              "%FLAGS_CC%" ^
+                             "%FLAGS_LINK%" ^
                              "%FLAGS_LINK%"
 echo.
 
@@ -71,8 +73,9 @@ echo C99 Goodies - x64 MSVCRT Build
 echo ========================================
 call build-msvc-internal.cmd "%VCVARS_ROOT%\vcvars64.bat" "%BUILD_DIR%\x64-msvcrt" "%SRC_DIR%" ^
                              "%BENCHMARK_DIR%" "%EXAMPLES_DIR%" "%RSC_DIR%" ^
-                             "%FLAGS_MSVCRT_CC% /external:W4 /external:I ""%MSVCRT_DIR%""" ^
-                             "%FLAGS_MSVCRT_LINK% /NODEFAULTLIB user32.lib kernel32.lib ^"%RSC_DIR%\libs\x64\msvcrt.lib^""
+                             "%FLAGS_MSVCRT_CC% /external:W4 /external:I ""%MSVCRT_HEADER_DIR%""" ^
+                             "%FLAGS_MSVCRT_LINK% /ENTRY:DllMain /NODEFAULTLIB user32.lib kernel32.lib ""%MSVCRT_LIB_DIR%\x64\win11-23h2-pro_msdn-iso\System32\msvcrt.lib""" ^
+                             "%FLAGS_MSVCRT_LINK% /ENTRY:main /NODEFAULTLIB user32.lib kernel32.lib ""%MSVCRT_LIB_DIR%\x64\win11-23h2-pro_msdn-iso\System32\msvcrt.lib"""
 echo.
 
 :build-x86-ucrt
@@ -81,6 +84,7 @@ echo ========================================
 call build-msvc-internal.cmd "%VCVARS_ROOT%\vcvars32.bat" "%BUILD_DIR%\x86-ucrt" "%SRC_DIR%" ^
                              "%BENCHMARK_DIR%" "%EXAMPLES_DIR%" "%RSC_DIR%" ^
                              "%FLAGS_CC%" ^
+                             "%FLAGS_LINK%" ^
                              "%FLAGS_LINK%"
 echo.
 
@@ -89,8 +93,11 @@ echo C99 Goodies - x86 MSVCRT Build
 echo ========================================
 call build-msvc-internal.cmd "%VCVARS_ROOT%\vcvars32.bat" "%BUILD_DIR%\x86-msvcrt" "%SRC_DIR%" ^
                              "%BENCHMARK_DIR%" "%EXAMPLES_DIR%" "%RSC_DIR%" ^
-                             "%FLAGS_MSVCRT_CC% /external:W4 /external:I ""%MSVCRT_DIR%""" ^
-                             "%FLAGS_MSVCRT_LINK% /NODEFAULTLIB user32.lib kernel32.lib ^"%RSC_DIR%\libs\x86\msvcrt.lib^""
+                             "%FLAGS_MSVCRT_CC% /external:W4 /external:I ""%MSVCRT_HEADER_DIR%""" ^
+                             "%FLAGS_MSVCRT_LINK% /ENTRY:DllMain /NODEFAULTLIB user32.lib kernel32.lib ""%MSVCRT_LIB_DIR%\x86\win11-23h2-pro_msdn-iso_x64\SysWOW64\msvcrt.lib""" ^
+                             "%FLAGS_MSVCRT_LINK% /ENTRY:main /NODEFAULTLIB user32.lib kernel32.lib ""%MSVCRT_LIB_DIR%\x86\win11-23h2-pro_msdn-iso_x64\SysWOW64\msvcrt.lib"""
+:: https://yal.cc/cpp-a-very-tiny-dll/
+:: ___allmul => _allmul => ntdll.lib
 echo.
 
 

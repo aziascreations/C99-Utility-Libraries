@@ -231,7 +231,7 @@ if(NP_GOODIES_IS_MAIN)
 
     # Targets > Dummy > MSVCRT Headers
     if(WIN32)
-        file(GLOB_RECURSE src_msvcrt_dummy CONFIGURE_DEPENDS "msvcrt/main.cmakesilencer.c" "msvcrt/src/*.h" "msvcrt/src/*.c")
+        file(GLOB_RECURSE src_msvcrt_dummy CONFIGURE_DEPENDS "msvcrt/main.cmakesilencer.c" "msvcrt/headers/*.h" "msvcrt/headers/*.c")
         add_library(np_clang_goodies_msvcrt_dummy STATIC ${src_msvcrt_dummy})
     endif()
 else()

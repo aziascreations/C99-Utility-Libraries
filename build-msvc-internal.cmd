@@ -20,8 +20,11 @@ set _RSC_DIR=%6
 set _RSC_DIR=%_RSC_DIR:"=%
 set _CC_FLAGS=%7
 set _CC_FLAGS=%_CC_FLAGS:"=%
-set _LINK_FLAGS=%8
-set _LINK_FLAGS=%_LINK_FLAGS:"=%
+set _LINK_FLAGS_DLL=%8
+set _LINK_FLAGS_DLL=%_LINK_FLAGS_DLL:"=%
+set _LINK_FLAGS_EXE=%9
+set _LINK_FLAGS_EXE=%_LINK_FLAGS_EXE:"=%
+
 echo ^> _VCVARS_BATCH=%_VCVARS_BATCH%
 echo ^> _BUILD_DIR=%_BUILD_DIR%
 echo ^> _SRC_DIR=%_SRC_DIR%
@@ -29,7 +32,8 @@ echo ^> _BENCHMARK_DIR=%_BENCHMARK_DIR%
 echo ^> _EXAMPLES_DIR=%_EXAMPLES_DIR%
 echo ^> _RSC_DIR=%_RSC_DIR%
 echo ^> _CC_FLAGS=%_CC_FLAGS%
-echo ^> _LINK_FLAGS=%_LINK_FLAGS%
+echo ^> _LINK_FLAGS_DLL=%_LINK_FLAGS_DLL%
+echo ^> _LINK_FLAGS_EXE=%_LINK_FLAGS_EXE%
 
 :: Calling the given VS script to get 'CL' and 'LINK' in the PATH
 echo Setting up VS environment
@@ -99,6 +103,7 @@ cl %_CC_FLAGS% /DNP_GOODIES_EXPORT_ALL /Fo: "%_OBJ_DIR%\dll_dynamic\lists\common
 cl %_CC_FLAGS% /DNP_GOODIES_EXPORT_ALL /Fo: "%_OBJ_DIR%\dll_dynamic\uuid\uuid.o" -c "%_SRC_DIR%\uuid\uuid.c"
 cl %_CC_FLAGS% /DNP_GOODIES_EXPORT_ALL /Fo: "%_OBJ_DIR%\dll_dynamic\uuid\uuid4.o" -c "%_SRC_DIR%\uuid\uuid4.c"
 cl %_CC_FLAGS% /DNP_GOODIES_EXPORT_ALL /Fo: "%_OBJ_DIR%\dll_dynamic\text.o" -c "%_SRC_DIR%\text.c"
+cl %_CC_FLAGS% /DNP_GOODIES_EXPORT_ALL /Fo: "%_OBJ_DIR%\dll_dynamic\_win32_main.o" -c "%_SRC_DIR%\_win32_main.c"
 rc /nologo /fo "%_OBJ_DIR%\dll_dynamic\np_clang_goodies.res" "%_RSC_DIR%\np_clang_goodies.rc"
 set _DLL_OBJS=
 set _DLL_OBJS=%_DLL_OBJS% "%_OBJ_DIR%\dll_dynamic\arguments\arguments.o"
@@ -112,20 +117,21 @@ set _DLL_OBJS=%_DLL_OBJS% "%_OBJ_DIR%\dll_dynamic\lists\commons.o"
 set _DLL_OBJS=%_DLL_OBJS% "%_OBJ_DIR%\dll_dynamic\uuid\uuid.o"
 set _DLL_OBJS=%_DLL_OBJS% "%_OBJ_DIR%\dll_dynamic\uuid\uuid4.o"
 set _DLL_OBJS=%_DLL_OBJS% "%_OBJ_DIR%\dll_dynamic\text.o"
+set _DLL_OBJS=%_DLL_OBJS% "%_OBJ_DIR%\dll_dynamic\_win32_main.o"
 set _DLL_OBJS=%_DLL_OBJS% "%_OBJ_DIR%\dll_dynamic\np_clang_goodies.res"
-link %_LINK_FLAGS% /DLL %_DLL_OBJS% /out:%_BIN_DIR%\dll_dynamic\np_clang_goodies.dll
+link %_LINK_FLAGS_DLL% /DLL %_DLL_OBJS% /out:%_BIN_DIR%\dll_dynamic\np_clang_goodies.dll
 
 
 echo Benchmarks
 echo Benchmark ^> CRC32 Implementations
 cl %_CC_FLAGS% /Fo: "%_OBJ_DIR%\bm_crc32_implementations.o" -c "%_BENCHMARK_DIR%\bm_crc32_implementations.c"
-link %_LINK_FLAGS% "%_OBJ_DIR%\bm_crc32_implementations.o" /out:%_BIN_DIR%\bm_crc32_implementations.exe
+link %_LINK_FLAGS_EXE% "%_OBJ_DIR%\bm_crc32_implementations.o" /out:%_BIN_DIR%\bm_crc32_implementations.exe
 echo Benchmark ^> Binary Powers
 cl %_CC_FLAGS% /Fo: "%_OBJ_DIR%\bm_powers_of_two.o" -c "%_BENCHMARK_DIR%\bm_powers_of_two.c"
-link %_LINK_FLAGS% "%_OBJ_DIR%\bm_powers_of_two.o" /out:%_BIN_DIR%\bm_powers_of_two.exe
+link %_LINK_FLAGS_EXE% "%_OBJ_DIR%\bm_powers_of_two.o" /out:%_BIN_DIR%\bm_powers_of_two.exe
 echo Benchmark ^> Binary Roots
 cl %_CC_FLAGS% /Fo: "%_OBJ_DIR%\bm_square_of_two_mask.o" -c "%_BENCHMARK_DIR%\bm_square_of_two_mask.c"
-link %_LINK_FLAGS% "%_OBJ_DIR%\bm_square_of_two_mask.o" /out:%_BIN_DIR%\bm_square_of_two_mask.exe
+link %_LINK_FLAGS_EXE% "%_OBJ_DIR%\bm_square_of_two_mask.o" /out:%_BIN_DIR%\bm_square_of_two_mask.exe
 
 
 :: Going back to the original directory
