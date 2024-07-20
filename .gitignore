@@ -23,6 +23,7 @@ docs/latex
 # MSVCRT Stuff
 *.7z
 path.txt
+msvcrt/make-libs.cmd
 
 # PureBasic stuff
 *.pb.cfg
